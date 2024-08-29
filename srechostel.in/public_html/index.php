@@ -36,7 +36,7 @@ else if(isset($_COOKIE['auth_watch_man'])){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Login With Hostel</title>
     <link rel="icon" type="image/x-icon" href="/images/layout-image/logo.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css-files/login.css">
