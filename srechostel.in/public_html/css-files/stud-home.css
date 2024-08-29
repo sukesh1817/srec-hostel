@@ -1,0 +1,119 @@
+body {
+    background-color: #f8f9fa;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    align-items: center;
+  }
+  
+  header {
+    background-color: #db810b;
+    color:antiquewhite;
+    text-align: center;
+    padding: 20px 0;
+  }
+  
+  .container1 {
+    display: flex;
+    align-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top:10px;
+    padding-bottom: 15px;
+  }
+  
+  .attribute {
+    margin: 10px;
+  }
+/*   
+  button {
+      width: 130px;
+      height: 30px;
+      font-size: 1.1em;
+      cursor: pointer;
+      background-color: #c6741b;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      transition: all .4s
+   
+  }
+  
+  button:hover {
+      border-radius: 5px;
+      transform: translateY(-10px);
+      box-shadow: 0 7px 0 -2px #f85959,
+      0 15px 0 -4px #39a2db,
+      0 16px 10px -3px #39a2db;
+  }
+  
+  button:active{
+      transition: all 0.2s;
+      transform: translateY(-5px);
+      box-shadow: 0 2px 0 -2px #f85959,
+       0 8px 0 -4px #39a2db,
+       0 12px 10px -3px #39a2db;
+  
+  } */
+  
+  /* .btn {
+      width: 130px;
+      height: 40px;
+      font-size: 1.1em;
+      cursor: pointer;
+      background-color: #171717;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      transition: all .4s;
+  }
+     
+  .btn:hover {
+      border-radius: 5px;
+      transform: translateY(-10px);
+      box-shadow: 0 7px 0 -2px #f85959,
+       0 15px 0 -4px #39a2db,
+       0 16px 10px -3px #39a2db;
+  }
+     
+  .btn:active {
+      transition: all 0.2s;
+      transform: translateY(-5px);
+      box-shadow: 0 2px 0 -2px #f85959,
+       0 8px 0 -4px #39a2db,
+       0 12px 10px -3px #39a2db;
+  } */
+  .containers {
+    margin-top:auto;
+    margin: auto;
+    max-width: 800px;
+    padding: 20px;
+    background-color:whitesmoke;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255, 255, 255, 0.571);
+    align-items: center;
+    /* background-image: url(LONG..JPG );
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size:cover; */
+}
+  h1 {
+    text-align: center;
+  }
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  /* li {
+    margin-bottom: 10px;
+    padding-left: 20px;
+    position: relative;
+  }
+  li:before {
+    content: "*";
+    color:black;
+    font-size: 18px;
+    position: absolute;
+    left: 0;
+    top: 4px;
+  }  */

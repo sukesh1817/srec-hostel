@@ -1,0 +1,9 @@
+These are the thing we want to do the configuration in our server
+==>  php_session = 1
+==>  php_file_upload = On
+==>  pyhton_package = import xhtml2pdf using pip 
+==>  folder_permissions = complaint,accomodation 
+==>  install_libssl1.1 = https://stackoverflow.com/questions/73251468/e-package-libssl1-1-has-no-installation-candidate
+==>  install_mongodb =  https://www.linode.com/docs/guides/install-mongodb-on-ubuntu-20-04/
+==>  if_error_in_mongo_db_refer_it = https://askubuntu.com/questions/823288/mongodb-loads-but-breaks-returning-status-14
+==>  date.timezone in php_ini file for changing timezone

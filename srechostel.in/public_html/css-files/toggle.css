@@ -1,0 +1,46 @@
+@import url("https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap");
+
+
+
+
+
+.user-box {
+  position: relative;
+  /*display: inline-block;*/
+}
+
+.password-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+
+
+.password-toggle-icon {
+  position: absolute;
+  right: 10px;
+  bottom:0px;
+  cursor: pointer;
+}
+.password-toggle-icon-normal {
+  position: absolute;
+  right: 10px;
+  bottom:10px;
+  cursor: pointer;
+}
+.fas{
+        line-height: 2.3;
+}
+.large-textarea {
+      width: 100%; /* Full width of the parent container */
+      height: 700px; /* Set your desired height */
+      max-width: 800px; /* Maximum width */
+      min-width: 300px; /* Minimum width for responsiveness */
+    }
+
+
+
+
+
+
