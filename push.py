@@ -6,5 +6,5 @@ else:
     msg = sys.argv[1]
     os.system("git add .")
     os.system('git commit -m "'+msg+'"')
-    os.system("push")
+    os.system("git push")
 
