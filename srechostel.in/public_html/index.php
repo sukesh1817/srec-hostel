@@ -112,7 +112,7 @@ else if(isset($_COOKIE['auth_watch_man'])){
                                             <div class="row gy-3 overflow-hidden">
                                                 <div class="col-12">
                                                     <div class="form-floating mb-3">
-                                                        <input type="number" class="form-control" name="username"
+                                                        <input type="number" class="form-control rounded-1" name="username"
                                                             id="username" placeholder="1234" required>
                                                         <label for="username" class="form-label">username</label>
                                                     </div>
@@ -121,7 +121,7 @@ else if(isset($_COOKIE['auth_watch_man'])){
                                                     <div class="form-floating mb-3">
                                                         <input type="password" class="form-control" name="password"
                                                             id="password" value="" placeholder="" required>
-                                                        <label for="password" class="form-label">password</label>
+                                                        <label for="password" class="form-label rounded-1">password</label>
                                                         <span   class="password-toggle-icon">
                                                             <i id="pass-icon" class="fas fa-eye"></i>
                                                         </span>
