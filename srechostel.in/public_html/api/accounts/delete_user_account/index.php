@@ -5,6 +5,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 # receive the input from the admin and see what kind of of inputs is received.
 
 if ($_SERVER['REQUEST_METHOD'] == "POST") {
+    print_r($_POST);
     $keys = array_keys($_POST);
     if ($keys[0] == "roll_no") {
 
