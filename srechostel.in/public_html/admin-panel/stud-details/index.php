@@ -283,7 +283,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            <div class="position-absolute gap-1">
+            <div class="gap-1">
                 <div class="btn-group">
                     <button type="button" class="btn btn-outline-dark rounded-1" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Single
@@ -291,6 +291,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                     <button type="button" class="btn btn-dark rounded-1">Multi user delete</button>
                 </div>
             </div>
+            
             <div class="row">
                 <div class="collapse" id="collapseExample">
                     <div class="card card-body">
