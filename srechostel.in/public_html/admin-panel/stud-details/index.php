@@ -470,13 +470,10 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                         </div>
                         <div class="collapse" id="collapseSingle">
                             <form>
-                                <div class="mb-3">
-                                    <label for="recipient-name" class="col-form-label">Recipient:</label>
-                                    <input type="text" class="form-control" id="recipient-name">
-                                </div>
-                                <div class="mb-3">
-                                    <label for="message-text" class="col-form-label">Message:</label>
-                                    <textarea class="form-control" id="message-text"></textarea>
+                                <div class="mb-3 form-group">
+                                    <label for="email">Roll no</label>
+                                    <input type="text" id="email" name="email" placeholder="Enter the roll no"
+                                        required="">
                                 </div>
                             </form>
                         </div>
