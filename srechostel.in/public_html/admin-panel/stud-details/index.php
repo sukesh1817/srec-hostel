@@ -457,55 +457,47 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-                    <div class="mb-3">
-                        <div class="btn-group d-flex justify-content-center">
-                            <button type="button" class="btn btn-outline-dark" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseSingle" aria-expanded="false"
-                                aria-controls="collapseSingle">Single
-                                user delete</button>
-                            <button type="button" class="btn btn-dark" type="button" data-bs-toggle="collapse"
-                                data-bs-target="#collapseMulti" aria-expanded="false"
-                                aria-controls="collapseMulti">Multi user
-                                delete</button>
-                        </div>
-                        <div class="collapse multi-collapse" id="collapseSingle">
-                            <div class="container mt-3 ms-3">
-                                <div class="form-container">
-                                    <div class="logo-container">
-                                        Single account delete
-                                    </div>
-                                    <form class="form">
-                                        <div class="form-group">
-                                            <label for="email">Roll no</label>
-                                            <input type="text" id="email" name="email" placeholder="Enter the roll no"
-                                                required="">
-                                        </div>
-                                        <button class="form-submit-btn" type="submit">Delete user</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
+    <div class="mb-3">
+        <div class="btn-group d-flex justify-content-center">
+            <button type="button" class="btn btn-outline-dark" data-bs-toggle="collapse" 
+                data-bs-target="#collapseSingle" aria-expanded="false" aria-controls="collapseSingle"
+                onclick="toggleForms('collapseSingle')">Single user delete</button>
+            <button type="button" class="btn btn-dark" data-bs-toggle="collapse" 
+                data-bs-target="#collapseMulti" aria-expanded="false" aria-controls="collapseMulti"
+                onclick="toggleForms('collapseMulti')">Multi user delete</button>
+        </div>
 
-                        <div class="collapse multi-collapse" id="collapseMulti">
-                            <div class="container mt-3 ms-3">
-                                <div class="form-container">
-                                    <div class="logo-container">
-                                        Multi account delete
-                                    </div>
-                                    <form class="form">
-                                        <div class="form-group">
-                                            <label for="email">Roll no</label>
-                                            <input type="text" id="email" name="email" placeholder="Enter the roll no"
-                                                required="">
-                                        </div>
-                                        <button class="form-submit-btn" type="submit">Delete user</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>html>
-                    </div>
-
+        <div class="collapse multi-collapse" id="collapseSingle">
+            <div class="container mt-3 ms-3">
+                <div class="form-container">
+                    <div class="logo-container">Single account delete</div>
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="single-email">Roll no</label>
+                            <input type="text" id="single-email" name="single-email" placeholder="Enter the roll no" required="">
+                        </div>
+                        <button class="form-submit-btn" type="submit">Delete user</button>
+                    </form>
                 </div>
+            </div>
+        </div>
+
+        <div class="collapse multi-collapse" id="collapseMulti">
+            <div class="container mt-3 ms-3">
+                <div class="form-container">
+                    <div class="logo-container">Multi account delete</div>
+                    <form class="form">
+                        <div class="form-group">
+                            <label for="multi-email">Roll no</label>
+                            <input type="text" id="multi-email" name="multi-email" placeholder="Enter the roll no" required="">
+                        </div>
+                        <button class="form-submit-btn" type="submit">Delete user</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
                 <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-danger">Delete user</button>
@@ -601,5 +593,21 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 </script>
 
+<script>
+function toggleForms(collapseId) {
+    const collapseSingle = document.getElementById('collapseSingle');
+    const collapseMulti = document.getElementById('collapseMulti');
+
+    if (collapseId === 'collapseSingle') {
+        if (collapseMulti.classList.contains('show')) {
+            collapseMulti.classList.remove('show');
+        }
+    } else if (collapseId === 'collapseMulti') {
+        if (collapseSingle.classList.contains('show')) {
+            collapseSingle.classList.remove('show');
+        }
+    }
+}
+</script>
 
 </html>
