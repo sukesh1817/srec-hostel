@@ -387,7 +387,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                     <button type="button" class="btn btn-outline-dark rounded-1" type="button" data-bs-toggle="collapse"
                         data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Single
                         user delete</button>
-                    <button type="button" class="btn btn-dark rounded-1">Multi user delete</button>
+                    <button type="button" class="btn btn-dark rounded-1" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#collapseMulti" aria-expanded="false" aria-controls="collapseMulti">Multi user delete</button>
                 </div>
             </div>
 
@@ -397,6 +398,33 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                         <div class="form-container">
                             <div class="logo-container">
                                 Single user delete
+                            </div>
+
+                            <form class="form">
+                                <div class="form-group">
+                                    <label for="email">Roll no</label>
+                                    <input type="text" id="email" name="email" placeholder="Enter the roll no"
+                                        required="">
+                                </div>
+
+                                <button class="form-submit-btn" type="submit">Delete user</button>
+                            </form>
+
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+
+
+
+
+            <div class="row">
+                <div class="collapse" id="collapseMulti">
+                    <form action="">
+                        <div class="form-container">
+                            <div class="logo-container">
+                                Multi user delete
                             </div>
 
                             <form class="form">
