@@ -476,7 +476,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                     <input type="text" class="form-control rounded-1" id="recipient-name" placeholder="Enter the roll no">
                                 </div>
                             </form> -->
-                            <div class="container mt-3 mx-auto">
+                            <div class="container mt-3 ms-3">
                                 <div class="form-container">
                                     <div class="logo-container">
                                         Multi user delete
