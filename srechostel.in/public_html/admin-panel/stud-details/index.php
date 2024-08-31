@@ -458,7 +458,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                 </div>
                 <div class="modal-body">
                     <div class="mb-3">
-                        <div class="btn-group">
+                        <div class="btn-group d-flex justify-content-center">
                             <button type="button" class="btn btn-outline-dark rounded-1" type="button"
                                 data-bs-toggle="collapse" data-bs-target="#collapseSingle" aria-expanded="false"
                                 aria-controls="collapseSingle">Single
