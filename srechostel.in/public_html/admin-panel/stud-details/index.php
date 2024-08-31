@@ -459,8 +459,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                 <div class="modal-body">
                     <div class="mb-3">
                         <div class="btn-group d-flex justify-content-center">
-                            <button type="button" class="btn btn-outline-dark" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseSingle" aria-expanded="false"
+                            <button type="button" class="btn btn-outline-dark" type="button" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSingle" aria-expanded="false"
                                 aria-controls="collapseSingle">Single
                                 user delete</button>
                             <button type="button" class="btn btn-dark" type="button" data-bs-toggle="collapse"
@@ -476,24 +476,23 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                     <input type="text" class="form-control rounded-1" id="recipient-name" placeholder="Enter the roll no">
                                 </div>
                             </form> -->
+                            <div class="container">
+                                <div class="form-container">
+                                    <div class="logo-container">
+                                        Multi user delete
+                                    </div>
 
-                            <form action="">
-                        <div class="form-container">
-                            <div class="logo-container">
-                                Single user delete
-                            </div>
+                                    <form class="form">
+                                        <div class="form-group">
+                                            <label for="email">Roll no</label>
+                                            <input type="text" id="email" name="email" placeholder="Enter the roll no"
+                                                required="">
+                                        </div>
 
-                            <form class="form">
-                                <div class="form-group">
-                                    <label for="email">Roll no</label>
-                                    <input type="text" id="email" name="email" placeholder="Enter the roll no"
-                                        required="">
+                                        <button class="form-submit-btn" type="submit">Delete user</button>
+                                    </form>
                                 </div>
-
-                                <button class="form-submit-btn" type="submit">Delete user</button>
-                            </form>
-                        </div>
-                    </form>
+                            </div>
                         </div>
                     </div>
 
