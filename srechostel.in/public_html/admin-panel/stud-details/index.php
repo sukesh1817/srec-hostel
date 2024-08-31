@@ -32,7 +32,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             color: black;
         }
 
-        .offcanvas-end {
+        .offcanvas {
             width: 800px;
             /* Change this value to your desired width */
         }
