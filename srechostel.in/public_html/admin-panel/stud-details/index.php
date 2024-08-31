@@ -106,6 +106,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                 </ul>
             </div>
 
+            <div class="float-left">
+            <button style="font-size:24px">Button <i class="fa fa-trash-o"></i></button>
+            </div>
             <form id="search-form" action="/admin-panel/stud-details/search/" method="post"
                 class="mt-3 d-inline-block text-center">
                 <input type="hidden" name="year" id="yearValue" value="<?php
