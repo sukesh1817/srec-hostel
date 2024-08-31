@@ -201,7 +201,7 @@ code {
     ?>
     <div class="float-end mx-3 my-3">
     <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"  data-bs-placement="left"  data-bs-trigger="hover focus" data-bs-content="Want to delete a user click this">
-        <button  type="button" class="btn btn-sm btn-danger rounded-1" >
+        <button  type="button" class="btn btn-sm btn-danger rounded-1 button" >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
                 viewBox="0 0 16 16">
                 <path
