@@ -45,7 +45,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/navbar.php";
     ?>
     <div class="float-end mx-3 my-3">
-        <button  type="button" class="btn btn-sm btn-danger rounded-1" data-bs-toggle="popover" data-bs-title="Popover title" data-bs-content="Want to delete user account click it">
+        <button  type="button" class="btn btn-sm btn-danger rounded-1" data-bs-toggle="popover" data-bs-placement="left" data-bs-title="Popover title" data-bs-content="Want to delete user account click it">
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
                 viewBox="0 0 16 16">
                 <path
