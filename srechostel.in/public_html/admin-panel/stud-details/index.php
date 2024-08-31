@@ -150,8 +150,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     <div class="float-end mx-3 my-3">
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="left"
             data-bs-trigger="hover focus" data-bs-content="Want to delete a user click this">
-            <button type="button" class="btn btn-sm btn-danger rounded-1" data-bs-toggle="offcanvas"
-                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <button type="button" class="btn btn-sm btn-danger rounded-1" data-bs-toggle="modal"
+                data-bs-target="#exampleModal">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
                     viewBox="0 0 16 16">
                     <path
@@ -376,7 +376,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     </div>
 
 
-    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <!-- <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasRightLabel">Account deletion</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
@@ -388,11 +388,12 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                         data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Single
                         user delete</button>
                     <button type="button" class="btn btn-dark rounded-1" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#collapseMulti" aria-expanded="false" aria-controls="collapseMulti">Multi user delete</button>
+                        data-bs-target="#collapseMulti" aria-expanded="false" aria-controls="collapseMulti">Multi user
+                        delete</button>
                 </div>
             </div>
 
-            <div class="row">
+            <div class="row mb-1">
                 <div class="collapse" id="collapseExample">
                     <form action="">
                         <div class="form-container">
@@ -409,8 +410,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
                                 <button class="form-submit-btn" type="submit">Delete user</button>
                             </form>
-
-
                         </div>
                     </form>
                 </div>
@@ -418,8 +417,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
 
 
-
-            <div class="row">
+            <div class="row mb-1">
                 <div class="collapse" id="collapseMulti">
                     <form action="">
                         <div class="form-container">
@@ -446,7 +444,37 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
 
         </div>
+    </div> -->
+
+
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">New message</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form>
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Recipient:</label>
+            <input type="text" class="form-control" id="recipient-name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Message:</label>
+            <textarea class="form-control" id="message-text"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-primary">Send message</button>
+      </div>
     </div>
+  </div>
+</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
