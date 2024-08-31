@@ -457,47 +457,49 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
-    <div class="mb-3">
-        <div class="btn-group d-flex justify-content-center">
-            <button type="button" class="btn btn-outline-dark" data-bs-toggle="collapse" 
-                data-bs-target="#collapseSingle" aria-expanded="false" aria-controls="collapseSingle"
-                onclick="toggleForms('collapseSingle')">Single user delete</button>
-            <button type="button" class="btn btn-dark" data-bs-toggle="collapse" 
-                data-bs-target="#collapseMulti" aria-expanded="false" aria-controls="collapseMulti"
-                onclick="toggleForms('collapseMulti')">Multi user delete</button>
-        </div>
-
-        <div class="collapse multi-collapse" id="collapseSingle">
-            <div class="container mt-3 ms-3">
-                <div class="form-container">
-                    <div class="logo-container">Single account delete</div>
-                    <form class="form">
-                        <div class="form-group">
-                            <label for="single-email">Roll no</label>
-                            <input type="text" id="single-email" name="single-email" placeholder="Enter the roll no" required="">
+                    <div class="mb-3">
+                        <div class="btn-group d-flex justify-content-center">
+                            <button id="single-btn" type="button" class="btn btn-outline-dark" data-bs-toggle="collapse"
+                                data-bs-target="#collapseSingle" aria-expanded="false" aria-controls="collapseSingle"
+                                onclick="toggleForms('collapseSingle')">Single user delete</button>
+                            <button id="multi-btn" type="button" class="btn btn-outline-dark" data-bs-toggle="collapse"
+                                data-bs-target="#collapseMulti" aria-expanded="false" aria-controls="collapseMulti"
+                                onclick="toggleForms('collapseMulti')">Multi user delete</button>
                         </div>
-                        <button class="form-submit-btn" type="submit">Delete user</button>
-                    </form>
-                </div>
-            </div>
-        </div>
 
-        <div class="collapse multi-collapse" id="collapseMulti">
-            <div class="container mt-3 ms-3">
-                <div class="form-container">
-                    <div class="logo-container">Multi account delete</div>
-                    <form class="form">
-                        <div class="form-group">
-                            <label for="multi-email">Roll no</label>
-                            <input type="text" id="multi-email" name="multi-email" placeholder="Enter the roll no" required="">
+                        <div class="collapse multi-collapse" id="collapseSingle">
+                            <div class="container mt-3 ms-3">
+                                <div class="form-container">
+                                    <div class="logo-container">Single account delete</div>
+                                    <form class="form">
+                                        <div class="form-group">
+                                            <label for="single-email">Roll no</label>
+                                            <input type="text" id="single-email" name="single-email"
+                                                placeholder="Enter the roll no" required="">
+                                        </div>
+                                        <button class="form-submit-btn" type="submit">Delete user</button>
+                                    </form>
+                                </div>
+                            </div>
                         </div>
-                        <button class="form-submit-btn" type="submit">Delete user</button>
-                    </form>
+
+                        <div class="collapse multi-collapse" id="collapseMulti">
+                            <div class="container mt-3 ms-3">
+                                <div class="form-container">
+                                    <div class="logo-container">Multi account delete</div>
+                                    <form class="form">
+                                        <div class="form-group">
+                                            <label for="multi-email">Roll no</label>
+                                            <input type="text" id="multi-email" name="multi-email"
+                                                placeholder="Enter the roll no" required="">
+                                        </div>
+                                        <button class="form-submit-btn" type="submit">Delete user</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div>
-</div>
                 <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-danger">Delete user</button>
@@ -594,20 +596,34 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 </script>
 
 <script>
-function toggleForms(collapseId) {
-    const collapseSingle = document.getElementById('collapseSingle');
-    const collapseMulti = document.getElementById('collapseMulti');
+    function toggleForms(collapseId) {
+        const collapseSingle = document.getElementById('collapseSingle');
+        const collapseMulti = document.getElementById('collapseMulti');
 
-    if (collapseId === 'collapseSingle') {
-        if (collapseMulti.classList.contains('show')) {
-            collapseMulti.classList.remove('show');
-        }
-    } else if (collapseId === 'collapseMulti') {
-        if (collapseSingle.classList.contains('show')) {
-            collapseSingle.classList.remove('show');
+        if (collapseId === 'collapseSingle') {
+
+            var element = document.getElementById("single-btn");
+            var element2 = document.getElementById("multi-btn");
+            element.classList.remove("btn-outline-dark");
+            element.classList.add("btn-dark");
+            element2.classList.remove("btn-dark");
+            element2.classList.add("btn-outline-dark");
+
+            if (collapseMulti.classList.contains('show')) {
+                collapseMulti.classList.remove('show');
+            }
+        } else if (collapseId === 'collapseMulti') {
+            var element = document.getElementById("multi-btn");
+            var element2 = document.getElementById("single-btn");
+            element.classList.remove("btn-outline-dark");
+            element.classList.add("btn-dark");
+            element2.classList.remove("btn-dark");
+            element2.classList.add("btn-outline-dark");
+            if (collapseSingle.classList.contains('show')) {
+                collapseSingle.classList.remove('show');
+            }
         }
     }
-}
 </script>
 
 </html>
