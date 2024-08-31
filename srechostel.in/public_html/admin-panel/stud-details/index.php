@@ -438,9 +438,9 @@ code {
 
 <details>
   <summary>
-    <div class="button">
+    <!-- <div class="button">
       Show me the modal
-    </div>
+    </div> -->
     <div class="details-modal-overlay"></div>
   </summary>
   <div class="details-modal">
