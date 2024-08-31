@@ -31,11 +31,10 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         .btn-outline-light:hover {
             color: black;
         }
-
-        .offcanvas {
+        .offcanvas.offcanvas-end{
             width: 800px;
-            /* Change this value to your desired width */
         }
+        
     </style>
 
 
