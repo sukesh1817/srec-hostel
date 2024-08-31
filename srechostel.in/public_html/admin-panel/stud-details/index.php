@@ -278,7 +278,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
         </div>
         <div class="offcanvas-body">
-            ...
+            <input type="number" class="form-control rounded-1" placeholder="Enter the rollno">
         </div>
     </div>
 </body>
