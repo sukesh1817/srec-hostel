@@ -460,16 +460,28 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                     <div class="mb-3">
                         <div class="btn-group">
                             <button type="button" class="btn btn-outline-dark rounded-1" type="button"
-                                data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false"
-                                aria-controls="collapseExample">Single
+                                data-bs-toggle="collapse" data-bs-target="#collapseSingle" aria-expanded="false"
+                                aria-controls="collapseSingle">Single
                                 user delete</button>
                             <button type="button" class="btn btn-dark rounded-1" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseMulti" aria-expanded="false"
                                 aria-controls="collapseMulti">Multi user
                                 delete</button>
                         </div>
+                        <div class="collapse" id="collapseSingle">
+                            <form>
+                                <div class="mb-3">
+                                    <label for="recipient-name" class="col-form-label">Recipient:</label>
+                                    <input type="text" class="form-control" id="recipient-name">
+                                </div>
+                                <div class="mb-3">
+                                    <label for="message-text" class="col-form-label">Message:</label>
+                                    <textarea class="form-control" id="message-text"></textarea>
+                                </div>
+                            </form>
+                        </div>
                     </div>
-                    
+
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
