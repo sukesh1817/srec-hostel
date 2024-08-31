@@ -36,35 +36,104 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             width: 800px;
         }
 
-        /* From Uiverse.io by kamehame-ha */ 
-.coolinput {
-  display: flex;
-  flex-direction: column;
-  width: fit-content;
-  position: static;
-  max-width: 240px;
-}
+        .form-container {
+            max-width: 400px;
+            background-color: #fff;
+            padding: 32px 24px;
+            font-size: 14px;
+            font-family: inherit;
+            color: #212121;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            box-sizing: border-box;
+            border-radius: 1px;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+        }
 
-.coolinput label.text {
-  font-size: 0.75rem;
-  font-weight: 700;
-  position: relative;
-  top: 0.5rem;
-  margin: 0 0 0 7px;
-  padding: 0 3px;
-  width: fit-content;
-}
+        .form-container button:active {
 
-.coolinput input[type=text].input {
-  padding: 11px 10px;
-  font-size: 0.75rem;
-  border: 2pxsolid;
-  border-radius: 5px;
-}
+            scale: 0.95;
+        }
 
-.coolinput input[type=text].input:focus {
-  outline: none;
-}
+        .form-container .logo-container {
+            text-align: center;
+            font-weight: 600;
+            font-size: 18px;
+        }
+
+        .form-container .form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .form-container .form-group label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .form-container .form-group input {
+            width: 100%;
+            padding: 12px 16px;
+            border-radius: 1px;
+            font-family: inherit;
+            border: 1px solid #ccc;
+        }
+
+        .form-container .form-group input::placeholder {
+            opacity: 0.5;
+        }
+
+        .form-container .form-group input:focus {
+            outline: none;
+            border-color: #1778f2;
+        }
+
+        .form-container .form-submit-btn {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: inherit;
+            color: #fff;
+            background-color: #212121;
+            border: none;
+            width: 100%;
+            padding: 12px 16px;
+            font-size: inherit;
+            gap: 8px;
+            margin: 12px 0;
+            cursor: pointer;
+            border-radius: 1px;
+            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
+        }
+
+        .form-container .form-submit-btn:hover {
+            background-color: #313131;
+        }
+
+        .form-container .link {
+            color: #1778f2;
+            text-decoration: none;
+        }
+
+        .form-container .signup-link {
+            align-self: center;
+            font-weight: 500;
+        }
+
+        .form-container .signup-link .link {
+            font-weight: 400;
+        }
+
+        .form-container .link:hover {
+            text-decoration: underline;
+        }
     </style>
 
 
@@ -325,9 +394,22 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             <div class="row">
                 <div class="collapse" id="collapseExample">
                     <form action="">
-                        <div class="coolinput">
-                            <label for="input" class="text">Rollno</label>
-                            <input type="text" placeholder="Enter the roll no" name="input" class="input">
+                        <div class="form-container">
+                            <div class="logo-container">
+                                Single user delete
+                            </div>
+
+                            <form class="form">
+                                <div class="form-group">
+                                    <label for="email">Roll no</label>
+                                    <input type="text" id="email" name="email" placeholder="Enter the roll no"
+                                        required="">
+                                </div>
+
+                                <button class="form-submit-btn" type="submit">Delete user</button>
+                            </form>
+
+
                         </div>
                     </form>
                 </div>
