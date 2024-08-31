@@ -51,10 +51,10 @@ html {
 
 @media only screen and (min-width: 600px) {
   body {
-    justify-content: center;
+    /* justify-content: center;
     align-items: center;
-    display: flex;
-    height: 100vh;
+    display: flex; */
+    height: 100vh;c
     font-size: 100%;
   }
 }
