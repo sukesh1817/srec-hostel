@@ -285,15 +285,17 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         <div class="offcanvas-body">
             <div class="position-absolute">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-outline-dark rounded-1" type="button" data-bs-toggle="collapse" data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Single user delete</button>
+                    <button type="button" class="btn btn-outline-dark rounded-1" type="button" data-bs-toggle="collapse"
+                        data-bs-target="#collapseExample" aria-expanded="false" aria-controls="collapseExample">Single
+                        user delete</button>
                     <button type="button" class="btn btn-dark rounded-1">Multi user delete</button>
                 </div>
             </div>
-
-            <div class="collapse" id="collapseExample">
-                <div class="card card-body">
-                    Some placeholder content for the collapse component. This panel is hidden by default but revealed
-                    when the user activates the relevant trigger.
+            <div class="row">
+                <div class="collapse" id="collapseExample">
+                    <div class="card card-body">
+                        Commit it
+                    </div>
                 </div>
             </div>
 
