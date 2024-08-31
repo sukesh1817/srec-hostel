@@ -459,10 +459,10 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                 <div class="modal-body">
                     <div class="mb-3">
                         <div class="btn-group d-flex justify-content-center">
-                            <button id="single-btn" type="button" class="btn btn-outline-dark" data-bs-toggle="collapse"
+                            <button id="single-btn" type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse"
                                 data-bs-target="#collapseSingle" aria-expanded="false" aria-controls="collapseSingle"
                                 onclick="toggleForms('collapseSingle')">Single user delete</button>
-                            <button id="multi-btn" type="button" class="btn btn-outline-dark" data-bs-toggle="collapse"
+                            <button id="multi-btn" type="button" class="btn btn-outline-dark btn-sm" data-bs-toggle="collapse"
                                 data-bs-target="#collapseMulti" aria-expanded="false" aria-controls="collapseMulti"
                                 onclick="toggleForms('collapseMulti')">Multi user delete</button>
                         </div>
