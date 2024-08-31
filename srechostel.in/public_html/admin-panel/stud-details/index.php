@@ -34,51 +34,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
     </style>
 
-    <style>
-        .button {
-  height: 50px;
-  width: 200px;
-  position: relative;
-  background-color: transparent;
-  cursor: pointer;
-  border: 2px solid #252525;
-  overflow: hidden;
-  border-radius: 1px;
-  color: #333;
-  transition: all 0.8s ease-in-out;
-}
-
-.btn-txt {
-  z-index: 1;
-  font-weight: 800;
-  letter-spacing: 4px;
-}
-
-.type1::after {
-  content: "";
-  position: absolute;
-  left: 0;
-  top: 0;
-  transition: all 0.8s ease-in-out;
-  background-color: #333;
-  border-radius: 1px;
-  visibility: hidden;
-  height: 10px;
-  width: 10px;
-  z-index: -1;
-}
-
-.button:hover {
-  color: #fff;
-  border: none;
-}
-
-.type1:hover::after {
-  visibility: visible;
-  transform: scale(100) translateX(2px);
-}
-
-    </style>
+   
 
 
 </head>
@@ -89,11 +45,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     <?php
     include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/navbar.php";
     ?>
-    <div class="float-left">
-        <button class="button type1">
-            <span class="btn-txt">Delete user</span>
-        </button>
-    </div>
+    <div class="float-end">Float end on all viewport sizes</div><br>
+
     <div class="bg-light-subtle">
         <div class="container">
             <?php
