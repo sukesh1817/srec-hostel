@@ -5,17 +5,11 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 # receive the input from the admin and see what kind of of inputs is received.
 
 if ($_SERVER['REQUEST_METHOD'] == "GET") {
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/../class-files/" . "admin.class.php";
+    $admin = new Admin();
     $keys = array_keys($_GET);
-    foreach($keys as $key) {
-        print_r($key);
-    }
-    if ($keys[0] == "roll_no") {
-
-    } else if ($keys[0] == "year") {
-
-    } else if (in_array("dept", $keys) and in_array("year", $keys)) {
-
-    } else if (in_array("group_of_roll_no", $keys)) {
+    $values = array_values($_GET);
+    if ($admin->deleteUser($keys, $values)) {
 
     } else {
         header("Content-Type: application/json");
