@@ -285,8 +285,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         <div class="offcanvas-body">
             <div class="position-absolute start-50">
                 <div class="btn-group">
-                    <button type="button" class="btn btn-sm btn-outline-secondary">View</button>
-                    <button type="button" class="btn btn-sm btn-outline-secondary">Edit</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Single user delete</button>
+                    <button type="button" class="btn btn-sm btn-outline-secondary">Multi user delete</button>
                 </div>
             </div>
 
