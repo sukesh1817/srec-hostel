@@ -36,159 +36,172 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
 
 
-<style>
+    <style>
         @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
-html {
-  box-sizing: border-box;
-}
 
-*,
-*:before,
-*:after {
-  box-sizing: border-box;
-}
+        html {
+            box-sizing: border-box;
+        }
+
+        *,
+        *:before,
+        *:after {
+            box-sizing: border-box;
+        }
 
 
-@media only screen and (min-width: 600px) {
-  body {
-    /* justify-content: center;
+        @media only screen and (min-width: 600px) {
+            body {
+                /* justify-content: center;
     align-items: center;
     display: flex; */
-    height: 100vh;c
-    font-size: 100%;
-  }
-}
+                height: 100vh;
+                c font-size: 100%;
+            }
+        }
 
-.button {
-  -webkit-appearance: none;
-     -moz-appearance: none;
-          appearance: none;
-  background: #16a34a;
-  border-radius: 0.25em;
-  color: white;
-  cursor: pointer;
-  display: inline-block;
-  font-weight: 500;
-  height: 3em;
-  line-height: 3em;
-  padding: 0 1em;
-}
-.button:hover {
-  background-color: #17ac4e;
-}
+        .button {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+            background: #16a34a;
+            border-radius: 0.25em;
+            color: white;
+            cursor: pointer;
+            display: inline-block;
+            font-weight: 500;
+            height: 3em;
+            line-height: 3em;
+            padding: 0 1em;
+        }
 
-.details-modal {
-  background: #ffffff;
-  border-radius: 0.5em;
-  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
-  left: 50%;
-  max-width: 90%;
-  pointer-events: none;
-  position: absolute;
-  top: 50%;
-  transform: translate(-50%, -50%);
-  width: 30em;
-  text-align: left;
-  max-height: 90vh;
-  display: flex;
-  flex-direction: column;
-}
-.details-modal .details-modal-close {
-  align-items: center;
-  color: #111827;
-  display: flex;
-  height: 4.5em;
-  justify-content: center;
-  pointer-events: none;
-  position: absolute;
-  right: 0;
-  top: 0;
-  width: 4.5em;
-}
-.details-modal .details-modal-close svg {
-  display: block;
-}
-.details-modal .details-modal-title {
-  color: #111827;
-  padding: 1.5em 2em;
-  pointer-events: all;
-  position: relative;
-  width: calc(100% - 4.5em);
-}
-.details-modal .details-modal-title h1 {
-  font-size: 1.25rem;
-  font-weight: 600;
-  line-height: normal;
-}
-.details-modal .details-modal-content {
-  border-top: 1px solid #e0e0e0;
-  padding: 2em;
-  pointer-events: all;
-  overflow: auto;
-}
+        .button:hover {
+            background-color: #17ac4e;
+        }
 
-.details-modal-overlay {
-  transition: opacity 0.2s ease-out;
-  pointer-events: none;
-  background: rgba(15, 23, 42, 0.8);
-  position: fixed;
-  opacity: 0;
-  bottom: 0;
-  right: 0;
-  left: 0;
-  top: 0;
-}
-details[open] .details-modal-overlay {
-  pointer-events: all;
-  opacity: 0.5;
-}
+        .details-modal {
+            background: #ffffff;
+            border-radius: 0.5em;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            left: 50%;
+            max-width: 90%;
+            pointer-events: none;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+            width: 30em;
+            text-align: left;
+            max-height: 90vh;
+            display: flex;
+            flex-direction: column;
+        }
 
-details summary {
-  list-style: none;
-}
-details summary:focus {
-  outline: none;
-}
-details summary::-webkit-details-marker {
-  display: none;
-}
+        .details-modal .details-modal-close {
+            align-items: center;
+            color: #111827;
+            display: flex;
+            height: 4.5em;
+            justify-content: center;
+            pointer-events: none;
+            position: absolute;
+            right: 0;
+            top: 0;
+            width: 4.5em;
+        }
 
-code {
-  font-family: Monaco, monospace;
-  line-height: 100%;
-  background-color: #2d2d2c;
-  padding: 0.1em 0.4em;
-  letter-spacing: -0.05em;
-  word-break: normal;
-  border-radius: 7px;
-  color: white;
-  font-weight: normal;
-  font-size: 1.75rem;
-  position: relative;
-  top: -2px;
-}
+        .details-modal .details-modal-close svg {
+            display: block;
+        }
 
-.cont {
-  text-align: center;
-  max-width: 40em;
-  padding: 2em;
-}
-.cont > h1 {
-  font-weight: 700;
-  font-size: 2rem;
-  line-height: normal;
-  color: #111827;
-}
-.cont > p {
-  margin-top: 2em;
-  margin-bottom: 2em;
-}
-.cont sup {
-  font-size: 1rem;
-  margin-left: 0.25em;
-  opacity: 0.5;
-  position: relative;
-}
+        .details-modal .details-modal-title {
+            color: #111827;
+            padding: 1.5em 2em;
+            pointer-events: all;
+            position: relative;
+            width: calc(100% - 4.5em);
+        }
+
+        .details-modal .details-modal-title h1 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            line-height: normal;
+        }
+
+        .details-modal .details-modal-content {
+            border-top: 1px solid #e0e0e0;
+            padding: 2em;
+            pointer-events: all;
+            overflow: auto;
+        }
+
+        .details-modal-overlay {
+            transition: opacity 0.2s ease-out;
+            pointer-events: none;
+            background: rgba(15, 23, 42, 0.8);
+            position: fixed;
+            opacity: 0;
+            bottom: 0;
+            right: 0;
+            left: 0;
+            top: 0;
+        }
+
+        details[open] .details-modal-overlay {
+            pointer-events: all;
+            opacity: 0.5;
+        }
+
+        details summary {
+            list-style: none;
+        }
+
+        details summary:focus {
+            outline: none;
+        }
+
+        details summary::-webkit-details-marker {
+            display: none;
+        }
+
+        code {
+            font-family: Monaco, monospace;
+            line-height: 100%;
+            background-color: #2d2d2c;
+            padding: 0.1em 0.4em;
+            letter-spacing: -0.05em;
+            word-break: normal;
+            border-radius: 7px;
+            color: white;
+            font-weight: normal;
+            font-size: 1.75rem;
+            position: relative;
+            top: -2px;
+        }
+
+        .cont {
+            text-align: center;
+            max-width: 40em;
+            padding: 2em;
+        }
+
+        .cont>h1 {
+            font-weight: 700;
+            font-size: 2rem;
+            line-height: normal;
+            color: #111827;
+        }
+
+        .cont>p {
+            margin-top: 2em;
+            margin-bottom: 2em;
+        }
+
+        .cont sup {
+            font-size: 1rem;
+            margin-left: 0.25em;
+            opacity: 0.5;
+            position: relative;
+        }
     </style>
 
 </head>
@@ -200,17 +213,49 @@ code {
     include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/navbar.php";
     ?>
     <div class="float-end mx-3 my-3">
-    <span class="d-inline-block" tabindex="0" data-bs-toggle="popover"  data-bs-placement="left"  data-bs-trigger="hover focus" data-bs-content="Want to delete a user click this">
-        <button  type="button" class="btn btn-sm btn-danger rounded-1 button" >
-            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
-                viewBox="0 0 16 16">
-                <path
-                    d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
-            </svg>
-            Delete user
-        </button>
-        </span>
-        <div class="details-modal-overlay"></div>
+
+
+
+        <div class="cont">
+            <details>
+                <summary>
+                    <div class="button">
+                        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="left"
+                            data-bs-trigger="hover focus" data-bs-content="Want to delete a user click this">
+                            <button type="button" class="btn btn-sm btn-danger rounded-1">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
+                                    class="bi bi-trash3" viewBox="0 0 16 16">
+                                    <path
+                                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
+                                </svg>
+                                Delete user
+                            </button>
+                        </span>
+                    </div>
+                    <div class="details-modal-overlay"></div>
+                </summary>
+                <div class="details-modal">
+                    <div class="details-modal-close">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
+                            <path fill-rule="evenodd" clip-rule="evenodd"
+                                d="M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z"
+                                fill="black" />
+                        </svg>
+                    </div>
+                    <div class="details-modal-title">
+                        <h1>My details modal</h1>
+                    </div>
+                    <div class="details-modal-content">
+                        <p>
+                            You can click the X in the corner or click the overlay to close this modal.
+                            Something like this could be useful as a nice way to show additional information,
+                            but that's about as far as I would take it. It's just a nice way of styling the details
+                            element.
+                        </p>
+                    </div>
+                </div>
+            </details>
+        </div>
     </div><br>
 
     <div class="bg-light-subtle">
@@ -426,43 +471,6 @@ code {
         </main>
     </div>
 
-
-
-
-    <div class="cont">
-
-<h1>
-  Making the <code>&lt;details&gt;</code> element look and behave like a modal<sup>(kinda..)</sup>
-</h1>
-
-<p>By nesting a modal inside a details element it is automaticly shown when the details is opened. And by nesting the overlay inside the summary element, we can use that to trigger a close.</p>
-
-<details>
-  <summary>
-    <div class="button">
-      Show me the modal
-    </div>
-    
-  </summary>
-  <div class="details-modal">
-    <div class="details-modal-close">
-      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 14 14" fill="none">
-        <path fill-rule="evenodd" clip-rule="evenodd" d="M13.7071 1.70711C14.0976 1.31658 14.0976 0.683417 13.7071 0.292893C13.3166 -0.0976311 12.6834 -0.0976311 12.2929 0.292893L7 5.58579L1.70711 0.292893C1.31658 -0.0976311 0.683417 -0.0976311 0.292893 0.292893C-0.0976311 0.683417 -0.0976311 1.31658 0.292893 1.70711L5.58579 7L0.292893 12.2929C-0.0976311 12.6834 -0.0976311 13.3166 0.292893 13.7071C0.683417 14.0976 1.31658 14.0976 1.70711 13.7071L7 8.41421L12.2929 13.7071C12.6834 14.0976 13.3166 14.0976 13.7071 13.7071C14.0976 13.3166 14.0976 12.6834 13.7071 12.2929L8.41421 7L13.7071 1.70711Z" fill="black" />
-      </svg>
-    </div>
-    <div class="details-modal-title">
-      <h1>My details modal</h1>
-    </div>
-    <div class="details-modal-content">
-      <p>
-        You can click the X in the corner or click the overlay to close this modal.
-        Something like this could be useful as a nice way to show additional information,
-        but that's about as far as I would take it. It's just a nice way of styling the details element.
-      </p>
-    </div>
-  </div>
-</details>
-</div>
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -548,7 +556,7 @@ code {
     });
 
     const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
-const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
+    const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 </script>
 
 
