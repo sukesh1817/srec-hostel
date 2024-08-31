@@ -15,10 +15,10 @@ class Admin
         $sqlConn = $conn->returnConn();
 
         $pointer = 0;
-        foreach($values as $value) {
-            $values[$pointer] = mysqli_real_escape_string($sqlConn, $value);
-            $pointer++;
-        }
+        // foreach($values as $value) {
+        //     $values[$pointer] = mysqli_real_escape_string($sqlConn, $value);
+        //     $pointer++;
+        // }
         print_r($values);
         exit;
         if (in_array("dept", $keys) and in_array("year", $keys)) {
