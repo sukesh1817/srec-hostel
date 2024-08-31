@@ -31,6 +31,11 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         .btn-outline-light:hover {
             color: black;
         }
+
+        .offcanvas-end {
+            width: 400px;
+            /* Change this value to your desired width */
+        }
     </style>
 
 
@@ -47,7 +52,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     <div class="float-end mx-3 my-3">
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="left"
             data-bs-trigger="hover focus" data-bs-content="Want to delete a user click this">
-            <button type="button" class="btn btn-sm btn-danger rounded-1" data-bs-toggle="offcanvas" data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
+            <button type="button" class="btn btn-sm btn-danger rounded-1" data-bs-toggle="offcanvas"
+                data-bs-target="#offcanvasRight" aria-controls="offcanvasRight">
                 <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
                     viewBox="0 0 16 16">
                     <path
@@ -272,7 +278,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     </div>
 
 
-    <div class="offcanvas offcanvas-end" tabindex="-5" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
+    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasRight" aria-labelledby="offcanvasRightLabel">
         <div class="offcanvas-header">
             <h5 class="offcanvas-title" id="offcanvasRightLabel">Offcanvas right</h5>
             <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
