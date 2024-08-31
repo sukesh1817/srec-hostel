@@ -210,6 +210,7 @@ code {
             Delete user
         </button>
         </span>
+        <div class="details-modal-overlay"></div>
     </div><br>
 
     <div class="bg-light-subtle">
@@ -438,10 +439,10 @@ code {
 
 <details>
   <summary>
-    <!-- <div class="button">
+    <div class="button">
       Show me the modal
-    </div> -->
-    <div class="details-modal-overlay"></div>
+    </div>
+    
   </summary>
   <div class="details-modal">
     <div class="details-modal-close">
