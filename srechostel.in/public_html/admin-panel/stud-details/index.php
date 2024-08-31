@@ -52,7 +52,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
   top: 0.5rem;
   margin: 0 0 0 7px;
   padding: 0 3px;
-  background: #e8e8e8;
   width: fit-content;
 }
 
@@ -61,7 +60,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
   font-size: 0.75rem;
   border: 2pxsolid;
   border-radius: 5px;
-  background: #e8e8e8;
 }
 
 .coolinput input[type=text].input:focus {
