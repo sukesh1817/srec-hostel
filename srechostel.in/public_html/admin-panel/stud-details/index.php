@@ -107,7 +107,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             </div>
 
             <div class="float-left">
-            <button style="font-size:24px">delete button<i class="fa fa-trash-o"></i></button>
+            <button style="font-size:24px">delete<i class="fa fa-trash-o"></i></button>
             </div>
             <form id="search-form" action="/admin-panel/stud-details/search/" method="post"
                 class="mt-3 d-inline-block text-center">
