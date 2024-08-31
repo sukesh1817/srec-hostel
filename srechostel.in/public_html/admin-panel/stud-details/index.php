@@ -64,8 +64,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             -webkit-appearance: none;
             -moz-appearance: none;
             appearance: none;
-            background: #16a34a;
-            border-radius: 0.25em;
             color: white;
             cursor: pointer;
             display: inline-block;
@@ -75,9 +73,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             padding: 0 1em;
         }
 
-        .button:hover {
-            background-color: #17ac4e;
-        }
+       
 
         .details-modal {
             background: #ffffff;
