@@ -48,16 +48,7 @@ html {
   box-sizing: border-box;
 }
 
-body {
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  background-color: #f9fafb;
-  font-size: 70%;
-  line-height: 1.4;
-  font-family: "Inter", sans-serif;
-  color: #6b7280;
-  font-weight: 400;
-}
+
 @media only screen and (min-width: 600px) {
   body {
     justify-content: center;
@@ -177,22 +168,22 @@ code {
   top: -2px;
 }
 
-.container {
+.cont {
   text-align: center;
   max-width: 40em;
   padding: 2em;
 }
-.container > h1 {
+.cont > h1 {
   font-weight: 700;
   font-size: 2rem;
   line-height: normal;
   color: #111827;
 }
-.container > p {
+.cont > p {
   margin-top: 2em;
   margin-bottom: 2em;
 }
-.container sup {
+.cont sup {
   font-size: 1rem;
   margin-left: 0.25em;
   opacity: 0.5;
