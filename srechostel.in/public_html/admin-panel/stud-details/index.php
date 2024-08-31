@@ -45,7 +45,12 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     <?php
     include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/navbar.php";
     ?>
-    <div class="float-end">Float end on all viewport sizes</div><br>
+    <div class="float-end">
+        <button class="btn-danger">
+        <i class="bi bi-trash3"></i>
+        Delete user
+        </button>
+    </div><br>
 
     <div class="bg-light-subtle">
         <div class="container">
