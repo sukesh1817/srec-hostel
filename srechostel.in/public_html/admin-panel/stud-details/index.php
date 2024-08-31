@@ -31,8 +31,53 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         .btn-outline-light:hover {
             color: black;
         }
+
+        /* From Uiverse.io by Gaurav-WebDev */
+        .button {
+            height: 50px;
+            width: 200px;
+            position: relative;
+            background-color: transparent;
+            cursor: pointer;
+            border: 2px solid #252525;
+            overflow: hidden;
+            border-radius: 30px;
+            color: #333;
+            transition: all 0.5s ease-in-out;
+        }
+
+        .btn-txt {
+            z-index: 1;
+            font-weight: 800;
+            letter-spacing: 4px;
+        }
+
+        .type1::after {
+            content: "";
+            position: absolute;
+            left: 0;
+            top: 0;
+            transition: all 0.5s ease-in-out;
+            background-color: #333;
+            border-radius: 30px;
+            visibility: hidden;
+            height: 10px;
+            width: 10px;
+            z-index: -1;
+        }
+
+        .button:hover {
+            box-shadow: 1px 1px 200px #252525;
+            color: #fff;
+            border: none;
+        }
+
+        .type1:hover::after {
+            visibility: visible;
+            transform: scale(100) translateX(2px);
+        }
     </style>
-  
+
 
 </head>
 
@@ -42,6 +87,11 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     <?php
     include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/navbar.php";
     ?>
+    <div class="float-left">
+        <button class="button type1">
+            <span class="btn-txt">Delete user</span>
+        </button>
+    </div>
     <div class="bg-light-subtle">
         <div class="container">
             <?php
@@ -92,7 +142,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                             <li><a id="dept-ece" class="dropdown-item i" href="#">B.E ECE</a></li>
                             <li><a id="dept-eee" class="dropdown-item i" href="#">B.E EEE</a></li>
                             <li><a id="dept-mech" class="dropdown-item i" href="#">B.E MECH</a></li>
-                             <li><a id="dept-bme" class="dropdown-item i" href="#">B.E BME</a></li>
+                            <li><a id="dept-bme" class="dropdown-item i" href="#">B.E BME</a></li>
                             <li><a id="dept-metch" class="dropdown-item i" href="#">M.Tech CSE</a></li>
                             <li><a id="dept-civil" class="dropdown-item i" href="#">B.E CIVIL</a></li>
                             <li><a id="dept-aero" class="dropdown-item i" href="#">B.E AERO</a></li>
@@ -106,9 +156,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                 </ul>
             </div>
 
-            <div class="float-left">
-            <button style="font-size:24px">delete<i class="fa fa-trash-o"></i></button>
-            </div>
+
             <form id="search-form" action="/admin-panel/stud-details/search/" method="post"
                 class="mt-3 d-inline-block text-center">
                 <input type="hidden" name="year" id="yearValue" value="<?php
@@ -330,7 +378,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         }
         console.log("sample")
         var dept = $('#departmentValue').val();
-        if (dept == 'AIDS' || dept == 'IT' || dept == 'MECH' || dept == 'ECE' || dept == 'EEE' || dept== 'RA' || dept== 'EIE' || dept== 'AERO' || dept== 'MBA' || dept== 'MTECH' || dept== 'CSE' || dept== 'BME') {
+        if (dept == 'AIDS' || dept == 'IT' || dept == 'MECH' || dept == 'ECE' || dept == 'EEE' || dept == 'RA' || dept == 'EIE' || dept == 'AERO' || dept == 'MBA' || dept == 'MTECH' || dept == 'CSE' || dept == 'BME') {
             departmentSelected = true;
         }
         if (yearSelected && departmentSelected) {
