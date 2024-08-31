@@ -497,10 +497,10 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                     </div>
 
                 </div>
-                <div class="modal-footer">
+                <!-- <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
                     <button type="button" class="btn btn-danger">Delete user</button>
-                </div>
+                </div> -->
             </div>
         </div>
     </div>
