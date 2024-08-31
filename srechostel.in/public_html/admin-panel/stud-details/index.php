@@ -187,14 +187,10 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             color: #111827;
         }
 
-        .cont>p {
-            margin-top: 2em;
-            margin-bottom: 2em;
-        }
+    
 
         .cont sup {
             font-size: 1rem;
-            margin-left: 0.25em;
             opacity: 0.5;
             position: relative;
         }
