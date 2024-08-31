@@ -350,6 +350,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
 
     });
+
+    const popoverTriggerList = document.querySelectorAll('[data-bs-toggle="popover"]')
+const popoverList = [...popoverTriggerList].map(popoverTriggerEl => new bootstrap.Popover(popoverTriggerEl))
 </script>
 
 
