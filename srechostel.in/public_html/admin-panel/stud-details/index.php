@@ -35,6 +35,38 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         .offcanvas.offcanvas-end {
             width: 800px;
         }
+
+        /* From Uiverse.io by kamehame-ha */ 
+.coolinput {
+  display: flex;
+  flex-direction: column;
+  width: fit-content;
+  position: static;
+  max-width: 240px;
+}
+
+.coolinput label.text {
+  font-size: 0.75rem;
+  font-weight: 700;
+  position: relative;
+  top: 0.5rem;
+  margin: 0 0 0 7px;
+  padding: 0 3px;
+  background: #e8e8e8;
+  width: fit-content;
+}
+
+.coolinput input[type=text].input {
+  padding: 11px 10px;
+  font-size: 0.75rem;
+  border: 2pxsolid;
+  border-radius: 5px;
+  background: #e8e8e8;
+}
+
+.coolinput input[type=text].input:focus {
+  outline: none;
+}
     </style>
 
 
@@ -291,12 +323,15 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                     <button type="button" class="btn btn-dark rounded-1">Multi user delete</button>
                 </div>
             </div>
-            
+
             <div class="row">
                 <div class="collapse" id="collapseExample">
-                    <div class="card card-body">
-                        Commit it
-                    </div>
+                    <form action="">
+                        <div class="coolinput">
+                            <label for="input" class="text">Rollno</label>
+                            <input type="text" placeholder="Enter the roll no" name="input" class="input">
+                        </div>
+                    </form>
                 </div>
             </div>
 
