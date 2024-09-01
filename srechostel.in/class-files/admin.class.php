@@ -27,7 +27,9 @@ class Admin
         } else if (in_array("group_of_roll_no", $keys)) {
 
         } else if ($keys[0] == "roll_no") {
-            $query = "DELETE FROM `login_auth` WHERE user_id='$keys[0]'";
+            $rollNo = $values[0];
+            echo $rollNo;
+            $query = "DELETE FROM `login_auth` WHERE user_id='$rollNo';";
             if($sqlConn->query($query) == TRUE) {
                 return "ACCOUNT_DELETED_SUCCESS";
             } else {
