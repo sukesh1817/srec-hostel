@@ -138,58 +138,80 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     </style>
 
     <style>
-        .filter-container label {
-            font-weight: bold;
-            display: block;
-            margin-bottom: 5px;
-        }
+       
+    .filter-container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+        width: 350px;
+    }
 
-        .filter-container input,
-        .filter-container select {
-            width: 100%;
-            padding: 10px;
-            margin-bottom: 15px;
-            border: 1px solid #ddd;
-            border-radius: 4px;
-            font-size: 14px;
-            box-sizing: border-box;
-        }
+    .filter-container label {
+        font-weight: bold;
+        display: block;
+        margin-bottom: 5px;
+    }
 
-        .filter-input {
-            display: none;
-        }
+    .filter-container input, .filter-container select {
+        width: 100%;
+        padding: 10px;
+        margin-bottom: 15px;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 14px;
+        box-sizing: border-box;
+    }
 
-        .filter-input.active {
-            display: block;
-        }
+    .filter-input {
+        display: none;
+    }
 
-        .rollno-list {
-            margin-top: 15px;
-        }
+    .filter-input.active {
+        display: block;
+    }
 
-        .rollno-card {
-            background-color: #e0e0e0;
-            padding: 10px;
-            border-radius: 4px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 10px;
-            font-size: 14px;
-        }
+    .rollno-list {
+        margin-top: 15px;
+    }
 
-        .rollno-card button {
-            background-color: #ff6b6b;
-            border: none;
-            color: white;
-            padding: 5px 10px;
-            border-radius: 4px;
-            cursor: pointer;
-        }
+    .rollno-card {
+        background-color: #e0e0e0;
+        padding: 10px;
+        border-radius: 4px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 10px;
+        font-size: 14px;
+    }
 
-        .rollno-card button:hover {
-            background-color: #ff4c4c;
-        }
+    .rollno-card button {
+        background-color: #ff6b6b;
+        border: none;
+        color: white;
+        padding: 5px 10px;
+        border-radius: 4px;
+        cursor: pointer;
+    }
+
+    .rollno-card button:hover {
+        background-color: #ff4c4c;
+    }
+
+    .error-message {
+        color: #ff6b6b;
+        background-color: #fce8e8;
+        border: 1px solid #ff6b6b;
+        padding: 10px;
+        border-radius: 4px;
+        font-size: 14px;
+        display: none; /* Hide by default */
+    }
+
+    .error-message.active {
+        display: block; /* Show if error is active */
+    }
     </style>
 
 
@@ -491,13 +513,16 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
                                                     <div class="btn-group" role="group"
                                                         aria-label="Default button group">
-                                                        <button class="btn btn-dark" onclick="addRollNumber()" type="button">Add Roll
-                                                        Number</button>
-                                                        <button class="btn btn-outline-dark" type="submit">Delete users</button>
+                                                        <button class="btn btn-dark" onclick="addRollNumber()"
+                                                            type="button">Add Roll
+                                                            Number</button>
+                                                        <button class="btn btn-outline-dark" type="submit">Delete
+                                                            users</button>
                                                     </div>
-                                                    
+
                                                     <div class="error-message" id="rollNumberError">Please enter a valid
                                                         roll number.</div>
+
                                                     <div id="rollnoList" class="rollno-list"></div>
                                                     <input type="hidden" id="rollNumbers" name="rollNumbers">
                                                 </div>
@@ -518,7 +543,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
-                                                    <button class="btn btn-outline-dark" type="submit">Delete users</button>
+                                                    <button class="btn btn-outline-dark" type="submit">Delete
+                                                        users</button>
 
                                                     <div class="error-message" id="departmentYearError">Please enter
                                                         valid department and year.</div>
@@ -534,7 +560,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
-                                                    <button class="btn btn-outline-dark" type="submit">Delete users</button>
+                                                    <button class="btn btn-outline-dark" type="submit">Delete
+                                                        users</button>
                                                     <div class="error-message" id="yearOnlyError">Please enter a valid
                                                         year.</div>
                                                 </div>
