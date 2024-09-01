@@ -180,19 +180,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         font-size: 14px;
     }
 
-    .rollno-card button {
-        background-color: #ff6b6b;
-        border: none;
-        color: white;
-        padding: 5px 10px;
-        border-radius: 4px;
-        cursor: pointer;
-    }
+   
 
-    .rollno-card button:hover {
-        background-color: #ff4c4c;
-    }
-
+ 
     .error-message {
         color: #ff6b6b;
         background-color: #fce8e8;
