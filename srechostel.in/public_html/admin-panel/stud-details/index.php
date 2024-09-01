@@ -488,7 +488,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                     <label for="rollNumber">Enter Roll Number:</label>
                                                     <input class="rounded-1" type="text" id="rollNumber"
                                                         placeholder="Enter Roll Number" required>
-                                                        <input type="hidden" id="rollNumbers" name="rollNumbers">
+                                                        
 
 
                                                     <div class="btn-group" role="group"
@@ -499,7 +499,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         type="submit">Delete users</button>
                                                        
                                                     </div>
-
+                                                    <input type="hidden" id="rollNumbers" name="rollNumbers">
                                                     <div id="rollnoList" class="rollno-list"></div>
                                                 </div>
                                             </form>
