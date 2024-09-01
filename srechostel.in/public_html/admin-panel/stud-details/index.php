@@ -473,8 +473,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                     <div class="logo-container">Single account delete</div>
                                     <form class="form">
                                         <div class="form-group">
-                                            <label for="single-email">Roll no</label>
-                                            <input type="text" id="single-email" name="single-email"
+                                            <label for="roll_no">Roll no</label>
+                                            <input type="number" id="roll_no" name="roll_no"
                                                 placeholder="Enter the roll no" required="">
                                         </div>
                                         <button class="form-submit-btn" type="submit">Delete user</button>
@@ -513,6 +513,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+<script src="/js-files/api/admin/delete-user-accounts.js"></script>
 <script>
     $(document).ready(function () {
         let yearSelected = false;
