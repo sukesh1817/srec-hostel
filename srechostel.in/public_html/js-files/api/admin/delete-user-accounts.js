@@ -5,7 +5,7 @@ $(document).ready(function () {
             type: "POST",
             url: "/api/accounts/delete_user_account/",
             data: {
-                roll_no: $("#user_id").val(),
+                user_id: $("#user_id").val(),
             },
             // dataType: "json",
             success: function (data) {
