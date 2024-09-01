@@ -742,7 +742,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         card.className = 'rollno-card';
         card.innerHTML = `
                 <span>${rollNumber}</span>
-                <button onclick="removeRollNumber(this, '${rollNumber}')">Remove</button>
+                <button class="btn btn-danger" onclick="removeRollNumber(this, '${rollNumber}')">Remove</button>
             `;
         rollnoList.appendChild(card);
 
