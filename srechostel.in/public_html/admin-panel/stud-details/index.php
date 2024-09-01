@@ -512,7 +512,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         if (year == 1 || year == 2 || year == 3 || year == 4) {
             yearSelected = true;
         }
-        console.log("sample")
         var dept = $('#departmentValue').val();
         if (dept == 'AIDS' || dept == 'IT' || dept == 'MECH' || dept == 'ECE' || dept == 'EEE' || dept == 'RA' || dept == 'EIE' || dept == 'AERO' || dept == 'MBA' || dept == 'MTECH' || dept == 'CSE' || dept == 'BME') {
             departmentSelected = true;
