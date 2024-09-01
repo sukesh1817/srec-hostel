@@ -36,6 +36,7 @@ class Admin
             $query0 = "SELECT who_is FROM `login_auth` WHERE user_id='$rollNo';";
             $whois = $sqlConn->query($query0);
             if ($whois == "Student") {
+                echo "done";
                 $query1 = "DELETE FROM `login_auth` WHERE user_id='$rollNo';";
                 $query2 = "DELETE FROM `stud_details` WHERE roll_no='$rollNo';";
                 $query3 = "DELETE FROM `stud_personal_details` WHERE roll_no='$rollNo';";
