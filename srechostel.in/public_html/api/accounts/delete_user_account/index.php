@@ -7,6 +7,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 if ($_SERVER['REQUEST_METHOD'] == "DELETE") {
     include_once $_SERVER["DOCUMENT_ROOT"] . "/../class-files/" . "admin.class.php";
     $admin = new Admin();
+    print_r($_POST);
     $keys = array_keys($_POST);
     $values = array_values($_POST);
     $resultValue = $admin->deleteUser($keys, $values);
