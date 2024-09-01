@@ -403,12 +403,12 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                 <div class="form-container">
                                     <div class="logo-container">Single account delete</div>
                                     <form id="single-form" class="form" >
-                                        <div class="form-group">
+                                        <div class="form-group mb-3">
                                             <label for="user_id">Roll no</label>
                                             <input type="number" id="user_id" name="user_id"
                                                 placeholder="Enter the roll no" required="">
                                         </div>
-                                        <button class="form-submit-btn" type="submit">Delete user</button>
+                                        <button class="btn btn-dark rounded-1" type="submit">Delete user</button>
                                     </form>
                                 </div>
                             </div>
@@ -419,7 +419,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                 <div class="form-container">
                                     <div class="logo-container">Multi account delete</div>
                                     <form class="form">
-                                        <div class="form-group">
+                                        <div class="form-group mb-3">
                                             <label for="multi-email">Roll no</label>
                                             <input type="text" id="multi-email" name="multi-email"
                                                 placeholder="Enter the roll no" required="">
