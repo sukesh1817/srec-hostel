@@ -471,7 +471,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                             <div class="container mt-3 ms-3">
                                 <div class="form-container">
                                     <div class="logo-container">Single account delete</div>
-                                    <form id="single-form" class="form" method="DELETE">
+                                    <form id="single-form" class="form" >
                                         <div class="form-group">
                                             <label for="roll_no">Roll no</label>
                                             <input type="number" id="roll_no" name="roll_no"
