@@ -27,59 +27,64 @@ class Admin
         } else if (in_array("group_of_roll_no", $keys)) {
 
         } else if ($keys[0] == "user_id") {
-           
+
             # this code first check who is the user student or staff or watch man.
             # then it backup the data to another table before deletion in the main table.
             # if the user accounts deleted successfully then give the success message.
             # else give the message account deletion failed.
             $rollNo = $values[0];
-            $query0 = "SELECT who_is FROM `login_auth` WHERE user_id='$rollNo';";
-            $result = $sqlConn->query($query0);
-            $whois = $result->fetch_assoc()['who_is'];
-            if ($whois == "Student") {
-                $query1 = "DELETE FROM `login_auth` WHERE user_id='$rollNo';";
-                $query2 = "DELETE FROM `stud_details` WHERE roll_no='$rollNo';";
-                $query3 = "DELETE FROM `stud_personal_details` WHERE roll_no='$rollNo';";
-                $query4 = "DELETE FROM `stud_gurdian_details` WHERE roll_no='$rollNo';";
-                $query5 = "DELETE FROM `student_session` WHERE student_rollno='$rollNo';";
-                if (
-                    $sqlConn->query($query1) == TRUE and $sqlConn->query($query2) == TRUE and
-                    $sqlConn->query($query3) == TRUE and $sqlConn->query($query4) == TRUE and
-                    $sqlConn->query($query5) == TRUE
-                ) {
-                    
-                    $query1 = "SELECT user_id FROM `login_auth` WHERE user_id='$rollNo';";
-                    $query2 = "SELECT roll_no FROM `stud_details` WHERE roll_no='$rollNo';";
-                    $query3 = "SELECT roll_no FROM `stud_personal_details` WHERE roll_no='$rollNo';";
-                    $query4 = "SELECT roll_no FROM `stud_gurdian_details` WHERE roll_no='$rollNo';";
-                    $query5 = "SELECT student_rollno FROM `student_session` WHERE student_rollno='$rollNo';";
-                    $result1 = $sqlConn->query($query1);
-                    $result2 = $sqlConn->query($query2);
-                    $result3 = $sqlConn->query($query3);
-                    $result4 = $sqlConn->query($query4);
-                    $result5 = $sqlConn->query($query5);
-                    $row1 = $result1->fetch_assoc();
-                    $row2 = $result2->fetch_assoc();
-                    $row3 = $result3->fetch_assoc();
-                    $row4 = $result4->fetch_assoc();
-                    $row5 = $result5->fetch_assoc();
+            try {
+                $query0 = "SELECT who_is FROM `login_auth` WHERE user_id='$rollNo';";
+                $result = $sqlConn->query($query0);
+                $whois = $result->fetch_assoc()['who_is'];
+                if ($whois == "Student") {
+                    $query1 = "DELETE FROM `login_auth` WHERE user_id='$rollNo';";
+                    $query2 = "DELETE FROM `stud_details` WHERE roll_no='$rollNo';";
+                    $query3 = "DELETE FROM `stud_personal_details` WHERE roll_no='$rollNo';";
+                    $query4 = "DELETE FROM `stud_gurdian_details` WHERE roll_no='$rollNo';";
+                    $query5 = "DELETE FROM `student_session` WHERE student_rollno='$rollNo';";
                     if (
-                        isset($row1['user_id']) or isset($row2['roll_no']) or
-                        isset($row3['roll_no']) or isset($row4['roll_no']) or
-                        isset($row1['student_rollno'])
+                        $sqlConn->query($query1) == TRUE and $sqlConn->query($query2) == TRUE and
+                        $sqlConn->query($query3) == TRUE and $sqlConn->query($query4) == TRUE and
+                        $sqlConn->query($query5) == TRUE
                     ) {
-                        return "ACCOUNT_DELETED_FAILED_STUDENT";
+
+                        $query1 = "SELECT user_id FROM `login_auth` WHERE user_id='$rollNo';";
+                        $query2 = "SELECT roll_no FROM `stud_details` WHERE roll_no='$rollNo';";
+                        $query3 = "SELECT roll_no FROM `stud_personal_details` WHERE roll_no='$rollNo';";
+                        $query4 = "SELECT roll_no FROM `stud_gurdian_details` WHERE roll_no='$rollNo';";
+                        $query5 = "SELECT student_rollno FROM `student_session` WHERE student_rollno='$rollNo';";
+                        $result1 = $sqlConn->query($query1);
+                        $result2 = $sqlConn->query($query2);
+                        $result3 = $sqlConn->query($query3);
+                        $result4 = $sqlConn->query($query4);
+                        $result5 = $sqlConn->query($query5);
+                        $row1 = $result1->fetch_assoc();
+                        $row2 = $result2->fetch_assoc();
+                        $row3 = $result3->fetch_assoc();
+                        $row4 = $result4->fetch_assoc();
+                        $row5 = $result5->fetch_assoc();
+                        if (
+                            isset($row1['user_id']) or isset($row2['roll_no']) or
+                            isset($row3['roll_no']) or isset($row4['roll_no']) or
+                            isset($row1['student_rollno'])
+                        ) {
+                            return "ACCOUNT_DELETED_FAILED_STUDENT";
+                        } else {
+                            return "ACCOUNT_DELETED_SUCCESS_STUDENT";
+                        }
                     } else {
-                        return "ACCOUNT_DELETED_SUCCESS_STUDENT";
+                        return "ACCOUNT_DELETED_FAILED_STUDENT";
                     }
+                } else if ($whois == "Staff") {
+                    # TODO : deletion of the staff accounts
                 } else {
-                    return "ACCOUNT_DELETED_FAILED_STUDENT";
+                    # TODO : deletion of the other accounts such as watch man. 
                 }
-            } else if ($whois == "Staff") {
-                # TODO : deletion of the staff accounts
-            } else {
-                # TODO : deletion of the other accounts such as watch man. 
+            } catch (Exception $e) {
+                print_r($e);
             }
+
 
 
         } else if ($keys[0] == "year") {
