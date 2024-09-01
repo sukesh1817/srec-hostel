@@ -36,7 +36,7 @@ $(document).ready(function () {
                         errorToast.classList.remove('show');
                         errorToast.classList.add('hidden');
                     }
-                }, 3000);
+                }, 5000);
             },
 
         });
