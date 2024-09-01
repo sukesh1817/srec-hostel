@@ -447,7 +447,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
 <script src="/js-files/api/admin/delete-user-accounts.js"></script>
-<script src="/js-files/ui-component/toast.js"></script>
 <script>
     $(document).ready(function () {
         let yearSelected = false;
