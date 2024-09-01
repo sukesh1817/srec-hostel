@@ -1,32 +1,201 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Toast Notification</title>
-   
+    <title>Filter Input with Roll Number Cards</title>
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        .filter-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        .filter-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .filter-container input,
+        .filter-container select {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            font-size: 14px;
+            box-sizing: border-box;
+        }
+
+        .filter-input {
+            display: none;
+        }
+
+        .filter-input.active {
+            display: block;
+        }
+
+        .rollno-list {
+            margin-top: 15px;
+        }
+
+        .rollno-card {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
+
+        .rollno-card button {
+            background-color: #ff6b6b;
+            border: none;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .rollno-card button:hover {
+            background-color: #ff4c4c;
+        }
+    </style>
 </head>
+
 <body>
-    <div id="toast" class="toast">Success! User account deleted successfully.</div>
+    <div class="filter-container">
+        <label for="filterType">Select Filter Type:</label>
+        <select id="filterType" onchange="toggleInputFields()">
+            <option value="rollNumbers">Roll Numbers</option>
+            <option value="departmentYear">Department & Year</option>
+            <option value="yearOnly">Year Only</option>
+        </select>
+
+        <form id="roll-no-form" method="post">
+            <div id="rollNumbersInput" class="filter-input">
+                <label for="rollNumber">Enter Roll Number:</label>
+                <input type="text" id="rollNumber" placeholder="Enter Roll Number">
+                <button onclick="addRollNumber()">Add Roll Number</button>
+                <div class="error-message" id="rollNumberError">Please enter a valid roll number.</div>
+                <div id="rollnoList" class="rollno-list"></div>
+                <input type="hidden" id="rollNumbers" name="rollNumbers">
+            </div>
+        </form>
+
+        <form id="dept-year-form" method="post">
+            <div id="departmentYearInput" class="filter-input">
+                <label for="department">Department:</label>
+                <select id="department">
+                    <option value="AIDS">AIDS</option>
+                    <option value="CSC">CSC</option>
+                    <option value="IT">IT</option>
+                </select>
+                <label for="year">Year:</label>
+                <select id="year">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <div class="error-message" id="departmentYearError">Please enter valid department and year.</div>
+            </div>
+        </form>
+
+        <form id="year-form" method="post">
+            <div id="yearOnlyInput" class="filter-input">
+                <label for="yearOnly">Enter Year:</label>
+                <select id="yearOnly">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <div class="error-message" id="yearOnlyError">Please enter a valid year.</div>
+            </div>
+        </form>
+
+    </div>
+
     <script>
-        function showToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.remove('hidden');
-            toast.classList.add('show');
+        document.addEventListener('DOMContentLoaded', function () {
+            toggleInputFields(); // Initialize the correct input field visibility
+        });
+
+        function toggleInputFields() {
+            const filterType = document.getElementById('filterType').value;
+
+            document.getElementById('rollNumbersInput').classList.remove('active');
+            document.getElementById('departmentYearInput').classList.remove('active');
+            document.getElementById('yearOnlyInput').classList.remove('active');
+
+            if (filterType === 'rollNumbers') {
+                document.getElementById('rollNumbersInput').classList.add('active');
+            } else if (filterType === 'departmentYear') {
+                document.getElementById('departmentYearInput').classList.add('active');
+            } else if (filterType === 'yearOnly') {
+                document.getElementById('yearOnlyInput').classList.add('active');
+            }
         }
 
-        function hideToast() {
-            const toast = document.getElementById('toast');
-            toast.classList.remove('show');
-            toast.classList.add('hidden');
+        function addRollNumber() {
+            const rollNumber = document.getElementById('rollNumber').value.trim();
+            const rollNumberError = document.getElementById('rollNumberError');
+            const rollnoList = document.getElementById('rollnoList');
+            const rollNumbersInput = document.getElementById('rollNumbers');
+
+            // Validate the roll number input
+            if (!rollNumber || !/^\d+$/.test(rollNumber)) {
+                rollNumberError.style.display = 'block';
+                return;
+            }
+            rollNumberError.style.display = 'none';
+
+            // Add the roll number to the hidden input field
+            const currentRollNumbers = rollNumbersInput.value ? rollNumbersInput.value.split(',') : [];
+            currentRollNumbers.push(rollNumber);
+            rollNumbersInput.value = currentRollNumbers.join(',');
+
+            // Create a new card element
+            const card = document.createElement('div');
+            card.className = 'rollno-card';
+            card.innerHTML = `
+                <span>${rollNumber}</span>
+                <button onclick="removeRollNumber(this, '${rollNumber}')">Remove</button>
+            `;
+            rollnoList.appendChild(card);
+
+            // Clear the input field
+            document.getElementById('rollNumber').value = '';
         }
 
-        // Example usage:
-        // Show the toast
-        showToast();
+        function removeRollNumber(button, rollNumber) {
+            const card = button.parentElement;
+            card.remove();
 
-        // Hide the toast after 3 seconds
-        setTimeout(hideToast, 3000);
+            // Update the hidden input field
+            const rollNumbersInput = document.getElementById('rollNumbers');
+            let currentRollNumbers = rollNumbersInput.value.split(',');
+            currentRollNumbers = currentRollNumbers.filter(num => num !== rollNumber);
+            rollNumbersInput.value = currentRollNumbers.join(',');
+        }
     </script>
 </body>
+
 </html>
