@@ -27,7 +27,7 @@ class Admin
         } else if (in_array("group_of_roll_no", $keys)) {
 
         } else if ($keys[0] == "user_id") {
-            echo "done";
+           
             # this code first check who is the user student or staff or watch man.
             # then it backup the data to another table before deletion in the main table.
             # if the user accounts deleted successfully then give the success message.
@@ -46,6 +46,7 @@ class Admin
                     $sqlConn->query($query3) == TRUE and $sqlConn->query($query4) == TRUE and
                     $sqlConn->query($query5) == TRUE
                 ) {
+                    echo "done";
                     $query1 = "SELECT user_id FROM `login_auth` WHERE user_id='$rollNo';";
                     $query2 = "SELECT roll_no FROM `stud_details` WHERE roll_no='$rollNo';";
                     $query3 = "SELECT roll_no FROM `stud_personal_details` WHERE roll_no='$rollNo';";
