@@ -747,7 +747,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         rollnoList.appendChild(card);
 
         // Clear the input field
-        document.getElementById('rollNumber').value = '';
     }
 
     function removeRollNumber(button, rollNumber) {
