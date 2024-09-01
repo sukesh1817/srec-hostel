@@ -520,7 +520,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                             users</button>
                                                     </div>
 
-                                                    <div class="error-message" id="rollNumberError">Please enter a valid
+                                                    <div class="error-message mt-2" id="rollNumberError">Please enter a valid
                                                         roll number.</div>
 
                                                     <div id="rollnoList" class="rollno-list"></div>
@@ -546,7 +546,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                     <button class="btn btn-outline-dark" type="submit">Delete
                                                         users</button>
 
-                                                    <div class="error-message" id="departmentYearError">Please enter
+                                                    <div class="error-message mt-2" id="departmentYearError">Please enter
                                                         valid department and year.</div>
                                                 </div>
                                             </form>
@@ -562,7 +562,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                     </select>
                                                     <button class="btn btn-outline-dark" type="submit">Delete
                                                         users</button>
-                                                    <div class="error-message" id="yearOnlyError">Please enter a valid
+                                                    <div class="error-message mt-2" id="yearOnlyError">Please enter a valid
                                                         year.</div>
                                                 </div>
                                             </form>
