@@ -16,9 +16,11 @@ $(document).ready(function () {
             data: {
                 user_id: $("#user_id").val(),
             },
-            // dataType: "json",
+            dataType: "json",
             success: function (data) {
+
                 if (data['code'] == 1) {
+
                     successToast.classList.remove('hidden');
                     successToast.classList.add('show');
                 } else {
