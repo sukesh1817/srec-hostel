@@ -27,6 +27,7 @@ class Admin
         } else if (in_array("group_of_roll_no", $keys)) {
 
         } else if ($keys[0] == "user_id") {
+            echo "done";
             # this code first check who is the user student or staff or watch man.
             # then it backup the data to another table before deletion in the main table.
             # if the user accounts deleted successfully then give the success message.
