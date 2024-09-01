@@ -135,9 +135,14 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         .form-container .link:hover {
             text-decoration: underline;
         }
+
+        
     </style>
 
-    <style>
+        <style>
+            
+       
+
         .filter-container label {
             font-weight: bold;
             display: block;
@@ -190,7 +195,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         .rollno-card button:hover {
             background-color: #ff4c4c;
         }
-    </style>
+        </style>
 
 
 
@@ -486,21 +491,12 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                             <form id="roll-no-form" method="post">
                                                 <div id="rollNumbersInput" class="filter-input">
                                                     <label for="rollNumber">Enter Roll Number:</label>
-                                                    <input class="rounded-1" type="text" id="rollNumber"
-                                                        placeholder="Enter Roll Number" required>
-                                                        
-
-
-                                                    <div class="btn-group" role="group"
-                                                        aria-label="group">
-                                                        <button class="btn btn-dark rounded-1" onclick="addRollNumber()"
-                                                        type="button">Add Roll Number</button>
-                                                        <button class="btn btn-outline-dark rounded-1"
-                                                        type="submit">Delete users</button>
-                                                       
-                                                    </div>
-                                                    <input type="hidden" id="rollNumbers" name="rollNumbers">
+                                                    <input class="rounded-1" type="text" id="rollNumber" placeholder="Enter Roll Number">
+                                                    <button onclick="addRollNumber()" type="button">Add Roll Number</button>
+                                                    <div class="error-message" id="rollNumberError">Please enter a valid
+                                                        roll number.</div>
                                                     <div id="rollnoList" class="rollno-list"></div>
+                                                    <input type="hidden" id="rollNumbers" name="rollNumbers">
                                                 </div>
                                             </form>
 
@@ -519,9 +515,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
-                                                    <button class="btn btn-dark rounded-1" type="submit">Delete
-                                                        users</button>
-
+                                                    <div class="error-message" id="departmentYearError">Please enter
+                                                        valid department and year.</div>
                                                 </div>
                                             </form>
 
@@ -534,9 +529,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
-                                                    <button class="btn btn-dark rounded-1" type="submit">Delete
-                                                        users</button>
-
+                                                    <div class="error-message" id="yearOnlyError">Please enter a valid
+                                                        year.</div>
                                                 </div>
                                             </form>
 
@@ -678,67 +672,66 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
 
 <script>
-    document.addEventListener('DOMContentLoaded', function () {
-        toggleInputFields(); // Initialize the correct input field visibility
-    });
+     document.addEventListener('DOMContentLoaded', function () {
+            toggleInputFields(); // Initialize the correct input field visibility
+        });
 
-    function toggleInputFields() {
-        const filterType = document.getElementById('filterType').value;
+        function toggleInputFields() {
+            const filterType = document.getElementById('filterType').value;
 
-        document.getElementById('rollNumbersInput').classList.remove('active');
-        document.getElementById('departmentYearInput').classList.remove('active');
-        document.getElementById('yearOnlyInput').classList.remove('active');
+            document.getElementById('rollNumbersInput').classList.remove('active');
+            document.getElementById('departmentYearInput').classList.remove('active');
+            document.getElementById('yearOnlyInput').classList.remove('active');
 
-        if (filterType === 'rollNumbers') {
-            document.getElementById('rollNumbersInput').classList.add('active');
-        } else if (filterType === 'departmentYear') {
-            document.getElementById('departmentYearInput').classList.add('active');
-        } else if (filterType === 'yearOnly') {
-            document.getElementById('yearOnlyInput').classList.add('active');
+            if (filterType === 'rollNumbers') {
+                document.getElementById('rollNumbersInput').classList.add('active');
+            } else if (filterType === 'departmentYear') {
+                document.getElementById('departmentYearInput').classList.add('active');
+            } else if (filterType === 'yearOnly') {
+                document.getElementById('yearOnlyInput').classList.add('active');
+            }
         }
-    }
 
-    function addRollNumber() {
-        const rollNumber = document.getElementById('rollNumber').value.trim();
-        const rollNumberError = document.getElementById('rollNumberError');
-        const rollnoList = document.getElementById('rollnoList');
-        const rollNumbersInput = document.getElementById('rollNumbers');
+        function addRollNumber() {
+            const rollNumber = document.getElementById('rollNumber').value.trim();
+            const rollNumberError = document.getElementById('rollNumberError');
+            const rollnoList = document.getElementById('rollnoList');
+            const rollNumbersInput = document.getElementById('rollNumbers');
 
-        // Validate the roll number input
-        if (!rollNumber || !/^\d+$/.test(rollNumber)) {
-            rollNumberError.style.display = 'block';
-            return;
-        }
-        rollNumberError.style.display = 'none';
+            // Validate the roll number input
+            if (!rollNumber || !/^\d+$/.test(rollNumber)) {
+                rollNumberError.style.display = 'block';
+                return;
+            }
+            rollNumberError.style.display = 'none';
 
-        // Add the roll number to the hidden input field
-        const currentRollNumbers = rollNumbersInput.value ? rollNumbersInput.value.split(',') : [];
-        currentRollNumbers.push(rollNumber);
-        rollNumbersInput.value = currentRollNumbers.join(',');
+            // Add the roll number to the hidden input field
+            const currentRollNumbers = rollNumbersInput.value ? rollNumbersInput.value.split(',') : [];
+            currentRollNumbers.push(rollNumber);
+            rollNumbersInput.value = currentRollNumbers.join(',');
 
-        // Create a new card element
-        const card = document.createElement('div');
-        card.className = 'rollno-card';
-        card.innerHTML = `
+            // Create a new card element
+            const card = document.createElement('div');
+            card.className = 'rollno-card';
+            card.innerHTML = `
                 <span>${rollNumber}</span>
                 <button onclick="removeRollNumber(this, '${rollNumber}')">Remove</button>
             `;
-        rollnoList.appendChild(card);
+            rollnoList.appendChild(card);
 
-        // Clear the input field
-        document.getElementById('rollNumber').value = '';
-    }
+            // Clear the input field
+            document.getElementById('rollNumber').value = '';
+        }
 
-    function removeRollNumber(button, rollNumber) {
-        const card = button.parentElement;
-        card.remove();
+        function removeRollNumber(button, rollNumber) {
+            const card = button.parentElement;
+            card.remove();
 
-        // Update the hidden input field
-        const rollNumbersInput = document.getElementById('rollNumbers');
-        let currentRollNumbers = rollNumbersInput.value.split(',');
-        currentRollNumbers = currentRollNumbers.filter(num => num !== rollNumber);
-        rollNumbersInput.value = currentRollNumbers.join(',');
-    }
+            // Update the hidden input field
+            const rollNumbersInput = document.getElementById('rollNumbers');
+            let currentRollNumbers = rollNumbersInput.value.split(',');
+            currentRollNumbers = currentRollNumbers.filter(num => num !== rollNumber);
+            rollNumbersInput.value = currentRollNumbers.join(',');
+        }
 </script>
-
 </html>
