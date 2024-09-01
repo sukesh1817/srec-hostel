@@ -137,13 +137,11 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         }
 
         
-        .filter-container {
-            background-color: #fff;
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-            width: 350px;
-        }
+    </style>
+
+        <style>
+            
+       
 
         .filter-container label {
             font-weight: bold;
@@ -197,8 +195,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         .rollno-card button:hover {
             background-color: #ff4c4c;
         }
-    </style>
-
+        </style>
 
 
 
