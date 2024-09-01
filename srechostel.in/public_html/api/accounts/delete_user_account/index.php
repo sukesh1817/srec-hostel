@@ -10,16 +10,17 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $keys = array_keys($_POST);
     $values = array_values($_POST);
     $resultValue = $admin->deleteUser($keys, $values);
-    if ($resultValue == "ACCOUNT_DELETED_SUCCESS") {
-        echo "success";
-    } else if($resultValue == "ACCOUNT_DELETED_FAILED")  {
-        echo "failed";
-    }
-    else {
+    if ($resultValue == "ACCOUNT_DELETED_SUCCESS_STUDENT") {
         header("Content-Type: application/json");
-        echo '{"error":"Wrong payload values"}';
+        echo '{"Message":"Account deletion success","code":1}';
+    } else if ($resultValue == "ACCOUNT_DELETED_FAILED_STUDENT") {
+        header("Content-Type: application/json");
+        echo '{"Message":"Wrong payload values","code":0}';
+    } else {
+        header("Content-Type: application/json");
+        echo '{"error":"Wrong payload values","code":0}';
     }
 } else {
     header("Content-Type: application/json");
-    echo '{"error":"Method not allowed"}';
+    echo '{"error":"Method not allowed","code":0}';
 }

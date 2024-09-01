@@ -343,13 +343,13 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                             <?php
                         }
                         while (isset($row[$i])) {
-                            $roll_no = $row[$i]['roll_no'];
-                            $sqlQuery = "SELECT * FROM stud_personal_details WHERE roll_no=$roll_no;";
+                            $user_id = $row[$i]['user_id'];
+                            $sqlQuery = "SELECT * FROM stud_personal_details WHERE user_id=$user_id;";
                             if ($sqlConn->query($sqlQuery)) {
                                 $result = $sqlConn->query($sqlQuery);
                                 $row1 = $result->fetch_assoc();
                             }
-                            $sqlQuery = "SELECT * FROM stud_gurdian_details WHERE roll_no=$roll_no;";
+                            $sqlQuery = "SELECT * FROM stud_gurdian_details WHERE user_id=$user_id;";
                             if ($sqlConn->query($sqlQuery)) {
                                 $result = $sqlConn->query($sqlQuery);
                                 $row2 = $result->fetch_assoc();
@@ -357,7 +357,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                             ?>
                             <tr>
                                 <td><?php echo $row[$i]["name"] ?></td>
-                                <td><?php echo $row[$i]["roll_no"] ?></td>
+                                <td><?php echo $row[$i]["user_id"] ?></td>
                                 <td><?php echo $row[$i]["department"] ?></td>
                                 <td><?php echo $row[$i]["year_of_study"] ?></td>
                                 <td><?php echo $row1["room_no"] ?></td>
@@ -473,8 +473,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                     <div class="logo-container">Single account delete</div>
                                     <form id="single-form" class="form" >
                                         <div class="form-group">
-                                            <label for="roll_no">Roll no</label>
-                                            <input type="number" id="roll_no" name="roll_no"
+                                            <label for="user_id">Roll no</label>
+                                            <input type="number" id="user_id" name="user_id"
                                                 placeholder="Enter the roll no" required="">
                                         </div>
                                         <button class="form-submit-btn" type="submit">Delete user</button>
