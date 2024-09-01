@@ -424,7 +424,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                             <input type="text" id="multi-email" name="multi-email"
                                                 placeholder="Enter the roll no" required="">
                                         </div>
-                                        <button class="form-submit-btn" type="submit">Delete user</button>
+                                        <button class="btn btn-dark rounded-1" type="submit">Delete user</button>
                                     </form>
                                 </div>
                             </div>
