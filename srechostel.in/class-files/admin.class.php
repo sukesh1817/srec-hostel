@@ -34,8 +34,9 @@ class Admin
             # else give the message account deletion failed.
             $rollNo = $values[0];
             $query0 = "SELECT who_is FROM `login_auth` WHERE user_id='$rollNo';";
-            $whois = $sqlConn->query($query0);
-            echo $whois;
+            $result = $sqlConn->query($query0);
+            $whois = $result->fetch_assoc()['who_is'];
+            print_r($whois);
             if ($whois == "Student") {
                 echo "done";
                 $query1 = "DELETE FROM `login_auth` WHERE user_id='$rollNo';";
