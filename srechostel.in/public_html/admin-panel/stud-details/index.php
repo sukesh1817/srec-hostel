@@ -495,7 +495,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                 <div id="rollNumbersInput" class="filter-input">
                                                     <label for="rollNumber">Enter Roll Number:</label>
                                                     <input type="text" id="rollNumber" placeholder="Enter Roll Number">
-                                                    <button onclick="addRollNumber()">Add Roll Number</button>
+                                                    <button onclick="addRollNumber()" type="button">Add Roll Number</button>
                                                     <div class="error-message" id="rollNumberError">Please enter a valid
                                                         roll number.</div>
                                                     <div id="rollnoList" class="rollno-list"></div>
