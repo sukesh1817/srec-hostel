@@ -25,7 +25,8 @@ class Admin
         if (in_array("dept", $keys) and in_array("year", $keys)) {
 
         } else if (in_array("group_of_roll_no", $keys)) {
-            $rollNo = explode(",", $values)[0];
+            $rollNo = explode(",", $values);
+            $rollNo = $rollNo[0];
             $query1 = "DELETE FROM `login_auth` WHERE  id in ($values);";
             $query2 = "DELETE FROM `stud_details` WHERE  id in ($values);";
             $query3 = "DELETE FROM `stud_personal_details` WHERE  id in ($values);";
@@ -56,9 +57,9 @@ class Admin
                     isset($row3['roll_no']) or isset($row4['roll_no']) or
                     isset($row1['student_rollno'])
                 ) {
-                    return array("ACCOUNT_DELETED_FAILED_STUDENT_GROUP", "Group");
+                    return array("ACCOUNT_DELETED_FAILED_STUDENT_GROUP", "group");
                 } else {
-                    return array("ACCOUNT_DELETED_SUCCESS_STUDENT_GROUP", "Group");
+                    return array("ACCOUNT_DELETED_SUCCESS_STUDENT_GROUP", "group");
                 }
             }
         } else if ($keys[0] == "user_id") {
