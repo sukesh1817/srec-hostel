@@ -58,8 +58,10 @@ class Admin
                     isset($row3['roll_no']) or isset($row4['roll_no']) or
                     isset($row1['student_rollno'])
                 ) {
+                    
                     return array("ACCOUNT_DELETED_FAILED_STUDENT_GROUP", "group");
                 } else {
+                    echo "done";
                     return array("ACCOUNT_DELETED_SUCCESS_STUDENT_GROUP", "group");
                 }
             }

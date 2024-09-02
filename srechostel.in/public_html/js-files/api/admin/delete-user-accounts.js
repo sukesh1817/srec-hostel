@@ -61,10 +61,11 @@ $(document).ready(function () {
             success: function (data) {
 
                 if (data['code'] == 1) {
-
+                    successToast.innerHTML = data['Message'];
                     successToast.classList.remove('hidden');
                     successToast.classList.add('show');
                 } else {
+                    errorToast.innerHTML = data['Message'];
                     errorToast.classList.remove('hidden');
                     errorToast.classList.add('show');
                 }
@@ -98,10 +99,12 @@ $(document).ready(function () {
             success: function (data) {
 
                 if (data['code'] == 1) {
-
+                    successToast.innerHTML = data['Message'];
                     successToast.classList.remove('hidden');
                     successToast.classList.add('show');
                 } else {
+                    errorToast.innerHTML = data['Message'];
+
                     errorToast.classList.remove('hidden');
                     errorToast.classList.add('show');
                 }
@@ -137,10 +140,11 @@ $(document).ready(function () {
             success: function (data) {
 
                 if (data['code'] == 1) {
-
+                    successToast.innerHTML = data['Message'];
                     successToast.classList.remove('hidden');
                     successToast.classList.add('show');
                 } else {
+                    errorToast.innerHTML = data['Message'];
                     errorToast.classList.remove('hidden');
                     errorToast.classList.add('show');
                 }
