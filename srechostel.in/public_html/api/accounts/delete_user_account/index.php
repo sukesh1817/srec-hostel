@@ -10,12 +10,22 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     $keys = array_keys($_POST);
     $values = array_values($_POST);
     $resultValue = $admin->deleteUser($keys, $values);
-    if ($resultValue == "ACCOUNT_DELETED_SUCCESS_STUDENT") {
+    if ($resultValue[0] == "ACCOUNT_DELETED_SUCCESS_STUDENT") {
+        $rollNo = $resultValue[1];
         header("Content-Type: application/json");
-        echo '{"Message":"Account deletion success","code":1}';
-    } else if ($resultValue == "ACCOUNT_DELETED_FAILED_STUDENT") {
+        echo '{"Message":"Account deletion success for' . $rollNo . ' ","code":1}';
+    } else if ($resultValue[0] == "ACCOUNT_DELETED_SUCCESS_STUDENT_GROUP") {
         header("Content-Type: application/json");
-        echo '{"Message":"Wrong payload values","code":0}';
+        echo '{"Message":"Account deletion success for group","code":1}';
+    } else if ($resultValue[0] == "ACCOUNT_DELETED_FAILED_STUDENT") {
+        $rollNo = $resultValue[1];
+        header("Content-Type: application/json");
+        echo '{"Message":"Account deletion failed for' . $rollNo . ' ","code":0}';
+
+    } else if ($resultValue[0] == "ACCOUNT_DELETED_FAILED_STUDENT_GROUP") {
+        header("Content-Type: application/json");
+        echo '{"Message":"Account deletion failed for group","code":0}';
+
     } else {
         header("Content-Type: application/json");
         echo '{"error":"Wrong payload values","code":0}';
