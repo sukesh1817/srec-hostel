@@ -52,7 +52,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
         }
 
-       
+
 
         .form-container .logo-container {
             text-align: center;
@@ -76,7 +76,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             margin-bottom: 5px;
         }
 
-        .form-container  input,select {
+        .form-container input,
+        select {
             width: 100%;
             padding: 12px 16px;
             border-radius: 1px;
@@ -84,16 +85,18 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             border: 1px solid #ccc;
         }
 
-        .form-container  input::placeholder,select::placeholder {
+        .form-container input::placeholder,
+        select::placeholder {
             opacity: 0.5;
         }
 
-        .form-container  input:focus,select:focus {
+        .form-container input:focus,
+        select:focus {
             outline: none;
             border-color: #1778f2;
         }
 
-       
+
 
         .form-container .form-submit-btn:hover {
             background-color: #313131;
@@ -119,16 +122,13 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     </style>
 
     <style>
-       
-   
+        .filter-container label {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
 
-    .filter-container label {
-        font-weight: bold;
-        display: block;
-        margin-bottom: 5px;
-    }
-
-    /* .filter-container input, .filter-container select {
+        /* .filter-container input, .filter-container select {
         width: 100%;
         padding: 10px;
         margin-bottom: 15px;
@@ -138,47 +138,47 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         box-sizing: border-box;
     } */
 
-    .filter-input {
-        display: none;
-    }
+        .filter-input {
+            display: none;
+        }
 
-    .filter-input.active {
-        display: block;
-    }
+        .filter-input.active {
+            display: block;
+        }
 
-    .rollno-list {
-        margin-top: 15px;
-    }
+        .rollno-list {
+            margin-top: 15px;
+        }
 
-    .rollno-card {
-        background-color: #e0e0e0;
-        padding: 10px;
-        border-radius: 4px;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 10px;
-        font-size: 14px;
-    }
+        .rollno-card {
+            background-color: #e0e0e0;
+            padding: 10px;
+            border-radius: 4px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 10px;
+            font-size: 14px;
+        }
 
-   
 
- 
-    .error-message {
-        color: #ff6b6b;
-        background-color: #fce8e8;
-        border: 1px solid #ff6b6b;
-        padding: 10px;
-        border-radius: 4px;
-        font-size: 14px;
-        display: none; /* Hide by default */
-    }
 
-    .error-message.active {
-        display: block; /* Show if error is active */
-    }
 
-    
+        .error-message {
+            color: #ff6b6b;
+            background-color: #fce8e8;
+            border: 1px solid #ff6b6b;
+            padding: 10px;
+            border-radius: 4px;
+            font-size: 14px;
+            display: none;
+            /* Hide by default */
+        }
+
+        .error-message.active {
+            display: block;
+            /* Show if error is active */
+        }
     </style>
 
 
@@ -469,7 +469,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                 <option value="yearOnly">Year Only</option>
                                             </select>
 
-                                            <form id="roll-nos-form"  method="post">
+                                            <form id="roll-nos-form" method="post">
                                                 <div id="rollNumbersInput" class="filter-input">
                                                     <label class="mt-1" for="rollNumber">Enter Roll Number</label>
                                                     <input class="rounded-1" type="text" id="rollNumber"
@@ -477,14 +477,17 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
                                                     <div class="btn-group mt-2 container-fluid" role="group"
                                                         aria-label="Default button group">
-                                                        <button class="btn btn-dark container-fluid rounded-start-1" onclick="addRollNumber()"
-                                                            type="button">Add Roll
+                                                        <button class="btn btn-dark container-fluid rounded-start-1"
+                                                            onclick="addRollNumber()" type="button">Add Roll
                                                             Number</button>
-                                                        <button class="btn btn-outline-dark container-fluid rounded-end-1" type="submit">Delete
+                                                        <button
+                                                            class="btn btn-outline-dark container-fluid rounded-end-1"
+                                                            type="submit">Delete
                                                             users</button>
                                                     </div>
 
-                                                    <div class="error-message mt-2" id="rollNumberError">Please enter a valid
+                                                    <div class="error-message mt-2" id="rollNumberError">Please enter a
+                                                        valid
                                                         roll number.</div>
 
                                                     <div id="rollnoList" class="rollno-list"></div>
@@ -492,7 +495,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                 </div>
                                             </form>
 
-                                            <form id="dept-year-form"  method="post">
+                                            <form id="dept-year-form" method="post">
                                                 <div id="departmentYearInput" class="filter-input">
                                                     <label class="mt-1" for="dept_group">Select Department</label>
                                                     <select id="dept_group">
@@ -507,10 +510,12 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
-                                                    <button class="btn btn-dark mt-2 container-fluid rounded-1" type="submit">Delete
+                                                    <button class="btn btn-dark mt-2 container-fluid rounded-1"
+                                                        type="submit">Delete
                                                         users</button>
 
-                                                    <div class="error-message mt-2" id="departmentYearError">Please enter
+                                                    <div class="error-message mt-2" id="departmentYearError">Please
+                                                        enter
                                                         valid department and year.</div>
                                                 </div>
                                             </form>
@@ -524,9 +529,11 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
-                                                    <button class="btn btn-dark mt-2 container-fluid rounded-1" type="submit">Delete
+                                                    <button class="btn btn-dark mt-2 container-fluid rounded-1"
+                                                        type="submit">Delete
                                                         users</button>
-                                                    <div class="error-message mt-2" id="yearOnlyError">Please enter a valid
+                                                    <div class="error-message mt-2" id="yearOnlyError">Please enter a
+                                                        valid
                                                         year.</div>
                                                 </div>
                                             </form>
@@ -538,11 +545,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                         </div>
                     </div>
                 </div>
-                <div class="modal-footer">
-                    <div id="toast-success" class="toast toast-success">Success! Your account has been successfully
-                        deleted.</div>
-                    <div id="toast-error" class="toast toast-error">Error! There was a problem deleting your account.
-                    </div>
+                <div id="toast-success" class="toast toast-success">Success! Your account has been successfully
+                    deleted.</div>
+                <div id="toast-error" class="toast toast-error">Error! There was a problem deleting your account.
                 </div>
             </div>
         </div>
