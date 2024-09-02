@@ -178,8 +178,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         display: block; /* Show if error is active */
     }
 
-
- 
+    
     </style>
 
 
@@ -478,10 +477,10 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
                                                     <div class="btn-group mt-2 container-fluid" role="group"
                                                         aria-label="Default button group">
-                                                        <button class="btn btn-dark" onclick="addRollNumber()"
+                                                        <button class="btn btn-dark container-fluid rounded-start-1" onclick="addRollNumber()"
                                                             type="button">Add Roll
                                                             Number</button>
-                                                        <button class="btn btn-outline-dark" type="submit">Delete
+                                                        <button class="btn btn-outline-dark container-fluid rounded-end-1" type="submit">Delete
                                                             users</button>
                                                     </div>
 
@@ -508,7 +507,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
-                                                    <button class="btn btn-dark mt-2 container-fluid" type="submit">Delete
+                                                    <button class="btn btn-dark mt-2 container-fluid rounded-1" type="submit">Delete
                                                         users</button>
 
                                                     <div class="error-message mt-2" id="departmentYearError">Please enter
@@ -525,7 +524,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
-                                                    <button class="btn btn-dark mt-2 container-fluid" type="submit">Delete
+                                                    <button class="btn btn-dark mt-2 container-fluid rounded-1" type="submit">Delete
                                                         users</button>
                                                     <div class="error-message mt-2" id="yearOnlyError">Please enter a valid
                                                         year.</div>
