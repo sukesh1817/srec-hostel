@@ -104,12 +104,13 @@ class Admin
                             isset($row3['roll_no']) or isset($row4['roll_no']) or
                             isset($row1['student_rollno'])
                         ) {
-                            return array("ACCOUNT_DELETED_FAILED_STUDENT", $row1['user_id']);
+                           
+                            return array("ACCOUNT_DELETED_FAILED_STUDENT", $rollNo);
                         } else {
-                            return array("ACCOUNT_DELETED_SUCCESS_STUDENT", $row1['user_id']);
+                            return array("ACCOUNT_DELETED_SUCCESS_STUDENT", $rollNo);
                         }
                     } else {
-                        return array("ACCOUNT_DELETED_FAILED_STUDENT", $rollNo['user_id']);
+                        return array("ACCOUNT_DELETED_FAILED_STUDENT", $rollNo);
                     }
                 } else if ($whois == "Staff") {
                     # TODO : deletion of the staff accounts
