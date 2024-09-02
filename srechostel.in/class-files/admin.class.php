@@ -69,6 +69,7 @@ class Admin
             # else give the message account deletion failed.
             $rollNo = $values[0];
             try {
+                echo "sam";
                 $query0 = "SELECT who_is FROM `login_auth` WHERE user_id='$rollNo';";
                 $result = $sqlConn->query($query0);
                 $whois = $result->fetch_assoc()['who_is'];
@@ -117,7 +118,7 @@ class Admin
                     # TODO : deletion of the other accounts such as watch man. 
                 }
             } catch (Exception $e) {
-                echo "sam";
+                print_r($e);
             }
 
 
