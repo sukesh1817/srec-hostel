@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == "POST") {
     if ($resultValue[0] == "ACCOUNT_DELETED_SUCCESS_STUDENT") {
         $rollNo = $resultValue[1];
         header("Content-Type: application/json");
-        echo '{"Message":"Account deletion success for' . $rollNo . ' ","code":1}';
+        echo '{"Message":"Account deletion success for' . (string)$rollNo . ' ","code":1}';
     } else if ($resultValue[0] == "ACCOUNT_DELETED_SUCCESS_STUDENT_GROUP") {
         header("Content-Type: application/json");
         echo '{"Message":"Account deletion success for group","code":1}';
