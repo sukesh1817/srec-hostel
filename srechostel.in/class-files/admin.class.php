@@ -116,11 +116,10 @@ class Admin
                 } else if ($whois == "Staff") {
                     # TODO : deletion of the staff accounts
                 } else {
-                    echo "done";
                     return array("ACCOUNT_DELETED_FAILED_STUDENT", $rollNo);
                 }
             } catch (Exception $e) {
-                print_r($e);
+
             }
 
 
