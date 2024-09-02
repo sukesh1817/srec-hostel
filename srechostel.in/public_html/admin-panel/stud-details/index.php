@@ -76,7 +76,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             margin-bottom: 5px;
         }
 
-        .form-container .form-group input,select {
+        .form-container  input,select {
             width: 100%;
             padding: 12px 16px;
             border-radius: 1px;
@@ -84,11 +84,11 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             border: 1px solid #ccc;
         }
 
-        .form-container .form-group input::placeholder,select::placeholder {
+        .form-container  input::placeholder,select::placeholder {
             opacity: 0.5;
         }
 
-        .form-container .form-group input:focus,select:focus {
+        .form-container  input:focus,select:focus {
             outline: none;
             border-color: #1778f2;
         }
