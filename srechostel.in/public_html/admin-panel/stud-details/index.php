@@ -505,7 +505,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         roll number.</div>
 
                                                     <div id="rollnoList" class="rollno-list"></div>
-                                                    <input type="hidden" id="group_of_roll_no" name="rollNumbers">
+                                                    <input type="hidden" id="rollNumbers" name="rollNumbers">
                                                 </div>
                                             </form>
 

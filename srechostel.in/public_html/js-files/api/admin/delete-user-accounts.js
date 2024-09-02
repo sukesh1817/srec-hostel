@@ -54,7 +54,7 @@ $(document).ready(function () {
             type: "POST",
             url: "/api/accounts/delete_user_account/",
             data: {
-                group_of_roll_no: $("#group_of_roll_no").val(),
+                group_of_roll_no: $("#rollNumbers").val(),
             },
             dataType: "json",
             success: function (data) {
