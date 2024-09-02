@@ -486,7 +486,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                 <option value="yearOnly">Year Only</option>
                                             </select>
 
-                                            <form id="roll-no-form" method="post">
+                                            <form id="roll-nos-form" method="post">
                                                 <div id="rollNumbersInput" class="filter-input">
                                                     <label for="rollNumber">Enter Roll Number:</label>
                                                     <input class="rounded-1" type="text" id="rollNumber"
@@ -505,20 +505,20 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         roll number.</div>
 
                                                     <div id="rollnoList" class="rollno-list"></div>
-                                                    <input type="hidden" id="rollNumbers" name="rollNumbers">
+                                                    <input type="hidden" id="group_of_roll_no" name="rollNumbers">
                                                 </div>
                                             </form>
 
                                             <form id="dept-year-form" method="post">
                                                 <div id="departmentYearInput" class="filter-input">
                                                     <label for="department">Department:</label>
-                                                    <select id="department">
+                                                    <select id="dept_group">
                                                         <option value="AIDS">AIDS</option>
                                                         <option value="CSC">CSC</option>
                                                         <option value="IT">IT</option>
                                                     </select>
                                                     <label for="year">Year:</label>
-                                                    <select id="year">
+                                                    <select id="year_group">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
@@ -535,7 +535,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                             <form id="year-form" method="post">
                                                 <div id="yearOnlyInput" class="filter-input">
                                                     <label for="yearOnly">Enter Year:</label>
-                                                    <select id="yearOnly">
+                                                    <select id="year_only">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
                                                         <option value="3">3</option>
