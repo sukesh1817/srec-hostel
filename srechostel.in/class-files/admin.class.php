@@ -28,11 +28,11 @@ class Admin
             $rollNos = $values[0];
             $rollNo = explode(",", $values[0]);
             $rollNo = $rollNos[0];
-            $query1 = "DELETE FROM `login_auth` WHERE  id in ($rollNos);";
-            $query2 = "DELETE FROM `stud_details` WHERE  id in ($rollNos);";
-            $query3 = "DELETE FROM `stud_personal_details` WHERE  id in ($rollNos);";
-            $query4 = "DELETE FROM `stud_gurdian_details` WHERE  id in ($rollNos);";
-            $query5 = "DELETE FROM `student_session` WHERE  id in ($rollNos);";
+            $query1 = "DELETE FROM `login_auth` WHERE  user_id in ($rollNos);";
+            $query2 = "DELETE FROM `stud_details` WHERE  roll_no in ($rollNos);";
+            $query3 = "DELETE FROM `stud_personal_details` WHERE  roll_no in ($rollNos);";
+            $query4 = "DELETE FROM `stud_gurdian_details` WHERE  roll_no in ($rollNos);";
+            $query5 = "DELETE FROM `student_session` WHERE  student_rollno in ($rollNos);";
             if (
                 $sqlConn->query($query1) == TRUE and $sqlConn->query($query2) == TRUE and
                 $sqlConn->query($query3) == TRUE and $sqlConn->query($query4) == TRUE and
