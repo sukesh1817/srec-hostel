@@ -70,7 +70,7 @@ class Admin
             # else give the message account deletion failed.
             $rollNo = $values[0];
             try {
-    
+
                 $query0 = "SELECT who_is FROM `login_auth` WHERE user_id='$rollNo';";
                 $result = $sqlConn->query($query0);
                 $whois = $result->fetch_assoc()['who_is'];
