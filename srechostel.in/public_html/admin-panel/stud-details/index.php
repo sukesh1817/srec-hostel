@@ -511,13 +511,13 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
                                             <form id="dept-year-form" method="post">
                                                 <div id="departmentYearInput" class="filter-input">
-                                                    <label for="department">Department:</label>
+                                                    <label for="dept_group">Department:</label>
                                                     <select id="dept_group">
                                                         <option value="AIDS">AIDS</option>
                                                         <option value="CSC">CSC</option>
                                                         <option value="IT">IT</option>
                                                     </select>
-                                                    <label for="year">Year:</label>
+                                                    <label for="year_group">Year:</label>
                                                     <select id="year_group">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
@@ -534,7 +534,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
                                             <form id="year-form" method="post">
                                                 <div id="yearOnlyInput" class="filter-input">
-                                                    <label for="yearOnly">Enter Year:</label>
+                                                    <label for="year_only">Enter Year:</label>
                                                     <select id="year_only">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
