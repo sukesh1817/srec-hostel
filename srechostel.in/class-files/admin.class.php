@@ -69,11 +69,12 @@ class Admin
             # else give the message account deletion failed.
             $rollNo = $values[0];
             try {
-                echo "sam";
+    
                 $query0 = "SELECT who_is FROM `login_auth` WHERE user_id='$rollNo';";
                 $result = $sqlConn->query($query0);
                 $whois = $result->fetch_assoc()['who_is'];
                 if ($whois == "Student") {
+                    echo "sam";
                     $query1 = "DELETE FROM `login_auth` WHERE user_id='$rollNo';";
                     $query2 = "DELETE FROM `stud_details` WHERE roll_no='$rollNo';";
                     $query3 = "DELETE FROM `stud_personal_details` WHERE roll_no='$rollNo';";
@@ -115,7 +116,8 @@ class Admin
                 } else if ($whois == "Staff") {
                     # TODO : deletion of the staff accounts
                 } else {
-                    # TODO : deletion of the other accounts such as watch man. 
+                    echo "done";
+                    return array("ACCOUNT_DELETED_FAILED_STUDENT", $rollNo);
                 }
             } catch (Exception $e) {
                 print_r($e);
