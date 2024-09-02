@@ -83,6 +83,7 @@ class Admin
                         $sqlConn->query($query3) == TRUE and $sqlConn->query($query4) == TRUE and
                         $sqlConn->query($query5) == TRUE
                     ) {
+                        echo "sam";
 
                         $query1 = "SELECT user_id FROM `login_auth` WHERE user_id='$rollNo';";
                         $query2 = "SELECT roll_no FROM `stud_details` WHERE roll_no='$rollNo';";
@@ -104,7 +105,6 @@ class Admin
                             isset($row3['roll_no']) or isset($row4['roll_no']) or
                             isset($row1['student_rollno'])
                         ) {
-                           echo "sam";
                             return array("ACCOUNT_DELETED_FAILED_STUDENT", $rollNo);
                         } else {
                             return array("ACCOUNT_DELETED_SUCCESS_STUDENT", $rollNo);
