@@ -5,7 +5,7 @@ $(document).ready(function () {
     spinner.style.removeProperty("display");
     $.ajax({
       type: "POST",
-      url: "/api/login/",
+      url: "/api/auth/login/",
       data: {
         username: $("#username").val(),
         password: $("#password").val(),

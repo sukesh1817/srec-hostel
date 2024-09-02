@@ -361,9 +361,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
         <main>
             <div class="container">
-
-
-
                 <?php
                 if (isset($_POST["year"]) and isset($_POST['department'])) {
                     include_once $_SERVER["DOCUMENT_ROOT"] . '/' . '../class-files/' . "connection.class.php";
