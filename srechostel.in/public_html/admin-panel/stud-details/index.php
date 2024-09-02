@@ -52,10 +52,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
         }
 
-        .form-container button:active {
-
-            scale: 0.95;
-        }
+       
 
         .form-container .logo-container {
             text-align: center;
@@ -96,23 +93,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             border-color: #1778f2;
         }
 
-        .form-container .form-submit-btn {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-family: inherit;
-            color: #fff;
-            background-color: #212121;
-            border: none;
-            width: 100%;
-            padding: 12px 16px;
-            font-size: inherit;
-            gap: 8px;
-            margin: 12px 0;
-            cursor: pointer;
-            border-radius: 1px;
-            box-shadow: 0px 0px 3px rgba(0, 0, 0, 0.084), 0px 2px 3px rgba(0, 0, 0, 0.168);
-        }
+       
 
         .form-container .form-submit-btn:hover {
             background-color: #313131;
