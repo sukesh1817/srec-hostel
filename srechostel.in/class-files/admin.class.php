@@ -79,7 +79,6 @@ class Admin
                 $result = $sqlConn->query($query0);
                 error_reporting(0); 
                 $whois = $result->fetch_assoc()['who_is'];
-                echo $whois;
                 if ($whois == "Student") {
                     $query1 = "DELETE FROM `login_auth` WHERE user_id='$rollNo';";
                     $query2 = "DELETE FROM `stud_details` WHERE roll_no='$rollNo';";
