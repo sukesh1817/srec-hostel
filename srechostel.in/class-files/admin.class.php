@@ -25,13 +25,13 @@ class Admin
         if (in_array("dept", $keys) and in_array("year", $keys)) {
 
         } else if (in_array("group_of_roll_no", $keys)) {
-            $rollNo = explode(",", $values[0]);
-            $rollNo = $rollNo[0];
-            $query1 = "DELETE FROM `login_auth` WHERE  id in ($values);";
-            $query2 = "DELETE FROM `stud_details` WHERE  id in ($values);";
-            $query3 = "DELETE FROM `stud_personal_details` WHERE  id in ($values);";
-            $query4 = "DELETE FROM `stud_gurdian_details` WHERE  id in ($values);";
-            $query5 = "DELETE FROM `student_session` WHERE  id in ($values);";
+            $rollNos = explode(",", $values[0]);
+            $rollNo = $rollNos[0];
+            $query1 = "DELETE FROM `login_auth` WHERE  id in ($rollNos);";
+            $query2 = "DELETE FROM `stud_details` WHERE  id in ($rollNos);";
+            $query3 = "DELETE FROM `stud_personal_details` WHERE  id in ($rollNos);";
+            $query4 = "DELETE FROM `stud_gurdian_details` WHERE  id in ($rollNos);";
+            $query5 = "DELETE FROM `student_session` WHERE  id in ($rollNos);";
             if (
                 $sqlConn->query($query1) == TRUE and $sqlConn->query($query2) == TRUE and
                 $sqlConn->query($query3) == TRUE and $sqlConn->query($query4) == TRUE and
