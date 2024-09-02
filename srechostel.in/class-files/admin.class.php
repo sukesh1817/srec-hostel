@@ -25,7 +25,8 @@ class Admin
         if (in_array("dept", $keys) and in_array("year", $keys)) {
 
         } else if (in_array("group_of_roll_no", $keys)) {
-
+            print_r($values);
+            exit;
         } else if ($keys[0] == "user_id") {
 
             # this code first check who is the user student or staff or watch man.
