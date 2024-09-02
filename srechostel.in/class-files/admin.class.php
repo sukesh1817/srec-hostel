@@ -104,7 +104,7 @@ class Admin
                             isset($row3['roll_no']) or isset($row4['roll_no']) or
                             isset($row1['student_rollno'])
                         ) {
-                           
+                           echo "sam";
                             return array("ACCOUNT_DELETED_FAILED_STUDENT", $rollNo);
                         } else {
                             return array("ACCOUNT_DELETED_SUCCESS_STUDENT", $rollNo);
