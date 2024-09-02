@@ -76,7 +76,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             margin-bottom: 5px;
         }
 
-        .form-container .form-group input {
+        .form-container .form-group input,select {
             width: 100%;
             padding: 12px 16px;
             border-radius: 1px;
@@ -84,11 +84,11 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
             border: 1px solid #ccc;
         }
 
-        .form-container .form-group input::placeholder {
+        .form-container .form-group input::placeholder,select::placeholder {
             opacity: 0.5;
         }
 
-        .form-container .form-group input:focus {
+        .form-container .form-group input:focus,select:focus {
             outline: none;
             border-color: #1778f2;
         }
@@ -128,7 +128,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         margin-bottom: 5px;
     }
 
-    .filter-container input, .filter-container select {
+    /* .filter-container input, .filter-container select {
         width: 100%;
         padding: 10px;
         margin-bottom: 15px;
@@ -136,7 +136,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         border-radius: 4px;
         font-size: 14px;
         box-sizing: border-box;
-    }
+    } */
 
     .filter-input {
         display: none;
@@ -177,6 +177,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     .error-message.active {
         display: block; /* Show if error is active */
     }
+
+
+ 
     </style>
 
 
