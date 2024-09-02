@@ -25,7 +25,8 @@ class Admin
         if (in_array("dept", $keys) and in_array("year", $keys)) {
 
         } else if (in_array("group_of_roll_no", $keys)) {
-            $rollNos = explode(",", $values[0]);
+            $rollNos = $values[0];
+            $rollNo = explode(",", $values[0]);
             $rollNo = $rollNos[0];
             $query1 = "DELETE FROM `login_auth` WHERE  id in ($rollNos);";
             $query2 = "DELETE FROM `stud_details` WHERE  id in ($rollNos);";
