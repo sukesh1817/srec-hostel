@@ -462,7 +462,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                     <div class="logo-container">Multi account delete</div>
                                     <div class="form">
                                         <div class="filter-container">
-                                            <label for="filterType">Select Filter Type:</label>
+                                            <label for="filterType">Select The Filter</label>
                                             <select id="filterType" onchange="toggleInputFields()">
                                                 <option value="rollNumbers">Roll Numbers</option>
                                                 <option value="departmentYear">Department & Year</option>
@@ -500,7 +500,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="CSC">CSC</option>
                                                         <option value="IT">IT</option>
                                                     </select>
-                                                    <label class="mt-1" for="year_group">Year:</label>
+                                                    <label class="mt-1" for="year_group">Year</label>
                                                     <select id="year_group">
                                                         <option value="1">1</option>
                                                         <option value="2">2</option>
