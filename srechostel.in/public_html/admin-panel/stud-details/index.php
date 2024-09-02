@@ -476,7 +476,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                     <input class="rounded-1" type="text" id="rollNumber"
                                                         placeholder="Enter Roll Number">
 
-                                                    <div class="btn-group" role="group"
+                                                    <div class="btn-group mt-2 container-fluid" role="group"
                                                         aria-label="Default button group">
                                                         <button class="btn btn-dark" onclick="addRollNumber()"
                                                             type="button">Add Roll
@@ -508,7 +508,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
-                                                    <button class="btn btn-outline-dark" type="submit">Delete
+                                                    <button class="btn btn-dark mt-2 container-fluid" type="submit">Delete
                                                         users</button>
 
                                                     <div class="error-message mt-2" id="departmentYearError">Please enter
@@ -525,7 +525,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
                                                         <option value="3">3</option>
                                                         <option value="4">4</option>
                                                     </select>
-                                                    <button class="btn btn-outline-dark" type="submit">Delete
+                                                    <button class="btn btn-dark mt-2 container-fluid" type="submit">Delete
                                                         users</button>
                                                     <div class="error-message mt-2" id="yearOnlyError">Please enter a valid
                                                         year.</div>
