@@ -132,7 +132,7 @@ class session
             }
         } else if ($this->whoIs == "Women" or $this->whoIs == "Mens-1" or $this->whoIs == "Mens-2") {
             $sqlQuery = "INSERT INTO `admin_session` 
-            VALUES('$id','$sessionId','$ip','$currentTime','admin')";
+            VALUES('$id','$sessionId','$ip','$currentTime')";
 
             if ($sqlConn->query($sqlQuery)) {
                 setcookie("auth_session_id", $sessionId, time() + 2630000, "/");
