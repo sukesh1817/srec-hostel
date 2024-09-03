@@ -162,7 +162,7 @@ class session
 
     public function isSessionPresent($cookie, $whose)
     {
-       
+       echo $whose;
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
         if ($whose == "Student") {
@@ -197,7 +197,7 @@ class session
 
 
         } else if ($whose == "Admin") {
-           
+            echo "hello";
             $sqlQuery = "SELECT admin_session_id,admin_id FROM `admin_session` WHERE admin_session_id='$cookie';";
             if ($sqlConn->query($sqlQuery)) {
                 $result = $sqlConn->query($sqlQuery);
@@ -223,7 +223,7 @@ class session
         } else if ($whose == "Watch-man-1") {
             # TODO : Implement fot watchman. 
         } else {
-            echo "hello";
+            
             return false;
         }
 
