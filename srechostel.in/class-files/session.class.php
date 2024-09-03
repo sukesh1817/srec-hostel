@@ -69,8 +69,9 @@ class session
         $sqlQuery = "SELECT CURRENT_TIMESTAMP";
         if ($sqlConn->query($sqlQuery)) {
             $result = $sqlConn->query($sqlQuery);
-            if(isset($result->fetch_assoc()['CURRENT_TIMESTAMP'])) {
-                $currentTime = $result->fetch_assoc()['CURRENT_TIMESTAMP'];
+            $row = $result->fetch_assoc();
+            if(isset($row['CURRENT_TIMESTAMP'])) {
+                $currentTime = $row['CURRENT_TIMESTAMP'];
             }
         }
        
@@ -118,8 +119,9 @@ class session
         $sqlQuery = "SELECT CURRENT_TIMESTAMP";
         if ($sqlConn->query($sqlQuery)) {
             $result = $sqlConn->query($sqlQuery);
-            if(isset($result->fetch_assoc()['CURRENT_TIMESTAMP'])) {
-                $currentTime = $result->fetch_assoc()['CURRENT_TIMESTAMP'];
+            $row = $result->fetch_assoc();
+            if(isset($row['CURRENT_TIMESTAMP'])) {
+                $currentTime = $row['CURRENT_TIMESTAMP'];
             }
         }
         $sessionId = md5($id . $password . $ip . $currentTime);
