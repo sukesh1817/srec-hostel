@@ -1,19 +1,19 @@
 <?php
 //this file get the connection from the database
-include_once ("connection.class.php");
+include_once("connection.class.php");
 class session
 {
     public $isSessionExist;
     public $whoIs;
 
-    public function __construct($staffId = "none", $whoIs ="none")
+    public function __construct($id = NULL, $whoIs = NULL)
     {
         // this constructor helps us to find the session is already exist or not
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
         $this->whoIs = $whoIs;
         if ($this->whoIs == "Staff") {
-            $sqlQuery = "SELECT staff_id FROM `staff_session` WHERE staff_id='$staffId';";
+            $sqlQuery = "SELECT staff_id FROM `staff_session` WHERE staff_id='$id';";
             $result = $sqlConn->query($sqlQuery);
             if ($result) {
                 $row = $result->fetch_assoc();
@@ -25,46 +25,53 @@ class session
             } else {
                 // if query is not executed then some went wrong in server side 
             }
-        } else {
-            $sqlQuery = "SELECT student_rollno FROM `student_session` WHERE student_rollno='$staffId' ";
-            try {
-                $result = $sqlConn->query($sqlQuery);
-                if ($result) {
-                    $row = $result->fetch_assoc();
-                    if (isset($row["student_rollno"])) {
-                        $this->isSessionExist = true;
-                    } else {
-                        $this->isSessionExist = false;
-                    }
+        } else if ($this->whoIs == "Student") {
+            $sqlQuery = "SELECT student_rollno FROM `student_session` WHERE student_rollno='$id';";
+            $result = $sqlConn->query($sqlQuery);
+            if ($result) {
+                $row = $result->fetch_assoc();
+                if (isset($row["student_rollno"])) {
+                    $this->isSessionExist = true;
                 } else {
-                    // if query is not executed then some went wrong in server side 
+                    $this->isSessionExist = false;
                 }
-            } catch (Exception $e) {
-                // echo $e;
-                $this->isSessionExist = false;
+            } else {
+                // if query is not executed then some went wrong in server side 
             }
+
+        } else if ($this->whoIs == "Mens-1" or $this->whoIs == "Mens-2" or $this->whoIs == "Women") {
+            $sqlQuery = "SELECT admin_id FROM `admin_session` WHERE admin_id='$id';";
+            $result = $sqlConn->query($sqlQuery);
+            if ($result) {
+                $row = $result->fetch_assoc();
+                if (isset($row["admin_id"])) {
+                    $this->isSessionExist = true;
+                } else {
+                    $this->isSessionExist = false;
+                }
+            } else {
+                // if query is not executed then some went wrong in server side 
+            }
+        } else if ($this->whoIs == "Watch-man-1") {
+            # TODO : Implement for watchman also
+        } else {
+
         }
 
     }
 
-    public function updateSession($staffId, $staffPass)
+    public function updateSession($id, $password)
     {
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
-        $staffIp = $_SERVER["REMOTE_ADDR"];
+        $ip = $_SERVER["REMOTE_ADDR"];
         $currentTime = "";
         $sqlQuery = "SELECT CURRENT_TIMESTAMP";
-        if ($sqlConn->query($sqlQuery)) {
-            $result = $sqlConn->query($sqlQuery);
-            $row = $result->fetch_assoc();
-            if (isset($row["CURRENT_TIMESTAMP"])) {
-                $currentTime = $row["CURRENT_TIMESTAMP"];
-            }
-        }
-        $sessionId = md5($staffId . $staffPass . $staffIp.$currentTime);
+        $currentTime = time();
+        $sessionId = md5($id . $password . $ip . $currentTime);
         if ($this->whoIs == "Staff") {
-            $sqlQuery = "UPDATE `staff_session` SET staff_session_id='$sessionId',login_ip='$staffIp',
-            last_login_time='$currentTime'  WHERE staff_id='$staffId' ";
+            $sqlQuery = "UPDATE `staff_session` SET staff_session_id='$sessionId',login_ip='$ip',
+            last_login_time='$currentTime'  WHERE staff_id='$id' ";
 
             if ($sqlConn->query($sqlQuery)) {
                 setcookie("SessId", $sessionId, time() + 2630000, "/");
@@ -72,41 +79,40 @@ class session
             } else {
                 return false;
             }
-        } else {
-            try {
+        } else if ($this->whoIs == "Student") {
 
-                $sqlQuery = "UPDATE `student_session` SET student_session_id='$sessionId',login_ip='$staffIp',
-                last_login_time='$currentTime'  WHERE student_rollno='$staffId' ";
+            $sqlQuery = "UPDATE `student_session` SET student_session_id='$sessionId',login_ip='$ip',
+                last_login_time='$currentTime'  WHERE student_rollno='$id' ";
 
-                if ($sqlConn->query($sqlQuery)) {
-                    setcookie("SessId", $sessionId, time() + 2630000, "/");
-                    return true;
-                }
-            } catch (Exception $e) {
-                return false;
+            if ($sqlConn->query($sqlQuery)) {
+                setcookie("SessId", $sessionId, time() + 2630000, "/");
+                return true;
             }
+
+        } else if ($this->whoIs == "Mens-1" or $this->whoIs == "Mens-2" or $this->whoIs == "Women") {
+            $sqlQuery = "UPDATE `admin_session` SET admin_session_id='$sessionId',login_ip='$ip',
+            last_login_time='$currentTime'  WHERE student_rollno='$id' ";
+
+            if ($sqlConn->query($sqlQuery)) {
+                setcookie("auth_session_id", $sessionId, time() + 2630000, "/");
+                return true;
+            }
+        } else if ($this->whoIs == "Watch-man-1") {
+            # TODO : Implement update session for watch man.
         }
 
     }
 
-    public function createSession($staffId, $staffPass)
+    public function createSession($id, $password)
     {
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
-        $staffIp = $_SERVER["REMOTE_ADDR"];
-        $currentTime = "";
-        $sqlQuery = "SELECT CURRENT_TIMESTAMP";
-        if ($sqlConn->query($sqlQuery)) {
-            $result = $sqlConn->query($sqlQuery);
-            $row = $result->fetch_assoc();
-            if (isset($row["CURRENT_TIMESTAMP"])) {
-                $currentTime = $row["CURRENT_TIMESTAMP"];
-            }
-        }
-        $sessionId = md5($staffId.$staffPass.$staffIp.$currentTime);
+        $ip = $_SERVER["REMOTE_ADDR"];
+        $currentTime = time();
+        $sessionId = md5($id . $password . $ip . $currentTime);
         if ($this->whoIs == "Staff") {
             $sqlQuery = "INSERT INTO `staff_session` 
-            VALUES('$staffId','$sessionId','$staffIp','$currentTime','staff')";
+            VALUES('$id','$sessionId','$ip','$currentTime','staff')";
 
             if ($sqlConn->query($sqlQuery)) {
                 setcookie("SessId", $sessionId, time() + 2630000, "/");
@@ -114,9 +120,9 @@ class session
             } else {
                 return false;
             }
-        } else {
+        } else if ($this->whoIs == "Student") {
             $sqlQuery = "INSERT INTO `student_session` 
-            VALUES('$staffId','$sessionId','$staffIp','$currentTime','student')";
+            VALUES('$id','$sessionId','$ip','$currentTime','student')";
 
             if ($sqlConn->query($sqlQuery)) {
                 setcookie("SessId", $sessionId, time() + 2630000, "/");
@@ -124,6 +130,18 @@ class session
             } else {
                 return false;
             }
+        } else if ($this->whoIs == "Women" or $this->whoIs == "Mens-1" or $this->whoIs == "Mens-2") {
+            $sqlQuery = "INSERT INTO `admin_session` 
+            VALUES('$id','$sessionId','$ip','$currentTime','admin')";
+
+            if ($sqlConn->query($sqlQuery)) {
+                setcookie("auth_session_id", $sessionId, time() + 2630000, "/");
+                return true;
+            } else {
+                return false;
+            }
+        } else if ($this->whoIs == "Watch-man-1") {
+            # TODO : Need to implement for the watch man session.
         }
 
     }
@@ -133,7 +151,7 @@ class session
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
         if ($whose == "Student") {
-            $sqlQuery = "SELECT student_session_id,student_rollno FROM `student_session` WHERE student_session_id='$cookie'";
+            $sqlQuery = "SELECT student_session_id,student_rollno FROM `student_session` WHERE student_session_id='$cookie';";
             if ($sqlConn->query($sqlQuery)) {
                 $result = $sqlConn->query($sqlQuery);
                 $row = $result->fetch_assoc();
@@ -148,7 +166,7 @@ class session
             }
 
         } else if ($whose = "Staff") {
-            $sqlQuery = "SELECT staff_session_id,staff_id FROM `staff_session` WHERE staff_session_id='$cookie'";
+            $sqlQuery = "SELECT staff_session_id,staff_id FROM `staff_session` WHERE staff_session_id='$cookie';";
             if ($sqlConn->query($sqlQuery)) {
                 $result = $sqlConn->query($sqlQuery);
                 $row = $result->fetch_assoc();
@@ -163,6 +181,31 @@ class session
             }
 
 
+        } else if ($whose == "Admin") {
+            $sqlQuery = "SELECT admin_session_id,admin_id FROM `admin_session` WHERE admin_session_id='$cookie';";
+            if ($sqlConn->query($sqlQuery)) {
+                $result = $sqlConn->query($sqlQuery);
+                $row = $result->fetch_assoc();
+                if (isset($row["admin_session_id"])) {
+                    $userId = $row['admin_id'];
+                    $_SESSION["yourToken"] = $row["admin_id"];
+                    $sqlQuery2 = "SELECT who_is FROM `login_auth` WHERE user_id='$userId';";
+                    $result = $sqlConn->query($sqlQuery);
+                    $row = $result->fetch_assoc();
+                    if (isset($row['who_is'])) {
+                        return $row['who_is'];
+                    } else {
+                        return false;
+                    }
+
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
+        } else if ($whose == "Watch-man-1") {
+            # TODO : Implement fot watchman. 
         } else {
             return false;
         }
