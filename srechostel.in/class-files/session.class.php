@@ -202,11 +202,10 @@ class session
                 $result = $sqlConn->query($sqlQuery);
                 $row = $result->fetch_assoc();
                 if (isset($row["admin_session_id"])) {
-                    echo "done";
                     $userId = $row['admin_id'];
                     $_SESSION["yourToken"] = $row["admin_id"];
                     $sqlQuery2 = "SELECT who_is FROM `login_auth` WHERE user_id='$userId';";
-                    $result = $sqlConn->query($sqlQuery);
+                    $result = $sqlConn->query($sqlQuery2);
                     $row = $result->fetch_assoc();
                     if (isset($row['who_is'])) {
                         return $row['who_is'];
