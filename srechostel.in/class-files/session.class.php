@@ -98,7 +98,7 @@ class session
 
         } else if ($this->whoIs == "Mens-1" or $this->whoIs == "Mens-2" or $this->whoIs == "Women") {
             $sqlQuery = "UPDATE `admin_session` SET admin_session_id='$sessionId',login_ip='$ip',
-            last_login_time='$currentTime'  WHERE student_rollno='$id' ";
+            last_login_time='$currentTime'  WHERE admin_id='$id' ";
 
             if ($sqlConn->query($sqlQuery)) {
                 setcookie("auth_session_id", $sessionId, time() + 2630000, "/");
