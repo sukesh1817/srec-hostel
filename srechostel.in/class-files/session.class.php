@@ -67,7 +67,13 @@ class session
         $ip = $_SERVER["REMOTE_ADDR"];
         $currentTime = "";
         $sqlQuery = "SELECT CURRENT_TIMESTAMP";
-        $currentTime = time();
+        if ($sqlConn->query($sqlQuery)) {
+            $result = $sqlConn->query($sqlQuery);
+            if(isset($result->fetch_assoc()['CURRENT_TIMESTAMP'])) {
+                $currentTime = $result->fetch_assoc()['CURRENT_TIMESTAMP'];
+            }
+        }
+       
         $sessionId = md5($id . $password . $ip . $currentTime);
         if ($this->whoIs == "Staff") {
             $sqlQuery = "UPDATE `staff_session` SET staff_session_id='$sessionId',login_ip='$ip',
@@ -108,7 +114,14 @@ class session
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
         $ip = $_SERVER["REMOTE_ADDR"];
-        $currentTime = time();
+        $currentTime = "";
+        $sqlQuery = "SELECT CURRENT_TIMESTAMP";
+        if ($sqlConn->query($sqlQuery)) {
+            $result = $sqlConn->query($sqlQuery);
+            if(isset($result->fetch_assoc()['CURRENT_TIMESTAMP'])) {
+                $currentTime = $result->fetch_assoc()['CURRENT_TIMESTAMP'];
+            }
+        }
         $sessionId = md5($id . $password . $ip . $currentTime);
         if ($this->whoIs == "Staff") {
             $sqlQuery = "INSERT INTO `staff_session` 
@@ -149,6 +162,7 @@ class session
 
     public function isSessionPresent($cookie, $whose)
     {
+        echo "hello";
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
         if ($whose == "Student") {
@@ -183,7 +197,7 @@ class session
 
 
         } else if ($whose == "Admin") {
-            echo "hello";
+           
             $sqlQuery = "SELECT admin_session_id,admin_id FROM `admin_session` WHERE admin_session_id='$cookie';";
             if ($sqlConn->query($sqlQuery)) {
                 $result = $sqlConn->query($sqlQuery);

@@ -16,7 +16,7 @@ if (isset($_COOKIE['SessId'])) {
    
     $session = new session();
     $result = $session->isSessionPresent($_COOKIE['auth_session_id'], "Admin");
-   
+
     if ($result == "Mens-1" or $result == "Mens-2" or $result == "Women") {
         $result = strtolower($result);
         header("Location: https://$result.srechostel.in");
