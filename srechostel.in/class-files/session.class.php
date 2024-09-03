@@ -131,6 +131,7 @@ class session
                 return false;
             }
         } else if ($this->whoIs == "Women" or $this->whoIs == "Mens-1" or $this->whoIs == "Mens-2") {
+
             $sqlQuery = "INSERT INTO `admin_session` 
             VALUES('$id','$sessionId','$ip','$currentTime')";
 
@@ -182,6 +183,7 @@ class session
 
 
         } else if ($whose == "Admin") {
+            echo "hello";
             $sqlQuery = "SELECT admin_session_id,admin_id FROM `admin_session` WHERE admin_session_id='$cookie';";
             if ($sqlConn->query($sqlQuery)) {
                 $result = $sqlConn->query($sqlQuery);
