@@ -162,7 +162,6 @@ class session
 
     public function isSessionPresent($cookie, $whose)
     {
-       echo $whose;
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
         if ($whose == "Student") {
@@ -180,7 +179,7 @@ class session
                 return false;
             }
 
-        } else if ($whose = "Staff") {
+        } else if ($whose == "Staff") {
             $sqlQuery = "SELECT staff_session_id,staff_id FROM `staff_session` WHERE staff_session_id='$cookie';";
             if ($sqlConn->query($sqlQuery)) {
                 $result = $sqlConn->query($sqlQuery);
@@ -197,7 +196,7 @@ class session
 
 
         } else if ($whose == "Admin") {
-            echo "hello";
+            
             $sqlQuery = "SELECT admin_session_id,admin_id FROM `admin_session` WHERE admin_session_id='$cookie';";
             if ($sqlConn->query($sqlQuery)) {
                 $result = $sqlConn->query($sqlQuery);
