@@ -196,12 +196,13 @@ class session
 
 
         } else if ($whose == "Admin") {
-            echo "done";
+           
             $sqlQuery = "SELECT admin_session_id,admin_id FROM `admin_session` WHERE admin_session_id='$cookie';";
             if ($sqlConn->query($sqlQuery)) {
                 $result = $sqlConn->query($sqlQuery);
                 $row = $result->fetch_assoc();
                 if (isset($row["admin_session_id"])) {
+                    echo "done";
                     $userId = $row['admin_id'];
                     $_SESSION["yourToken"] = $row["admin_id"];
                     $sqlQuery2 = "SELECT who_is FROM `login_auth` WHERE user_id='$userId';";
