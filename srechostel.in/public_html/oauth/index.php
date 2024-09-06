@@ -5,7 +5,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
 $clientID = "352177521853-p0mr0jblmnbj4kg8rtfhhhtkd1kvorlq.apps.googleusercontent.com";
 $clientSecret = "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";
 
-$redirectUri = "https://srechostel.in/oauth/";
+$redirectUri = "https://testing.srechostel.in/oauth/";
 $ip = $_SERVER['REMOTE_ADDR'];
 
 // Google Client initialization
