@@ -34,7 +34,7 @@
                         We are excited to welcome you to the Sports Committee section of our hostel website! Here, your
                         enthusiasm for sports and teamwork can come together to create a dynamic and engaging athletic
                         environment. Get involved, stay active, and help shape the future of sports in our hostel
-                        community!.
+                        community!
                     </p>
                     <a href="#" class="btn btn-dark rounded-1">
                         current status
