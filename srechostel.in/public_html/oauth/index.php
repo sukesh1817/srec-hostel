@@ -1,11 +1,11 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
 
-// It's better to use environment variables for sensitive data like client secrets.
-$clientID = "182833141792-0dfcvk86f4hv9l5e7p01eeuj5ac5hd15.apps.googleusercontent.com";
-$clientSecret = "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";
+// Ithis is testing client id , change this when push to production.
+$clientID = "352177521853-p0mr0jblmnbj4kg8rtfhhhtkd1kvorlq.apps.googleusercontent.com";
+$clientSecret = "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";
 
-$redirectUri = "https://testing.srechostel.in/oauth/";
+$redirectUri = "https://srechostel.in/oauth/";
 $ip = $_SERVER['REMOTE_ADDR'];
 
 // Google Client initialization
