@@ -31,8 +31,7 @@
                     <h3 class="fs-3 text-body-emphasis">Sports committee</h3>
                     <h2 class="fs-4 text-body-emphasis"> <small class="fs-5">Leader -</small> Anandh L | B.E EIE</h2>
                     <p>
-                    We are thrilled to have you join the Sports Committee section of our hostel website! Here, your passion for sports and teamwork will help shape our athletic programs and events, enhancing our community's fitness and camaraderie.                    </p>
-                    <a href="#" class="btn btn-dark rounded-1">
+                    We are thrilled to have you join the Sports Committee section of our hostel website! Here, your passion for sports and teamwork will help shape our events, enhancing our community's fitness and camaraderie.                    <a href="#" class="btn btn-dark rounded-1">
                         current status
                     </a>
                 </div>
