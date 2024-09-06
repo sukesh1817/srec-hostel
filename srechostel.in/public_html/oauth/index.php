@@ -2,10 +2,9 @@
 include_once $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
 
 // It's better to use environment variables for sensitive data like client secrets.
-$clientID = getenv("PATH");
-$clientSecret = getenv('GOOGLE_CLIENT_SECRET');
-echo apache_getenv('GOOGLE_CLIENT_SECRET');
-exit;
+$clientID = "182833141792-0dfcvk86f4hv9l5e7p01eeuj5ac5hd15.apps.googleusercontent.com";
+$clientSecret = "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";
+
 $redirectUri = "https://srechostel.in/oauth/";
 $ip = $_SERVER['REMOTE_ADDR'];
 
