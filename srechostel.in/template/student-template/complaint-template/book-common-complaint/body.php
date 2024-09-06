@@ -1,9 +1,8 @@
-
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/student-template/common-template/navbar.php";
 ?>
 <?php
-include_once ($_SERVER["DOCUMENT_ROOT"] . "/../class-files/common.class.php");
+include_once($_SERVER["DOCUMENT_ROOT"] . "/../class-files/common.class.php");
 $complaint = new commonClass();
 $which_is_booked = $complaint->alreadyBooked($_SESSION['yourToken']);
 
@@ -16,7 +15,13 @@ if ($which_is_booked) {
             <svg class="bi mt-5 mb-3" width="48" height="48">
                 <use xlink:href="#check2-circle"></use>
             </svg>
-            <h1 class="text-body-emphasis"><?php if($which_is_booked==1){ echo "Common complaint already booked";} else{echo "Individual complaint already booked";} ?></strong></h1>
+            <h1 class="text-body-emphasis">
+                <?php if ($which_is_booked == 1) {
+                    echo "Common complaint already booked";
+                } else {
+                    echo "Individual complaint already booked";
+                } ?></strong>
+            </h1>
             <p class="col-lg-6 mx-auto mb-4">
                 Hostel admin will contact you soon
             </p>
@@ -45,56 +50,56 @@ if ($which_is_booked) {
     $result1 = $complaint->putcommonComplaint($data, $file);
     if ($result1) {
         ?>
-                <div class="container my-5" bis_skin_checked="1">
-                                <div class="position-relative p-5 text-center text-muted bg-body border border-dashed  rounded-1"
-                                    bis_skin_checked="1">
+            <div class="container my-5" bis_skin_checked="1">
+                <div class="position-relative p-5 text-center text-muted bg-body border border-dashed  rounded-1"
+                    bis_skin_checked="1">
 
-                                    <svg class="bi mt-5 mb-3" width="48" height="48">
-                                        <use xlink:href="#check2-circle"></use>
-                                    </svg>
-                                    <h1 class="text-body-emphasis">Department complaint<strong> Booked Successfully</strong></h1>
-                                    <p class="col-lg-6 mx-auto mb-4">
-                                        Your complaint will received , admin will contact you soon
-                                    </p>
-                                    <a href="/stud-panel/complaint/complaint-status/" class=" btn btn-dark mb-5 rounded-1">
-                                        check complaint status
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="notification rounded-1" role="alert" aria-live="assertive" aria-atomic="true">
-                                <div class="notification-header">
-                                    <h3 class="notification-title">Notification</h3>
-                                    <i type="button" class="btn-close-1" data-bs-dismiss="notification" aria-label="Close"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x"
-                                            viewBox="0 0 16 16">
-                                            <path
-                                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                                        </svg></i>
-                                </div>
-                                <div class="notification-container">
-                                    <div class="notification-media">
-                                        <img src="https://blog.tryshiftcdn.com/uploads/2021/01/notifications@2x.jpg" alt=""
-                                            class="notification-user-avatar">
-                                        <i class="fa fa-thumbs-up notification-reaction"></i>
-                                    </div>
-                                    <div class="notification-content">
-                                        <p class="notification-text">
-                                            <strong>Your complaint booked successfully</strong>
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
+                    <svg class="bi mt-5 mb-3" width="48" height="48">
+                        <use xlink:href="#check2-circle"></use>
+                    </svg>
+                    <h1 class="text-body-emphasis">Department complaint<strong> Booked Successfully</strong></h1>
+                    <p class="col-lg-6 mx-auto mb-4">
+                        Your complaint will received , admin will contact you soon
+                    </p>
+                    <a href="/stud-panel/complaint/complaint-status/" class=" btn btn-dark mb-5 rounded-1">
+                        check complaint status
+                    </a>
+                </div>
+            </div>
+            <div class="notification rounded-1" role="alert" aria-live="assertive" aria-atomic="true">
+                <div class="notification-header">
+                    <h3 class="notification-title">Notification</h3>
+                    <i type="button" class="btn-close-1" data-bs-dismiss="notification" aria-label="Close"><svg
+                            xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x"
+                            viewBox="0 0 16 16">
+                            <path
+                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                        </svg></i>
+                </div>
+                <div class="notification-container">
+                    <div class="notification-media">
+                        <img src="https://blog.tryshiftcdn.com/uploads/2021/01/notifications@2x.jpg" alt=""
+                            class="notification-user-avatar">
+                        <i class="fa fa-thumbs-up notification-reaction"></i>
+                    </div>
+                    <div class="notification-content">
+                        <p class="notification-text">
+                            <strong>Your complaint booked successfully</strong>
+                        </p>
+                    </div>
+                </div>
+            </div>
 
-                            <script>
-                                document.addEventListener('DOMContentLoaded', (event) => {
-                                    const closeButton = document.querySelector('.btn-close-1');
-                                    const notification = document.querySelector('.notification');
+            <script>
+                document.addEventListener('DOMContentLoaded', (event) => {
+                    const closeButton = document.querySelector('.btn-close-1');
+                    const notification = document.querySelector('.notification');
 
-                                    closeButton.addEventListener('click', () => {
-                                        notification.classList.add('hidden');
-                                    });
-                                });
-                            </script>
+                    closeButton.addEventListener('click', () => {
+                        notification.classList.add('hidden');
+                    });
+                });
+            </script>
         <?php
     }
 

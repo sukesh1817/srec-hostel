@@ -17,11 +17,30 @@
             object-fit: cover;
         }
     </style>
-   <?php
+    <style>
+        .committee-item {
+            display: flex;
+            align-items: start;
+        }
 
-include_once $_SERVER['DOCUMENT_ROOT']. "/../template/admin-template/common-template/poppins.php";
+        .committee-content {
+            flex: 1;
+        }
+
+        .committee-content p {
+            margin-bottom: 1rem;
+        }
+
+        .committee-button {
+            margin-top: 1rem;
+        }
+    </style>
+
+    <?php
+
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/poppins.php";
 
 
 
-?>
+    ?>
 </head>
