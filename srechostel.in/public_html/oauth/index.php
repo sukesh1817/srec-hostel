@@ -27,6 +27,8 @@ try {
         $email = $google_info->email;
         $name = $google_info->name;
         $email_auth = $google_info['email'];
+        print_r($google_info);
+        exit;
 
         // Database connection
         include_once $_SERVER["DOCUMENT_ROOT"] . "/../class-files/connection.class.php";
