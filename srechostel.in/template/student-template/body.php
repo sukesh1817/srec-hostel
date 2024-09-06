@@ -5,13 +5,13 @@
 
   <div class="p-5 mt-5  bg-body-tertiary rounded-3" bis_skin_checked="1">
     <div class="container-fluid py-5" bis_skin_checked="1">
-      <h1 class="display-5 fw-bold py-1">Hey <br> <span class="fs-1">
-        <?php if (isset($_SESSION['name'])) {
-          echo $_SESSION['name'];
-        } else {
-          echo "Student";
-        } ?>
-        <span></h1>
+      <h1 class="display-5 fw-bold py-1">Hello <br> <span class="fs-1">
+          <?php if (isset($_SESSION['name'])) {
+            echo $_SESSION['name'];
+          } else {
+            echo "Student";
+          } ?>
+          <span></h1>
       <p class="lead">Welcome to the your dashboard! We're excited to have you here and ready to explore it.</p>
       <a href='#token' class="btn btn-dark btn-lg px-4 me-md-2 rounded-1" type="button">Explore the things</a>
     </div>
@@ -56,7 +56,8 @@
         <p class="lead">You can book your complaint through the complaint form , it contains personal and common
           complaint , you can book it, after the our hostel team will contact you soon.</p>
         <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3" bis_skin_checked="1">
-          <a href="/stud-panel/complaint/book-common-complaint/" class="btn btn-dark btn-lg px-4 me-md-2 fw-bold rounded-1">Common</a>
+          <a href="/stud-panel/complaint/book-common-complaint/"
+            class="btn btn-dark btn-lg px-4 me-md-2 fw-bold rounded-1">Common</a>
           <a href="/stud-panel/complaint/book-individual-complaint/"
             class="btn btn-outline-secondary btn-lg px-4 rounded-1">Personal</a>
         </div>
@@ -67,8 +68,8 @@
       </div>
     </div>
   </div>
-<?php
-  include_once $_SERVER['DOCUMENT_ROOT']. "/../template/student-template/common-template/footbar.php";
-?>
+  <?php
+  include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/student-template/common-template/footbar.php";
+  ?>
 
 </body>
