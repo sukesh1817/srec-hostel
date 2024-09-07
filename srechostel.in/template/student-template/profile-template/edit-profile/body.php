@@ -41,7 +41,6 @@
 
 
                         if ($ext == "heic" or $ext == "HEIC") {
-                                echo "heic";
                                 chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/");
                                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                                         unlink($_SESSION['yourToken'] . ".jpg");
@@ -55,10 +54,12 @@
                                 $dir = "tmp/" . $_SESSION['yourToken'] . '.heic';
                                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
                                         include $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
-                                        // $convert = Maestroerror\HeicToJpg::convert("/var/www/hostel-website/srec-assets/profile-photos/tmp/" . $_SESSION['yourToken'] . '.heic')->saveAs("/var/www/hostel-website/srec-assets/profile-photos/" . $_SESSION['yourToken'] . ".jpg");
-                                        // if ($convert) {
-
-                                        // }
+                                        $convert = Maestroerror\HeicToJpg::convert("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/" . $_SESSION['yourToken'] . '.heic')->saveAs("/home/u219671451/public_html/testing/srechostel.in/profile-photos/" . $_SESSION['yourToken'] . ".jpg");
+                                        chdir("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/");
+                                        unlink($_SESSION['yourToken'] . ".heic", );
+                                        if ($convert) {
+                                                // successfully converted.
+                                        }
 
                                 }
 
