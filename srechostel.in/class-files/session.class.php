@@ -70,11 +70,11 @@ class session
         if ($sqlConn->query($sqlQuery)) {
             $result = $sqlConn->query($sqlQuery);
             $row = $result->fetch_assoc();
-            if(isset($row['CURRENT_TIMESTAMP'])) {
+            if (isset($row['CURRENT_TIMESTAMP'])) {
                 $currentTime = $row['CURRENT_TIMESTAMP'];
             }
         }
-       
+
         $sessionId = md5($id . $password . $ip . $currentTime);
         if ($this->whoIs == "Staff") {
             $sqlQuery = "UPDATE `staff_session` SET staff_session_id='$sessionId',login_ip='$ip',
@@ -101,7 +101,16 @@ class session
             last_login_time='$currentTime'  WHERE admin_id='$id' ";
 
             if ($sqlConn->query($sqlQuery)) {
-                setcookie("auth_session_id", $sessionId, time() + 2630000, "/");
+                if ($this->whoIs == "Women") {
+                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "women.srechostel.in");
+
+                } else if ($this->whoIs == "Mens-1") {
+                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "mens-1.srechostel.in");
+
+                } else if ($this->whoIs == "Mens-2") {
+                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "mens-2.srechostel.in");
+
+                }
                 return true;
             }
         } else if ($this->whoIs == "Watch-man-1") {
@@ -120,7 +129,7 @@ class session
         if ($sqlConn->query($sqlQuery)) {
             $result = $sqlConn->query($sqlQuery);
             $row = $result->fetch_assoc();
-            if(isset($row['CURRENT_TIMESTAMP'])) {
+            if (isset($row['CURRENT_TIMESTAMP'])) {
                 $currentTime = $row['CURRENT_TIMESTAMP'];
             }
         }
@@ -151,7 +160,16 @@ class session
             VALUES('$id','$sessionId','$ip','$currentTime')";
 
             if ($sqlConn->query($sqlQuery)) {
-                setcookie("auth_session_id", $sessionId, time() + 2630000, "/");
+                if ($this->whoIs == "Women") {
+                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "women.srechostel.in");
+
+                } else if ($this->whoIs == "Mens-1") {
+                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "mens-1.srechostel.in");
+
+                } else if ($this->whoIs == "Mens-2") {
+                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "mens-2.srechostel.in");
+
+                }
                 return true;
             } else {
                 return false;
@@ -198,7 +216,7 @@ class session
 
 
         } else if ($whose == "Admin") {
-           
+
             $sqlQuery = "SELECT admin_session_id,admin_id FROM `admin_session` WHERE admin_session_id='$cookie';";
             if ($sqlConn->query($sqlQuery)) {
                 $result = $sqlConn->query($sqlQuery);
@@ -224,7 +242,7 @@ class session
         } else if ($whose == "Watch-man-1") {
             # TODO : Implement fot watchman. 
         } else {
-            
+
             return false;
         }
 
