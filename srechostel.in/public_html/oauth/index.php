@@ -1,7 +1,7 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
 
-// Ithis is testing client id , change this when push to production.
+// this is testing client id and client secret, change this when push to production.
 $clientID = "352177521853-p0mr0jblmnbj4kg8rtfhhhtkd1kvorlq.apps.googleusercontent.com";
 $clientSecret = "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";
 
@@ -60,7 +60,7 @@ try {
             exit();
         } else {
             // Email not verified case
-            showErrorPage("Email not verified", "The email you're trying to login is not verified. Please login with the correct email.");
+            showErrorPage("Email not verified", "The email you're trying to login is not verified. Please login with the correct email.", "Login failed");
         }
     } else {
         // Generate Google OAuth URL
@@ -69,18 +69,18 @@ try {
         exit();
     }
 } catch (Exception $e) {
-    showErrorPage("Token Expired", "You're trying to log in with the same OAuth token, but the token has expired.");
+    showErrorPage("Token Expired", "You're trying to log in with the same OAuth token, but the token has expired.", "Login failed");
 }
 
 // Function to display error pages
-function showErrorPage($title, $message) {
+function showErrorPage($title, $message,$header) {
     ?>
     <!DOCTYPE html>
     <html lang="en">
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Login with Google</title>
+        <title><?php $header ?></title>
         <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
         <style>
             .btn-fill-dark {
