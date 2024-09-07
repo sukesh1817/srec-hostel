@@ -2,10 +2,6 @@
         <?php
         include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/student-template/common-template/navbar.php";
         ?>
-        
-        
-
-
 
         <?php
 
@@ -17,7 +13,7 @@
                 isset($_POST['room-no']) and
                 isset($_POST['study-year']) and
                 isset($_POST['tutor-name']) and
-                isset($_POST['ac-name']) 
+                isset($_POST['ac-name'])
 
         ) {
 
@@ -29,23 +25,23 @@
                 $study_year = $_POST['study-year'];
                 $tutor_name = $_POST['tutor-name'];
                 $ac_name = $_POST['ac-name'];
-                $data=array(
-                        "sur-name"=>$surname,
-                        "address"=>$address,
-                        "mobile-no"=>$mobile_no,
-                        "post-code"=>$post_code,
-                        "room-no"=>$room_no,
-                        "study-year"=>$study_year,      
-                        "tutor-name"=>$tutor_name,
-                        "ac-name"=>$ac_name
+                $data = array(
+                        "sur-name" => $surname,
+                        "address" => $address,
+                        "mobile-no" => $mobile_no,
+                        "post-code" => $post_code,
+                        "room-no" => $room_no,
+                        "study-year" => $study_year,
+                        "tutor-name" => $tutor_name,
+                        "ac-name" => $ac_name
                 );
-                if (($_FILES['profile-img']['error']==0)) {
-                    $filename = $_FILES['profile-img']['name'];
-                    $ext = pathinfo($filename, PATHINFO_EXTENSION);
+                if (($_FILES['profile-img']['error'] == 0)) {
+                        $filename = $_FILES['profile-img']['name'];
+                        $ext = pathinfo($filename, PATHINFO_EXTENSION);
 
- 
-                        if ($ext == "heic" or $ext=="HEIC") {
-                            echo "heic";
+
+                        if ($ext == "heic" or $ext == "HEIC") {
+                                echo "heic";
                                 chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/");
                                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                                         unlink($_SESSION['yourToken'] . ".jpg");
@@ -59,10 +55,10 @@
                                 $dir = "tmp/" . $_SESSION['yourToken'] . '.heic';
                                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
                                         include $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
-                                        $convert = Maestroerror\HeicToJpg::convert("/var/www/hostel-website/srec-assets/profile-photos/tmp/" . $_SESSION['yourToken'] . '.heic')->saveAs("/var/www/hostel-website/srec-assets/profile-photos/" . $_SESSION['yourToken'] . ".jpg");
-                                        if ($convert) {
+                                        // $convert = Maestroerror\HeicToJpg::convert("/var/www/hostel-website/srec-assets/profile-photos/tmp/" . $_SESSION['yourToken'] . '.heic')->saveAs("/var/www/hostel-website/srec-assets/profile-photos/" . $_SESSION['yourToken'] . ".jpg");
+                                        // if ($convert) {
 
-                                        }
+                                        // }
 
                                 }
 
@@ -85,53 +81,53 @@
 
                 $details = new commonClass();
                 $result = $details->editSomeData($data);
-                $f=0;
-                if(isset($_POST['pass-word'])){
-                    $res = $details->changePass($_SESSION['yourToken'],$_POST['pass-word']);
-                    $f=1;
+                $f = 0;
+                if (isset($_POST['pass-word'])) {
+                        $res = $details->changePass($_SESSION['yourToken'], $_POST['pass-word']);
+                        $f = 1;
                 }
-                if($result){
+                if ($result) {
                         ?>
-                            <div class="notification rounded-1" role="alert" aria-live="assertive" aria-atomic="true">
+                        <div class="notification rounded-1" role="alert" aria-live="assertive" aria-atomic="true">
                                 <div class="notification-header">
-                                    <h3 class="notification-title">Notification</h3>
-                                    <i type="button" class="btn-close-1" data-bs-dismiss="notification" aria-label="Close"><svg
-                                            xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
-                                            class="bi bi-x" viewBox="0 0 16 16">
-                                            <path
-                                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                                        </svg></i>
+                                        <h3 class="notification-title">Notification</h3>
+                                        <i type="button" class="btn-close-1" data-bs-dismiss="notification" aria-label="Close"><svg
+                                                        xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor"
+                                                        class="bi bi-x" viewBox="0 0 16 16">
+                                                        <path
+                                                                d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                                                </svg></i>
                                 </div>
                                 <div class="notification-container">
-                                    <div class="notification-media">
-                                        <img src="https://blog.tryshiftcdn.com/uploads/2021/01/notifications@2x.jpg" alt=""
-                                            class="notification-user-avatar">
-                                        <i class="fa fa-thumbs-up notification-reaction"></i>
-                                    </div>
-                                    <div class="notification-title">
-                                            <p class="ms-1">Profile edited successfully</p>
-                                         
-                                            <a class="ms-2 container-fluid btn btn-dark rounded-1" href="/stud-panel/">Go back</a>
+                                        <div class="notification-media">
+                                                <img src="https://blog.tryshiftcdn.com/uploads/2021/01/notifications@2x.jpg" alt=""
+                                                        class="notification-user-avatar">
+                                                <i class="fa fa-thumbs-up notification-reaction"></i>
+                                        </div>
+                                        <div class="notification-title">
+                                                <p class="ms-1">Profile edited successfully</p>
 
-                                    </div>
+                                                <a class="ms-2 container-fluid btn btn-dark rounded-1" href="/stud-panel/">Go back</a>
+
+                                        </div>
                                 </div>
-                            </div>
+                        </div>
 
-                            <script>
+                        <script>
                                 document.addEventListener('DOMContentLoaded', (event) => {
-                                    const closeButton = document.querySelector('.btn-close-1');
-                                    const notification = document.querySelector('.notification');
+                                        const closeButton = document.querySelector('.btn-close-1');
+                                        const notification = document.querySelector('.notification');
 
-                                    closeButton.addEventListener('click', () => {
-                                        notification.classList.add('hidden');
-                                    });
+                                        closeButton.addEventListener('click', () => {
+                                                notification.classList.add('hidden');
+                                        });
                                 });
-                            </script>
+                        </script>
                         <?php
                 }
-                
 
-                
+
+
 
 
 
@@ -140,7 +136,7 @@
 
 
         <?php
-        include_once ($_SERVER["DOCUMENT_ROOT"] . "/../class-files/common.class.php");
+        include_once($_SERVER["DOCUMENT_ROOT"] . "/../class-files/common.class.php");
         $stud = new commonClass();
         $details = $stud->getFullStudDetails($_SESSION['yourToken']);
         $sur_name = $stud->getSurname();
@@ -148,7 +144,7 @@
 
         ?>
         <div class="container-fluid alert alert-warning" role="alert">
-               you do not have the access to change some data
+                you do not have the access to change some data
         </div>
         <div class="container rounded bg-white mt-5 mb-5">
                 <form action="/stud-panel/profile/edit-profile/" method="post" enctype="multipart/form-data">
@@ -178,7 +174,8 @@
                                                                         value="<?php echo $details[0]['name']; ?>"
                                                                         readonly>
                                                         </div>
-                                                        <div class="col-md-6"><label class="labels">Surname</label><input type="text"
+                                                        <div class="col-md-6"><label
+                                                                        class="labels">Surname</label><input type="text"
                                                                         class="form-control" name="sur-name"
                                                                         value="<?php echo $sur_name ?>"
                                                                         placeholder="surname">
@@ -217,7 +214,7 @@
                                                                         readonly></div>
                                                 </div>
                                                 <div class="row mt-1">
-                                                      
+
                                                         <div class="col-md-6">
                                                                 <label class="labels">Year of study</label><input
                                                                         name="study-year" type="text"
@@ -227,20 +224,26 @@
                                                         </div>
                                                         <div class="col-md-6">
                                                                 <label class="labels">Room no</label><input
-                                                                        name="room-no" type="number" class="form-control"
+                                                                        name="room-no" type="number"
+                                                                        class="form-control"
                                                                         value="<?php echo $details[1]['room_no']; ?>"
                                                                         placeholder="year">
                                                         </div>
-                                                         <div class="col-md-12">
-                           <div class="user-box">
-  <label class="labels">Password</label>
-  <div class="password-container">
-    <input class="form-control" type="password" name="pass-word" id="password" value="<?php echo $log_det['pass_word']; ?>" required="" />
-    <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
-  </div>
-</div>
+                                                        <div class="col-md-12">
+                                                                <div class="user-box">
+                                                                        <label class="labels">Password</label>
+                                                                        <div class="password-container">
+                                                                                <input class="form-control"
+                                                                                        type="password" name="pass-word"
+                                                                                        id="password"
+                                                                                        value="<?php echo $log_det['pass_word']; ?>"
+                                                                                        required="" />
+                                                                                <span class="password-toggle-icon"><i
+                                                                                                class="fas fa-eye"></i></span>
+                                                                        </div>
+                                                                </div>
 
-                        </div>
+                                                        </div>
                                                 </div>
 
                                         </div>
@@ -293,5 +296,5 @@
         <?php
         // include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/student-template/common-template/footbar.php";
         ?>
-   
+
 </body>

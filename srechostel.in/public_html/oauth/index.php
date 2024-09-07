@@ -53,10 +53,10 @@ try {
             $session = new Session($row['user_id'], $row['who_is']);
             if ($session->isSessionExist) {
                 // Update session
-                $session->updateSession($row['user_id'], "Srec@123");
+                $session->updateSession($row['user_id'], RandomString(10));
             } else {
                 // Create new session
-                $session->createSession($row['user_id'], "Srec@123");
+                $session->createSession($row['user_id'], RandomString(10));
             }
             header("Location: /");
             exit();
@@ -119,5 +119,17 @@ function showErrorPage($title, $message, $header)
     </html>
     <?php
     exit();
+}
+
+
+
+function RandomString($len)
+{
+    $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+    $randstring = '';
+    for ($i = 0; $i < $len; $i++) {
+        $randstring = $characters[rand(0, strlen($characters))];
+    }
+    return $randstring;
 }
 ?>
