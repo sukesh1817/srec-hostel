@@ -3,11 +3,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
 
 
 // this is testing client id and client secret, change this when push to production.
-$oauth = file_get_contents($_SERVER['DOCUMENT_ROOT']."/../config/oauth/oauth.json");
+$oauth = file_get_contents($_SERVER['DOCUMENT_ROOT'] . "/../config/oauth/oauth.json");
 $oauth = json_decode($oauth, true);
-$clientID = $oauth['client_id'];
-$clientSecret =  $oauth['client_secret'];
-$redirectUri =  $oauth['redirect_uris'];
+$clientID = $oauth['web']['client_id'];
+$clientSecret = $oauth['web']['client_secret'];
+$redirectUri = $oauth['web']['redirect_uris'][0];
 $ip = $_SERVER['REMOTE_ADDR'];
 
 // Google Client initialization
@@ -22,7 +22,7 @@ try {
     if (isset($_GET['code'])) {
         $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
         $client->setAccessToken($token);
-        
+
         // Retrieve user profile
         $oauth = new Google_Service_Oauth2($client);
         $google_info = $oauth->userinfo->get();
@@ -35,12 +35,12 @@ try {
         include_once $_SERVER["DOCUMENT_ROOT"] . "/../class-files/connection.class.php";
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
-        
+
         $stmt = $sqlConn->prepare("SELECT user_id, who_is FROM login_auth WHERE email_auth=?");
         $stmt->bind_param('s', $email_auth);
         $stmt->execute();
         $result = $stmt->get_result();
-        
+
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
 
@@ -75,10 +75,12 @@ try {
 }
 
 // Function to display error pages
-function showErrorPage($title, $message,$header) {
+function showErrorPage($title, $message, $header)
+{
     ?>
     <!DOCTYPE html>
     <html lang="en">
+
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -101,6 +103,7 @@ function showErrorPage($title, $message,$header) {
             }
         </style>
     </head>
+
     <body>
         <div class="px-4 py-5 my-5 text-center">
             <img class="d-block mx-auto mb-4" src="/images/layout-image/oauth.png" alt="" width="72" height="72">
@@ -112,6 +115,7 @@ function showErrorPage($title, $message,$header) {
         </div>
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     </body>
+
     </html>
     <?php
     exit();
