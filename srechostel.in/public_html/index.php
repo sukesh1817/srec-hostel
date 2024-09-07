@@ -133,7 +133,7 @@ if (isset($_COOKIE['SessId'])) {
                                                         <label for="password"
                                                             class="form-label rounded-1">password</label>
                                                         <span class="password-toggle-icon">
-                                                            <i id="pass-icon" class="fas fa-eye"></i>
+                                                            <i style="display: none;" id="pass-icon" class="fas fa-eye"></i>
                                                         </span>
                                                     </div>
                                                 </div>
