@@ -101,16 +101,7 @@ class session
             last_login_time='$currentTime'  WHERE admin_id='$id' ";
 
             if ($sqlConn->query($sqlQuery)) {
-                if ($this->whoIs == "Women") {
-                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "women.srechostel.in");
-
-                } else if ($this->whoIs == "Mens-1") {
-                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "mens-1.srechostel.in");
-
-                } else if ($this->whoIs == "Mens-2") {
-                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "mens-2.srechostel.in");
-
-                }
+                setcookie("auth_session_id", $sessionId, time() + 2630000, "/");
                 return true;
             }
         } else if ($this->whoIs == "Watch-man-1") {
@@ -160,16 +151,7 @@ class session
             VALUES('$id','$sessionId','$ip','$currentTime')";
 
             if ($sqlConn->query($sqlQuery)) {
-                if ($this->whoIs == "Women") {
-                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "women.srechostel.in");
-
-                } else if ($this->whoIs == "Mens-1") {
-                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "mens-1.srechostel.in");
-
-                } else if ($this->whoIs == "Mens-2") {
-                    setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "mens-2.srechostel.in");
-
-                }
+                setcookie("auth_session_id", $sessionId, time() + 2630000, "/");
                 return true;
             } else {
                 return false;
