@@ -16,11 +16,12 @@ if (isset($_COOKIE["auth_session_id"])) {
         $row = $result->fetch_assoc();
         if (isset($row["admin_session_id"])) {
             $id = $row['admin_id'];
+            echo "dd";
             $sqlQuery = "SELECT who_is FROM `login_auth` WHERE user_id='$id'";
             $result = $sqlConn->query($sqlQuery);
             $row = $result->fetch_assoc();
             if (isset($row['who_is'])) {
-                echo "dd";
+               
                 if ($row['who_is'] == "Mens-1") {
                     if (isset($_SESSION["yourToken"])) {
                         //do nothing
