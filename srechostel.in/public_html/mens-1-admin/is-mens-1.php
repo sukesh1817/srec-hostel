@@ -53,8 +53,8 @@ if (isset($_COOKIE["auth_session_id"])) {
 
 function do_redirection()
 {
-    $ip = $_SERVER["SERVER_ADDR"];
-    header("Location:  /");
+    $url = "https://testing.srechostel.in" ;
+    header("Location: $url ");
 }
 
 
