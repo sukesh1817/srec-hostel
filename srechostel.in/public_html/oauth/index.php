@@ -1,11 +1,13 @@
 <?php
 include_once $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
 
-// this is testing client id and client secret, change this when push to production.
-$clientID = "352177521853-p0mr0jblmnbj4kg8rtfhhhtkd1kvorlq.apps.googleusercontent.com";
-$clientSecret = "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";
 
-$redirectUri = "https://testing.srechostel.in/oauth/";
+// this is testing client id and client secret, change this when push to production.
+$oauth = file_get_contents($_SERVER['DOCUMENT_ROOT']."/../config/oauth/oauth.json");
+$oauth = json_decode($json, true);
+$clientID = $oauth['client_id'];
+$clientSecret =  $oauth['client_secret'];
+$redirectUri =  $oauth['redirect_uris'];
 $ip = $_SERVER['REMOTE_ADDR'];
 
 // Google Client initialization
