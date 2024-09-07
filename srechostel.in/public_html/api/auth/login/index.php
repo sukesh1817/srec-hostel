@@ -50,7 +50,7 @@ if (isset($_REQUEST["username"]) and isset($_REQUEST["password"])) {
     $session = new session($userName, $status_value[1]);
     if ($session->isSessionExist) {
       /* 
-      if the session is already present then just update the session
+      if the session is already present then just update the session 
       */
       $result = $session->updateSession($userName, $passWord);
     } else {
