@@ -20,6 +20,7 @@ if (isset($_COOKIE["auth_session_id"])) {
             $result = $sqlConn->query($sqlQuery);
             $row = $result->fetch_assoc();
             if (isset($row['who_is'])) {
+                echo "dd";
                 if ($row['who_is'] == "Mens-1") {
                     if (isset($_SESSION["yourToken"])) {
                         //do nothing
@@ -53,8 +54,8 @@ if (isset($_COOKIE["auth_session_id"])) {
 
 function do_redirection()
 {
-    $url = "https://testing.srechostel.in" ;
-    header("Location: $url ");
+    // $url = "https://testing.srechostel.in" ;
+    // header("Location: $url ");
 }
 
 
