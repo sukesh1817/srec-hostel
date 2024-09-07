@@ -4,7 +4,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
 
 // this is testing client id and client secret, change this when push to production.
 $oauth = file_get_contents($_SERVER['DOCUMENT_ROOT']."/../config/oauth/oauth.json");
-$oauth = json_decode($json, true);
+$oauth = json_decode($oauth, true);
 $clientID = $oauth['client_id'];
 $clientSecret =  $oauth['client_secret'];
 $redirectUri =  $oauth['redirect_uris'];
