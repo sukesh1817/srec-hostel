@@ -13,7 +13,7 @@ if (isset($_COOKIE['SessId'])) {
         header("Location: /stud-panel");
     }
 } else if (isset($_COOKIE['auth_session_id'])) {
-   
+
     $session = new session();
     $result = $session->isSessionPresent($_COOKIE['auth_session_id'], "Admin");
 
@@ -21,7 +21,7 @@ if (isset($_COOKIE['SessId'])) {
         $result = strtolower($result);
         header("Location: https://$result.srechostel.in");
     }
-   
+
 } else if (isset($_COOKIE['auth_watch_man'])) {
     if ($_COOKIE['auth_watch_man'] == md5(md5("watch-the-man"))) {
         header("Location: /watch-panel");
@@ -104,7 +104,7 @@ if (isset($_COOKIE['SessId'])) {
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="d-flex gap-3 flex-column">
-                                                    <a href="/oauth/" class="btn btn-lg btn-fill-dark rounded-1">
+                                                    <a href="/api/oauth/" class="btn btn-lg btn-fill-dark rounded-1">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-google"
                                                             viewBox="0 0 16 16">
