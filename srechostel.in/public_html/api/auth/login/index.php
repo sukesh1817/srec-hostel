@@ -19,6 +19,7 @@ if (isset($_REQUEST["username"]) and isset($_REQUEST["password"])) {
 
   }
   $finalRes = login::loginAuth($userName, $passWord);
+print_r($finalRes);
   $json = json_decode($finalRes, false);
 
   $status_value = [];
@@ -32,8 +33,6 @@ if (isset($_REQUEST["username"]) and isset($_REQUEST["password"])) {
     $_SESSION["yourToken"] = $userName;
     $session = new session($userName, $status_value[1]);
     if ($session->isSessionExist) {
-      print("session exits");
-      exit;
       /* 
       if the session is already present then just update the session
       */
@@ -50,6 +49,7 @@ if (isset($_REQUEST["username"]) and isset($_REQUEST["password"])) {
     $_SESSION["yourToken"] = $userName;
     $session = new session($userName, $status_value[1]);
     if ($session->isSessionExist) {
+      echo "session exists";
       /* 
       if the session is already present then just update the session 
       */
