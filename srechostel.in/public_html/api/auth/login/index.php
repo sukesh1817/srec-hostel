@@ -33,6 +33,7 @@ if (isset($_REQUEST["username"]) and isset($_REQUEST["password"])) {
     $session = new session($userName, $status_value[1]);
     if ($session->isSessionExist) {
       print("session exits");
+      exit;
       /* 
       if the session is already present then just update the session
       */
