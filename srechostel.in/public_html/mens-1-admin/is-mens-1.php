@@ -16,7 +16,7 @@ if (isset($_COOKIE["auth_session_id"])) {
         $row = $result->fetch_assoc();
         if (isset($row["admin_session_id"])) {
             $id = $row['admin_id'];
-            $sqlQuery = "SELECT who_is FROM `login_auth` WHERE user_id='$id'";
+            $sqlQuery = "SELECT who_is,user_id FROM `login_auth` WHERE user_id='$id'";
             $result = $sqlConn->query($sqlQuery);
             $row = $result->fetch_assoc();
             if (isset($row['who_is'])) {
@@ -26,7 +26,7 @@ if (isset($_COOKIE["auth_session_id"])) {
                         //do nothing
                     } else {
                         session_start();
-                        $_SESSION["yourToken"] = $row["admin_id"];
+                        $_SESSION["yourToken"] = $row["user_id"];
                     }
                 } else {
                     do_redirection();
