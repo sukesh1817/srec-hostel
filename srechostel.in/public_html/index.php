@@ -12,7 +12,7 @@ if (isset($_COOKIE['SessId'])) {
     if ($result) {
         header("Location: /stud-panel");
     }
-} else if (isset($_COOKIE['auth_session_i'])) {
+} else if (isset($_COOKIE['auth_session_id'])) {
 
     $session = new session();
     $result = $session->isSessionPresent($_COOKIE['auth_session_id'], "Admin");
