@@ -101,7 +101,8 @@ class session
             last_login_time='$currentTime'  WHERE admin_id='$id' ";
 
             if ($sqlConn->query($sqlQuery)) {
-                setcookie("auth_session_id", $sessionId, time() + 2630000, "/");
+                $subdomain = strtolower($this->whoIs);
+                setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "$subdomain.srechostel.in", true, true);
                 return true;
             }
         } else if ($this->whoIs == "Watch-man-1") {
@@ -151,7 +152,8 @@ class session
             VALUES('$id','$sessionId','$ip','$currentTime')";
 
             if ($sqlConn->query($sqlQuery)) {
-                setcookie("auth_session_id", $sessionId, time() + 2630000, "/");
+                $subdomain = strtolower($this->whoIs);
+                setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "$subdomain.srechostel.in", true, true);
                 return true;
             } else {
                 return false;

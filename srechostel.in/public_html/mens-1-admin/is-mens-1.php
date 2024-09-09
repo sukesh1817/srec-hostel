@@ -16,7 +16,6 @@ if (isset($_COOKIE["auth_session_id"])) {
         $row = $result->fetch_assoc();
         if (isset($row["admin_session_id"])) {
             $id = $row['admin_id'];
-            echo "dd";
             $sqlQuery = "SELECT who_is FROM `login_auth` WHERE user_id='$id'";
             $result = $sqlConn->query($sqlQuery);
             $row = $result->fetch_assoc();
@@ -55,8 +54,8 @@ if (isset($_COOKIE["auth_session_id"])) {
 
 function do_redirection()
 {
-    // $url = "https://testing.srechostel.in" ;
-    // header("Location: $url ");
+    $url = "https://testing.srechostel.in" ;
+    header("Location: $url ");
 }
 
 
