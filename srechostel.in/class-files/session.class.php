@@ -102,6 +102,7 @@ class session
 
             if ($sqlConn->query($sqlQuery)) {
                 $subdomain = strtolower($this->whoIs);
+                echo "done";
                 setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "$subdomain.srechostel.in", true, true);
                 return true;
             }

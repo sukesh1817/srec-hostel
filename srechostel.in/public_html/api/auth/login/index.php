@@ -49,7 +49,7 @@ print_r($finalRes);
     $_SESSION["yourToken"] = $userName;
     $session = new session($userName, $status_value[1]);
     if ($session->isSessionExist) {
-      echo "session exists";
+  
       /* 
       if the session is already present then just update the session 
       */
