@@ -102,8 +102,10 @@ class session
 
             if ($sqlConn->query($sqlQuery)) {
                 $subdomain = strtolower($this->whoIs);
-    
+                
                 setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "$subdomain.srechostel.in", true, true);
+                echo "done";
+                exit;
                 return true;
             }
         } else if ($this->whoIs == "Watch-man-1") {
