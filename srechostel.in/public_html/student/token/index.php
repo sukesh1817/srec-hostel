@@ -19,6 +19,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 <body>
     <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
+    echo $_SERVER['DOCUMENT_ROOT'];
     require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/token.clss.php");
 
     $token = new Token();
