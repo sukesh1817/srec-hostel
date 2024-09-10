@@ -81,7 +81,7 @@ class session
             last_login_time='$currentTime'  WHERE staff_id='$id' ";
 
             if ($sqlConn->query($sqlQuery)) {
-                setcookie("SessId", $sessionId, time() + 2630000, "/");
+                setcookie("SessId", $sessionId, time() + 2630000, "/", "srechostel.in", true, true);
                 return true;
             } else {
                 return false;
@@ -92,7 +92,7 @@ class session
                 last_login_time='$currentTime'  WHERE student_rollno='$id' ";
 
             if ($sqlConn->query($sqlQuery)) {
-                setcookie("SessId", $sessionId, time() + 2630000, "/");
+                setcookie("SessId", $sessionId, time() + 2630000, "/", "srechostel.in", true, true);
                 return true;
             }
 
@@ -102,7 +102,7 @@ class session
 
             if ($sqlConn->query($sqlQuery)) {
                 $subdomain = strtolower($this->whoIs);
-                setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "srechostel.in");
+                setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "srechostel.in", true, true);
                 return true;
             }
         } else if ($this->whoIs == "Watch-man-1") {
@@ -131,7 +131,7 @@ class session
             VALUES('$id','$sessionId','$ip','$currentTime','staff')";
 
             if ($sqlConn->query($sqlQuery)) {
-                setcookie("SessId", $sessionId, time() + 2630000, "/");
+                setcookie("SessId", $sessionId, time() + 2630000, "/", "srechostel.in", true, true);
                 return true;
             } else {
                 return false;
@@ -141,7 +141,7 @@ class session
             VALUES('$id','$sessionId','$ip','$currentTime','student')";
 
             if ($sqlConn->query($sqlQuery)) {
-                setcookie("SessId", $sessionId, time() + 2630000, "/");
+                setcookie("SessId", $sessionId, time() + 2630000, "/", "srechostel.in", true, true);
                 return true;
             } else {
                 return false;
@@ -153,8 +153,7 @@ class session
 
             if ($sqlConn->query($sqlQuery)) {
                 $subdomain = strtolower($this->whoIs);
-
-                setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "$subdomain.srechostel.in", true, true);
+                setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "srechostel.in", true, true);
                 return true;
             } else {
                 return false;
