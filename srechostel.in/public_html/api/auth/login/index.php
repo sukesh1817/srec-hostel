@@ -19,7 +19,6 @@ if (isset($_REQUEST["username"]) and isset($_REQUEST["password"])) {
 
   }
   $finalRes = login::loginAuth($userName, $passWord);
-print_r($finalRes);
   $json = json_decode($finalRes, false);
 
   $status_value = [];
