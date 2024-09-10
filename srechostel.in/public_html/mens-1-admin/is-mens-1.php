@@ -54,7 +54,8 @@ if (isset($_COOKIE["auth_session_id"])) {
 
 function do_redirection()
 {
-    $url = "https://testing.srechostel.in";
+    $domain = "testing.srechostel.in";
+    $url = "https://$domain";
     header("Location: $url ");
 }
 
