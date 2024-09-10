@@ -11,9 +11,9 @@ $(document).ready(function () {
         password: $("#password").val(),
       },
       success: function (data) {
-        if (data['Messag'] === "success") {
+        if (data['Message'] === "success") {
           $("#btn-log").attr("disabled", "disabled");
-          setTimeout(window.location.reload(), 5000);
+          window.location.href = data['Whois']+"srechostel.in";
         } else {
 
           $("#btn-log").attr("disabled", "disabled");
