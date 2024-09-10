@@ -1,6 +1,6 @@
 <?php
 //this file get the connection from the database
-include_once("connection.class.php");
+include_once("mainconn.class.php");
 class session
 {
     public $isSessionExist;
@@ -9,7 +9,7 @@ class session
     public function __construct($id = NULL, $whoIs = NULL)
     {
         // this constructor helps us to find the session is already exist or not
-        $conn = new Connection();
+        $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
         $this->whoIs = $whoIs;
         if ($this->whoIs == "Staff") {
@@ -62,7 +62,7 @@ class session
 
     public function updateSession($id, $password)
     {
-        $conn = new Connection();
+        $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
         $ip = $_SERVER["REMOTE_ADDR"];
         $currentTime = "";
@@ -113,7 +113,7 @@ class session
 
     public function createSession($id, $password)
     {
-        $conn = new Connection();
+        $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
         $ip = $_SERVER["REMOTE_ADDR"];
         $currentTime = "";
@@ -167,7 +167,7 @@ class session
 
     public function isSessionPresent($cookie, $whose)
     {
-        $conn = new Connection();
+        $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
         if ($whose == "Student") {
             $sqlQuery = "SELECT student_session_id,student_rollno FROM `student_session` WHERE student_session_id='$cookie';";
