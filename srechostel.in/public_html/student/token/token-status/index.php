@@ -210,7 +210,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                         </li>
                                         <div>
                                             <a href="../" class="container-fluid btn btn-dark ">Go back</a>
-                                            <a href="/stud-panel/token/edit-token/"
+                                            <a href="/token/edit-token/"
                                                 class="container-fluid btn btn-outline-dark mt-2">Edit token</a>
                                         </div>
 
