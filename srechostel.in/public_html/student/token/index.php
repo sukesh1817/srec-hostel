@@ -19,7 +19,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 <body>
     <?php
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
-    require_once($_SERVER["DOCUMENT_ROOT"] . "/" . "/../../class-files/token.clss.php");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/token.clss.php");
 
     $token = new Token();
     ?>
@@ -42,7 +42,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             </p>
             <div class="gap-2 mb-5" bis_skin_checked="1">
                 <a class="align-items-center btn <?php
-               
+
                 $result = $token->isTokenBooked($_SESSION["yourToken"]);
                 if (!(date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday")) {
                     echo "btn-warning";
