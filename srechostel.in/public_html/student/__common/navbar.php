@@ -1,7 +1,7 @@
 <nav class="navbar navbar-expand-md bg-dark sticky-top border-bottom py-4 nav-noti" data-bs-theme="dark">
   <div class="container" bis_skin_checked="1">
     <div class="d-flex justify-content-start me-5">
-      <a class="navbar-brand justify-content-start fs-4 text-white fw-medium" href="/stud-panel">
+      <a class="navbar-brand justify-content-start fs-4 text-white fw-medium" href="/">
         Home
       </a>
     </div>
