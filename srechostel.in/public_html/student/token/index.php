@@ -1,5 +1,5 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php"; // check the login user is student
 ?>
 
 <!DOCTYPE HTML>
@@ -12,16 +12,23 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet"
         crossorigin="anonymous">
     <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
+    // poppins font css included.
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php"; 
     ?>
 </head>
 
 <body>
     <?php
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
-    require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/token.class.php");
+    // navbar html code is included.
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php"; 
 
+    // token class file is included.
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/token.class.php");
+    
+    // initialize the token class.
     $token = new Token();
+
+    // welcome message for the student.
     ?>
     <div class="container my-5" bis_skin_checked="1">
         <div class="p-4 text-center bg-body-tertiary rounded-3" bis_skin_checked="1">
@@ -43,7 +50,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             </p>
             <div class="gap-2 mb-5" bis_skin_checked="1">
                 <?php
-
+                // check token is already booked.
                 $result = $token->isTokenBooked($_SESSION["yourToken"]);
                 if (!(date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday")) {
                     ?>
@@ -51,17 +58,20 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <?php
                 } else if ($result) {
                     ?>
-                        <a class="align-items-center btn btn-success rounded-1 mt-2" href="/token/token-status/">Token booked</a>
+                        <a class="align-items-center btn btn-success rounded-1 mt-2" href="/token/token-status/">Token
+                            booked</a>
                     <?php
                 } else {
                     ?>
-                        <a class="align-items-center btn btn-outline-secondary rounded-1 mt-2" href="/token/book-food-token/">Book
+                        <a class="align-items-center btn btn-outline-secondary rounded-1 mt-2"
+                            href="/token/book-food-token/">Book
                             Token</a>
                     <?php
                 }
                 ?>
-    <br>
+                <br>
                 <?php
+                // show the token status button while the day is b/w tuesday and saturday.
                 if (date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday") {
                     ?>
                     <a class="align-items-center btn btn-outline-secondary rounded-1 mt-2" href="/token/token-status/">Token
@@ -73,8 +83,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             </div>
         </div>
     </div>
-
-
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 </body>

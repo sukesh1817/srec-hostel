@@ -34,6 +34,6 @@ if (isset($_COOKIE["SessId"])) {
 
 function do_redirection()
 {
-    $ip = $_SERVER["SERVER_ADDR"];
-    header("Location:  /");
+    $domain = "testing.srechostel.in";
+    header("Location:  https://$domain");
 }
