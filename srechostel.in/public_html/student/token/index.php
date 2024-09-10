@@ -41,57 +41,34 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 Enjoy your meal!
             </p>
             <div class="gap-2 mb-5" bis_skin_checked="1">
-                <a class="align-items-center btn <?php
+                <?php
 
                 $result = $token->isTokenBooked($_SESSION["yourToken"]);
                 if (!(date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday")) {
-                    echo "btn-warning";
-                } else if ($result) {
-                    echo "btn-success";
-                } else {
-                    echo "btn-dark";
-                }
-                ?> rounded-1 mt-2" href="<?php
-                 if (date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday") {
-                     $token = new Token();
-                     $result = $token->isTokenBooked($_SESSION["yourToken"]);
-                     if ($result) {
-                         echo "/stud-panel/token/";
-                     } else {
-                         echo "/stud-panel/token/book-token";
-
-                     }
-                 } else {
-                     echo "/stud-panel/token/";
-                 }
-                 ?>" type="button">
-                    <?php
-                    if (date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday") {
-                        $token = new Token();
-                        $result = $token->isTokenBooked($_SESSION["yourToken"]);
-                        if ($result) {
-                            echo "Token booked";
-                        } else {
-                            echo "Book token";
-
-                        }
-                    } else {
-                        echo "Booking not opened";
-                    }
-
                     ?>
-
-                </a>
-                <br>
-                <a class="align-items-center btn btn-outline-secondary rounded-1 mt-2" href="<?php
-                if (date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday") {
-                    echo "/stud-panel/token/token-status";
+                    <a class="align-items-center btn btn-danger rounded-1 mt-2" href="/token/">Booking not opened</a>
+                    <?php
+                } else if ($result) {
+                    ?>
+                        <a class="align-items-center btn btn-outline-secondary rounded-1 mt-2" href="/token/token-status/">Token booked</a>
+                    <?php
                 } else {
-                    echo "/stud-panel/token/";
+                    ?>
+                        <a class="align-items-center btn btn-outline-secondary rounded-1 mt-2" href="/token/book-food-token/">Book
+                            Token</a>
+                    <?php
                 }
-                ?>" type="button">
-                    Token status
-                </a>
+                ?>
+
+                <?php
+                if (date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday") {
+                    ?>
+                    <a class="align-items-center btn btn-outline-secondary rounded-1 mt-2" href="/token/token-status/">Token
+                        status</a>
+                    <?php
+
+                }
+                ?>
             </div>
         </div>
     </div>
