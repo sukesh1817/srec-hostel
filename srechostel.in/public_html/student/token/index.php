@@ -1,3 +1,7 @@
+<?php
+include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
+?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 
