@@ -19,7 +19,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo json_encode(['Message' => $result ? 'Pass successfully accepted' : 'Pass acceptance failed']);
         } else {
             // Action to decline the pass
-            $result = $pass->declineThePass($rollNo, $type, $whoIs);
+            $result = $pass->declineThePass($rollNo, $type);
             header("Content-Type: application/json");
             echo json_encode(['Message' => $result ? 'Pass successfully declined' : 'Pass decline failed']);
         }
