@@ -38,6 +38,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             <p class="col-lg-8 mx-auto fs-5 text-muted">
                 Welcome! Book your food token easily on our site and check your booking status anytime under "Token
                 status."
+                <br>
                 Enjoy your meal!
             </p>
             <div class="gap-2 mb-5" bis_skin_checked="1">
