@@ -3,7 +3,7 @@
 class Connection {
     public $conn;
     public function __construct() {
-    $json = file_get_contents($_SERVER['DOCUMENT_ROOT']."/../../config/database/database.json");
+    $json = file_get_contents($_SERVER['DOCUMENT_ROOT']."/../config/database/database.json");
     $json_data = json_decode($json, true);
     $db_server = $json_data['servername'];
     $db_username = $json_data['username'];

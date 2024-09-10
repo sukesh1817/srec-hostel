@@ -1,6 +1,6 @@
 <?php
 // this file get the connection from the database
-include_once ("connection.class.php");
+include_once ("mainconn.class.php");
 
 class login
 {
