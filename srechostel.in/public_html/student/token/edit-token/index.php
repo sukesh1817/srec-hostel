@@ -252,7 +252,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
       if ($isTokenBooked) {
         $row = $token->fetchMyToken($_SESSION['yourToken']);
         ?>
-        <form class="mx-200 mx-2" action="/stud-panel/token/edit-token/" method="post">
+        <form class="mx-200 mx-2" action="/token/edit-token/" method="post">
           <h5 class="text-center display-6 mt-4 mb-3 fw-bold">Book token for next week</h5>
           <hr>
           <div
