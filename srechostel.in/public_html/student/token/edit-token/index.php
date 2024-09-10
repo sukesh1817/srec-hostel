@@ -225,13 +225,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
           <?php
         }
 
-      } else {
-        // check the token is booked or not.
-        $isTokenBooked = $token->isTokenBooked($rollNo);
-
-        // this part executes when the token is not booked.
-        if (!$isTokenBooked) {
-
+      } else if(!$isTokenBooked) {
           ?>
           <div class="px-4 py-5 my-5 text-center" bis_skin_checked="1">
             <img class="d-block mx-auto mb-4" src="/images/layout-image/restaurant.png" alt="" width="72" height="57">
@@ -244,12 +238,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             </div>
           </div>
           <?php
-        }
+        
       }
-      $isTokenBooked = $token->isTokenBooked($rollNo);
-
       // this part of code is executed when the token is succesfully booked.
-      if ($isTokenBooked) {
+      else if ($isTokenBooked) {
         $row = $token->fetchMyToken($_SESSION['yourToken']);
         ?>
         <form class="mx-200 mx-2" action="/token/edit-token/" method="post">
