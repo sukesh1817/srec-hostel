@@ -117,12 +117,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     if (
         isset($_SESSION['yourToken'])
     ) {
-        // initialize the token class.
-        $token = new Token($rollNo);
 
         // gather the session id of the user.
         $rollNo = $_SESSION["yourToken"];
 
+        // initialize the token class.
+        $token = new Token($rollNo);
+
+        // check the day is b/w tuesday and saturday, if it is allow else, don't allow. 
         if ((date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday")) {
 
             // check the token is booked by the student.
