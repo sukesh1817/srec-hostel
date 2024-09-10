@@ -13,7 +13,7 @@ $(document).ready(function () {
       success: function (data) {
         if (data['Message'] === "success") {
           $("#btn-log").attr("disabled", "disabled");
-          window.location.href = data['Whois']+"srechostel.in";
+          window.location.href = data['Whois'].toLowerCase()+".srechostel.in";
         } else {
 
           $("#btn-log").attr("disabled", "disabled");
