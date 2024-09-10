@@ -120,7 +120,7 @@
 <body>
     <?php
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
-    include_once $_SERVER["DOCUMENT_ROOT"] . "/../../class-files/token.class.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/.." . "/../class-files/token.class.php";
 
     /*
     first this code check the token is already booked or not ,
