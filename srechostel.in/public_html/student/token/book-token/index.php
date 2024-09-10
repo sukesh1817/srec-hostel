@@ -138,9 +138,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 ?>
                 <div class="container my-5" bis_skin_checked="1">
                     <div class="p-4 text-center bg-body-tertiary rounded-3" bis_skin_checked="1">
-                        <svg class="bi mt-4 mb-3" style="color: var(--bs-indigo);" width="100" height="100">
-                            <use xlink:href="#bootstrap"></use>
-                        </svg>
+                    <img class="d-block mx-auto mb-4" src="/images/layout-image/restaurant.png" alt="" width="72" height="57">
+
                         <h1 class="text-body-emphasis">Hey Welcome
                             <?php if (isset($_SESSION['name'])) {
                                 echo $_SESSION['name'];
@@ -152,7 +151,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         </p>
 
                         <a class="btn btn-dark rounded-1 mt-2" href="/token/check-status/">Check status</a>
-                        <a class="btn btn-secondary rounded-1 mt-2" href="/token/check-status/">Go back</a>
+                        <a class="btn btn-secondary rounded-1 mt-2" href="/">Go home</a>
                     </div>
                 </div>
                 <?php
