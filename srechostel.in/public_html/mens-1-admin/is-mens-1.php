@@ -6,7 +6,7 @@ else do not allow
 */
 
 if (isset($_COOKIE["auth_session_id"])) {
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../class-files/subconn.class.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../class-files/connection.class.php";
     $cookie = $_COOKIE["auth_session_id"];
     $conn = new Connection();
     $sqlConn = $conn->returnConn();
