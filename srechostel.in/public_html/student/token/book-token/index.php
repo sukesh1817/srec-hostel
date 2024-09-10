@@ -140,7 +140,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <div class="p-4 text-center bg-body-tertiary rounded-3" bis_skin_checked="1">
                     <img class="d-block mx-auto mb-4" src="/images/layout-image/restaurant.png" alt="" width="72" height="57">
 
-                        <h1 class="text-body-emphasis">Hey Welcome
+                        <h1 class="text-body-emphasis">Hello 
                             <?php if (isset($_SESSION['name'])) {
                                 echo $_SESSION['name'];
                             }
