@@ -60,7 +60,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <?php
                 }
                 ?>
-
+    <br>
                 <?php
                 if (date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday") {
                     ?>
