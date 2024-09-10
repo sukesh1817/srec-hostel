@@ -5,7 +5,7 @@ if the person is staff allow them
 else do not allow 
 */
 if (isset($_COOKIE["SessId"])) {
-    include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../class-files/connection.class.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../class-files/connection.class.php";
     $cookie = $_COOKIE["SessId"];
     $conn = new Connection();
     $sqlConn = $conn->returnConn();
