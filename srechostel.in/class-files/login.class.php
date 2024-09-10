@@ -8,7 +8,7 @@ class login
     public static function loginAuth($username, $password)
     {
         
-        $conn = new Connection();
+        $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
         $sqlOuery = "SELECT user_id FROM `login_auth` WHERE user_id='$username';";
         $result = $sqlConn->query($sqlOuery);

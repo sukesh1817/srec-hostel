@@ -1,6 +1,6 @@
 <?php
 //this file help to get a connection from database
-class Connection {
+class MainConnection {
     public $conn;
     public function __construct() {
     $json = file_get_contents($_SERVER['DOCUMENT_ROOT']."/../config/database/database.json");
