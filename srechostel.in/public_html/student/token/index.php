@@ -1,4 +1,4 @@
-<bu?php
+<?php
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php"; // check the login user is student
 ?>
 
