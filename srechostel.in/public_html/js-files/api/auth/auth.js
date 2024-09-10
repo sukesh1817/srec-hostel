@@ -1,7 +1,7 @@
 $(document).ready(function () {
   $("#log-in-form").submit(function (event) {
     event.preventDefault();
-    const spinner =  document.getElementById("loader");
+    const spinner = document.getElementById("loader");
     spinner.style.removeProperty("display");
     $.ajax({
       type: "POST",
@@ -13,7 +13,8 @@ $(document).ready(function () {
       success: function (data) {
         if (data['Message'] === "success") {
           $("#btn-log").attr("disabled", "disabled");
-          window.location.href = data['Whois'].toLowerCase()+".srechostel.in";
+          let subdomain = data['Whois'].toLowerCase() + ".srechostel.in";
+          window.location.replace(`http://${subdomain}}`);
         } else {
 
           $("#btn-log").attr("disabled", "disabled");
@@ -21,7 +22,7 @@ $(document).ready(function () {
             var toastElList = [].slice.call(
               document.querySelectorAll(".toast")
             );
-            spinner.style.display="none";
+            spinner.style.display = "none";
             var toastList = toastElList.map(function (toastEl) {
               return new bootstrap.Toast(toastEl);
             });
