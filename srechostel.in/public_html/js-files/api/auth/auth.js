@@ -14,7 +14,7 @@ $(document).ready(function () {
         if (data['Message'] === "success") {
           $("#btn-log").attr("disabled", "disabled");
           let subdomain = data['Whois'].toLowerCase() + ".srechostel.in";
-          window.location.replace(`http://${subdomain}}`);
+          window.location.replace(`http://${subdomain}`);
         } else {
 
           $("#btn-log").attr("disabled", "disabled");
