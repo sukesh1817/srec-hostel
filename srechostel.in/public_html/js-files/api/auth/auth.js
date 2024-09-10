@@ -11,7 +11,7 @@ $(document).ready(function () {
         password: $("#password").val(),
       },
       success: function (data) {
-        if (data === "success") {
+        if (data['Message'] === "success") {
           $("#btn-log").attr("disabled", "disabled");
           setTimeout(window.location.reload(), 5000);
         } else {

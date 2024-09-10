@@ -68,7 +68,7 @@ if (isset($_REQUEST["username"]) and isset($_REQUEST["password"])) {
   }
   // print_r("done");
   header("Content-Type: application/json");
-  echo json_encode(['Message' => $status_value[0]]);
+  echo json_encode(['Message' => $status_value[0], "Whois" => $status_value[1]]);
 } else {
   // respond to bad request using the php file .
   header("Content-Type: application/json");
