@@ -148,8 +148,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             ?>
                         </h1>
                         <p class="col-lg-8 mx-auto fs-5 text-muted">
-                            Token already booked your food token.
+                           Your food token is already booked.
                         </p>
+
+                        <a class="btn btn-dark rounded-1 mt-2" href="/token/check-status/">Check status</a>
+                        <a class="btn btn-secondary rounded-1 mt-2" href="/token/check-status/">Go back</a>
                     </div>
                 </div>
                 <?php
