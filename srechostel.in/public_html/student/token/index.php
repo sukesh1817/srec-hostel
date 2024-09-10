@@ -1,4 +1,4 @@
-<?php
+<bu?php
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php"; // check the login user is student
 ?>
 
@@ -58,8 +58,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php"; // check the login u
                     <?php
                 } else if ($result) {
                     ?>
-                        <a class="align-items-center btn btn-success rounded-1 mt-2" href="/token/token-status/">Token
-                            booked</a>
+                        <button class="align-items-center btn btn-success rounded-1 mt-2" type="button">Token
+                            booked</button>
                     <?php
                 } else {
                     ?>
