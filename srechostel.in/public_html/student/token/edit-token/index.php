@@ -200,9 +200,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
           ?>
           <div class="px-4 py-5 my-5 text-center" bis_skin_checked="1">
             <img class="d-block mx-auto mb-4" src="/images/layout-image/restaurant.png" alt="" width="72" height="57">
-            <h1 class="display-5 fw-bold text-body-emphasis">Token booked success</h1>
+            <h1 class="display-5 fw-bold text-body-emphasis">Token edited success</h1>
             <div class="col-lg-6 mx-auto" bis_skin_checked="1">
-              <p class="lead mb-4">.</p>
               <div class="d-grid gap-2 d-sm-flex justify-content-sm-center" bis_skin_checked="1">
                 <a href="../" class="btn btn-dark btn-lg px-4 gap-3 rounded-1">Go back <span id="count-down"></span> </a>
               </div>
