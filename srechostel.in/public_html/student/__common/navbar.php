@@ -24,22 +24,22 @@
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "token")) {
                 echo "active";
               } ?>"
-              href="/stud-panel/token/">Token</a></li>
+              href="/token/">Token</a></li>
           <li class="nav-item me-1"><a
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "gate-pass")) {
                 echo "active";
               } ?>"
-              href="/stud-panel/gate-pass/">Gate pass</a></li>
+              href="/gate-pass/">Gate pass</a></li>
           <li class="nav-item me-1"><a
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "committies")) {
                 echo "active";
               } ?>"
-              href="/stud-panel/committies/">Committie</a></li>
+              href="/committies/">Committie</a></li>
           <li class="nav-item me-1"><a
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "complaint")) {
                 echo "active";
               } ?>"
-              href="/stud-panel/complaint/">Complaint</a></li>
+              href="/complaint/">Complaint</a></li>
           <!--<li class="nav-item"><a class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "notifications")) {
             echo "active";
           } ?>" href="/stud-panel/notifications/">Notifications</a></li>-->
@@ -47,7 +47,7 @@
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "profile")) {
                 echo "active";
               } ?>"
-              href="/stud-panel/profile/">Profile</a></li>
+              href="/profile/">Profile</a></li>
           <li class="nav-item"><a class="nav-link" href="#">
               <svg class="bi" width="24" height="24">
                 <use xlink:href="#cart"></use>
