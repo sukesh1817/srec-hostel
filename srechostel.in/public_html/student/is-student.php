@@ -5,7 +5,7 @@ if the person is student allow them
 else do not allow 
 */
 if (isset($_COOKIE["SessId"])) {
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../class-files/connection.class.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../class-files/connection.class.php";
     $cookie = $_COOKIE["SessId"];
     $conn = new Connection();
     $sqlConn = $conn->returnConn();
