@@ -30,23 +30,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
     <style>
-        body {
-            font-family: "Poppins", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-        }
 
-        .headerImg1 {
-            width: 7%;
-            height: 7%;
-            float: left;
-        }
-
-        .headerImg2 {
-            width: 10%;
-            height: 10%;
-            float: right;
-        }
 
         .heads {
             background-color: #212529;
@@ -60,17 +44,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             margin-left: 0%;
             align-items: start;
         }
-
-
-        .clge-name {
-            font-size: 250%;
-        }
-
-        p {
-            font-size: 120%;
-        }
-
-
 
         .padcen {
             padding: 20px;
@@ -90,11 +63,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         }
 
         .login-container input {
-            padding: 8px;
+            /* padding: 8px;
             margin-bottom: 16px;
             box-sizing: border-box;
             border: 1px solid #ccc;
-            border-radius: 4px;
+            border-radius: 4px; */
         }
 
         input::-webkit-outer-spin-button,
