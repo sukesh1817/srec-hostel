@@ -4,33 +4,7 @@ include_once ("connection.class.php");
 
 class Pass_class
 {
-    // private function bookingPassMessage($type)
-    // {
-    //     require_once $_SERVER['DOCUMENT_ROOT'] . "/.." . '/composer/vendor/autoload.php'; // include Composer's autoloader
-    //     $client = new MongoDB\Client('mongodb://127.0.0.1:27017/');
-    //     $database = $client->selectDatabase('hostelmanagment');
 
-    //     //create collection if collection is not exists
-    //     try {
-    //         $createCollection = $database->createCollection($_SESSION['yourToken']);
-    //     } catch (Exception $e) {
-
-    //     }
-
-    //     //current time finder
-    //     $kolkataTimeZone = new DateTimeZone('Asia/Kolkata');
-    //     $dateTimeKolkata = new DateTime('now', $kolkataTimeZone);
-    //     $id=md5(time());
-    //     $collection = $database->selectCollection("c_".$_SESSION['yourToken']);
-    //     $insertOneResult = $collection->insertOne([
-    //         'notiId' => $id,
-    //         'rollno' => $_SESSION['yourToken'],
-    //         'message' => 'Hello, ' . $_SESSION['name'] . ', you booked your '.$type.' successfully',
-    //         'time' => $dateTimeKolkata->format('Y-m-d H:i:s A'),
-    //         'timestamp'=>time(),
-    //         'checked' => 0
-    //     ]);
-    // }
     public function setGatePass($array) //this helps to set gate_pass record in database
     {
         $conn = new Connection();

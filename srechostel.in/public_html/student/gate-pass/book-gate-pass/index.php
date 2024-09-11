@@ -30,8 +30,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
     <style>
-
-
         .heads {
             background-color: #212529;
             color: #fff;
@@ -62,7 +60,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             font-weight: bold;
         }
 
-        .login-container input[type=text],input[type=datetime-local] {
+        .login-container input[type=text],
+        input[type=datetime-local] {
             padding: 8px;
             margin-bottom: 16px;
             box-sizing: border-box;
@@ -122,21 +121,46 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <svg class="bi mt-5 mb-3" width="48" height="48">
                         <use xlink:href="#check2-circle"></use>
                     </svg>
-                    <h1 class="text-body-emphasis"><?php
+                    <?php
                     if ($alreadyBooked[0]) {
-                        echo "Out pass ";
+
+
+                        // breadcrumbs  included.
+                        require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/__breadcrumbs/bookpass.php";
+
+                        ?>
+                        <h1 class="text-body-emphasis"><strong>Out pass</strong> is already booked</h1>
+                        <p class="col-lg-6 mx-auto mb-4">
+                            check the status by click the button
+                        </p>
+                        <a href="/gate-pass/check-pass-status/" class=" btn btn-dark mb-5 rounded-1">
+                            Check status
+                        </a>
+                        <?php
                     } else if ($alreadyBooked[1]) {
-                        echo "Working day pass ";
+                        ?>
+                            <h1 class="text-body-emphasis"><strong>Working day pass</strong> is already booked</h1>
+                            <p class="col-lg-6 mx-auto mb-4">
+                                check the status by click the button
+                            </p>
+                            <a href="/gate-pass/check-pass-status/" class=" btn btn-dark mb-5 rounded-1">
+                                Check status
+                            </a>
+                        <?php
                     } else {
-                        echo "General Holiday day pass ";
+                        ?>
+                            <h1 class="text-body-emphasis"><strong>General holiday pass</strong> is already booked</h1>
+                            <p class="col-lg-6 mx-auto mb-4">
+                                check the status by click the button
+                            </p>
+                            <a href="/gate-pass/check-pass-status/" class=" btn btn-dark mb-5 rounded-1">
+                                Check status
+                            </a>
+                        <?php
                     }
-                    ?><strong>already booked</strong></h1>
-                    <p class="col-lg-6 mx-auto mb-4">
-                        Your gatepass is already booked please check it
-                    </p>
-                    <a href="/stud-panel/gate-pass/check-pass-status/" class=" btn btn-dark mb-5 rounded-1">
-                        Check gatepass status
-                    </a>
+                    ?>
+
+
                 </div>
             </div>
             <?php
@@ -183,7 +207,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                         Out pass is booked successfully, to check the out pass status, click the below button
                                     </p>
                                     <a href="/gate-pass/check-pass-status/" class=" btn btn-dark mb-5 rounded-1">
-                                        check gatepass status
+                                        check outpass status
                                     </a>
                                 </div>
                             </div>
@@ -242,7 +266,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     isset($_POST["time_of_leaving"]) and
                     isset($_POST["time_of_entry"]) and
                     isset($_POST["address"]) and
-                    isset($_POST["reason"]) and 
+                    isset($_POST["reason"]) and
                     isset($_FILES['permission_letter'])
                 ) {
                     $array = array(
@@ -272,8 +296,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                         <p class="col-lg-6 mx-auto mb-4">
                                             Working day pass is booked successfully , to check it click the below button
                                         </p>
-                                        <a href="/stud-panel/gate-pass/check-pass-status/" class=" btn btn-dark mb-5 rounded-1">
-                                            check gatepass status
+                                        <a href="/gate-pass/check-pass-status/" class=" btn btn-dark mb-5 rounded-1">
+                                            check working day pass status
                                         </a>
                                     </div>
                                 </div>
@@ -358,7 +382,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                                 General holiday pass is booked successfully , to check it click the below button
                                             </p>
                                             <a href="/gate-pass/check-pass-status/" class=" btn btn-dark mb-5 rounded-1">
-                                                check gatepass status
+                                                check general holiday pass status
                                             </a>
                                         </div>
                                     </div>
