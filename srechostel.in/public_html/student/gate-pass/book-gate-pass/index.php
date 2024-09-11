@@ -421,7 +421,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         } else {
             // contains the form and take input from the user.
             ?>
-                <div class="mx-auto my-3">
+                <div class="mx-auto my-3 mt-5">
                     <div class="container">
                         <div class="login-container">
                             <div class="heads py-2 rounded-1">
