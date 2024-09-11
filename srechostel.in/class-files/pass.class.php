@@ -83,7 +83,17 @@ class Pass_class
         $time_in = $array["time_of_entry"];
         $addr = $array["address"];
         $reason = $array['reason'];
+        $file = $array['file'];
+        $tmp = $file['tmp_name'];
+        // $file_name =  
+        print_r($file);
+        exit;
 
+        chdir($_SERVER["DOCUMENT_ROOT"].'/../../');
+        $dir = "files/accomodation/authorization-pdf/" . $file_name . ".pdf";
+        if (move_uploaded_file($tmp, $dir)) {
+               
+        } 
         try {
             $sqlQuery = "UPDATE `working_days_pass` SET ac_name='$ac_name',tutor_name='$tutor_name',time_of_leave='$time_out',time_of_entry='$time_in',
             address_name='$addr',already_booked=1,allowed_or_not=0,reason='$reason' WHERE roll_no=$rollNo;";
