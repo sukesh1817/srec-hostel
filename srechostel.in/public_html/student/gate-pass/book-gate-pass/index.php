@@ -428,22 +428,22 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <h2 class="text-center">Gate pass</h2>
                             </div>
                             <div class="padcen rounded">
-                            <form action="/gate-pass/book-gate-pass/" method="post" id="passForm" enctype="multipart/form-data">
-                                <div class="pass-type-selection ">
-                                    <label class="text-center" for="">Select Pass Type</label><br>
-                                    <div class="in">
-                                        <input type="radio" id="gatePass" name="pass_type" value="gate_pass" class="bullet mt-2"
-                                            required>
-                                        <label for="gatePass">Out pass</label><br>
-                                    </div>
-                                    <input type="radio" id="collegeWorkingDays" name="pass_type" value="college_working_days"
-                                        class="bullet mt-2" required>
-                                    <label for="collegeWorkingDays">Working days pass</label><br>
+                                <form action="/gate-pass/book-gate-pass/" method="post" id="passForm" enctype="multipart/form-data">
+                                    <div class="pass-type-selection ">
+                                        <label class="text-center" for="">Select Pass Type</label><br>
+                                        <div class="in">
+                                            <input type="radio" id="gatePass" name="pass_type" value="gate_pass" class="bullet mt-2"
+                                                required>
+                                            <label for="gatePass">Out pass</label><br>
+                                        </div>
+                                        <input type="radio" id="collegeWorkingDays" name="pass_type" value="college_working_days"
+                                            class="bullet mt-2" required>
+                                        <label for="collegeWorkingDays">Working days pass</label><br>
 
-                                    <input type="radio" id="generalHolidays" name="pass_type" value="general_holidays"
-                                        class="bullet mt-2" required>
-                                    <label for="generalHolidays">General holidays pass</label><br>
-                                </div>
+                                        <input type="radio" id="generalHolidays" name="pass_type" value="general_holidays"
+                                            class="bullet mt-2" required>
+                                        <label for="generalHolidays">General holidays pass</label><br>
+                                    </div>
                                     <div id="passDetails"></div>
                                     <div class="d-flex justify-content-center">
                                         <button class="btn btn-dark container-fluid rounded-1" type="submit">Book the pass</button>
@@ -475,7 +475,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     }
     ?>
 </body>
-<script src="/js-files/gate-pass.js"></script>
+
+<?php
+// get the js file from the main domain.
+$fileName = "https://testing.srechostel.in/js-files/ui-component/gate-pass.js";
+?>
+<script src="<?php echo $fileName; ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
