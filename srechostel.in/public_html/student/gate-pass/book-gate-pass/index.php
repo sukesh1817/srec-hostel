@@ -103,7 +103,7 @@
     require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/pass.class.php");
 
     // include the gate pass class file.
-    require_once($_SERVER["DOCUMENT_ROOT"] . "/../.../class-files/common.class.php");
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/common.class.php");
 
 
     // initialize the gate pass class.
