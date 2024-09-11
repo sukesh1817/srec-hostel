@@ -20,7 +20,8 @@ if (isset($_REQUEST["username"]) and isset($_REQUEST["password"])) {
   }
   $finalRes = login::loginAuth($userName, $passWord);
   $json = json_decode($finalRes, false);
-
+print_r($json);
+exit;
   $status_value = [];
   foreach ($json as $value) {
     array_push($status_value, $value);
