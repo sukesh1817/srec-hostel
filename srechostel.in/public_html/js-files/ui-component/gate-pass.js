@@ -38,7 +38,7 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
 
         timeOutInput.setAttribute('min', currentDateTime);
         timeOutInput.setAttribute('max', maxTime);
-        
+
         timeInInput.setAttribute('min', currentDateTime);
         timeInInput.setAttribute('max', maxTime);
       }
@@ -74,26 +74,22 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
                 <input type="hidden" name="passType" value="workingDays">
 
             `;
-            function updateDateTimeLimits() {
-              const now = new Date();
-              const sixDaysLater = new Date();
-              sixDaysLater.setDate(now.getDate() + 6);
-              
-              now.setSeconds(0, 0);
-              now.setMilliseconds(0);
-      
-              const minDateTime = now.toISOString().slice(0, 16);
-              const maxDateTime = sixDaysLater.toISOString().slice(0, 16);
-              
-              const timeOutInput = document.getElementById('timeOfLeaving');
-              const timeInInput = document.getElementById('timeOfEntry');
-              timeOutInput.setAttribute('min', minDateTime);
-              timeOutInput.setAttribute('max', maxDateTime);
-
-              timeInInput.setAttribute('min', minDateTime);
-              timeInInput.setAttribute('max', maxDateTime);
-          }
-          updateDateTimeLimits()
+      function updateDateTimeLimits() {
+        const now = new Date();
+        const sixDaysLater = new Date();
+        sixDaysLater.setDate(now.getDate() + 6);
+        now.setSeconds(0, 0);
+        now.setMilliseconds(0);
+        const minDateTime = now.toISOString().slice(0, 16);
+        const maxDateTime = sixDaysLater.toISOString().slice(0, 16);
+        const timeOutInput = document.getElementById('timeOfLeaving');
+        const timeInInput = document.getElementById('timeOfEntry');
+        timeOutInput.setAttribute('min', minDateTime);
+        timeOutInput.setAttribute('max', maxDateTime);
+        timeInInput.setAttribute('min', minDateTime);
+        timeInInput.setAttribute('max', maxDateTime);
+      }
+      updateDateTimeLimits()
     } else if (passType === "general_holidays") {
       // Display fields for general holidays home pass
       passDetailsContainer.innerHTML = `
@@ -114,6 +110,22 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
                 <input type="hidden" name="passType" value="generalDays">
 
             `;
+      function updateDateTimeLimits() {
+        const now = new Date();
+        const sixDaysLater = new Date();
+        sixDaysLater.setDate(now.getDate() + 6);
+        now.setSeconds(0, 0);
+        now.setMilliseconds(0);
+        const minDateTime = now.toISOString().slice(0, 16);
+        const maxDateTime = sixDaysLater.toISOString().slice(0, 16);
+        const timeOutInput = document.getElementById('timeOfLeaving');
+        const timeInInput = document.getElementById('timeOfEntry');
+        timeOutInput.setAttribute('min', minDateTime);
+        timeOutInput.setAttribute('max', maxDateTime);
+        timeInInput.setAttribute('min', minDateTime);
+        timeInInput.setAttribute('max', maxDateTime);
+      }
+      updateDateTimeLimits()
     }
   });
 });
