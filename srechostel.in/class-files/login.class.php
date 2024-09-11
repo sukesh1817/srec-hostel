@@ -1,61 +1,37 @@
 <?php
-// this file get the connection from the database
-include_once ("mainconn.class.php");
+// This file gets the connection from the database
+include_once("mainconn.class.php");
 
-class login
+class Login
 {
-
     public static function loginAuth($username, $password)
     {
-        
         $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
-        $sqlOuery = "SELECT user_id FROM `login_auth` WHERE user_id='$username';";
-        $result = $sqlConn->query($sqlOuery);
-        if ($result) {
-            $row = $result->fetch_assoc();
-            if (isset($row["user_id"])) {
-                $sqlOuery = "SELECT pass_word FROM `login_auth` WHERE pass_word='$password';";
-                $result = $sqlConn->query($sqlOuery);
-                if ($result) {
-                    echo "done";
-                    $row = $result->fetch_assoc();
-                    if (isset($row["pass_word"])) {
-                        $sqlOuery = "SELECT * FROM `login_auth` WHERE pass_word='$password' AND user_id='$username';";
-                        $result = $sqlConn->query($sqlOuery);
-                        if ($result) {
-                            $row = $result->fetch_assoc();
-                            if (isset($row['who_is'])) {
-                                $myObj = new stdClass();
-                                $myObj->authtication_status = "success";
-                                $myObj->whois = $row['who_is'];
-                                $myJSON = json_encode($myObj);
-                                return $myJSON;
-                            } else {
-                                // while something went wrong
-                            }
-                        } else {
-                            // while something went wrong
-                        }
+        // Prepare the statement to check if the username exists
+        $stmt = $sqlConn->prepare("SELECT pass_word, who_is FROM login_auth WHERE user_id = ?");
+        $stmt->bind_param("s", $username);
+        $stmt->execute();
+        $result = $stmt->get_result();
 
-                    } else {
-                        $myObj = new stdClass();
-                        $myObj->authtication_status = "failure";
-                        $myObj->reason = "Wrong password";
-                        $myJSON = json_encode($myObj);
-                        return $myJSON;
-                    }
-                }
-            } else {
+        if ($row = $result->fetch_assoc()) {
+            // Verify the password
+            if ($row['pass_word'] === $password) {
                 $myObj = new stdClass();
-                $myObj->authtication_status = "failure";
-                $myObj->reason = "Username not found";
-                $myJSON = json_encode($myObj);
-                return $myJSON;
+                $myObj->authentication_status = "success";
+                $myObj->whois = $row['who_is'];
+                return json_encode($myObj);
+            } else {
+                return json_encode([
+                    "authentication_status" => "failure",
+                    "reason" => "Wrong password"
+                ]);
             }
+        } else {
+            return json_encode([
+                "authentication_status" => "failure",
+                "reason" => "Username not found"
+            ]);
         }
     }
 }
-
-
-
