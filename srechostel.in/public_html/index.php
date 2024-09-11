@@ -6,11 +6,13 @@ if (isset($_COOKIE['SessId'])) {
     $session = new session();
     $result = $session->isSessionPresent($_COOKIE['SessId'], "Staff");
     if ($result) {
-        header("Location: /staff-panel");
+        $domain = "https://staff.srechostel.in";
+        header("Location: $domain");
     }
     $result = $session->isSessionPresent($_COOKIE['SessId'], "Student");
     if ($result) {
-        header("Location: /stud-panel");
+        $domain = "https://student.srechostel.in";
+        header("Location: $domain");
     }
 } else if (isset($_COOKIE['auth_session_id'])) {
 
