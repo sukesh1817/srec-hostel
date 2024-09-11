@@ -10,7 +10,8 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
       passDetailsContainer.innerHTML = `
       
                 <label  class="form-label" for="timeOut">From</label><br>
-                <input class="form-control" type="datetime-local" id="timeOut" name="time_out" style="width:100%" class='container-fluid' required><br>
+                <input class="form-control" type="datetime-local" id="timeOut" name="time_out" min="2024-09-01T00:00"   <!-- Minimum allowed date and time -->
+    max="2024-12-31T23:59"  style="width:100%" class='container-fluid' required><br>
 
                 <label for="timeIn">To</label><br>
                 <input class="form-control" type="datetime-local" id="timeIn" name="time_in" style="width:100%" class='container-fluid' required><br>
