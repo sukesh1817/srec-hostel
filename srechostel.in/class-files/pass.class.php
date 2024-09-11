@@ -91,7 +91,6 @@ class Pass_class
             $tmp = $file['tmp_name'];
             chdir($_SERVER["DOCUMENT_ROOT"]."/../../");
             echo getcwd();
-            exit;
             $dir = 'files/student-files/working-day-auth-letter/' . $file_name;
     
             if (!move_uploaded_file($tmp, $dir)) {
