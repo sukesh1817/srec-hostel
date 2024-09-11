@@ -70,64 +70,65 @@ class Pass_class
         }
     }
 
-    public function setWorkingDayPass($array)  //this helps to set working_day_pass record in database
-    {
+    public function setWorkingDayPass($array) {
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
-        $name = $array["name"];
-        $rollNo = $array["roll_no"];
-        $dept = $array["department"];
-        $tutor_name = $array["tutor_name"];
-        $ac_name = $array["ac_name"];
-        $time_out = $array["time_of_leaving"];
-        $time_in = $array["time_of_entry"];
-        $addr = $array["address"];
-        $reason = $array['reason'];
-        $file = $array['file'];
-        $file_name = $file['name'];
-        $tmp = $file['tmp_name'];
-        $temp= explode('.',$file_name);
-        $extension = end($temp);
-        echo $extension;
-        // $file_name =  
-        // print_r($file);
-        exit;
-
-        chdir($_SERVER["DOCUMENT_ROOT"].'/../../');
-        $dir = "files/accomodation/authorization-pdf/" . $file_name . ".pdf";
-        if (move_uploaded_file($tmp, $dir)) {
-               
-        } 
-        try {
-            $sqlQuery = "UPDATE `working_days_pass` SET ac_name='$ac_name',tutor_name='$tutor_name',time_of_leave='$time_out',time_of_entry='$time_in',
-            address_name='$addr',already_booked=1,allowed_or_not=0,reason='$reason' WHERE roll_no=$rollNo;";
-            $result = $sqlConn->query($sqlQuery);
-            if ($result) {
-                $sqlQuery = "SELECT roll_no FROM `working_days_pass` WHERE roll_no=$rollNo ;";
-                $result = $sqlConn->query($sqlQuery);
-                if ($result) {
-                    $row = $result->fetch_assoc();
-                    if (isset($row["roll_no"])) {
-                        return true;
-                    } else {
-                        throw new Exception("Record Not Found");
-                    }
-                }
-
+    
+        // Extract and sanitize inputs
+        $name = $sqlConn->real_escape_string($array["name"]);
+        $rollNo = intval($array["roll_no"]);
+        $dept = $sqlConn->real_escape_string($array["department"]);
+        $tutor_name = $sqlConn->real_escape_string($array["tutor_name"]);
+        $ac_name = $sqlConn->real_escape_string($array["ac_name"]);
+        $time_out = $sqlConn->real_escape_string($array["time_of_leaving"]);
+        $time_in = $sqlConn->real_escape_string($array["time_of_entry"]);
+        $addr = $sqlConn->real_escape_string($array["address"]);
+        $reason = $sqlConn->real_escape_string($array['reason']);
+    
+        if (isset($array['file']) && $array['file']['error'] === UPLOAD_ERR_OK) {
+            $file = $array['file'];
+            $file_name = md5($rollNo) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
+            $tmp = $file['tmp_name'];
+            $dir = $_SERVER["DOCUMENT_ROOT"] . '/../../files/student-files/working-day-auth-letter/' . $file_name;
+    
+            if (!move_uploaded_file($tmp, $dir)) {
+                throw new Exception("Failed to move uploaded file.");
             }
-        } catch (Exception $exe) {
-            $sqlQuery = "INSERT INTO `working_days_pass` VALUES('$name',$rollNo,'$dept',
-            '$tutor_name','$ac_name','$time_out','$time_in','$addr',1,0,'','$reason','','')";
-            $result = $sqlConn->query($sqlQuery);
-            if ($result) {
-                return true;
-            } else {
-                return "record not found";
-            }
+    
+            $file_path = $file_name;
+        } else {
+            $file_path = ''; // Or handle the case where no file is uploaded
         }
-
+    
+        try {
+            // Prepare the SQL statement
+            $stmt = $sqlConn->prepare("
+                INSERT INTO `working_days_pass` 
+                (name, roll_no, department, tutor_name, ac_name, time_of_leave, time_of_entry, address_name, already_booked, allowed_or_not, reason, file_path) 
+                VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, 0, ?, ?)
+                ON DUPLICATE KEY UPDATE 
+                    ac_name = VALUES(ac_name),
+                    tutor_name = VALUES(tutor_name),
+                    time_of_leave = VALUES(time_of_leave),
+                    time_of_entry = VALUES(time_of_entry),
+                    address_name = VALUES(address_name),
+                    reason = VALUES(reason),
+                    file_path = VALUES(file_path)
+            ");
+    
+            $stmt->bind_param("sissssssss", $name, $rollNo, $dept, $tutor_name, $ac_name, $time_out, $time_in, $addr, $reason, $file_path);
+    
+            if (!$stmt->execute()) {
+                throw new Exception("Failed to execute query: " . $stmt->error);
+            }
+    
+            return true;
+        } catch (Exception $e) {
+            // Log error or handle it as needed
+            return "Error: " . $e->getMessage();
+        }
     }
-
+    
     public function setGeneralDayPass($array)  //this helps to set general_holiday_pass record in database
     {
 
