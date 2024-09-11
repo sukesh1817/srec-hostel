@@ -84,9 +84,13 @@ class Pass_class
         $addr = $array["address"];
         $reason = $array['reason'];
         $file = $array['file'];
+        $file_name = $file['name'];
         $tmp = $file['tmp_name'];
+        $temp= explode('.',$file_name);
+        $extension = end($temp);
+        echo $extension;
         // $file_name =  
-        print_r($file);
+        // print_r($file);
         exit;
 
         chdir($_SERVER["DOCUMENT_ROOT"].'/../../');
