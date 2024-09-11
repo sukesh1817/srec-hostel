@@ -28,12 +28,14 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
         const now = new Date();
         const hour = now.getHours();
         const min = now.getMinutes();
-
+        now.setSeconds(0, 0);
+        if (now.getMilliseconds() > 0) {
+          now.setMinutes(now.getMinutes() + 1);
+        }
         const todayDate = new Date().toISOString().slice(0, 10);
-
-        const currentDateTime = todayDate + `T${hour}:${min}`
+        
+        const currentDateTime = now.toISOString().slice(0, 16);
         const maxTime = todayDate + "T23:59";
-
         const timeOutInput = document.getElementById('timeOut');
         timeOutInput.setAttribute('min', currentDateTime);
         timeOutInput.setAttribute('max', maxTime);
