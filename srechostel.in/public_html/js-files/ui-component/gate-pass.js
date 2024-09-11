@@ -34,10 +34,14 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
         const maxTime = todayDate + "T23:59";
 
         const timeOutInput = document.getElementById('timeOut');
+        const timeInInput = document.getElementById('timeIn');
+
         timeOutInput.setAttribute('min', currentDateTime);
         timeOutInput.setAttribute('max', maxTime);
+        
+        timeInInput.setAttribute('min', currentDateTime);
+        timeInInput.setAttribute('max', maxTime);
       }
-
       updateMinTime();
       setInterval(updateMinTime, 60000);
     } else if (passType === "college_working_days") {
