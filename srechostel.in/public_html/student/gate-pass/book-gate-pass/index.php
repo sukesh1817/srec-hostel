@@ -157,7 +157,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     } else {
                         echo "General Holiday day pass ";
                     }
-                    ?><strong>Already booked</strong></h1>
+                    ?><strong>already booked</strong></h1>
                     <p class="col-lg-6 mx-auto mb-4">
                         Your gatepass is already booked please check it
                     </p>
@@ -205,7 +205,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                     <svg class="bi mt-5 mb-3" width="48" height="48">
                                         <use xlink:href="#check2-circle"></use>
                                     </svg>
-                                    <h1 class="text-body-emphasis">Out pass <strong>Booked Successfully</strong></h1>
+                                    <h1 class="text-body-emphasis">Out pass <strong>booked successfully</strong></h1>
                                     <p class="col-lg-6 mx-auto mb-4">
                                         Out pass is booked successfully, to check the out pass status, click the below button
                                     </p>
@@ -225,7 +225,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                     <svg class="bi mt-5 mb-3" width="48" height="48">
                                         <use xlink:href="#check2-circle"></use>
                                     </svg>
-                                    <h1 class="text-body-emphasis">Out pass <strong>Booked Failed</strong></h1>
+                                    <h1 class="text-body-emphasis">Out pass <strong>booked failed</strong></h1>
                                     <p class="col-lg-6 mx-auto mb-4">
                                         Something went wrong, please contact admin
                                     </p>
@@ -246,7 +246,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <svg class="bi mt-5 mb-3" width="48" height="48">
                                     <use xlink:href="#check2-circle"></use>
                                 </svg>
-                                <h1 class="text-body-emphasis">Out pass Booked Declined</strong></h1>
+                                <h1 class="text-body-emphasis">Out pass booked declined</strong></h1>
                                 <p class="col-lg-6 mx-auto mb-4">
                                     Your details not added in hostel records, please contact admin
                                 </p>
@@ -293,7 +293,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                         <svg class="bi mt-5 mb-3" width="48" height="48">
                                             <use xlink:href="#check2-circle"></use>
                                         </svg>
-                                        <h1 class="text-body-emphasis">Working day pass <strong>Booked Successfully</strong></h1>
+                                        <h1 class="text-body-emphasis">Working day pass <strong>booked successfully</strong></h1>
                                         <p class="col-lg-6 mx-auto mb-4">
                                             Working day pass is booked successfully , to check it click the below button
                                         </p>
@@ -312,7 +312,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                         <svg class="bi mt-5 mb-3" width="48" height="48">
                                             <use xlink:href="#check2-circle"></use>
                                         </svg>
-                                        <h1 class="text-body-emphasis">Working day pass <strong>Booked Failed</strong></h1>
+                                        <h1 class="text-body-emphasis">Working day pass <strong>booked failed</strong></h1>
                                         <p class="col-lg-6 mx-auto mb-4">
                                             Something went wrong
                                         </p>
@@ -333,7 +333,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                     <svg class="bi mt-5 mb-3" width="48" height="48">
                                         <use xlink:href="#check2-circle"></use>
                                     </svg>
-                                    <h1 class="text-body-emphasis">Working day pass Booked Declined</strong></h1>
+                                    <h1 class="text-body-emphasis">Working day pass booked declined</strong></h1>
                                     <p class="col-lg-6 mx-auto mb-4">
                                         Your details not added in hostel records, please contact admin
                                     </p>
@@ -378,7 +378,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                             <svg class="bi mt-5 mb-3" width="48" height="48">
                                                 <use xlink:href="#check2-circle"></use>
                                             </svg>
-                                            <h1 class="text-body-emphasis">General holiday pass <strong>Booked Successfully</strong></h1>
+                                            <h1 class="text-body-emphasis">General holiday pass <strong>booked successfully</strong></h1>
                                             <p class="col-lg-6 mx-auto mb-4">
                                                 General holiday pass is booked successfully , to check it click the below button
                                             </p>
@@ -398,7 +398,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                             <svg class="bi mt-5 mb-3" width="48" height="48">
                                                 <use xlink:href="#check2-circle"></use>
                                             </svg>
-                                            <h1 class="text-body-emphasis">General holiday pass <strong>Booked Failed</strong></h1>
+                                            <h1 class="text-body-emphasis">General holiday pass <strong>booked failed</strong></h1>
                                             <p class="col-lg-6 mx-auto mb-4">
                                                 Something went wrong
                                             </p>
@@ -418,7 +418,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                         <svg class="bi mt-5 mb-3" width="48" height="48">
                                             <use xlink:href="#check2-circle"></use>
                                         </svg>
-                                        <h1 class="text-body-emphasis">General holiday pass Booked Declined</strong></h1>
+                                        <h1 class="text-body-emphasis">General holiday pass booked declined</strong></h1>
                                         <p class="col-lg-6 mx-auto mb-4">
                                             Your details not added in hostel records, please contact admin
                                         </p>
