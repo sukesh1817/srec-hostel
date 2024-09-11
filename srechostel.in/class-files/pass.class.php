@@ -89,9 +89,7 @@ class Pass_class
             $file = $array['file'];
             $file_name = md5($rollNo) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
             $tmp = $file['tmp_name'];
-            chdir($_SERVER["DOCUMENT_ROOT"]."/../../");
-            echo getcwd();
-            $dir = 'files/student-files/working-day-auth-letter/' . $file_name;
+            $dir = $_SERVER["DOCUMENT_ROOT"]."/../../".'files/student-files/working-day-auth-letter/' . $file_name;
     
             if (!move_uploaded_file($tmp, $dir)) {
                 throw new Exception("Failed to move uploaded file.");
