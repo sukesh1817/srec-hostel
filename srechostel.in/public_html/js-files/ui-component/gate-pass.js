@@ -25,6 +25,7 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
             `;
       // out pass date fixing
       const now = new Date();
+      console.log(now);
       now.setSeconds(0, 0);
       const currentDateTime = now.toISOString().slice(0, 16);
       const todayDate = now.toISOString().slice(0, 10);
