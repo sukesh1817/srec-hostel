@@ -1,33 +1,32 @@
+<?php
+// check the login user is student
+include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php"; 
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Welcome <?php if(isset($_SESSION['name'])){echo $_SESSION['name'];}else{echo "Student";} ?></title>
+  <title>Gate pass</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link  rel="icon" type="image/x-icon" href="/images/icons/gate-pass-icon.png">
-
-<link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
-<style>
-  body {
-  font-family: "Poppins", sans-serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-</style>
+  <?php
+    // poppins font css included.
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php"; 
+    ?>
 </head>
 
 
 <body>
-  <?php
-  include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/student-template/common-template/navbar.php";
-  ?>
+    <?php
+    // navbar html code is included.
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
 
-  <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
+
+    ?>
+
+  <!-- <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
       <symbol id="check2" viewBox="0 0 16 16">
         <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"></path>
       </symbol>
@@ -71,9 +70,7 @@
           </button>
         </li>
       </ul>
-    </div>
-
-
+    </div> -->
 
 
   <div class="col-lg-8 mx-auto p-2 py-md-5" bis_skin_checked="1">
@@ -86,18 +83,14 @@
 
     <main>
       <div class="container ms-1">
-
-
         <h1 class="text-body-emphasis">Book the gate pass to enjoy the journey</h1>
         <p class="fs-5 col-md-8">Quickly Book the gate pass to enjoy the journey and return back to hostel in happy way.
         </p>
-
         <div class="mb-5" bis_skin_checked="1">
           <a href="/stud-panel/gate-pass/book-gate-pass/" class="btn btn-dark btn-lg px-4 rounded-1">Book gate pass</a>
         </div>
       </div>
       <hr class="col-3 col-md-2 mb-5">
-
       <div class="bg-dark text-secondary px-4 py-5 text-center rounded-1" bis_skin_checked="1">
         <div class="py-5" bis_skin_checked="1">
           <h1 class="display-5 fw-bold text-white">Check Your Pass</h1>
@@ -114,7 +107,6 @@
         </div>
       </div>
     </main>
-
   </div>
 
 </body>

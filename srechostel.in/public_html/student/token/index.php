@@ -1,5 +1,6 @@
 <?php
-include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php"; // check the login user is student
+// check the login user is student
+include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php"; 
 ?>
 
 <!DOCTYPE HTML>
