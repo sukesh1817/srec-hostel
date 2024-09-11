@@ -9,7 +9,21 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Book Gate Pass</title>
+    <meta name="description"
+        content="Book your gate pass for college with ease. Get your outpass, working day pass, or general holiday pass. Check your gate pass status online.">
+    <meta name="keywords"
+        content="gate pass, outpass, working day pass, college pass, book gate pass, check gate pass status">
+
+    <title>Book Gate Pass | Outpass, Working Day Pass, General Holiday Pass</title>
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "College",
+      "name": "Sri ramakrishna engineering collage",
+      "url": "https://srechostel.in/",
+      "description": "Book your gate pass including outpass, working day pass, and general holiday pass."
+    }
+    </script>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
     <?php
     // poppins font css included.
@@ -425,12 +439,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <div class="container">
                         <div class="login-container">
                             <div class="heads py-2 rounded-1">
-                                <h2 class="text-center">Gate pass</h2>
+                                <h1 class="text-center">Book Your Gate Pass</h1>
                             </div>
                             <div class="padcen rounded">
                                 <form action="/gate-pass/book-gate-pass/" method="post" id="passForm" enctype="multipart/form-data">
                                     <div class="pass-type-selection ">
-                                        <label class="text-center" for="">Select Pass Type</label><br>
+                                        <h2 class="text-center" for="">Select Pass Type</h2>
                                         <div class="in">
                                             <input type="radio" id="gatePass" name="pass_type" value="gate_pass" class="bullet mt-2"
                                                 required>
