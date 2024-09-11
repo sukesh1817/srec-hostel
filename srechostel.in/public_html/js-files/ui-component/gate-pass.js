@@ -26,13 +26,14 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
       // out pass date fixing
       function setMinTime() {
         const now = new Date();
-        now.setSeconds(0, 0);
-        if (now.getMilliseconds() > 0) {
-          now.setMinutes(now.getMinutes() + 1);
-        }
-        const currentDateTime = now.toISOString().slice(0, 16);
+        const hour = now.getHours();
+        const min = now.getMinutes();
+
         const todayDate = new Date().toISOString().slice(0, 10);
+
+        const currentDateTime = todayDate + `T${hour}:${min}`
         const maxTime = todayDate + "T23:59";
+
         const timeOutInput = document.getElementById('timeOut');
         timeOutInput.setAttribute('min', currentDateTime);
         timeOutInput.setAttribute('max', maxTime);
