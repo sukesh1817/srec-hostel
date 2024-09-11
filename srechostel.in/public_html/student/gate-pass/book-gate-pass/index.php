@@ -62,12 +62,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             font-weight: bold;
         }
 
-        .login-container input {
-            /* padding: 8px;
+        .login-container input[type=text],input[type=datetime-local] {
+            padding: 8px;
             margin-bottom: 16px;
             box-sizing: border-box;
             border: 1px solid #ccc;
-            border-radius: 4px; */
+            border-radius: 4px;
         }
 
         input::-webkit-outer-spin-button,
@@ -242,7 +242,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     isset($_POST["time_of_leaving"]) and
                     isset($_POST["time_of_entry"]) and
                     isset($_POST["address"]) and
-                    isset($_POST["reason"])
+                    isset($_POST["reason"]) and 
+                    isset($_FILES['permission_letter'])
                 ) {
                     $array = array(
                         "name" => $details["name"],
@@ -253,7 +254,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         "time_of_leaving" => $_POST["time_of_leaving"],
                         "time_of_entry" => $_POST["time_of_entry"],
                         "address" => $_POST["address"],
-                        "reason" => $_POST["reason"]
+                        "reason" => $_POST["reason"],
+                        "file" => $_FILES['permission_letter']
                     );
                     $result = $pass->setWorkingDayPass($array);
                     if ($result) {
