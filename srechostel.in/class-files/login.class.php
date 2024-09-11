@@ -18,6 +18,7 @@ class login
                 $sqlOuery = "SELECT pass_word FROM `login_auth` WHERE pass_word='$password';";
                 $result = $sqlConn->query($sqlOuery);
                 if ($result) {
+                    echo "done";
                     $row = $result->fetch_assoc();
                     if (isset($row["pass_word"])) {
                         $sqlOuery = "SELECT * FROM `login_auth` WHERE pass_word='$password' AND user_id='$username';";
