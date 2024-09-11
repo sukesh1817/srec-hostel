@@ -133,7 +133,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             // if token is booked then, show the token status.
             if ($isTokenBooked) {
                 ?>
-                <div class="container-fluid" bis_skin_checked="1">
+                <div class="container-fluid mt-4" bis_skin_checked="1">
                     <div class="text-center  rounded-3" bis_skin_checked="1">
                         <h1 class="text-body-emphasis">Hello,
                             <?php if (isset($_SESSION['name'])) {
