@@ -1,6 +1,6 @@
 <?php
 // check the login user is student
-include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php"; 
+include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 ?>
 
 <!DOCTYPE HTML>
@@ -14,18 +14,18 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         crossorigin="anonymous">
     <?php
     // poppins font css included.
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php"; 
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
 </head>
 
 <body>
     <?php
     // navbar html code is included.
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php"; 
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
 
     // token class file is included.
     require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/token.class.php");
-    
+
     // initialize the token class.
     $token = new Token();
 
@@ -64,8 +64,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <?php
                 } else {
                     ?>
-                        <a class="align-items-center btn btn-outline-secondary rounded-1 mt-2"
-                            href="/token/book-token/">Book
+                        <a class="align-items-center btn btn-outline-secondary rounded-1 mt-2" href="/token/book-token/">Book
                             Token</a>
                     <?php
                 }
@@ -84,7 +83,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             </div>
         </div>
     </div>
-    
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
         crossorigin="anonymous"></script>
 </body>
