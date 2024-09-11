@@ -25,12 +25,13 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
             `;
       // out pass date fixing
       const now = new Date();
-      const currentDateTime = now.toISOString().slice(0, 16); 
-      const todayDate = now.toISOString().slice(0, 10); 
-      const maxTime = todayDate + "T23:59"; 
+      now.setSeconds(0, 0);
+      const currentDateTime = now.toISOString().slice(0, 16);
+      const todayDate = now.toISOString().slice(0, 10);
+      const maxTime = todayDate + "T23:59";
       const timeOutInput = document.getElementById('timeOut');
-      timeOutInput.setAttribute('min', currentDateTime); 
-      timeOutInput.setAttribute('max', maxTime); 
+      timeOutInput.setAttribute('min', currentDateTime);
+      timeOutInput.setAttribute('max', maxTime);
     } else if (passType === "college_working_days") {
       // Display fields for college working days home pass
       passDetailsContainer.innerHTML = `
