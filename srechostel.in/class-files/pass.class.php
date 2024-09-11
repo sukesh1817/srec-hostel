@@ -90,7 +90,6 @@ class Pass_class
             $file_name = md5($rollNo) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
             $tmp = $file['tmp_name'];
             echo getcwd();
-            system("ls");
             exec('ls', $output, $retval);
             echo $output;
             $dir = $_SERVER["DOCUMENT_ROOT"]."/../../".'files/student-files/working-day-auth-letter/' . $file_name;
