@@ -428,6 +428,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <h2 class="text-center">Gate pass</h2>
                             </div>
                             <div class="padcen rounded">
+                            <form action="/gate-pass/book-gate-pass/" method="post" id="passForm" enctype="multipart/form-data">
                                 <div class="pass-type-selection ">
                                     <label for="">Select Pass Type</label><br>
                                     <div class="in">
@@ -443,7 +444,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                         class="bullet" required>
                                     <label for="generalHolidays">General holidays pass</label><br>
                                 </div>
-                                <form action="/gate-pass/book-gate-pass/" method="post" id="passForm" enctype="multipart/form-data">
                                     <div id="passDetails"></div>
                                     <div class="d-flex justify-content-center">
                                         <button class="btn btn-dark container-fluid rounded-1" type="submit">Book the pass</button>
