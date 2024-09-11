@@ -430,18 +430,18 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             <div class="padcen rounded">
                             <form action="/gate-pass/book-gate-pass/" method="post" id="passForm" enctype="multipart/form-data">
                                 <div class="pass-type-selection ">
-                                    <label for="">Select Pass Type</label><br>
+                                    <label class="text-center" for="">Select Pass Type</label><br>
                                     <div class="in">
-                                        <input type="radio" id="gatePass" name="pass_type" value="gate_pass" class="bullet"
+                                        <input type="radio" id="gatePass" name="pass_type" value="gate_pass" class="bullet mt-2"
                                             required>
                                         <label for="gatePass">Out pass</label><br>
                                     </div>
                                     <input type="radio" id="collegeWorkingDays" name="pass_type" value="college_working_days"
-                                        class="bullet" required>
+                                        class="bullet mt-2" required>
                                     <label for="collegeWorkingDays">Working days pass</label><br>
 
                                     <input type="radio" id="generalHolidays" name="pass_type" value="general_holidays"
-                                        class="bullet" required>
+                                        class="bullet mt-2" required>
                                     <label for="generalHolidays">General holidays pass</label><br>
                                 </div>
                                     <div id="passDetails"></div>
