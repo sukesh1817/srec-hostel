@@ -100,33 +100,34 @@ class Pass_class
         }
 
         try {
-            // Prepare the SQL statement
-            $stmt = $sqlConn->prepare("
-                INSERT INTO `working_days_pass` 
-                (name, roll_no, department, tutor_name, ac_name, time_of_leave, time_of_entry, address_name, already_booked, allowed_or_not, reason, file_path) 
-                VALUES (?, ?, ?, ?, ?, ?, ?, ?, 1, 0, ?, ?)
-                ON DUPLICATE KEY UPDATE 
-                    ac_name = VALUES(ac_name),
-                    tutor_name = VALUES(tutor_name),
-                    time_of_leave = VALUES(time_of_leave),
-                    time_of_entry = VALUES(time_of_entry),
-                    address_name = VALUES(address_name),
-                    reason = VALUES(reason),
-                    file_path = VALUES(file_path)
-            ");
+            $sqlQuery = "UPDATE working_days_pass SET ac_name='$ac_name',tutor_name='$tutor_name',time_of_leave='$time_out',time_of_entry='$time_in',
+            address_name='$addr',already_booked=1,allowed_or_not=0,reason='$reason',file_path='$file_name' WHERE roll_no=$rollNo;";
+            $result = $sqlConn->query($sqlQuery);
+            if ($result) {
+                $sqlQuery = "SELECT roll_no FROM working_days_pass WHERE roll_no=$rollNo ;";
+                $result = $sqlConn->query($sqlQuery);
+                if ($result) {
+                    $row = $result->fetch_assoc();
+                    if (isset($row["roll_no"])) {
+                        return true;
+                    } else {
+                        throw new Exception("Record Not Found");
+                    }
+                }
 
-            $stmt->bind_param("sissssssss", $name, $rollNo, $dept, $tutor_name, $ac_name, $time_out, $time_in, $addr, $reason, $file_name);
-
-            if (!$stmt->execute()) {
-                throw new Exception("Failed to execute query: " . $stmt->error);
             }
-
-            return true;
-        } catch (Exception $e) {
-            // Log error or handle it as needed
-            return "Error: " . $e->getMessage();
+        } catch (Exception $exe) {
+            $sqlQuery = "INSERT INTO working_days_pass VALUES('$name',$rollNo,'$dept',
+            '$tutor_name','$ac_name','$time_out','$time_in','$addr',1,0,'','$reason','','','$file_name');";
+            $result = $sqlConn->query($sqlQuery);
+            if ($result) {
+                return true;
+            } else {
+                return "record not found";
+            }
         }
-    }
+
+    }  
 
     public function setGeneralDayPass($array)  //this helps to set general_holiday_pass record in database
     {
