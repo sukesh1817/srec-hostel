@@ -76,3 +76,7 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
     }
   });
 });
+
+const timeOutInput = document.getElementById('timeOut');
+const today = new Date().toISOString().slice(0, 16); // Get current date and time in required format
+timeOutInput.setAttribute('min', today);
