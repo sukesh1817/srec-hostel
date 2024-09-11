@@ -90,6 +90,8 @@ class Pass_class
             $file_name = md5($rollNo) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
             $tmp = $file['tmp_name'];
             chdir($_SERVER["DOCUMENT_ROOT"]."/../../");
+            echo getcwd();
+            exit;
             $dir = 'files/student-files/working-day-auth-letter/' . $file_name;
     
             if (!move_uploaded_file($tmp, $dir)) {
