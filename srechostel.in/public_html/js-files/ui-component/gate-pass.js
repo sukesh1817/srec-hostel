@@ -24,15 +24,18 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
                 <input type="hidden" name="passType" value="gatePass">
             `;
       // out pass date fixing
-      const now = new Date();
-      console.log(now);
-      now.setSeconds(0, 0);
-      const currentDateTime = now.toISOString().slice(0, 16);
-      const todayDate = now.toISOString().slice(0, 10);
-      const maxTime = todayDate + "T23:59";
-      const timeOutInput = document.getElementById('timeOut');
-      timeOutInput.setAttribute('min', currentDateTime);
-      timeOutInput.setAttribute('max', maxTime);
+      function updateMinTime() {
+        const now = new Date();
+        now.setSeconds(0, 0);
+        const currentDateTime = now.toISOString().slice(0, 16);
+        const todayDate = now.toISOString().slice(0, 10);
+        const maxTime = todayDate + "T23:59";
+        const timeOutInput = document.getElementById('timeOut');
+        timeOutInput.setAttribute('min', currentDateTime);
+        timeOutInput.setAttribute('max', maxTime);
+      }
+      updateMinTime();
+      setInterval(updateMinTime, 60000);
     } else if (passType === "college_working_days") {
       // Display fields for college working days home pass
       passDetailsContainer.innerHTML = `
