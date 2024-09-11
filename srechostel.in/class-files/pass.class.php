@@ -91,15 +91,10 @@ class Pass_class
             $file_name = md5($rollNo) . '.' . pathinfo($file['name'], PATHINFO_EXTENSION);
             $tmp = $file['tmp_name'];
             chdir($_SERVER["DOCUMENT_ROOT"] . "/../../");
-            chdir("files");
-            echo getcwd();
-            exit;
-            // $dir =  . $file_name;
-            if (!move_uploaded_file($tmp, $dir)) {
+            chdir("files/student-files/working-day-auth-letter/");
+            if (!move_uploaded_file($tmp, $file_name)) {
                 throw new Exception("Failed to move uploaded file.");
             }
-
-            $file_path = $file_name;
         } else {
             $file_path = ''; // Or handle the case where no file is uploaded
         }
@@ -120,7 +115,7 @@ class Pass_class
                     file_path = VALUES(file_path)
             ");
 
-            $stmt->bind_param("sissssssss", $name, $rollNo, $dept, $tutor_name, $ac_name, $time_out, $time_in, $addr, $reason, $file_path);
+            $stmt->bind_param("sissssssss", $name, $rollNo, $dept, $tutor_name, $ac_name, $time_out, $time_in, $addr, $reason, $file_name);
 
             if (!$stmt->execute()) {
                 throw new Exception("Failed to execute query: " . $stmt->error);
