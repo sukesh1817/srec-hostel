@@ -78,6 +78,11 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
   });
 });
 
+// out pass date fixing
+const today = new Date();
+const todayDate = today.toISOString().slice(0, 10);
+const minTime = todayDate + "T00:00";
+const maxTime = todayDate + "T23:59";
 const timeOutInput = document.getElementById('timeOut');
-const today = new Date().toISOString().slice(0, 16); // Get current date and time in required format
-timeOutInput.setAttribute('min', today);
+timeOutInput.setAttribute('min', minTime);
+timeOutInput.setAttribute('max', maxTime);
