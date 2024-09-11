@@ -444,7 +444,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             <div class="padcen rounded">
                                 <form action="/gate-pass/book-gate-pass/" method="post" id="passForm" enctype="multipart/form-data">
                                     <div class="pass-type-selection ">
-                                        <h2 class="text-center" for="">Select Pass Type</h2>
+                                        <h2 class="text-center mt-0">Select Pass Type</h2>
                                         <div class="in">
                                             <input type="radio" id="gatePass" name="pass_type" value="gate_pass" class="bullet mt-2"
                                                 required>
