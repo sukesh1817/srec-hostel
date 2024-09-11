@@ -1,3 +1,8 @@
+<?php
+// check the login user is student
+include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -456,7 +461,6 @@
         $domainName = "https://testing.srechostel.in/api/auth/logout/";
         ?>
         <div class="px-4 py-5 my-5 text-center" bis_skin_checked="1">
-            <img class="d-block mx-auto mb-4" src="/images/layout-image/restaurant.png" alt="" width="72" height="57">
             <h1 class="display-5 fw-bold text-body-emphasis">Something went wrong</h1>
             <div class="col-lg-6 mx-auto" bis_skin_checked="1">
                 <p class="lead mb-4">Please login again</p>
