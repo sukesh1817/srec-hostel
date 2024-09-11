@@ -110,8 +110,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
         // if anyone of gatepass is booked then execute this block.
         if ($alreadyBooked[0] or $alreadyBooked[1] or $alreadyBooked[2]) {
-
             // this block executes when the gate pass is already booked.
+    
+            // breadcrumbs  included.
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/__breadcrumbs/bookpass.php";
             ?>
 
             <div class="container my-5" bis_skin_checked="1">
@@ -123,11 +125,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     </svg>
                     <?php
                     if ($alreadyBooked[0]) {
-
-
-                        // breadcrumbs  included.
-                        require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/__breadcrumbs/bookpass.php";
-
                         ?>
                         <h1 class="text-body-emphasis"><strong>Out pass</strong> is already booked</h1>
                         <p class="col-lg-6 mx-auto mb-4">
