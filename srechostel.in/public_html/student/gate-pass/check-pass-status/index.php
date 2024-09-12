@@ -205,7 +205,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             $row = array($pass->getMyPass("general_pass"), 3);
         }
         ?>
-        <div class="container mb-4" bis_skin_checked="1">
+        <div class="container mb-2 mt-4" bis_skin_checked="1">
             <div class="position-relative  text-center text-muted bg-body border border-dashed rounded-2"
                 bis_skin_checked="1">
                 <svg class="bi mb-3" width="48" height="48">
@@ -213,29 +213,19 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 </svg>
                 <h1 class="text-body-emphasis">
                     <?php
-                        if($row[1] == 1) {
-                            echo "Gate pass information";
-                        } else if($row[1] == 2) {
-                            echo "Working day pass information";
+                    if ($row[1] == 1) {
+                        echo "Gate pass information";
+                    } else if ($row[1] == 2) {
+                        echo "Working day pass information";
 
-                        } else {
-                            echo "General holiday pass information";
+                    } else {
+                        echo "General holiday pass information";
 
-                        }
+                    }
                     ?>
                 </h1>
                 <hr>
                 <p class="col-lg-6 mx-auto mb-4">
-                    <?php
-                    // echo "Name : <strong>" . $row['stud_name'] . '</strong><br>';
-                    // echo "Roll no : <strong> " . $row['roll_no'] . '</strong><br>';
-                    // echo "Department : <strong> " . $row['department'] . '</strong><br>';
-                    // echo "From : <strong>" . $row['time_of_leave'] . '</strong><br>';
-                    // echo "To : <strong>" . $row['time_of_entry'] . '</strong><br>';
-                    // echo "Address : <strong> " . $row['address_name'] . '</strong><br>';
-                    ?>
-
-
                 <div id="html-content">
                     <div class="container-1">
                         <div class="row">
