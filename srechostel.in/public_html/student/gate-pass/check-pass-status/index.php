@@ -270,7 +270,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/from.png" alt=""></div>
-                                    <div class="title"><?php echo $row[0]['time_of_leave'] ?></div>
+                                    <div class="title"><?php echo date('d-m-Y | H:i:s', $row['time_of_leave']);
+ ?></div>
                                     <div class="subtitle">From</div>
                                 </div>
                             </div>
