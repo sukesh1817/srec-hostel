@@ -64,7 +64,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <?php
                 } else {
                     ?>
-                        <a class="align-items-center btn btn-outline-secondary rounded-1 mt-2" href="/token/book-token/">Book
+                        <a class="align-items-center btn btn-dark rounded-1 mt-2" href="/token/book-token/">Book
                             Token</a>
                     <?php
                 }
