@@ -128,7 +128,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         .container-1 {
             max-width: 95%;
             margin: 5px auto;
-            border: 1px solid #ccc;
+            /* border: 1px solid #ccc; */
             padding: 20px;
             background-color: white;
         }
