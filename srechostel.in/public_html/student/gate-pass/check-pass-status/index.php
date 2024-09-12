@@ -204,7 +204,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         } else if ($alreadyBooked[2]) {
             $row = array($pass->getMyPass("general_pass"), 3);
         }
-        print_r($row);
         ?>
         <div class="container mb-4" bis_skin_checked="1">
             <div class="position-relative  text-center text-muted bg-body border border-dashed rounded-2"
