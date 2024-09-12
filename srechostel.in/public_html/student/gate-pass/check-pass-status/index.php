@@ -181,6 +181,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
 <body>
     <?php
+
+    // navbar html code is included.
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
+
     // included the gate pass class files.
     require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/pass.class.php");
 
