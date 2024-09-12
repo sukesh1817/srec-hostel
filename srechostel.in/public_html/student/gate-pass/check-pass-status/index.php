@@ -205,12 +205,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             $row = array($pass->getMyPass("general_pass"), 3);
         }
         ?>
-        <div class="container mb-2 mt-4" bis_skin_checked="1">
+        <div class="container mb-1 mt-4" bis_skin_checked="1">
             <div class="position-relative  text-center text-muted bg-body border border-dashed rounded-2"
                 bis_skin_checked="1">
-                <svg class="bi mb-3" width="48" height="48">
-                    <use xlink:href="#check2-circle"></use>
-                </svg>
                 <h1 class="text-body-emphasis">
                     <?php
                     if ($row[1] == 1) {
