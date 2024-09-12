@@ -209,9 +209,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
         <div class="container mb-4 mt-4" bis_skin_checked="1">
             <?php
+
             // bread crumbs included.
+            /*
             require_once($_SERVER["DOCUMENT_ROOT"] . "/__common/__breadcrumbs/bookpass.php");
             bread_crumb_gatepass("check pass status");
+            */
             ?>
             <div class="position-relative  text-center text-muted bg-body border border-dashed rounded-2"
                 bis_skin_checked="1">
