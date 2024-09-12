@@ -118,6 +118,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 <?php
                 // breadcrumbs  included.
                 require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/__breadcrumbs/bookpass.php";
+                bread_crumb_gatepass("book gate pass")
                 ?>
                 <div class="position-relative p-5 text-center text-muted bg-body border border-dashed  rounded-1"
                     bis_skin_checked="1">
