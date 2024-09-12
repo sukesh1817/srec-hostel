@@ -220,7 +220,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
                     } else {
                         echo "General holiday pass information";
-
                     }
                     ?>
                 </h1>
@@ -266,12 +265,24 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             </div>
                         </div>
                         <div class="row">
+                            <?php
+
+                            // converting the date-time-local to normal dates.
+                            $Fromdate = new DateTime($row[0]['time_of_leave']);
+                            $ToDate = new DateTime($row[0]['time_of_entry']);
+                            $from_date = $Fromdate->format('d-m-Y H:i');
+                            $to_date = $Todate->format('d-m-Y H:i');
+
+                            ?>
                             <div class="col-lg-6 col-md-12 mt-1">
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/from.png" alt=""></div>
-                                    <div class="title"><?php echo date('d-m-Y | H:i:s', $row[0]['time_of_leave']);
- ?></div>
+                                    <div class="title">
+                                        <?php
+                                        echo $from_date;
+                                        ?>
+                                    </div>
                                     <div class="subtitle">From</div>
                                 </div>
                             </div>
@@ -279,7 +290,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/to.png" alt=""></div>
-                                    <div class="title"><?php echo $row[0]['time_of_entry'] ?></div>
+                                    <div class="title"> <?php
+                                    echo $to_date;
+                                    ?></div>
                                     <div class="subtitle">To</div>
                                 </div>
                             </div>
