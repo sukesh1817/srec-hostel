@@ -27,7 +27,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         <header class="d-flex align-items-center pb-3 mb-5 border-bottom">
             <a href="#" class="d-flex align-items-center text-body-emphasis text-decoration-none">
                 <img src="/images/layout-image/press-pass.png" width="40" height="40">
-                <span class="fs-4">Gate pass</span>
+                <span class="fs-4 ms-2">Gate pass</span>
             </a>
         </header>
         <main>
