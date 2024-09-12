@@ -198,13 +198,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         // if pass is already booked then collect the data of the student.
         $row = [];
         if ($alreadyBooked[0]) {
-            $row = $pass->getMyPass("gate_pass");
+            $row = array($pass->getMyPass("gate_pass"), 1);
         } else if ($alreadyBooked[1]) {
-            $row = $pass->getMyPass("working_pass");
+            $row = array($pass->getMyPass("working_pass"), 2);
         } else if ($alreadyBooked[2]) {
-            $row = $pass->getMyPass("general_pass");
+            $row = array($pass->getMyPass("general_pass"), 3);
         }
-
+        print_r($row);
         ?>
         <div class="container mb-4" bis_skin_checked="1">
             <div class="position-relative  text-center text-muted bg-body border border-dashed rounded-2"
@@ -227,25 +227,15 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
                 <div id="html-content">
                     <div class="container-1">
-                        <h3 class="text-center title fw-bold">$passType</h3>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-md-12 mt-1">
-                                <div class="box">
-                                    <div class="icon">
-                                        <img class="avatar img-fluid" src='/profile-photo/' alt='profile-img' width='100'
-                                            height='100'>
-                                    </div>
-                                    <div class="title">Student profile</div>
-                                    <div class="subtitle">Image</div>
-                                </div>
-                            </div>
-                        </div>
+                        <h3 class="text-center title fw-bold">
+                            <?php ?>
+                        </h3>
                         <div class="row">
                             <div class="col-lg-6 mt-1">
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/name.png" alt=""></div>
-                                    <div class="title">$name</div>
+                                    <div class="title">Sukesh</div>
                                     <div class="subtitle">Name</div>
                                 </div>
                             </div>
@@ -253,7 +243,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/rollno.png" alt=""></div>
-                                    <div class="title">$rollNo</div>
+                                    <div class="title">2211058</div>
                                     <div class="subtitle">Rollno</div>
                                 </div>
                             </div>
@@ -263,44 +253,17 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/dept.png" alt=""></div>
-                                    <div class="title">$dept</div>
+                                    <div class="title">B.Tech AIDS</div>
                                     <div class="subtitle">Department</div>
                                 </div>
                             </div>
-                            <div class="col-lg-6 col-md-6 mt-1">
-                                <div class="box">
-                                    <div class="icon"><img style="width: 40px;height:40px;"
-                                            src="/images/layout-image/room.png" alt=""></div>
-                                    <div class="title">$room</div>
-                                    <div class="subtitle">Room no</div>
-                                </div>
-                            </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-6 col-md-12 mt-1">
-                                <div class="box">
-                                    <div class="icon"><img style="width: 40px;height:40px;"
-                                            src="/images/layout-image/hostel.png" alt=""></div>
-                                    <div class="title">$hostel</div>
-                                    <div class="subtitle">Hostel</div>
-                                </div>
-                            </div>
-                            <div class="col-lg-6 col-md-12 mt-6">
-                                <div class="box">
-                                    <div class="icon"><img style="width: 40px;height:40px;"
-                                            src="/images/layout-image/address.png" alt=""></div>
-                                    <div class="title">$address</div>
-                                    <div class="subtitle">Address</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-
                             <div class="col-lg-6 col-md-12 mt-1">
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/from.png" alt=""></div>
-                                    <div class="title">$timeLeave | $dateLeave</div>
+                                    <div class="title">12:12:12</div>
                                     <div class="subtitle">From</div>
                                 </div>
                             </div>
@@ -308,18 +271,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/to.png" alt=""></div>
-                                    <div class="title">$timeEnter | $dateEnter</div>
+                                    <div class="title">12:12:12</div>
                                     <div class="subtitle">To</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12 col-md-12 col-md-12 mt-1">
-                                <div class="box">
-                                    <div class="icon"><img style="width: 40px;height:40px;"
-                                            src="/images/layout-image/approvedby.png" alt=""></div>
-                                    <div class="title">$acceptedBy</div>
-                                    <div class="subtitle">Accepted by</div>
                                 </div>
                             </div>
                         </div>
