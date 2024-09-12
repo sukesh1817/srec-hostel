@@ -212,7 +212,19 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 <svg class="bi mb-3" width="48" height="48">
                     <use xlink:href="#check2-circle"></use>
                 </svg>
-                <h1 class="text-body-emphasis">Pass Information</h1>
+                <h1 class="text-body-emphasis">
+                    <?php
+                        if($row[1] == 1) {
+                            echo "Gate pass information";
+                        } else if($row[1] == 2) {
+                            echo "Working day pass information";
+
+                        } else {
+                            echo "General holiday pass information";
+
+                        }
+                    ?>
+                </h1>
                 <hr>
                 <p class="col-lg-6 mx-auto mb-4">
                     <?php
@@ -227,9 +239,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
                 <div id="html-content">
                     <div class="container-1">
-                        <h3 class="text-center title fw-bold">
-                            <?php ?>
-                        </h3>
                         <div class="row">
                             <div class="col-lg-6 mt-1">
                                 <div class="box">

@@ -664,7 +664,6 @@ class Pass_class
                         return true;
                     }
                 } else {
-                    echo "sample";
                     return false;
                 }
             }
