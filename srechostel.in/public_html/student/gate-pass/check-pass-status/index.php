@@ -271,7 +271,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             $Fromdate = new DateTime($row[0]['time_of_leave']);
                             $ToDate = new DateTime($row[0]['time_of_entry']);
                             $from_date = $Fromdate->format('d-m-Y H:i');
-                            $to_date = $Todate->format('d-m-Y H:i');
+                            $to_date = $ToDate->format('d-m-Y H:i');
 
                             ?>
                             <div class="col-lg-6 col-md-12 mt-1">
