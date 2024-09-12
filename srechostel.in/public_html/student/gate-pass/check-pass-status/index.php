@@ -270,8 +270,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             // converting the date-time-local to normal dates.
                             $Fromdate = new DateTime($row[0]['time_of_leave']);
                             $ToDate = new DateTime($row[0]['time_of_entry']);
-                            $from_date = $Fromdate->format('d-m-Y H:i');
-                            $to_date = $ToDate->format('d-m-Y H:i');
+                            $from_date = $Fromdate->format('d-m-Y H:iA');
+                            $to_date = $ToDate->format('d-m-Y H:iA');
 
                             ?>
                             <div class="col-lg-6 col-md-12 mt-1">
