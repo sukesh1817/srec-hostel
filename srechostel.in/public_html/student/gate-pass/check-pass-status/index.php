@@ -205,10 +205,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             $row = array($pass->getMyPass("general_pass"), 3);
         }
         ?>
-        <div class="container mb-1 mt-4" bis_skin_checked="1">
+        <div class="container mb-4 mt-4" bis_skin_checked="1">
             <div class="position-relative  text-center text-muted bg-body border border-dashed rounded-2"
                 bis_skin_checked="1">
-                <h1 class="text-body-emphasis">
+                <h1 class="text-body-emphasis mt-3">
                     <?php
                     if ($row[1] == 1) {
                         echo "Gate pass information";
