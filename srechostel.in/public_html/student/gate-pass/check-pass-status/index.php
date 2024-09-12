@@ -243,7 +243,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/name.png" alt=""></div>
-                                    <div class="title">Sukesh</div>
+                                    <div class="title"><?php echo $row[0]['stud_name'] ?></div>
                                     <div class="subtitle">Name</div>
                                 </div>
                             </div>
@@ -251,7 +251,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/rollno.png" alt=""></div>
-                                    <div class="title">2211058</div>
+                                    <div class="title"><?php echo $row[0]['roll_no'] ?></div>
                                     <div class="subtitle">Rollno</div>
                                 </div>
                             </div>
@@ -261,8 +261,17 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/dept.png" alt=""></div>
-                                    <div class="title">B.Tech AIDS</div>
+                                    <div class="title"><?php echo $row[0]['department'] ?></div>
                                     <div class="subtitle">Department</div>
+                                </div>
+                            </div>
+
+                            <div class="col-lg-6 mt-1">
+                                <div class="box">
+                                    <div class="icon"><img style="width: 40px;height:40px;"
+                                            src="/images/layout-image/dept.png" alt=""></div>
+                                    <div class="title"><?php echo $row[0]['address_name'] ?></div>
+                                    <div class="subtitle">Address</div>
                                 </div>
                             </div>
                         </div>
@@ -271,7 +280,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/from.png" alt=""></div>
-                                    <div class="title">12:12:12</div>
+                                    <div class="title"><?php echo $row[0]['time_of_leave'] ?></div>
                                     <div class="subtitle">From</div>
                                 </div>
                             </div>
@@ -279,7 +288,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="box">
                                     <div class="icon"><img style="width: 40px;height:40px;"
                                             src="/images/layout-image/to.png" alt=""></div>
-                                    <div class="title">12:12:12</div>
+                                    <div class="title"><?php echo $row[0]['time_of_entry'] ?></div>
                                     <div class="subtitle">To</div>
                                 </div>
                             </div>
