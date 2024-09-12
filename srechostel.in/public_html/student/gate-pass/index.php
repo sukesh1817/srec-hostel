@@ -40,7 +40,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <a href="/gate-pass/book-gate-pass/" class="btn btn-dark btn-lg px-4 rounded-1">Book gate pass</a>
                 </div>
             </div>
-            <hr class="col-3 col-md-2 mb-5">
+            <hr class="col-6 col-md-12 mb-5">
             <div class="bg-dark text-secondary px-4 py-5 text-center rounded-1" bis_skin_checked="1">
                 <div class="py-5" bis_skin_checked="1">
                     <h1 class="display-5 fw-bold text-white">Check Your Pass</h1>
