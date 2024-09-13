@@ -35,32 +35,37 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     if ($alreadyBooked[0] or $alreadyBooked[1] or $alreadyBooked[2]) {
         // this block executes when the gate pass is already booked.
         ?>
-        <div class="mx-3">
+        <div class="container mx-3">
+            <?php
+            // breadcrumbs  included.
+            require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/__breadcrumbs/bookpass.php";
+            bread_crumb_gatepass("edit gate pass");
+            ?>
             <h1 class="mt-2 mb-2 text-center">Edit Your Pass</h1>
             <div class="border-bottom"></div>
             <div id="this-is-form" class="container card p-3 col-md-12 col-lg-6 mt-4">
                 <h3 class="text-center">
-                <?php
-                $row = [];
+                    <?php
+                    $row = [];
 
-                if ($alreadyBooked[0]) {
+                    if ($alreadyBooked[0]) {
 
-                    if (
-                        isset($_POST["from"]) and
-                        isset($_POST["to"]) and
-                        isset($_POST["address"]) and
-                        isset($_POST["reason"])
-                    ) {
+                        if (
+                            isset($_POST["from"]) and
+                            isset($_POST["to"]) and
+                            isset($_POST["address"]) and
+                            isset($_POST["reason"])
+                        ) {
 
-                        $array = array(
-                            "from" => $_POST['from'],
-                            "to" => $_POST['to'],
-                            "address" => $_POST['address'],
-                            "reason" => $_POST['reason']
-                        );
-                        $edit = $pass->editPass($array, "gate_pass");
-                        if ($edit) {
-                            ?>
+                            $array = array(
+                                "from" => $_POST['from'],
+                                "to" => $_POST['to'],
+                                "address" => $_POST['address'],
+                                "reason" => $_POST['reason']
+                            );
+                            $edit = $pass->editPass($array, "gate_pass");
+                            if ($edit) {
+                                ?>
                                 <div class="px-4 py-5 my-5 text-center" bis_skin_checked="1">
                                     <img class="d-block mx-auto mb-4" src="/images/layout-image/gate.png" alt="" width="72" height="57">
                                     <h1 class="display-5 fw-bold text-body-emphasis">Gate pass edited Successfully</h1>
@@ -74,32 +79,32 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                     </div>
                                 </div>
                                 <?php
+                            }
+
                         }
+                        $row = $pass->getMyPass("gate_pass");
+                        echo "Out pass";
+                    } else if ($alreadyBooked[1]) {
+                        if (
+                            isset($_POST["from"]) and
+                            isset($_POST["to"]) and
+                            isset($_POST["address"]) and
+                            isset($_POST["ac_name"]) and
+                            isset($_POST["tutor_name"]) and
+                            isset($_POST['reason'])
+                        ) {
+                            $array = array(
+                                "from" => $_POST['from'],
+                                "to" => $_POST['to'],
+                                "address" => $_POST['address'],
+                                "ac_name" => $_POST['ac_name'],
+                                "tutor_name" => $_POST['tutor_name'],
+                                "reason" => $_POST['reason']
 
-                    }
-                    $row = $pass->getMyPass("gate_pass");
-                    echo "Out pass";
-                } else if ($alreadyBooked[1]) {
-                    if (
-                        isset($_POST["from"]) and
-                        isset($_POST["to"]) and
-                        isset($_POST["address"]) and
-                        isset($_POST["ac_name"]) and
-                        isset($_POST["tutor_name"]) and
-                        isset($_POST['reason'])
-                    ) {
-                        $array = array(
-                            "from" => $_POST['from'],
-                            "to" => $_POST['to'],
-                            "address" => $_POST['address'],
-                            "ac_name" => $_POST['ac_name'],
-                            "tutor_name" => $_POST['tutor_name'],
-                            "reason" => $_POST['reason']
-
-                        );
-                        $edit = $pass->editPass($array, "working_pass");
-                        if ($edit) {
-                            ?>
+                            );
+                            $edit = $pass->editPass($array, "working_pass");
+                            if ($edit) {
+                                ?>
                                     <div class="px-4 py-5 my-5 text-center" bis_skin_checked="1">
                                         <img class="d-block mx-auto mb-4" src="/images/layout-image/gate.png" alt="" width="72" height="57">
                                         <h1 class="display-5 fw-bold text-body-emphasis">Working day pass edited Successfully</h1>
@@ -113,27 +118,27 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                         </div>
                                     </div>
                                 <?php
+                            }
                         }
-                    }
-                    $row = $pass->getMyPass("working_pass");
-                    echo "Working day pass";
-                } else if ($alreadyBooked[2]) {
-                    if (
-                        isset($_POST["from"]) and
-                        isset($_POST["to"]) and
-                        isset($_POST["address"]) and
-                        isset($_POST['reason'])
-                    ) {
-                        $array = array(
-                            "from" => $_POST['from'],
-                            "to" => $_POST['to'],
-                            "address" => $_POST['address'],
-                            "reason" => $_POST['reason']
+                        $row = $pass->getMyPass("working_pass");
+                        echo "Working day pass";
+                    } else if ($alreadyBooked[2]) {
+                        if (
+                            isset($_POST["from"]) and
+                            isset($_POST["to"]) and
+                            isset($_POST["address"]) and
+                            isset($_POST['reason'])
+                        ) {
+                            $array = array(
+                                "from" => $_POST['from'],
+                                "to" => $_POST['to'],
+                                "address" => $_POST['address'],
+                                "reason" => $_POST['reason']
 
-                        );
-                        $edit = $pass->editPass($array, "general_pass");
-                        if ($edit) {
-                            ?>
+                            );
+                            $edit = $pass->editPass($array, "general_pass");
+                            if ($edit) {
+                                ?>
                                         <div class="px-4 py-5 my-5 text-center" bis_skin_checked="1">
                                             <img class="d-block mx-auto mb-4" src="/images/layout-image/gate.png" alt="" width="72" height="57">
                                             <h1 class="display-5 fw-bold text-body-emphasis">General holiday edited Successfully</h1>
@@ -147,12 +152,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                             </div>
                                         </div>
                                 <?php
+                            }
                         }
+                        $row = $pass->getMyPass("general_pass");
+                        echo "General Holiday pass";
                     }
-                    $row = $pass->getMyPass("general_pass");
-                    echo "General Holiday pass";
-                }
-                ?>
+                    ?>
                 </h3>
                 <form class="row g-3" method="POST">
                     <?php
@@ -202,8 +207,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         </div>
 
                         <div class="col-md-12">
-                            <label for="from" class="form-label">Authorization letter <span
-                                    class="text-danger">*</span></label>
+                            <label for="from" class="form-label">Authorization letter <span class="text-danger">*</span></label>
                             <input type="file" class="form-control rounded-1" id="from" required>
                         </div>
                         <?php
