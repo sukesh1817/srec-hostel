@@ -126,8 +126,8 @@ use Intervention\Image\Drivers\Gd\Driver;
                     if (file_exists($_SESSION['yourToken'] . $ext)) {
                         unlink($_SESSION['yourToken'] . $ext);
                     }
-                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/tmp/");
                 }
+                chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/tmp/");
                 $dir = $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
                     $manager = new ImageManager(new Driver());
