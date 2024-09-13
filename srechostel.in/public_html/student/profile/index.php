@@ -66,6 +66,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     $sur_name = $stud->getSurname();
     $log_det = $stud->getLoginDetails($_SESSION['yourToken']);
 
+    $profile_url = "https://tesing.srechostel.in/api/accounts/profile_photo/";
+
 
     ?>
     <div class="container-fluid alert alert-info" role="alert">
@@ -78,7 +80,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="avatar mt-5 mb-2"
-                        style="width: 150px;" src="/profile-photo/" alt="profile-picture">
+                        style="width: 150px;" src="<?php echo $profile_url; ?>" alt="profile-picture">
                     <span class="font-weight-bold"><?php echo $details[0]['name']; ?></span><span
                         class="text-black-50"><?php echo $details[1]['email']; ?></span><span> </span>
                 </div>
