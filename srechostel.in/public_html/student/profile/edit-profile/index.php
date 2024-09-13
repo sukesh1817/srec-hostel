@@ -319,7 +319,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 <?php
 // this package contains which domain you are working.
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
-$end_point = "js-files/ui-component/toogle.js";
+$end_point = "js-files/ui-component/toggle.js";
 ?>
 <script src="<?php echo $domain . $end_point; ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
