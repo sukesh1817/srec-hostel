@@ -1,7 +1,7 @@
 <?php
 
 // Include Composer's autoload file
-require_once $_SERVER['DOCUMENT_ROOT'] . '/../../composer/vendor/autoload.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../../conmposer/vendor/autoload.php';
 
 use Intervention\Image\ImageManagerStatic as Image;
 
