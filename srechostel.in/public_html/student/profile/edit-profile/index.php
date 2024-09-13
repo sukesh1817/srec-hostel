@@ -119,8 +119,7 @@ use Intervention\Image\Drivers\Gd\Driver;
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             if ($ext == "heic" or $ext == "HEIC") {
                 chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
-                echo getcwd();
-                exit;
+               
                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                     unlink($_SESSION['yourToken'] . ".jpg");
                     chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/tmp/");
@@ -132,6 +131,8 @@ use Intervention\Image\Drivers\Gd\Driver;
                 $dir = $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
                     $manager = new ImageManager(new Driver());
+                    echo getcwd();
+                    exit;
                     // read image from file system
                     $image = $manager->read($_SESSION['yourToken'] . ".heic");
                     // resize image proportionally to 300px width
