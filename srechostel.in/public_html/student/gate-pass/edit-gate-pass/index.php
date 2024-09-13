@@ -36,12 +36,18 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         // this block executes when the gate pass is already booked.
         ?>
         <div class="container mx-3">
-
             <?php
+
             // breadcrumbs  included.
             require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/__breadcrumbs/bookpass.php";
-            bread_crumb_gatepass("edit gate pass");
             ?>
+            <p class="text-center">
+                <?php
+
+                // use the bread crub function.
+                bread_crumb_gatepass("edit gate pass");
+                ?>
+            </p>
             <div id="this-is-form" class="container card p-3 col-md-12 col-lg-6 mt-4">
                 <h3 class="text-center">
                     <?php
