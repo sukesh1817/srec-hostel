@@ -85,7 +85,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     </style>
 </head>
 
-<body style="background-color: #f8f9fa;">
+<body>
     <?php
     // navbar html code is included.
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
