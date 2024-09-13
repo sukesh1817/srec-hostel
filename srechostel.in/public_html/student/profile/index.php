@@ -66,7 +66,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     $sur_name = $stud->getSurname();
     $log_det = $stud->getLoginDetails($_SESSION['yourToken']);
 
-    $profile_url = "https://tesing.srechostel.in/api/accounts/profile_photo/";
+    $profile_url = "https://testing.srechostel.in/api/accounts/profile_photo/";
 
 
     ?>
