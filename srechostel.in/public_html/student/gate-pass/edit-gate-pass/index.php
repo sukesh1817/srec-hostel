@@ -44,7 +44,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             // use the bread crub function.
             // bread_crumb_gatepass("edit gate pass");
             ?>
-            <div id="this-is-form" class="container card  col-md-12 col-lg-6 mt-4">
+            <div id="this-is-form" class="card col-md-12 col-lg-6 mt-4">
                 <h3 class="text-center">
                     <?php
                     $row = [];
