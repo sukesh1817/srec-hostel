@@ -107,7 +107,9 @@ if (isset($_COOKIE['SessId'])) {
                                             <div class="col-12">
                                                 <div class="d-flex gap-3 flex-column">
                                                     <?php
-                                                        require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
+                                                    print($_SERVER['DOCUMENT_ROOT']);
+                                                    exit;
+                                                        // require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                                                         $end_point = "api/auth/oauth/";
                                                     ?>
                                                     <a href="<?php echo $domain.$end_point; ?>" class="btn btn-lg btn-fill-dark rounded-1">
