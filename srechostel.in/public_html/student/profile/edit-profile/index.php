@@ -1,7 +1,8 @@
 <?php
 
 // import the heic to jpg converter package. 
-use Maestroerror\HeicToJpg;
+use Intervention\Image\ImageManager;
+
 
 // check the login user is student
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
@@ -79,6 +80,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     // include the common class files.
     require_once $_SERVER["DOCUMENT_ROOT"] . "/../../class-files/common.class.php";
 
+    // include the php modules which helps to change the heic to jpg.
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/../../composer/vendor/autoload.php";
+
+
     // initialize the common class.
     $common = new commonClass();
     ?>
@@ -123,18 +128,22 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                     unlink($_SESSION['yourToken'] . ".jpg");
-                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/tmp/");
+                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
                     if (file_exists($_SESSION['yourToken'] . $ext)) {
                         unlink($_SESSION['yourToken'] . $ext);
                     }
-                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/");
                 }
-                $dir = "tmp/" . $_SESSION['yourToken'] . '.heic';
+                $dir = $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
-                    require_once $_SERVER['DOCUMENT_ROOT'] . "/../../composer/vendor/autoload.php";
-                    $convert = HeicToJpg::convert("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/" . $_SESSION['yourToken'] . '.heic')->saveAs("/home/u219671451/public_html/testing/srechostel.in/profile-photos/" . $_SESSION['yourToken'] . ".jpg");
-                    chdir("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/");
-                    unlink($_SESSION['yourToken'] . ".heic", );
+
+                    // Create an instance of ImageManager and specify the driver (either 'gd' or 'imagick')
+                    $manager = new ImageManager(['driver' => 'imagick']); // 'gd' if using GD driver
+
+                    // Load the HEIC image and convert it to JPG
+                    $image = $manager->make($dir)->encode('jpg', 90);
+                    $image->save('image.jpg');
+                    // chdir("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/");
+                    unlink($dir );
                     if ($convert) {
                         // successfully converted.
                     }
