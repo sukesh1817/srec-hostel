@@ -134,6 +134,8 @@ use Intervention\Image\Drivers\Gd\Driver;
                   
                     // read image from file system
                     $image = $manager->read($_SESSION['yourToken'] . ".heic");
+                    echo getcwd();
+                    exit;
                     // resize image proportionally to 300px width
                     $image->scale(width: 300);
                     // save modified image in new format 
