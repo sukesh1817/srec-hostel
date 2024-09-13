@@ -252,7 +252,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                     [
                         'eccLevel' => QRCode::ECC_L,
                         'outputType' => QRCode::OUTPUT_MARKUP_SVG,
-                        'version' => 5,
+                        'version' => 10,
                     ]
                 );
                 $data = $_SESSION['yourToken'];
