@@ -133,14 +133,12 @@ use Intervention\Image\Drivers\Gd\Driver;
                     $manager = new ImageManager(new Driver());
                   
                     // read image from file system
-                    $image = $manager->read($_SESSION['yourToken'] . ".heic");
+                    $image = $manager->read("s.png");
                     echo getcwd();
                     exit;
-                    // resize image proportionally to 300px width
-                    $image->scale(width: 300);
                     // save modified image in new format 
                     chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
-                    $image->toJpg()->save($_SESSION['yourToken'] . '.jpg');
+                    $image->toJpg()->save('s.jpg');
                     chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
                     unlink($_SESSION['yourToken'] . ".heic", );
                     
