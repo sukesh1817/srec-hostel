@@ -130,12 +130,15 @@ use Intervention\Image\Drivers\Gd\Driver;
                 chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
                 $dir = $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
-                    $manager = new ImageManager(new Driver());
-                  
-                    // read image from file system
-                    $image = $manager->read("2211026.heic");
+
+                    
+                    $manager = new ImageManager(Driver::class);
+                    $image = $manager->read($dir);
                     echo getcwd();
                     exit;
+                    $image->toJpeg()->save('storage/palm_photo/'.$filename);
+                    $image = $manager->read("2211026.heic");
+                   
                     // save modified image in new format 
                     chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
                     $image->toJpg()->save('s.jpg');
