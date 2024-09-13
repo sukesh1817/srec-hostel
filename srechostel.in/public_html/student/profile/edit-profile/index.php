@@ -118,73 +118,16 @@ use Intervention\Image\Drivers\Gd\Driver;
             $filename = $_FILES['profile-img']['name'];
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             if ($ext == "heic" or $ext == "HEIC") {
-                chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
-               
-                if (file_exists($_SESSION['yourToken'] . ".jpg")) {
-                    unlink($_SESSION['yourToken'] . ".jpg");
-                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
-                    if (file_exists($_SESSION['yourToken'] . $ext)) {
-                        unlink($_SESSION['yourToken'] . $ext);
-                    }
-                }
-                chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
-                $dir = $_SESSION['yourToken'] . '.heic';
-                if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
-
-$apiKey='eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiZWE1MjIxNThhZmViMzc1NzRiOWIyMjE1MGQ2YjU5Y2IzNzAyMTE3YjliNTVjY2FkM2RkYjc1MmQ1NDJiMWU1YWM0NTUyNWZmZjhiNGUyNGEiLCJpYXQiOjE3MjYyMzczNDUuOTk1ODA5LCJuYmYiOjE3MjYyMzczNDUuOTk1ODExLCJleHAiOjQ4ODE5MTA5NDUuOTkyOTIsInN1YiI6IjY5NTc3ODU0Iiwic2NvcGVzIjpbInVzZXIucmVhZCIsInVzZXIud3JpdGUiLCJ0YXNrLnJlYWQiLCJ0YXNrLndyaXRlIiwid2ViaG9vay5yZWFkIiwid2ViaG9vay53cml0ZSIsInByZXNldC53cml0ZSIsInByZXNldC5yZWFkIl19.UajFvM-krP3gcrJMEqX_FJoBMYWh523FYr4EoaTEfr3B5vlIzofniMTbj7U1JojJkUVWZGWgKO1HoCxtEvNZmiycA5RRsRgLkYYDZYG2e__t4OKT6iwAi672tywS7J85MxkP-pOWz7dNRKYb1S0gHup7L9PkRvawCTVKZo41KGrG6QLJO_JzTspWCIcNY2GsOBDQ2jtKv5vCecAluN2BBWgS4WHV5Xk0e_Tki2iCj4tixaK21CKwmMIS8PTh594DD70-D_uIowEbhMgV3_cJ5V7uXqxd3dCxFyoyDse0F4wTIrz5Wsd-zx63NKno4Em2ORnrmuYUFFhB9JyifvSW50lgDEvy2roLHnAIKR3NEm_rXtBRKoWvAEJt_mEEumfyefZGa2fuKZKoQ55L-E2qOqYB5485kMNTAEb-cJnJIUPtPR_Vh61VKEGo_ylFaap9be1ZbKTKG1eXJgaovqQNrwuCJyViZgaku3GC_CK4XBnlSqa4eTpZe4xGpeDL3R7l9TqZdM620fRD943S3ZzBYMxuRMOi1Sf-URAM8YheMRCP95jEDCTzoxG3cDTXcglfAwUI4pM2l7k7cX4bvNcoLaExQBP_bEVtf_pItPXzoDVL1B5uTQYHqGu4wVzSNrRskl4KDUAckEH4DVbPyvQY8X6gyiwUx7Kt-FA5btC_ohA';
-                    $inputFile = '2211049.heic';
-                    $outputFile = 'image.jpg';
-                    $url = 'https://api.cloudconvert.com/v2/convert';
-                    $data = [
-                        'input' => 'upload',
-                        'file' => new \CURLFile($inputFile),
-                        'outputformat' => 'jpg',
-                        'apikey' => $apiKey,
-                    ];
-                    echo "<pre>";
-                    print_r($data);
-
-                    $ch = curl_init();
-                    curl_setopt($ch, CURLOPT_URL, $url);
-                    curl_setopt($ch, CURLOPT_POST, 1);
-                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
-                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-                    $response = curl_exec($ch);
-                    print_r($response);
-                    curl_close($ch);
-                    echo "</pre>";
-
-                    file_put_contents($outputFile, $response);
-                    // echo "Image converted successfully.";
-
-                    // echo getcwd();
-                    exit;
-                    $manager = new ImageManager(Driver::class);
-                    $image = $manager->read("s.png");
-                   
-                    $image->toJpeg()->save('storage/palm_photo/'.$filename);
-                    $image = $manager->read("2211026.heic");
-                   
-                    // save modified image in new format 
-                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
-                    $image->toJpg()->save('s.jpg');
-                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
-                    unlink($_SESSION['yourToken'] . ".heic", );
-                    
-
-                }
+                // show the message heic is not avaliable please upload the jpg image.
 
             } else {
-                // echo "in jpg";
                 chdir($_SERVER['DOCUMENT_ROOT'] . "/..");
-                // echo getcwd();
                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                     unlink($_SESSION['yourToken'] . '.jpg');
                 }
                 $dir = "profile-photos/" . $_SESSION['yourToken'] . '.jpg';
-                // echo $dir;
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
-
+                    
                 }
             }
 
