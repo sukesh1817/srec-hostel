@@ -22,6 +22,8 @@ use Google\Service\CloudAlloyDBAdmin\ListClustersResponse;
 use Google\Service\CloudAlloyDBAdmin\Operation;
 use Google\Service\CloudAlloyDBAdmin\PromoteClusterRequest;
 use Google\Service\CloudAlloyDBAdmin\RestoreClusterRequest;
+use Google\Service\CloudAlloyDBAdmin\SwitchoverClusterRequest;
+use Google\Service\CloudAlloyDBAdmin\UpgradeClusterRequest;
 
 /**
  * The "clusters" collection of methods.
@@ -256,6 +258,39 @@ class ProjectsLocationsClusters extends \Google\Service\Resource
     $params = ['parent' => $parent, 'postBody' => $postBody];
     $params = array_merge($params, $optParams);
     return $this->call('restore', [$params], Operation::class);
+  }
+  /**
+   * Switches the role of PRIMARY and SECONDARY cluster without any data loss.
+   * This promotes the SECONDARY cluster to PRIMARY and sets up original PRIMARY
+   * cluster to replicate from this newly promoted cluster. (clusters.switchover)
+   *
+   * @param string $name Required. The name of the resource. For the required
+   * format, see the comment on the Cluster.name field
+   * @param SwitchoverClusterRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function switchover($name, SwitchoverClusterRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('switchover', [$params], Operation::class);
+  }
+  /**
+   * Upgrades a single Cluster. Imperative only. (clusters.upgrade)
+   *
+   * @param string $name Required. The resource name of the cluster.
+   * @param UpgradeClusterRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return Operation
+   * @throws \Google\Service\Exception
+   */
+  public function upgrade($name, UpgradeClusterRequest $postBody, $optParams = [])
+  {
+    $params = ['name' => $name, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('upgrade', [$params], Operation::class);
   }
 }
 

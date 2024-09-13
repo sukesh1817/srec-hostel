@@ -48,6 +48,8 @@ class GoogleCloudDiscoveryengineV1alphaDataStore extends \Google\Collection
    * @var string
    */
   public $industryVertical;
+  protected $languageInfoType = GoogleCloudDiscoveryengineV1alphaLanguageInfo::class;
+  protected $languageInfoDataType = '';
   /**
    * @var string
    */
@@ -58,6 +60,8 @@ class GoogleCloudDiscoveryengineV1alphaDataStore extends \Google\Collection
   public $solutionTypes;
   protected $startingSchemaType = GoogleCloudDiscoveryengineV1alphaSchema::class;
   protected $startingSchemaDataType = '';
+  protected $workspaceConfigType = GoogleCloudDiscoveryengineV1alphaWorkspaceConfig::class;
+  protected $workspaceConfigDataType = '';
 
   /**
    * @param bool
@@ -172,6 +176,20 @@ class GoogleCloudDiscoveryengineV1alphaDataStore extends \Google\Collection
     return $this->industryVertical;
   }
   /**
+   * @param GoogleCloudDiscoveryengineV1alphaLanguageInfo
+   */
+  public function setLanguageInfo(GoogleCloudDiscoveryengineV1alphaLanguageInfo $languageInfo)
+  {
+    $this->languageInfo = $languageInfo;
+  }
+  /**
+   * @return GoogleCloudDiscoveryengineV1alphaLanguageInfo
+   */
+  public function getLanguageInfo()
+  {
+    return $this->languageInfo;
+  }
+  /**
    * @param string
    */
   public function setName($name)
@@ -212,6 +230,20 @@ class GoogleCloudDiscoveryengineV1alphaDataStore extends \Google\Collection
   public function getStartingSchema()
   {
     return $this->startingSchema;
+  }
+  /**
+   * @param GoogleCloudDiscoveryengineV1alphaWorkspaceConfig
+   */
+  public function setWorkspaceConfig(GoogleCloudDiscoveryengineV1alphaWorkspaceConfig $workspaceConfig)
+  {
+    $this->workspaceConfig = $workspaceConfig;
+  }
+  /**
+   * @return GoogleCloudDiscoveryengineV1alphaWorkspaceConfig
+   */
+  public function getWorkspaceConfig()
+  {
+    return $this->workspaceConfig;
   }
 }
 

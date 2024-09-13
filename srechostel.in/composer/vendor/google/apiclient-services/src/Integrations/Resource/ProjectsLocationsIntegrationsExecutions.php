@@ -100,14 +100,18 @@ class ProjectsLocationsIntegrationsExecutions extends \Google\Service\Resource
    * @opt_param string filterParams.taskStatuses List of possible task statuses.
    * @opt_param string filterParams.workflowName Workflow name.
    * @opt_param string orderBy Optional. The results would be returned in order
-   * you specified here. Currently supporting "last_modified_time" and
-   * "create_time".
+   * you specified here. Currently supporting "create_time".
    * @opt_param int pageSize Optional. The size of entries in the response.
    * @opt_param string pageToken Optional. The token returned in the previous
    * response.
    * @opt_param string readMask Optional. View mask for the response data. If set,
    * only the field specified will be returned as part of the result. If not set,
-   * all fields in event execution info will be filled and returned.
+   * all fields in Execution will be filled and returned. Supported fields:
+   * trigger_id execution_method create_time update_time execution_details
+   * execution_details.state execution_details.execution_snapshots
+   * execution_details.attempt_stats
+   * execution_details.event_execution_snapshots_size request_parameters
+   * cloud_logging_details snapshot_number replay_info
    * @opt_param bool refreshAcl Optional. If true, the service will use the most
    * recent acl information to list event execution infos and renew the acl cache.
    * Note that fetching the most recent acl is synchronous, so it will increase

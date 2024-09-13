@@ -28,12 +28,18 @@ class Cluster extends \Google\Collection
    * @var string
    */
   public $createTime;
+  protected $crossClusterReplicationConfigType = CrossClusterReplicationConfig::class;
+  protected $crossClusterReplicationConfigDataType = '';
   /**
    * @var bool
    */
   public $deletionProtectionEnabled;
   protected $discoveryEndpointsType = DiscoveryEndpoint::class;
   protected $discoveryEndpointsDataType = 'array';
+  protected $maintenancePolicyType = ClusterMaintenancePolicy::class;
+  protected $maintenancePolicyDataType = '';
+  protected $maintenanceScheduleType = ClusterMaintenanceSchedule::class;
+  protected $maintenanceScheduleDataType = '';
   /**
    * @var string
    */
@@ -79,6 +85,8 @@ class Cluster extends \Google\Collection
    * @var string
    */
   public $uid;
+  protected $zoneDistributionConfigType = ZoneDistributionConfig::class;
+  protected $zoneDistributionConfigDataType = '';
 
   /**
    * @param string
@@ -109,6 +117,20 @@ class Cluster extends \Google\Collection
     return $this->createTime;
   }
   /**
+   * @param CrossClusterReplicationConfig
+   */
+  public function setCrossClusterReplicationConfig(CrossClusterReplicationConfig $crossClusterReplicationConfig)
+  {
+    $this->crossClusterReplicationConfig = $crossClusterReplicationConfig;
+  }
+  /**
+   * @return CrossClusterReplicationConfig
+   */
+  public function getCrossClusterReplicationConfig()
+  {
+    return $this->crossClusterReplicationConfig;
+  }
+  /**
    * @param bool
    */
   public function setDeletionProtectionEnabled($deletionProtectionEnabled)
@@ -135,6 +157,34 @@ class Cluster extends \Google\Collection
   public function getDiscoveryEndpoints()
   {
     return $this->discoveryEndpoints;
+  }
+  /**
+   * @param ClusterMaintenancePolicy
+   */
+  public function setMaintenancePolicy(ClusterMaintenancePolicy $maintenancePolicy)
+  {
+    $this->maintenancePolicy = $maintenancePolicy;
+  }
+  /**
+   * @return ClusterMaintenancePolicy
+   */
+  public function getMaintenancePolicy()
+  {
+    return $this->maintenancePolicy;
+  }
+  /**
+   * @param ClusterMaintenanceSchedule
+   */
+  public function setMaintenanceSchedule(ClusterMaintenanceSchedule $maintenanceSchedule)
+  {
+    $this->maintenanceSchedule = $maintenanceSchedule;
+  }
+  /**
+   * @return ClusterMaintenanceSchedule
+   */
+  public function getMaintenanceSchedule()
+  {
+    return $this->maintenanceSchedule;
   }
   /**
    * @param string
@@ -325,6 +375,20 @@ class Cluster extends \Google\Collection
   public function getUid()
   {
     return $this->uid;
+  }
+  /**
+   * @param ZoneDistributionConfig
+   */
+  public function setZoneDistributionConfig(ZoneDistributionConfig $zoneDistributionConfig)
+  {
+    $this->zoneDistributionConfig = $zoneDistributionConfig;
+  }
+  /**
+   * @return ZoneDistributionConfig
+   */
+  public function getZoneDistributionConfig()
+  {
+    return $this->zoneDistributionConfig;
   }
 }
 

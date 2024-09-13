@@ -19,6 +19,8 @@ namespace Google\Service\HangoutsChat;
 
 class Space extends \Google\Model
 {
+  protected $accessSettingsType = AccessSettings::class;
+  protected $accessSettingsDataType = '';
   /**
    * @var bool
    */
@@ -42,6 +44,12 @@ class Space extends \Google\Model
   /**
    * @var string
    */
+  public $lastActiveTime;
+  protected $membershipCountType = MembershipCount::class;
+  protected $membershipCountDataType = '';
+  /**
+   * @var string
+   */
   public $name;
   /**
    * @var bool
@@ -62,6 +70,10 @@ class Space extends \Google\Model
    */
   public $spaceType;
   /**
+   * @var string
+   */
+  public $spaceUri;
+  /**
    * @var bool
    */
   public $threaded;
@@ -70,6 +82,20 @@ class Space extends \Google\Model
    */
   public $type;
 
+  /**
+   * @param AccessSettings
+   */
+  public function setAccessSettings(AccessSettings $accessSettings)
+  {
+    $this->accessSettings = $accessSettings;
+  }
+  /**
+   * @return AccessSettings
+   */
+  public function getAccessSettings()
+  {
+    return $this->accessSettings;
+  }
   /**
    * @param bool
    */
@@ -139,6 +165,34 @@ class Space extends \Google\Model
   public function getImportMode()
   {
     return $this->importMode;
+  }
+  /**
+   * @param string
+   */
+  public function setLastActiveTime($lastActiveTime)
+  {
+    $this->lastActiveTime = $lastActiveTime;
+  }
+  /**
+   * @return string
+   */
+  public function getLastActiveTime()
+  {
+    return $this->lastActiveTime;
+  }
+  /**
+   * @param MembershipCount
+   */
+  public function setMembershipCount(MembershipCount $membershipCount)
+  {
+    $this->membershipCount = $membershipCount;
+  }
+  /**
+   * @return MembershipCount
+   */
+  public function getMembershipCount()
+  {
+    return $this->membershipCount;
   }
   /**
    * @param string
@@ -223,6 +277,20 @@ class Space extends \Google\Model
   public function getSpaceType()
   {
     return $this->spaceType;
+  }
+  /**
+   * @param string
+   */
+  public function setSpaceUri($spaceUri)
+  {
+    $this->spaceUri = $spaceUri;
+  }
+  /**
+   * @return string
+   */
+  public function getSpaceUri()
+  {
+    return $this->spaceUri;
   }
   /**
    * @param bool

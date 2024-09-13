@@ -20,6 +20,10 @@ namespace Google\Service\Networkconnectivity;
 class ConsumerPscConfig extends \Google\Model
 {
   /**
+   * @var string
+   */
+  public $consumerInstanceProject;
+  /**
    * @var bool
    */
   public $disableGlobalAccess;
@@ -36,10 +40,28 @@ class ConsumerPscConfig extends \Google\Model
    */
   public $project;
   /**
+   * @var string[]
+   */
+  public $serviceAttachmentIpAddressMap;
+  /**
    * @var string
    */
   public $state;
 
+  /**
+   * @param string
+   */
+  public function setConsumerInstanceProject($consumerInstanceProject)
+  {
+    $this->consumerInstanceProject = $consumerInstanceProject;
+  }
+  /**
+   * @return string
+   */
+  public function getConsumerInstanceProject()
+  {
+    return $this->consumerInstanceProject;
+  }
   /**
    * @param bool
    */
@@ -95,6 +117,20 @@ class ConsumerPscConfig extends \Google\Model
   public function getProject()
   {
     return $this->project;
+  }
+  /**
+   * @param string[]
+   */
+  public function setServiceAttachmentIpAddressMap($serviceAttachmentIpAddressMap)
+  {
+    $this->serviceAttachmentIpAddressMap = $serviceAttachmentIpAddressMap;
+  }
+  /**
+   * @return string[]
+   */
+  public function getServiceAttachmentIpAddressMap()
+  {
+    return $this->serviceAttachmentIpAddressMap;
   }
   /**
    * @param string

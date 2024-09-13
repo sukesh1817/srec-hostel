@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit1ba944b1b2880695113851e981334169
+class ComposerStaticInita3c4ceeb7e8193a5c1e74a30613f7bdc
 {
     public static $files = array (
         '7b11c4dc42b3b3023073cb14e519683c' => __DIR__ . '/..' . '/ralouphie/getallheaders/src/getallheaders.php',
@@ -25,11 +25,6 @@ class ComposerStaticInit1ba944b1b2880695113851e981334169
             'chillerlan\\Settings\\' => 20,
             'chillerlan\\QRCode\\' => 18,
         ),
-        'S' => 
-        array (
-            'Svg\\' => 4,
-            'Sabberworm\\CSS\\' => 15,
-        ),
         'P' => 
         array (
             'Psr\\Log\\' => 8,
@@ -41,8 +36,6 @@ class ComposerStaticInit1ba944b1b2880695113851e981334169
         'M' => 
         array (
             'Monolog\\' => 8,
-            'Masterminds\\' => 12,
-            'Maestroerror\\' => 13,
         ),
         'G' => 
         array (
@@ -55,8 +48,6 @@ class ComposerStaticInit1ba944b1b2880695113851e981334169
         ),
         'F' => 
         array (
-            'Fpdf\\' => 5,
-            'FontLib\\' => 8,
             'Firebase\\JWT\\' => 13,
         ),
         'E' => 
@@ -65,7 +56,6 @@ class ComposerStaticInit1ba944b1b2880695113851e981334169
         ),
         'D' => 
         array (
-            'Dompdf\\' => 7,
             'DASPRiD\\Enum\\' => 13,
         ),
         'B' => 
@@ -87,22 +77,14 @@ class ComposerStaticInit1ba944b1b2880695113851e981334169
         array (
             0 => __DIR__ . '/..' . '/chillerlan/php-qrcode/src',
         ),
-        'Svg\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dompdf/php-svg-lib/src/Svg',
-        ),
-        'Sabberworm\\CSS\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/sabberworm/php-css-parser/src',
-        ),
         'Psr\\Log\\' => 
         array (
             0 => __DIR__ . '/..' . '/psr/log/src',
         ),
         'Psr\\Http\\Message\\' => 
         array (
-            0 => __DIR__ . '/..' . '/psr/http-factory/src',
-            1 => __DIR__ . '/..' . '/psr/http-message/src',
+            0 => __DIR__ . '/..' . '/psr/http-message/src',
+            1 => __DIR__ . '/..' . '/psr/http-factory/src',
         ),
         'Psr\\Http\\Client\\' => 
         array (
@@ -119,14 +101,6 @@ class ComposerStaticInit1ba944b1b2880695113851e981334169
         'Monolog\\' => 
         array (
             0 => __DIR__ . '/..' . '/monolog/monolog/src/Monolog',
-        ),
-        'Masterminds\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/masterminds/html5/src',
-        ),
-        'Maestroerror\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/maestroerror/php-heic-to-jpg/src',
         ),
         'GuzzleHttp\\Psr7\\' => 
         array (
@@ -152,14 +126,6 @@ class ComposerStaticInit1ba944b1b2880695113851e981334169
         array (
             0 => __DIR__ . '/..' . '/google/apiclient/src',
         ),
-        'Fpdf\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/fpdf/fpdf/src/Fpdf',
-        ),
-        'FontLib\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dompdf/php-font-lib/src/FontLib',
-        ),
         'Firebase\\JWT\\' => 
         array (
             0 => __DIR__ . '/..' . '/firebase/php-jwt/src',
@@ -167,10 +133,6 @@ class ComposerStaticInit1ba944b1b2880695113851e981334169
         'Endroid\\QrCode\\' => 
         array (
             0 => __DIR__ . '/..' . '/endroid/qr-code/src',
-        ),
-        'Dompdf\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/dompdf/dompdf/src',
         ),
         'DASPRiD\\Enum\\' => 
         array (
@@ -183,19 +145,7 @@ class ComposerStaticInit1ba944b1b2880695113851e981334169
     );
 
     public static $classMap = array (
-        'CGIF' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
-        'CGIFCOLORTABLE' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
-        'CGIFFILEHEADER' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
-        'CGIFIMAGE' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
-        'CGIFIMAGEHEADER' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
-        'CGIFLZW' => __DIR__ . '/..' . '/mpdf/mpdf/classes/gif.php',
         'Composer\\InstalledVersions' => __DIR__ . '/..' . '/composer/InstalledVersions.php',
-        'Dompdf\\Cpdf' => __DIR__ . '/..' . '/dompdf/dompdf/lib/Cpdf.php',
-        'FPDF_TPL' => __DIR__ . '/..' . '/setasign/fpdi/fpdf_tpl.php',
-        'FPDI' => __DIR__ . '/..' . '/setasign/fpdi/fpdi.php',
-        'FilterASCII85' => __DIR__ . '/..' . '/setasign/fpdi/filters/FilterASCII85.php',
-        'FilterASCIIHexDecode' => __DIR__ . '/..' . '/setasign/fpdi/filters/FilterASCIIHexDecode.php',
-        'FilterLZW' => __DIR__ . '/..' . '/setasign/fpdi/filters/FilterLZW.php',
         'Google_AccessToken_Revoke' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
         'Google_AccessToken_Verify' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
         'Google_AuthHandler_AuthHandlerFactory' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
@@ -216,35 +166,14 @@ class ComposerStaticInit1ba944b1b2880695113851e981334169
         'Google_Task_Retryable' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
         'Google_Task_Runner' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
         'Google_Utils_UriTemplate' => __DIR__ . '/..' . '/google/apiclient/src/aliases.php',
-        'INDIC' => __DIR__ . '/..' . '/mpdf/mpdf/classes/indic.php',
-        'MYANMAR' => __DIR__ . '/..' . '/mpdf/mpdf/classes/myanmar.php',
-        'OTLdump' => __DIR__ . '/..' . '/mpdf/mpdf/classes/otl_dump.php',
-        'PDFBarcode' => __DIR__ . '/..' . '/mpdf/mpdf/classes/barcode.php',
-        'SEA' => __DIR__ . '/..' . '/mpdf/mpdf/classes/sea.php',
-        'SVG' => __DIR__ . '/..' . '/mpdf/mpdf/classes/svg.php',
-        'TTFontFile' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ttfontsuni.php',
-        'TTFontFile_Analysis' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ttfontsuni_analysis.php',
-        'UCDN' => __DIR__ . '/..' . '/mpdf/mpdf/classes/ucdn.php',
-        'bmp' => __DIR__ . '/..' . '/mpdf/mpdf/classes/bmp.php',
-        'cssmgr' => __DIR__ . '/..' . '/mpdf/mpdf/classes/cssmgr.php',
-        'directw' => __DIR__ . '/..' . '/mpdf/mpdf/classes/directw.php',
-        'fpdi_pdf_parser' => __DIR__ . '/..' . '/setasign/fpdi/fpdi_pdf_parser.php',
-        'grad' => __DIR__ . '/..' . '/mpdf/mpdf/classes/grad.php',
-        'mPDF' => __DIR__ . '/..' . '/mpdf/mpdf/mpdf.php',
-        'meter' => __DIR__ . '/..' . '/mpdf/mpdf/classes/meter.php',
-        'mpdfform' => __DIR__ . '/..' . '/mpdf/mpdf/classes/mpdfform.php',
-        'otl' => __DIR__ . '/..' . '/mpdf/mpdf/classes/otl.php',
-        'pdf_context' => __DIR__ . '/..' . '/setasign/fpdi/pdf_context.php',
-        'tocontents' => __DIR__ . '/..' . '/mpdf/mpdf/classes/tocontents.php',
-        'wmf' => __DIR__ . '/..' . '/mpdf/mpdf/classes/wmf.php',
     );
 
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit1ba944b1b2880695113851e981334169::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit1ba944b1b2880695113851e981334169::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit1ba944b1b2880695113851e981334169::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInita3c4ceeb7e8193a5c1e74a30613f7bdc::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInita3c4ceeb7e8193a5c1e74a30613f7bdc::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInita3c4ceeb7e8193a5c1e74a30613f7bdc::$classMap;
 
         }, null, ClassLoader::class);
     }

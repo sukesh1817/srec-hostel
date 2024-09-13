@@ -19,6 +19,7 @@ namespace Google\Service\DiscoveryEngine\Resource;
 
 use Google\Service\DiscoveryEngine\GoogleApiHttpBody;
 use Google\Service\DiscoveryEngine\GoogleCloudDiscoveryengineV1ImportUserEventsRequest;
+use Google\Service\DiscoveryEngine\GoogleCloudDiscoveryengineV1PurgeUserEventsRequest;
 use Google\Service\DiscoveryEngine\GoogleCloudDiscoveryengineV1UserEvent;
 use Google\Service\DiscoveryEngine\GoogleLongrunningOperation;
 
@@ -83,6 +84,26 @@ class ProjectsLocationsDataStoresUserEvents extends \Google\Service\Resource
     return $this->call('import', [$params], GoogleLongrunningOperation::class);
   }
   /**
+   * Deletes permanently all user events specified by the filter provided.
+   * Depending on the number of events specified by the filter, this operation
+   * could take hours or days to complete. To test a filter, use the list command
+   * first. (userEvents.purge)
+   *
+   * @param string $parent Required. The resource name of the catalog under which
+   * the events are created. The format is `projects/${projectId}/locations/global
+   * /collections/{$collectionId}/dataStores/${dataStoreId}`
+   * @param GoogleCloudDiscoveryengineV1PurgeUserEventsRequest $postBody
+   * @param array $optParams Optional parameters.
+   * @return GoogleLongrunningOperation
+   * @throws \Google\Service\Exception
+   */
+  public function purge($parent, GoogleCloudDiscoveryengineV1PurgeUserEventsRequest $postBody, $optParams = [])
+  {
+    $params = ['parent' => $parent, 'postBody' => $postBody];
+    $params = array_merge($params, $optParams);
+    return $this->call('purge', [$params], GoogleLongrunningOperation::class);
+  }
+  /**
    * Writes a single user event. (userEvents.write)
    *
    * @param string $parent Required. The parent resource name. If the write user
@@ -93,6 +114,10 @@ class ProjectsLocationsDataStoresUserEvents extends \Google\Service\Resource
    * `projects/{project}/locations/{location}`.
    * @param GoogleCloudDiscoveryengineV1UserEvent $postBody
    * @param array $optParams Optional parameters.
+   *
+   * @opt_param bool writeAsync If set to true, the user event is written
+   * asynchronously after validation, and the API responds without waiting for the
+   * write.
    * @return GoogleCloudDiscoveryengineV1UserEvent
    * @throws \Google\Service\Exception
    */
