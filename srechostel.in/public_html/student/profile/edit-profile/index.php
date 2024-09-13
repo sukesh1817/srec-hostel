@@ -133,7 +133,7 @@ use Intervention\Image\Drivers\Gd\Driver;
                     $manager = new ImageManager(new Driver());
                   
                     // read image from file system
-                    $image = $manager->read("s.png");
+                    $image = $manager->read("2211026.heic");
                     echo getcwd();
                     exit;
                     // save modified image in new format 
