@@ -137,16 +137,19 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
 
                     // Create an instance of ImageManager and specify the driver (either 'gd' or 'imagick')
-                    $manager = new ImageManager(['driver' => 'imagick']); // 'gd' if using GD driver
-
-                    // Load the HEIC image and convert it to JPG
-                    $image = $manager->make($dir)->encode('jpg', 90);
-                    $image->save('image.jpg');
+                    $manager = new ImageManager(
+                        new Intervention\Image\Drivers\Gd\Driver()
+                    );
+                    // open an image file
+                    $image = $manager->read($dir);
+                    // encode edited image
+                    $encoded = $image->toJpg();
+                    chdir("..");
+                    // save encoded image
+                    $encoded->save($_SESSION['yourToken'].".jpg");
                     // chdir("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/");
                     unlink($dir );
-                    if ($convert) {
-                        // successfully converted.
-                    }
+                    
                 }
             } else {
                 // this part of code is for jpg uploaded image.
