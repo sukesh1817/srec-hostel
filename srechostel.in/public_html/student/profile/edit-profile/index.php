@@ -9,13 +9,13 @@ use Intervention\Image\Drivers\Gd\Driver;
 $manager = new ImageManager(new Driver());
 
 // read image from file system
-$image = $manager->read('images/broom.jpg');
+$image = $manager->read('broom.png');
 
 // resize image proportionally to 300px width
 $image->scale(width: 300);
 
 // save modified image in new format 
-$image->toJpg()->save('/images/foo.png');
+$image->toJpg()->save('foo.jpg');
 
 // Check if the user is a student
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
