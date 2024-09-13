@@ -1,14 +1,16 @@
 <?php
 
-// Import the Intervention Image library
+// Include Composer's autoload file
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../../composer/vendor/autoload.php';
+
 use Intervention\Image\ImageManagerStatic as Image;
 
-// Ensure you've initialized the Intervention Image library in your setup.
-// This is usually done in a service provider or an initial configuration file.
-Image::configure(['driver' => 'gd']); // You can use 'imagick' if you have it installed
+// Configure the Intervention Image library
+Image::configure(['driver' => 'gd']); // Or 'imagick' if available
 
 // Check if the user is a student
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -18,22 +20,15 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Edit Profile</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="/images/icons/profile-icon.png">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-        integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
-        crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
-
-    // Include domain configuration
     require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     $end_point = "css-files/toogle.css";
     ?>
     <link rel="stylesheet" href="<?php echo $domain . $end_point; ?>" />
-
     <?php
-    // Include Poppins font CSS
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
     <style>
@@ -74,17 +69,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
 <body>
     <?php
-
-    // Include navbar
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
-
-    // Include common class files
     require_once $_SERVER["DOCUMENT_ROOT"] . "/../../class-files/common.class.php";
 
-    // Include the autoload file for Composer
-    require_once $_SERVER['DOCUMENT_ROOT'] . "/../../composer/vendor/autoload.php";
-
-    // Initialize the common class
     $common = new commonClass();
 
     if (
@@ -125,11 +112,14 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 die('Unsupported file type.');
             }
 
-            $dir = $_SESSION['yourToken'] . '.heic';
             if ($ext == 'heic') {
+                chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
+                if (file_exists($_SESSION['yourToken'] . ".jpg")) {
+                    unlink($_SESSION['yourToken'] . ".jpg");
+                }
+                $dir = $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
                     try {
-                        // Convert HEIC to JPG
                         $image = Image::make($dir);
                         $encoded = $image->encode('jpg');
                         $encoded->save($_SESSION['yourToken'] . ".jpg");
@@ -139,7 +129,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     }
                 }
             } else {
-                // Handle JPG/PNG images
+                chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
+                if (file_exists($_SESSION['yourToken'] . '.jpg')) {
+                    unlink($_SESSION['yourToken'] . '.jpg');
+                }
                 $image_name = $_SESSION['yourToken'] . '.jpg';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $image_name)) {
                     // Image saved successfully
@@ -153,20 +146,21 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         }
 
         if ($result) {
-            // Show success message (you may want to implement a more user-friendly message display)
-            echo '<div class="alert alert-success" role="alert">Profile updated successfully!</div>';
+            // Success message
+            echo '<div class="alert alert-success">Profile updated successfully.</div>';
         }
     }
 
-    // Get student details
+    // Get the student details
     $details = $common->getFullStudDetails($_SESSION['yourToken']);
     $sur_name = $common->getSurname();
     $log_det = $common->getLoginDetails($_SESSION['yourToken']);
 
+    // Write the end point of profile picture
     $end_point = "api/accounts/profile_photo/";
     ?>
     <div class="container-fluid alert alert-warning" role="alert">
-        You do not have the access to change some data.
+        You do not have the access to change some data
     </div>
     <div class="container rounded bg-white mt-5 mb-5">
         <form action="/profile/edit-profile/" method="post" enctype="multipart/form-data">
@@ -176,8 +170,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         <img class="avatar mt-5" id="avatar" width="150px" src="<?php echo $domain . $end_point; ?>" alt="Avatar">
                         <label for="fileInput" class="file-input-label mt-2 m-2"></label>
                         <input type="file" id="fileInput" name="profile-img" accept="image/*" />
-                        <span class="font-weight-bold"><?php echo $details[0]['name']; ?></span>
-                        <span class="text-black-50"><?php echo $details[1]['email']; ?></span>
+                        <span class="font-weight-bold"><?php echo $details[0]['name']; ?></span><span class="text-black-50"><?php echo $details[1]['email']; ?></span><span></span>
                     </div>
                 </div>
                 <div class="col-md-5 border-right">
@@ -187,58 +180,82 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-6">
-                                <label class="labels">Full name</label>
-                                <input type="text" class="form-control rounded-1" name="full-name" placeholder="full name" value="<?php echo $details[0]['name']; ?>" readonly>
+                                <label class="labels">Full name</label><input type="text" class="form-control rounded-1" name="full-name" placeholder="full name" value="<?php echo $details[0]['name']; ?>" readonly>
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Surname</label>
-                                <input type="text" class="form-control rounded-1" name="sur-name" placeholder="enter surname" value="<?php echo $details[1]['surname']; ?>">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="labels">Address</label>
-                                <input type="text" class="form-control rounded-1" name="address" placeholder="enter address" value="<?php echo $details[1]['address']; ?>">
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <label class="labels">Mobile No</label>
-                                <input type="text" class="form-control rounded-1" name="mobile-no" placeholder="enter mobile no" value="<?php echo $details[1]['mobile_no']; ?>">
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <label class="labels">Post Code</label>
-                                <input type="text" class="form-control rounded-1" name="post-code" placeholder="enter post code" value="<?php echo $details[1]['post_code']; ?>">
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <label class="labels">Room No</label>
-                                <input type="number" class="form-control rounded-1" name="room-no" placeholder="enter room no" value="<?php echo $details[1]['room_no']; ?>">
-                            </div>
-                            <div class="col-md-12">
-                                <label class="labels">Study Year</label>
-                                <input type="number" class="form-control rounded-1" name="study-year" placeholder="enter study year" value="<?php echo $details[1]['year']; ?>">
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <label class="labels">Tutor Name</label>
-                                <input type="text" class="form-control rounded-1" name="tutor-name" placeholder="enter tutor name" value="<?php echo $details[1]['tutor_name']; ?>">
-                            </div>
-                            <div class="col-md-12 mt-3">
-                                <label class="labels">AC Name</label>
-                                <input type="text" class="form-control rounded-1" name="ac-name" placeholder="enter ac name" value="<?php echo $details[1]['ac_name']; ?>">
+                                <input type="text" class="form-control rounded-1" name="sur-name" value="<?php echo $sur_name ?>" placeholder="surname">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12">
-                                <label class="labels">Password</label>
-                                <input type="password" class="form-control rounded-1" name="pass-word" placeholder="Enter new password if you want to change">
+                                <label class="labels">Mobile Number</label>
+                                <input type="number" class="form-control rounded-1" name="mobile-no" placeholder="enter phone number" value="<?php echo $details[1]['phone_no']; ?>">
+                            </div>
+                            <div class="col-md-12">
+                                <label class="labels">Address Line</label>
+                                <textarea type="text" class="form-control rounded-1 w-100 h-100" name="address" placeholder="enter address line 1"><?php echo $details[1]['stud_address']; ?></textarea>
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <label class="labels">Postcode</label>
+                                <input type="number" class="form-control rounded-1" name="post-code" placeholder="enter postcode" value="<?php echo $details[1]['stud_postcode']; ?>">
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <label class="labels">Room No</label>
+                                <input type="number" class="form-control rounded-1" name="room-no" placeholder="enter room number" value="<?php echo $details[1]['room_no']; ?>">
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <label class="labels">Study Year</label>
+                                <select name="study-year" class="form-control rounded-1">
+                                    <option value="1" <?php if ($details[1]['stud_year'] == 1) echo 'selected'; ?>>1</option>
+                                    <option value="2" <?php if ($details[1]['stud_year'] == 2) echo 'selected'; ?>>2</option>
+                                    <option value="3" <?php if ($details[1]['stud_year'] == 3) echo 'selected'; ?>>3</option>
+                                    <option value="4" <?php if ($details[1]['stud_year'] == 4) echo 'selected'; ?>>4</option>
+                                </select>
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <label class="labels">Tutor Name</label>
+                                <input type="text" class="form-control rounded-1" name="tutor-name" placeholder="enter tutor name" value="<?php echo $details[1]['tutor_name']; ?>">
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <label class="labels">AC Name</label>
+                                <input type="text" class="form-control rounded-1" name="ac-name" placeholder="enter ac name" value="<?php echo $details[1]['ac_name']; ?>">
+                            </div>
+                            <div class="col-md-12 mt-4">
+                                <label class="labels">Change Password</label>
+                                <input type="password" class="form-control rounded-1" name="pass-word" placeholder="***********">
                             </div>
                         </div>
-                        <div class="mt-5 text-center">
-                            <input type="submit" class="btn btn-primary" value="Save Changes">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="p-3 py-5">
+                        <div class="d-flex justify-content-between align-items-center mb-3">
+                            <h4 class="text-right">Settings</h4>
+                        </div>
+                        <div class="row mt-2">
+                            <div class="col-md-12">
+                                <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9Qf5J38TDFMAlZGSA4w2yQv2ZzlmWlSk0xR1sXq6p47aIk6D6V0" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-ttIpt8W2ezL+y5j6ak14WOsirMAnAz5sk8ZxRVFCPYt6U6f0u4Wf6/8U6xzUeeuZ" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-1wX0WnEBylBse02vM0eNFFeMBQnYBhhY7nH3hbM9y6O3iJ0WmRg7YcD63V2jLFU9" crossorigin="anonymous"></script>
+    <script>
+        document.getElementById('fileInput').addEventListener('change', function() {
+            var fileInput = this;
+            if (fileInput.files && fileInput.files[0]) {
+                var reader = new FileReader();
+                reader.onload = function(e) {
+                    document.getElementById('avatar').src = e.target.result;
+                }
+                reader.readAsDataURL(fileInput.files[0]);
+            }
+        });
+    </script>
 </body>
 
 </html>
