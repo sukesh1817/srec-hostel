@@ -189,9 +189,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="avatar mt-5" width="150px" src="<?php echo $domain . $end_point; ?>">
-                        <label for="fileInput" class="file-input-label mt-2 m-2"></label>
-                        <input type="file" id="fileInput" name="profile-img" accept="image/*">
+                        <img class="avatar mt-5" id="avatar" width="150px" src="<?php echo $domain . $end_point; ?>" alt="Avatar">
+                        <label for="fileInput" class="file-input-label mt-2 m-2">Choose an image</label>
+                        <input type="file" id="fileInput" name="profile-img" accept="image/*" />
 
                         <span class="font-weight-bold"><?php echo $details[0]['name']; ?></span><span
                             class="text-black-50"><?php echo $details[1]['email']; ?></span><span>
@@ -325,5 +325,29 @@ $end_point = "js-files/ui-component/toggle.js";
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
+
+    <script>
+    // Get the input and image elements
+    const fileInput = document.getElementById('fileInput');
+    const avatar = document.getElementById('avatar');
+
+    // Add event listener to the input
+    fileInput.addEventListener('change', function() {
+        // Check if a file was selected
+        if (this.files && this.files[0]) {
+            // Create a new FileReader instance
+            const reader = new FileReader();
+
+            // Set up the onload event for the reader
+            reader.onload = function(e) {
+                // Set the src of the image to the uploaded file's data URL
+                avatar.src = e.target.result;
+            };
+
+            // Read the file as a data URL
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+</script>
 
 </html>
