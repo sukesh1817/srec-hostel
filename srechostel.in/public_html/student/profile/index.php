@@ -175,10 +175,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 </div>
 
                 <?php
-                $end_point = "auth/logout/";
+                $end_point = "api/auth/logout/";
                 ?>
                 <div class="mt-5 text-center">
-                    <a href="<?php echo $api . $end_point ?>"
+                    <a href="<?php echo $domain . $end_point ?>"
                         class="container-fluid btn btn-dark profile-button">Logout</a>
                 </div>
             </div>
