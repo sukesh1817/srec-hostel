@@ -270,7 +270,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
 
                 $qrcode = (new QRCode($options))->render("$domain/api/entry/?auth_token_id=$encrypted");
 
-                $img_url = $domain."/api/accounts/profile_photo/";
+                $img_url = $domain."api/accounts/profile_photo/";
                 // included the gate pass theme.
                 require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/modules/download_pass_theme.php";
                 $data = array(
