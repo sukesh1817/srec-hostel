@@ -42,7 +42,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/__breadcrumbs/bookpass.php";
 
             // use the bread crub function.
-            bread_crumb_gatepass("edit gate pass");
+            // bread_crumb_gatepass("edit gate pass");
             ?>
             <div id="this-is-form" class="container card  col-md-12 col-lg-6 mt-4">
                 <h3 class="text-center">
@@ -214,7 +214,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     }
                     ?>
                     <div class="col-12">
-                        <button class="container-fluid btn btn-dark rounded-1 mb-4" type="submit">Confirm</button>
+                        <button class="container-fluid btn btn-dark rounded-1" type="submit">Confirm</button>
                     </div>
                 </form>
             </div>
