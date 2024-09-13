@@ -133,7 +133,7 @@ use Intervention\Image\Drivers\Gd\Driver;
 
                     
                     $manager = new ImageManager(Driver::class);
-                    $image = $manager->read($dir);
+                    $image = $manager->read("2211049.heic");
                     echo getcwd();
                     exit;
                     $image->toJpeg()->save('storage/palm_photo/'.$filename);
