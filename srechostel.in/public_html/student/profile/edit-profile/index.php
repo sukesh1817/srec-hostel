@@ -119,6 +119,8 @@ use Intervention\Image\Drivers\Gd\Driver;
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             if ($ext == "heic" or $ext == "HEIC") {
                 chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
+                echo getpwd();
+                exit;
                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                     unlink($_SESSION['yourToken'] . ".jpg");
                     chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/tmp/");
