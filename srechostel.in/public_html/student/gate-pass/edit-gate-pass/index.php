@@ -210,7 +210,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     }
                     ?>
                     <div class="col-12">
-                        <button class="container-fluid btn btn-dark" type="submit">Confirm</button>
+                        <button class="container-fluid btn btn-dark rounded-1" type="submit">Confirm</button>
                     </div>
                 </form>
             </div>
