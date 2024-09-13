@@ -77,7 +77,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
 
     // include the common class files.
-    require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/common.class.php");
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/../../class-files/common.class.php";
 
     // initialize the common class.
     $common = new commonClass();
@@ -175,12 +175,15 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
 
     <?php
-    include_once($_SERVER["DOCUMENT_ROOT"] . "/../class-files/common.class.php");
+
+    // get the student details.
     $details = $common->getFullStudDetails($_SESSION['yourToken']);
     $sur_name = $common->getSurname();
     $log_det = $common->getLoginDetails($_SESSION['yourToken']);
 
-    ?>
+    // write the end point of profile picture.
+    $end_point = "accounts/profile_photo/"
+        ?>
     <div class="container-fluid alert alert-warning" role="alert">
         you do not have the access to change some data
     </div>
@@ -188,8 +191,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         <form action="/stud-panel/profile/edit-profile/" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-3 border-right">
-                    <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="avatar mt-5"
-                            width="150px" src="/profile-photo/">
+                    <div class="d-flex flex-column align-items-center text-center p-3 py-5">
+                        <img class="avatar mt-5" width="150px" src="<?php echo $domain.$end_point; ?>">
                         <label for="fileInput" class="file-input-label mt-2 m-2"></label>
                         <input type="file" id="fileInput" name="profile-img" accept="image/*">
 
@@ -251,9 +254,14 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 <div class="user-box">
                                     <label class="labels">Password</label>
                                     <div class="password-container">
-                                        <input class="form-control" type="password" name="pass-word" id="password"
-                                            value="<?php echo $log_det['pass_word']; ?>" required="" />
-                                        <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
+                                        <div class="password-wrapper" style="position: relative;">
+                                            <input class="form-control rounded-1" type="password" name="pass-word"
+                                                id="password" value="<?php echo $log_det['pass_word']; ?>" />
+                                            <span class="password-toggle-icon"
+                                                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
                                     </div>
                                 </div>
 
