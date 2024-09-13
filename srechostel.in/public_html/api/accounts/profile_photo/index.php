@@ -5,9 +5,9 @@ if (isset($_SESSION['yourToken'])) {
     $rollNo = $_SESSION['yourToken'];
     echo $_SERVER['DOCUMENT_ROOT'];
     if (file_exists($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/" . $rollNo . '.jpg')) {
-        include_once $_SERVER['DOCUMENT_ROOT'] . "/" . "profile-photos/" . $rollNo . '.jpg';
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/" . "../profile-photos/" . $rollNo . '.jpg';
     } else {
-        include_once $_SERVER['DOCUMENT_ROOT'] . "/profile-photos/dummy-profile.jpg";
+        include_once $_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/dummy-profile.jpg";
     }
 
 }
