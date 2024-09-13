@@ -72,7 +72,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
 
     ?>
-    <div class="container-fluid alert alert-info" role="alert">
+    <div class="container-fluid alert bg-secondary-subtle" role="alert">
         Do you want to edit something ?
         <a class="text-decoration-none text-dark" href="/profile/edit-profile">
             <u>click here</u>
