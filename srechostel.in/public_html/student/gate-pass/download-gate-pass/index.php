@@ -277,7 +277,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                     "pass_type"=>$passType,
                     "name"=>$name,
                     "roll_no"=>$rollNo,
-                    "dept"=>$department,
+                    "dept"=>$dept,
                     "room_no"=>$room,
                     "hostel"=>$hostel,
                     "address"=>$address,
