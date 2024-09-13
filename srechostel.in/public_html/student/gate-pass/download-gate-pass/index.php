@@ -182,6 +182,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
             border-radius: 1px;
         }
     </style>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/potrace/1.15.1/potrace.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
         integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -267,25 +268,25 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                 $qrcode = (new QRCode($options))->render("$domain/api/entry/?auth_token_id=$encrypted");
 
 
-                $img_url = $domain."api/accounts/profile_photo/";
+                $img_url = $domain . "api/accounts/profile_photo/";
 
                 // included the gate pass theme.
                 require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/modules/download_pass_theme.php";
                 $data = array(
-                    "pass_type"=>$passType,
-                    "name"=>$name,
-                    "roll_no"=>$rollNo,
-                    "dept"=>$dept,
-                    "room_no"=>$room,
-                    "hostel"=>$hostel,
-                    "address"=>$address,
-                    "time_leave"=>$timeLeave,
-                    "date_leave"=>$dateLeave,
-                    "time_enter"=>$timeEnter,
-                    "date_enter"=>$dateEnter,
-                    "accepted_by"=>$acceptedBy,
-                    "img_url"=>$img_url,
-                    "qr_code"=>$qrcode
+                    "pass_type" => $passType,
+                    "name" => $name,
+                    "roll_no" => $rollNo,
+                    "dept" => $dept,
+                    "room_no" => $room,
+                    "hostel" => $hostel,
+                    "address" => $address,
+                    "time_leave" => $timeLeave,
+                    "date_leave" => $dateLeave,
+                    "time_enter" => $timeEnter,
+                    "date_enter" => $dateEnter,
+                    "accepted_by" => $acceptedBy,
+                    "img_url" => $img_url,
+                    "qr_code" => $qrcode
                 );
                 pass_theme($data);
 
@@ -467,6 +468,26 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     }
     ?>
 
+    <script>
+        const img = document.getElementById('profile');
+        Potrace.loadImageFromURL(img.src, function (image) {
+            Potrace.process(image, function (svg) {
+                // Display SVG
+                document.body.innerHTML += svg;
+            });
+        });
+    </script>
+
+<script>
+    // Example of converting an image using Potrace (JS)
+    const img = document.getElementById('qr-code');
+    Potrace.loadImageFromURL(img.src, function(image) {
+        Potrace.process(image, function(svg) {
+            // Display SVG
+            document.body.innerHTML += svg;
+        });
+    });
+</script>
     <script>
         const button = document.getElementById('download-button');
 
