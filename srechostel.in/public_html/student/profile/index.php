@@ -69,7 +69,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     $log_det = $stud->getLoginDetails($_SESSION['yourToken']);
 
     $api = "https://testing.srechostel.in/api/";
-    $end_point = "accounts/profile_image"
+    $end_point = "accounts/profile_photo/"
 
         ?>
     <div class="container-fluid alert bg-secondary-subtle" role="alert">
