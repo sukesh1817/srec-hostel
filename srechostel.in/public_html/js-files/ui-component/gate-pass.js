@@ -9,16 +9,16 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
       // Display fields for gate pass
       passDetailsContainer.innerHTML = `
       
-                <label  class="form-label" for="timeOut">From</label><br>
+                <label  class="form-label" for="timeOut">From<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="datetime-local" id="timeOut" name="time_out"   style="width:100%" class='container-fluid' required><br>
 
-                <label for="timeIn">To</label><br>
+                <label for="timeIn">To<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="datetime-local" id="timeIn" name="time_in" style="width:100%" class='container-fluid' required><br>
 
-                <label  for="address">Address</label><br>
+                <label  for="address">Address<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="text" id="address" name="address" style="width:100%" required><br>
                 
-                 <label  class="form-label" for="reason">Reason</label><br>
+                 <label  class="form-label" for="reason">Reason<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="text" id="reason" name="reason" style="width:100%" required><br>
 
                 <input type="hidden" name="passType" value="gatePass">
@@ -49,25 +49,25 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
       passDetailsContainer.innerHTML = `
                
 
-                <label  class="form-label" for="tutorName">Tutor Name</label><br>
+                <label  class="form-label" for="tutorName">Tutor Name<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="text" id="tutorName" name="tutor_name" style="width:100%" required><br>
 
-                <label  class="form-label" for="academicCoordinatorName">Academic Coordinator Name</label><br>
+                <label  class="form-label" for="academicCoordinatorName">Academic Coordinator Name<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="text" id="academicCoordinatorName" name="academic_coordinator_name" style="width:100%" required><br>
 
-                <label  class="form-label" for="timeOfLeaving">From</label><br>
+                <label  class="form-label" for="timeOfLeaving">From<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="datetime-local" id="timeOfLeaving" name="time_of_leaving" style="width:100%" required><br>
 
-                <label  class="form-label" for="timeOfEntry">To</label><br>
+                <label  class="form-label" for="timeOfEntry">To<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="datetime-local" id="timeOfEntry" name="time_of_entry" style="width:100%" required><br>
 
-                <label  class="form-label" for="address">Address</label><br>
+                <label  class="form-label" for="address">Address<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="text" id="address" name="address" style="width:100%" required><br>
                 
-                <label  class="form-label" for="reason">Reason</label><br>
+                <label  class="form-label" for="reason">Reason<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="text" id="reason" name="reason" style="width:100%" required><br>
 
-                <label  class="form-label" for="permissionLetter">Permission Letter</label><br>
+                <label  class="form-label" for="permissionLetter">Permission Letter<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="file" id="permissionLetter" name="permission_letter" required><br>
                 
 
@@ -94,17 +94,17 @@ document.querySelectorAll('input[name="pass_type"]').forEach((elem) => {
       // Display fields for general holidays home pass
       passDetailsContainer.innerHTML = `
                
-                <label  class="form-label" for="timeOfLeaving">From</label><br>
+                <label  class="form-label" for="timeOfLeaving">From<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="datetime-local" id="timeOfLeaving" name="time_of_leaving" style="width:100%" required><br>
 
-                <label  class="form-label" for="timeOfEntry">To</label><br>
+                <label  class="form-label" for="timeOfEntry">To<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="datetime-local" id="timeOfEntry" name="time_of_entry" style="width:100%" required><br>
 
 
-                <label  class="form-label" for="address">Address</label><br>
+                <label  class="form-label" for="address">Address<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="text" id="address" name="address"style="width:100%" required><br>
                 
-                 <label  class="form-label" for="reason">Reason</label><br>
+                 <label  class="form-label" for="reason">Reason<span class="text-danger">*</span></label><br>
                 <input class="form-control" type="text" id="reason" name="reason" style="width:100%" required><br>
 
                 <input type="hidden" name="passType" value="generalDays">

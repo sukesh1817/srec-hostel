@@ -171,22 +171,22 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     }
                     ?>
                     <div class="col-md-12">
-                        <label for="from" class="form-label">From</label>
+                        <label for="from" class="form-label">From <span class="text-danger">*</span></label>
                         <input type="datetime-local" class="form-control rounded-1" name="from" id="from"
                             value="<?php echo $row['time_of_leave'] ?>" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="to" class="form-label">To</label>
+                        <label for="to" class="form-label">To <span class="text-danger">*</span></label>
                         <input type="datetime-local" class="form-control rounded-1" name="to" id="to"
                             value="<?php echo $row['time_of_entry'] ?>" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="address" class="form-label">Address</label>
+                        <label for="address" class="form-label">Address <span class="text-danger">*</span></label>
                         <input type="text" class="form-control rounded-1" name="address" id="address"
                             value="<?php echo $row['address_name'] ?>" required>
                     </div>
                     <div class="col-md-12">
-                        <label for="reason" class="form-label">Reason</label>
+                        <label for="reason" class="form-label">Reason <span class="text-danger">*</span></label>
                         <input type="text" class="form-control rounded-1" name="reason" id="reason"
                             value="<?php echo $row['reason'] ?>" required>
                     </div>
@@ -195,12 +195,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         ?>
                         <input type='hidden' name='pass' value='working_pass'>
                         <div class="col-md-12">
-                            <label for="from" class="form-label">Tutor name</label>
+                            <label for="from" class="form-label">Tutor name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control rounded-1" id="from" name="tutor_name"
                                 value="<?php echo $row['tutor_name'] ?>" required>
                         </div>
                         <div class="col-md-12">
-                            <label for="from" class="form-label">Ac name</label>
+                            <label for="from" class="form-label">Ac name <span class="text-danger">*</span></label>
                             <input type="text" class="form-control rounded-1" id="from" name="ac_name"
                                 value="<?php echo $row['ac_name'] ?>" required>
                         </div>
