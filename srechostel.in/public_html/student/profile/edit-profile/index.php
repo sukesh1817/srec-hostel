@@ -131,11 +131,33 @@ use Intervention\Image\Drivers\Gd\Driver;
                 $dir = $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
 
-                    
-                    $manager = new ImageManager(Driver::class);
-                    $image = $manager->read("s.png");
+                    $apiKey = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJhdWQiOiIxIiwianRpIjoiODc2NDI4Y2U0MjIwNDI3ZjBmODM0YWRjMjMxMWUyODg1Nzk1ZmYxNzFlMWUzMGQ0NmRmOWJjNWE3Nzc5NTUxNjBiOGJjMDBlMDkxNDA1YmQiLCJpYXQiOjE3MjYyMzY4MDcuMzU3MzIyLCJuYmYiOjE3MjYyMzY4MDcuMzU3MzIzLCJleHAiOjQ4ODE5MTA0MDcuMzUzMzE0LCJzdWIiOiI2OTU3Nzg1NCIsInNjb3BlcyI6WyJ1c2VyLnJlYWQiLCJ1c2VyLndyaXRlIiwidGFzay5yZWFkIiwid2ViaG9vay5yZWFkIiwidGFzay53cml0ZSIsIndlYmhvb2sud3JpdGUiLCJwcmVzZXQucmVhZCIsInByZXNldC53cml0ZSJdfQ.A5c7toUqeq-vZX1lkqf7mRIP8On7KV8NvqrQO8x24a_DaGAauiQDM_cWYGpehEdhVS8NqY38Ij_putnFD9Sz6m6brpdUuHj6i5qVAW-i34usz1qEnRO5_YR4Q-B0IDNswU0XbXdaz0zvboNxVbB7nBq52BcFVp2HBLGP0a3aQRktR5ikbVxQI_uxbrwhq5kghG_9Vjo8Gi9iybqPX_34P4mHGUccx_WfVlxKGTm9IggA2AW6m4DjnYM69Ij8B68bzpJNxi2sgeHy3ypZ2HtvZniBxNRuiZROY-y4L5F9G2hLbC1B5OYFTLOicCYOGsWRfNciJLC7fnTTADT1R_MjodV1zAnE2gKCeVickyq3SmUfvxnPswpmDHR4n20wpcX9PRHvzFLebuolCfZs9Mcl6U5AazjSbBTtOufz1dFhQ_Qvyw3ZqSZ-MnYybKdfkuU8OAr0-Z7Jy5MIb1cnXgwa0-dNQSC4dFxQJM19LfsfdQIUoHJcWMiJjc4cSDKvz6rw5CmCtniJt7neV2LrP7vrESrY2sDHTuLcSf2WFgLyfmNpJ19EJONmQScq-gHA4yY59fCd0m-XGYYWw86GIGOqD6PMWz7kXWPEqKtEJcKRR94xQ-RgjRjcDqFiCcxDG9BC-cdLDgMBYgwwBcmStbXsmGn2JYXkABcP1pMiVJxr-uY';
+                    $inputFile = '2211049.heic';
+                    $outputFile = 'image.jpg';
+                    $url = 'https://api.cloudconvert.com/v2/convert';
+                    $data = [
+                        'input' => 'upload',
+                        'file' => new \CURLFile($inputFile),
+                        'outputformat' => 'jpg',
+                        'apikey' => $apiKey,
+                    ];
+
+                    $ch = curl_init();
+                    curl_setopt($ch, CURLOPT_URL, $url);
+                    curl_setopt($ch, CURLOPT_POST, 1);
+                    curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
+                    curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                    $response = curl_exec($ch);
+                    curl_close($ch);
+
+                    file_put_contents($outputFile, $response);
+                    echo "Image converted successfully.";
+
                     echo getcwd();
                     exit;
+                    $manager = new ImageManager(Driver::class);
+                    $image = $manager->read("s.png");
+                   
                     $image->toJpeg()->save('storage/palm_photo/'.$filename);
                     $image = $manager->read("2211026.heic");
                    
