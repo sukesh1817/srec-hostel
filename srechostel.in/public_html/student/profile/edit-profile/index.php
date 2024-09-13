@@ -1,25 +1,15 @@
 <?php
-// Include Composer's autoload file
-require_once $_SERVER['DOCUMENT_ROOT'] . '/../../composer/vendor/autoload.php';
-
-use Intervention\Image\ImageManager;
-use Intervention\Image\Drivers\Gd\Driver;
-
-// create image manager with desired driver
-$manager = new ImageManager(new Driver());
-
-// read image from file system
-$image = $manager->read('broom.png');
-
-// resize image proportionally to 300px width
-$image->scale(width: 300);
-
-// save modified image in new format 
-$image->toJpg()->save('foo.jpg');
-
 // Check if the user is a student
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
+?>
+
+
+<?php
+// Include Composer's autoload file
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../../composer/vendor/autoload.php';
+use Intervention\Image\ImageManager;
+use Intervention\Image\Drivers\Gd\Driver;
 ?>
 
 <!DOCTYPE html>
@@ -121,7 +111,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             $allowed_extensions = ['heic', 'jpg', 'jpeg', 'png'];
 
             if (!in_array($ext, $allowed_extensions)) {
-                die('Unsupported file type.');
+                // die('Unsupported file type.');
             }
 
             if ($ext == 'heic') {
@@ -129,12 +119,19 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                     unlink($_SESSION['yourToken'] . ".jpg");
                 }
+                chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
                 $dir = $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
                     try {
-                        $image = Image::make($dir);
-                        $encoded = $image->encode('jpg');
-                        $encoded->save($_SESSION['yourToken'] . ".jpg");
+                        $manager = new ImageManager(new Driver());
+                        // read image from file system
+                        $image = $manager->read($_SESSION['yourToken'] . ".heic");
+                        // resize image proportionally to 300px width
+                        $image->scale(width: 300);
+                        // save modified image in new format 
+                        chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
+                        $image->toJpg()->save($_SESSION['yourToken'] . '.jpg');
+                        chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
                         unlink($dir);
                     } catch (Exception $e) {
                         echo 'Error processing image: ', $e->getMessage(), "\n";
