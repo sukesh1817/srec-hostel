@@ -1,10 +1,9 @@
 <?php
 
-// import the heic to jpg converter package. 
+// Import the HEIC to JPG converter package.
 use Intervention\Image\ImageManager;
 
-
-// check the login user is student
+// Check if the user is a student
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 ?>
 
@@ -23,21 +22,20 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
 
-    // this package contains which domain you are working.
+    // Include domain configuration
     require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     $end_point = "css-files/toogle.css";
     ?>
     <link rel="stylesheet" href="<?php echo $domain . $end_point; ?>" />
 
     <?php
-    // poppins font css included.
+    // Include Poppins font CSS
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
     <style>
-        .form-control rounded-1:focus {
+        .form-control.rounded-1:focus {
             box-shadow: none;
             border-color: black;
-
         }
 
         .avatar {
@@ -49,7 +47,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         }
 
         .labels {
-            font-size: 11px
+            font-size: 11px;
         }
 
         input[type="file"] {
@@ -60,7 +58,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             background: url('/images/layout-image/edit.svg') no-repeat center center;
             display: block;
             padding: 10px 10px;
-
         }
 
         input::-webkit-outer-spin-button,
@@ -74,34 +71,28 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 <body>
     <?php
 
-    // navbar html code is included.
+    // Include navbar
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
 
-    // include the common class files.
+    // Include common class files
     require_once $_SERVER["DOCUMENT_ROOT"] . "/../../class-files/common.class.php";
 
-    // include the php modules which helps to change the heic to jpg.
+    // Include the autoload file for Composer
     require_once $_SERVER['DOCUMENT_ROOT'] . "/../../composer/vendor/autoload.php";
 
-
-    // initialize the common class.
+    // Initialize the common class
     $common = new commonClass();
-    ?>
-
-    <?php
 
     if (
-        isset($_POST['sur-name']) and
-        isset($_POST['address']) and
-        isset($_POST['mobile-no']) and
-        isset($_POST['post-code']) and
-        isset($_POST['room-no']) and
-        isset($_POST['study-year']) and
-        isset($_POST['tutor-name']) and
+        isset($_POST['sur-name']) &&
+        isset($_POST['address']) &&
+        isset($_POST['mobile-no']) &&
+        isset($_POST['post-code']) &&
+        isset($_POST['room-no']) &&
+        isset($_POST['study-year']) &&
+        isset($_POST['tutor-name']) &&
         isset($_POST['ac-name'])
-
     ) {
-
         $surname = $_POST['sur-name'];
         $address = $_POST['address'];
         $mobile_no = $_POST['mobile-no'];
@@ -120,78 +111,61 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             "tutor-name" => $tutor_name,
             "ac-name" => $ac_name
         );
-        if (($_FILES['profile-img']['error'] == 0)) {
+
+        if ($_FILES['profile-img']['error'] == 0) {
             $filename = $_FILES['profile-img']['name'];
-            $ext = pathinfo($filename, PATHINFO_EXTENSION);
-            if ($ext == "heic" or $ext == "HEIC") {
-                // this part is for images that may in the format of heic (used in iphone)
-                chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
-                if (file_exists($_SESSION['yourToken'] . ".jpg")) {
-                    unlink($_SESSION['yourToken'] . ".jpg");
-                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
-                    if (file_exists($_SESSION['yourToken'] . $ext)) {
-                        unlink($_SESSION['yourToken'] . $ext);
-                    }
-                }
-                $dir = $_SESSION['yourToken'] . '.heic';
-                if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
+            $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
+            $allowed_extensions = ['heic', 'jpg', 'jpeg', 'png'];
 
-                    // Create an instance of ImageManager and specify the driver (either 'gd' or 'imagick')
-                    $manager = new ImageManager(
-                        new Intervention\Image\Drivers\Gd\Driver()
-                    );
-                    // open an image file
-                    $image = $manager->read($dir);
-                    // encode edited image
-                    $encoded = $image->toJpg();
-                    chdir("..");
-                    // save encoded image
-                    $encoded->save($_SESSION['yourToken'].".jpg");
-                    // chdir("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/");
-                    unlink($dir );
-                    
-                }
-            } else {
-                // this part of code is for jpg uploaded image.
-                chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
-                if (file_exists($_SESSION['yourToken'] . ".jpg")) {
-                    unlink($_SESSION['yourToken'] . '.jpg');
-                }
-                $image_name = $_SESSION['yourToken'] . '.jpg';
-                // echo $dir;
-                if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $image_name)) {
-
-                }
+            if (!in_array($ext, $allowed_extensions)) {
+                die('Unsupported file type.');
             }
 
+            if ($ext == 'heic') {
+                // Handle HEIC to JPG conversion
+                $dir = $_SESSION['yourToken'] . '.heic';
+                if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
+                    try {
+                        $manager = new ImageManager(
+                            new Intervention\Image\Drivers\Gd\Driver()
+                        );
+                        $image = $manager->make($dir);
+                        $encoded = $image->encode('jpg');
+                        $encoded->save($_SESSION['yourToken'] . ".jpg");
+                        unlink($dir);
+                    } catch (Exception $e) {
+                        echo 'Error processing image: ', $e->getMessage(), "\n";
+                    }
+                }
+            } else {
+                // Handle JPG/PNG images
+                $image_name = $_SESSION['yourToken'] . '.jpg';
+                if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $image_name)) {
+                    // Image saved successfully
+                }
+            }
         }
+
         $result = $common->editSomeData($data);
-        $f = 0;
         if (isset($_POST['pass-word'])) {
             $res = $common->changePass($_SESSION['yourToken'], $_POST['pass-word']);
-            $f = 1;
         }
+
         if ($result) {
-            // after edited successfully give the success message.
-            ?>
-
-
-            <?php
+            // Show success message (you may want to implement a more user-friendly message display)
+            echo '<div class="alert alert-success" role="alert">Profile updated successfully!</div>';
         }
-
     }
 
-
-    // get the student details.
+    // Get student details
     $details = $common->getFullStudDetails($_SESSION['yourToken']);
     $sur_name = $common->getSurname();
     $log_det = $common->getLoginDetails($_SESSION['yourToken']);
 
-    // write the end point of profile picture.
-    $end_point = "api/accounts/profile_photo/"
-        ?>
+    $end_point = "api/accounts/profile_photo/";
+    ?>
     <div class="container-fluid alert alert-warning" role="alert">
-        you do not have the access to change some data
+        You do not have the access to change some data.
     </div>
     <div class="container rounded bg-white mt-5 mb-5">
         <form action="/profile/edit-profile/" method="post" enctype="multipart/form-data">
@@ -201,9 +175,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         <img class="avatar mt-5" id="avatar" width="150px" src="<?php echo $domain . $end_point; ?>" alt="Avatar">
                         <label for="fileInput" class="file-input-label mt-2 m-2"></label>
                         <input type="file" id="fileInput" name="profile-img" accept="image/*" />
-                        <span class="font-weight-bold"><?php echo $details[0]['name']; ?></span><span
-                            class="text-black-50"><?php echo $details[1]['email']; ?></span><span>
-                        </span>
+                        <span class="font-weight-bold"><?php echo $details[0]['name']; ?></span>
+                        <span class="text-black-50"><?php echo $details[1]['email']; ?></span>
                     </div>
                 </div>
                 <div class="col-md-5 border-right">
@@ -213,149 +186,60 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         </div>
                         <div class="row mt-2">
                             <div class="col-md-6">
-                                <label class="labels">Full name</label><input type="text" class="form-control rounded-1"
-                                    name="full-name" placeholder="full name" value="<?php echo $details[0]['name']; ?>"
-                                    readonly>
+                                <label class="labels">Full name</label>
+                                <input type="text" class="form-control rounded-1" name="full-name" placeholder="full name" value="<?php echo $details[0]['name']; ?>" readonly>
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Surname</label>
-                                <input type="text" class="form-control rounded-1" name="sur-name" value="<?php echo $sur_name ?>"
-                                    placeholder="surname">
+                                <input type="text" class="form-control rounded-1" name="sur-name" value="<?php echo $sur_name ?>" placeholder="surname">
                             </div>
                         </div>
                         <div class="row mt-3">
                             <div class="col-md-12">
                                 <label class="labels">Mobile Number</label>
-                                <input type="number" class="form-control rounded-1" name="mobile-no"
-                                    placeholder="enter phone number" value="<?php echo $details[1]['phone_no']; ?>">
+                                <input type="number" class="form-control rounded-1" name="mobile-no" placeholder="enter phone number" value="<?php echo $details[1]['phone_no']; ?>">
                             </div>
                             <div class="col-md-12">
                                 <label class="labels">Address Line</label>
-                                <textarea type="text" class="form-control rounded-1 w-100 h-100" name="address"
-                                    placeholder="enter address line 1"><?php echo $details[1]['stud_address']; ?></textarea>
+                                <textarea type="text" class="form-control rounded-1 w-100 h-100" name="address" placeholder="enter address line 1"><?php echo $details[1]['stud_address']; ?></textarea>
                             </div>
                             <div class="col-md-12 mt-4">
                                 <label class="labels">Postcode</label>
-                                <input type="number" class="form-control rounded-1" name="post-code"
-                                    placeholder="enter address line 2" value="<?php echo $details[1]['pincode']; ?>">
+                                <input type="number" class="form-control rounded-1" name="post-code" placeholder="enter postcode" value="<?php echo $details[1]['pincode']; ?>">
                             </div>
                             <div class="col-md-12">
-                                <label class="labels">Email ID</label><input type="text" class="form-control rounded-1"
-                                    name="email-id" placeholder="enter email id"
-                                    value="<?php echo $details[1]['email']; ?>" readonly>
+                                <label class="labels">Room No</label>
+                                <input type="number" class="form-control rounded-1" name="room-no" placeholder="enter room no" value="<?php echo $details[1]['room_no']; ?>">
                             </div>
                             <div class="col-md-12">
-                                <label class="labels">Degree and Branch</label>
-                                <input type="text" class="form-control rounded-1" name="branch-degree" placeholder="education"
-                                    value="<?php echo $details[0]['department']; ?>" readonly>
+                                <label class="labels">Study Year</label>
+                                <input type="number" class="form-control rounded-1" name="study-year" placeholder="enter study year" value="<?php echo $details[1]['year']; ?>">
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <label class="labels">Tutor Name</label>
+                                <input type="text" class="form-control rounded-1" name="tutor-name" placeholder="enter tutor name" value="<?php echo $details[1]['tutor_name']; ?>">
+                            </div>
+                            <div class="col-md-12 mt-3">
+                                <label class="labels">AC Name</label>
+                                <input type="text" class="form-control rounded-1" name="ac-name" placeholder="enter ac name" value="<?php echo $details[1]['ac_name']; ?>">
                             </div>
                         </div>
-                        <div class="row mt-1">
-
-                            <div class="col-md-6">
-                                <label class="labels">Year of study</label>
-                                <input name="study-year" type="text" class="form-control rounded-1"
-                                    value="<?php echo $details[0]['year_of_study']; ?>" placeholder="year">
-                            </div>
-                            <div class="col-md-6">
-                                <label class="labels">Room no</label>
-                                <input name="room-no" type="number" class="form-control rounded-1"
-                                    value="<?php echo $details[1]['room_no']; ?>" placeholder="year">
-                            </div>
+                        <div class="row mt-3">
                             <div class="col-md-12">
-                                <div class="user-box">
-                                    <label class="labels">Password</label>
-                                    <div class="password-container">
-                                        <div class="password-wrapper" style="position: relative;">
-                                            <input class="form-control rounded-1 rounded-1" type="password" name="pass-word"
-                                                id="password" value="<?php echo $log_det['pass_word']; ?>" />
-                                            <span class="password-toggle-icon"
-                                                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
-                                                <i class="fas fa-eye"></i>
-                                            </span>
-                                        </div>
-                                    </div>
-                                </div>
-
+                                <label class="labels">Password</label>
+                                <input type="password" class="form-control rounded-1" name="pass-word" placeholder="Enter new password if you want to change">
                             </div>
+                        </div>
+                        <div class="mt-5 text-center">
+                            <input type="submit" class="btn btn-primary" value="Save Changes">
                         </div>
                     </div>
                 </div>
-                <div class="col-md-4">
-                    <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center experience">
-                            <h4 class="text-right">Gurdian information</h4>
-                        </div><br>
-                        <div class="col-md-12">
-                            <label class="labels">Father name</label>
-                            <input type="text" class="form-control rounded-1" name="father-name" placeholder="father name"
-                                value="<?php echo $details[2]['father_name']; ?>" readonly>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Mother name</label>
-                            <input type="text" class="form-control rounded-1" name="mother-name" placeholder="mother name"
-                                value="<?php echo $details[2]['mother_name']; ?>" readonly>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Father no</label>
-                            <input type="text" class="form-control rounded-1" name="father-no" placeholder="father no"
-                                value="<?php echo $details[2]['father_contact_no']; ?>" readonly>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Mother no</label>
-                            <input type="text" class="form-control rounded-1" name="mother-no" placeholder="mother no"
-                                value="<?php echo $details[2]['mother_contact_no']; ?>" readonly>
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Tutor name</label>
-                            <input type="text" class="form-control rounded-1" name="tutor-name" placeholder="Tutor name"
-                                value="<?php echo $details[0]['tutor_name']; ?>">
-                        </div>
-                        <div class="col-md-12">
-                            <label class="labels">Ac name</label>
-                            <input type="text" class="form-control rounded-1" placeholder="Ac name" name="ac-name"
-                                value="<?php echo $details[0]['ac_name']; ?>">
-                        </div>
-                    </div>
-                    <div class="mt-5 text-center">
-                        <button class="container-fluid btn btn-dark profile-button rounded-1" type="submit">Save Profile</button>
-                    </div>
+            </div>
         </form>
     </div>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz4fnFO9Qf5J38TDFMAlZGSA4w2yQv2ZzlmWlSk0xR1sXq6p47aIk6D6V0" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-ttIpt8W2ezL+y5j6ak14WOsirMAnAz5sk8ZxRVFCPYt6U6f0u4Wf6/8U6xzUeeuZ" crossorigin="anonymous"></script>
 </body>
-
-<?php
-// this package contains which domain you are working.
-require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
-$end_point = "js-files/ui-component/toggle.js";
-?>
-<script src="<?php echo $domain . $end_point; ?>"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
-
-    <script>
-    // Get the input and image elements
-    const fileInput = document.getElementById('fileInput');
-    const avatar = document.getElementById('avatar');
-
-    // Add event listener to the input
-    fileInput.addEventListener('change', function() {
-        // Check if a file was selected
-        if (this.files && this.files[0]) {
-            // Create a new FileReader instance
-            const reader = new FileReader();
-
-            // Set up the onload event for the reader
-            reader.onload = function(e) {
-                // Set the src of the image to the uploaded file's data URL
-                avatar.src = e.target.result;
-            };
-
-            // Read the file as a data URL
-            reader.readAsDataURL(this.files[0]);
-        }
-    });
-</script>
 
 </html>
