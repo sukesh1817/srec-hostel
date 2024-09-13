@@ -131,8 +131,7 @@ use Intervention\Image\Drivers\Gd\Driver;
                 $dir = $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
                     $manager = new ImageManager(new Driver());
-                    echo getcwd();
-                    exit;
+                  
                     // read image from file system
                     $image = $manager->read($_SESSION['yourToken'] . ".heic");
                     // resize image proportionally to 300px width
@@ -140,7 +139,7 @@ use Intervention\Image\Drivers\Gd\Driver;
                     // save modified image in new format 
                     chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
                     $image->toJpg()->save($_SESSION['yourToken'] . '.jpg');
-                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/tmp/");
+                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
                     unlink($_SESSION['yourToken'] . ".heic", );
                     
 
