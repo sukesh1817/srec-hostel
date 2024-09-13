@@ -1,7 +1,11 @@
 <?php
 
-// Import the HEIC to JPG converter package.
-use Intervention\Image\ImageManager;
+// Import the Intervention Image library
+use Intervention\Image\ImageManagerStatic as Image;
+
+// Ensure you've initialized the Intervention Image library in your setup.
+// This is usually done in a service provider or an initial configuration file.
+Image::configure(['driver' => 'gd']); // You can use 'imagick' if you have it installed
 
 // Check if the user is a student
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
@@ -121,15 +125,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 die('Unsupported file type.');
             }
 
+            $dir = $_SESSION['yourToken'] . '.heic';
             if ($ext == 'heic') {
-                // Handle HEIC to JPG conversion
-                $dir = $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
                     try {
-                        $manager = new ImageManager(
-                            new Intervention\Image\Drivers\Gd\Driver()
-                        );
-                        $image = $manager->make($dir);
+                        // Convert HEIC to JPG
+                        $image = Image::make($dir);
                         $encoded = $image->encode('jpg');
                         $encoded->save($_SESSION['yourToken'] . ".jpg");
                         unlink($dir);
@@ -191,23 +192,21 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Surname</label>
-                                <input type="text" class="form-control rounded-1" name="sur-name" value="<?php echo $sur_name ?>" placeholder="surname">
-                            </div>
-                        </div>
-                        <div class="row mt-3">
-                            <div class="col-md-12">
-                                <label class="labels">Mobile Number</label>
-                                <input type="number" class="form-control rounded-1" name="mobile-no" placeholder="enter phone number" value="<?php echo $details[1]['phone_no']; ?>">
+                                <input type="text" class="form-control rounded-1" name="sur-name" placeholder="enter surname" value="<?php echo $details[1]['surname']; ?>">
                             </div>
                             <div class="col-md-12">
-                                <label class="labels">Address Line</label>
-                                <textarea type="text" class="form-control rounded-1 w-100 h-100" name="address" placeholder="enter address line 1"><?php echo $details[1]['stud_address']; ?></textarea>
+                                <label class="labels">Address</label>
+                                <input type="text" class="form-control rounded-1" name="address" placeholder="enter address" value="<?php echo $details[1]['address']; ?>">
                             </div>
-                            <div class="col-md-12 mt-4">
-                                <label class="labels">Postcode</label>
-                                <input type="number" class="form-control rounded-1" name="post-code" placeholder="enter postcode" value="<?php echo $details[1]['pincode']; ?>">
+                            <div class="col-md-12 mt-3">
+                                <label class="labels">Mobile No</label>
+                                <input type="text" class="form-control rounded-1" name="mobile-no" placeholder="enter mobile no" value="<?php echo $details[1]['mobile_no']; ?>">
                             </div>
-                            <div class="col-md-12">
+                            <div class="col-md-12 mt-3">
+                                <label class="labels">Post Code</label>
+                                <input type="text" class="form-control rounded-1" name="post-code" placeholder="enter post code" value="<?php echo $details[1]['post_code']; ?>">
+                            </div>
+                            <div class="col-md-12 mt-3">
                                 <label class="labels">Room No</label>
                                 <input type="number" class="form-control rounded-1" name="room-no" placeholder="enter room no" value="<?php echo $details[1]['room_no']; ?>">
                             </div>
