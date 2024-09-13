@@ -1,6 +1,6 @@
 <?php
-session_start();
-echo "hello";
+require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "api/accounts/is-valid-person.php";
+
 
 if (isset($_SESSION['yourToken'])) {
     // header("Content-Type: image/jpg");
@@ -11,6 +11,5 @@ if (isset($_SESSION['yourToken'])) {
     } else {
         include_once $_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/dummy-profile.jpg";
     }
-
 }
 

@@ -33,6 +33,6 @@ if (isset($_COOKIE["SessId"])) {
 
 function do_redirection()
 {
-    $domain = "testing.srechostel.in" ;
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../config/domain.php";
     header("Location:  https://$domain");
 }
