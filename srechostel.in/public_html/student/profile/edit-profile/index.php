@@ -119,6 +119,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             $filename = $_FILES['profile-img']['name'];
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
             if ($ext == "heic" or $ext == "HEIC") {
+                // this part is for images that may in the format of heic (used in iphone)
                 chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/");
                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                     unlink($_SESSION['yourToken'] . ".jpg");
@@ -130,32 +131,28 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 }
                 $dir = "tmp/" . $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
-                    include $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
+                    require_once $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
                     $convert = HeicToJpg::convert("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/" . $_SESSION['yourToken'] . '.heic')->saveAs("/home/u219671451/public_html/testing/srechostel.in/profile-photos/" . $_SESSION['yourToken'] . ".jpg");
                     chdir("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/");
                     unlink($_SESSION['yourToken'] . ".heic", );
                     if ($convert) {
                         // successfully converted.
                     }
-
                 }
-
             } else {
-                // echo "in jpg";
-                chdir($_SERVER['DOCUMENT_ROOT'] . "/..");
-                // echo getcwd();
+                // this part of code is for jpg uploaded image.
+                chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                     unlink($_SESSION['yourToken'] . '.jpg');
                 }
-                $dir = "profile-photos/" . $_SESSION['yourToken'] . '.jpg';
+                $image_name = $_SESSION['yourToken'] . '.jpg';
                 // echo $dir;
-                if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
+                if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $image_name)) {
 
                 }
             }
 
         }
-
         $result = $common->editSomeData($data);
         $f = 0;
         if (isset($_POST['pass-word'])) {
