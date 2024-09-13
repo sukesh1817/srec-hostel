@@ -33,7 +33,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
     <style>
-        .form-control:focus {
+        .form-control rounded-1:focus {
             box-shadow: none;
             border-color: black;
 
@@ -171,10 +171,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         }
 
     }
-    ?>
 
-
-    <?php
 
     // get the student details.
     $details = $common->getFullStudDetails($_SESSION['yourToken']);
@@ -182,17 +179,17 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     $log_det = $common->getLoginDetails($_SESSION['yourToken']);
 
     // write the end point of profile picture.
-    $end_point = "accounts/profile_photo/"
+    $end_point = "api/accounts/profile_photo/"
         ?>
     <div class="container-fluid alert alert-warning" role="alert">
         you do not have the access to change some data
     </div>
     <div class="container rounded bg-white mt-5 mb-5">
-        <form action="/stud-panel/profile/edit-profile/" method="post" enctype="multipart/form-data">
+        <form action="/profile/edit-profile/" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="avatar mt-5" width="150px" src="<?php echo $domain.$end_point; ?>">
+                        <img class="avatar mt-5" width="150px" src="<?php echo $domain . $end_point; ?>">
                         <label for="fileInput" class="file-input-label mt-2 m-2"></label>
                         <input type="file" id="fileInput" name="profile-img" accept="image/*">
 
@@ -207,55 +204,62 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             <h4 class="text-right">Profile Settings</h4>
                         </div>
                         <div class="row mt-2">
-                            <div class="col-md-6"><label class="labels">Full
-                                    name</label><input type="text" class="form-control" name="full-name"
-                                    placeholder="full name" value="<?php echo $details[0]['name']; ?>" readonly>
+                            <div class="col-md-6">
+                                <label class="labels">Full name</label><input type="text" class="form-control rounded-1"
+                                    name="full-name" placeholder="full name" value="<?php echo $details[0]['name']; ?>"
+                                    readonly>
                             </div>
-                            <div class="col-md-6"><label class="labels">Surname</label><input type="text"
-                                    class="form-control" name="sur-name" value="<?php echo $sur_name ?>"
+                            <div class="col-md-6">
+                                <label class="labels">Surname</label>
+                                <input type="text" class="form-control rounded-1" name="sur-name" value="<?php echo $sur_name ?>"
                                     placeholder="surname">
                             </div>
                         </div>
                         <div class="row mt-3">
-                            <div class="col-md-12"><label class="labels">Mobile
-                                    Number</label><input type="number" class="form-control" name="mobile-no"
+                            <div class="col-md-12">
+                                <label class="labels">Mobile Number</label>
+                                <input type="number" class="form-control rounded-1" name="mobile-no"
                                     placeholder="enter phone number" value="<?php echo $details[1]['phone_no']; ?>">
                             </div>
-                            <div class="col-md-12"><label class="labels">Address
-                                    Line</label><textarea type="text" class="form-control w-100 h-100" name="address"
+                            <div class="col-md-12">
+                                <label class="labels">Address Line</label>
+                                <textarea type="text" class="form-control rounded-1 w-100 h-100" name="address"
                                     placeholder="enter address line 1"><?php echo $details[1]['stud_address']; ?></textarea>
                             </div>
-                            <div class="col-md-12 mt-4"><label class="labels">Postcode</label><input type="number"
-                                    class="form-control" name="post-code" placeholder="enter address line 2"
-                                    value="<?php echo $details[1]['pincode']; ?>">
+                            <div class="col-md-12 mt-4">
+                                <label class="labels">Postcode</label>
+                                <input type="number" class="form-control rounded-1" name="post-code"
+                                    placeholder="enter address line 2" value="<?php echo $details[1]['pincode']; ?>">
                             </div>
-                            <div class="col-md-12"><label class="labels">Email
-                                    ID</label><input type="text" class="form-control" name="email-id"
-                                    placeholder="enter email id" value="<?php echo $details[1]['email']; ?>" readonly>
+                            <div class="col-md-12">
+                                <label class="labels">Email ID</label><input type="text" class="form-control rounded-1"
+                                    name="email-id" placeholder="enter email id"
+                                    value="<?php echo $details[1]['email']; ?>" readonly>
                             </div>
-                            <div class="col-md-12"><label class="labels">Degree and
-                                    Branch</label><input type="text" class="form-control" name="branch-degree"
-                                    placeholder="education" value="<?php echo $details[0]['department']; ?>" readonly>
+                            <div class="col-md-12">
+                                <label class="labels">Degree and Branch</label>
+                                <input type="text" class="form-control rounded-1" name="branch-degree" placeholder="education"
+                                    value="<?php echo $details[0]['department']; ?>" readonly>
                             </div>
                         </div>
                         <div class="row mt-1">
 
                             <div class="col-md-6">
-                                <label class="labels">Year of study</label><input name="study-year" type="text"
-                                    class="form-control" value="<?php echo $details[0]['year_of_study']; ?>"
-                                    placeholder="year">
+                                <label class="labels">Year of study</label>
+                                <input name="study-year" type="text" class="form-control rounded-1"
+                                    value="<?php echo $details[0]['year_of_study']; ?>" placeholder="year">
                             </div>
                             <div class="col-md-6">
-                                <label class="labels">Room no</label><input name="room-no" type="number"
-                                    class="form-control" value="<?php echo $details[1]['room_no']; ?>"
-                                    placeholder="year">
+                                <label class="labels">Room no</label>
+                                <input name="room-no" type="number" class="form-control rounded-1"
+                                    value="<?php echo $details[1]['room_no']; ?>" placeholder="year">
                             </div>
                             <div class="col-md-12">
                                 <div class="user-box">
                                     <label class="labels">Password</label>
                                     <div class="password-container">
                                         <div class="password-wrapper" style="position: relative;">
-                                            <input class="form-control rounded-1" type="password" name="pass-word"
+                                            <input class="form-control rounded-1 rounded-1" type="password" name="pass-word"
                                                 id="password" value="<?php echo $log_det['pass_word']; ?>" />
                                             <span class="password-toggle-icon"
                                                 style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
@@ -274,27 +278,39 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         <div class="d-flex justify-content-between align-items-center experience">
                             <h4 class="text-right">Gurdian information</h4>
                         </div><br>
-                        <div class="col-md-12"><label class="labels">Father name</label><input type="text"
-                                class="form-control" name="father-name" placeholder="father name"
-                                value="<?php echo $details[2]['father_name']; ?>" readonly></div>
-                        <div class="col-md-12"><label class="labels">Mother name</label><input type="text"
-                                class="form-control" name="mother-name" placeholder="mother name"
-                                value="<?php echo $details[2]['mother_name']; ?>" readonly></div>
-                        <div class="col-md-12"><label class="labels">Father no</label><input type="text"
-                                class="form-control" name="father-no" placeholder="father no"
-                                value="<?php echo $details[2]['father_contact_no']; ?>" readonly></div>
-                        <div class="col-md-12"><label class="labels">Mother no</label><input type="text"
-                                class="form-control" name="mother-no" placeholder="mother no"
-                                value="<?php echo $details[2]['mother_contact_no']; ?>" readonly></div>
-                        <div class="col-md-12"><label class="labels">Tutor name</label><input type="text"
-                                class="form-control" name="tutor-name" placeholder="Tutor name"
-                                value="<?php echo $details[0]['tutor_name']; ?>"></div>
-                        <div class="col-md-12"><label class="labels">Ac name</label><input type="text"
-                                class="form-control" placeholder="Ac name" name="ac-name"
-                                value="<?php echo $details[0]['ac_name']; ?>"></div>
+                        <div class="col-md-12">
+                            <label class="labels">Father name</label>
+                            <input type="text" class="form-control rounded-1" name="father-name" placeholder="father name"
+                                value="<?php echo $details[2]['father_name']; ?>" readonly>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Mother name</label>
+                            <input type="text" class="form-control rounded-1" name="mother-name" placeholder="mother name"
+                                value="<?php echo $details[2]['mother_name']; ?>" readonly>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Father no</label>
+                            <input type="text" class="form-control rounded-1" name="father-no" placeholder="father no"
+                                value="<?php echo $details[2]['father_contact_no']; ?>" readonly>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Mother no</label>
+                            <input type="text" class="form-control rounded-1" name="mother-no" placeholder="mother no"
+                                value="<?php echo $details[2]['mother_contact_no']; ?>" readonly>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Tutor name</label>
+                            <input type="text" class="form-control rounded-1" name="tutor-name" placeholder="Tutor name"
+                                value="<?php echo $details[0]['tutor_name']; ?>">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Ac name</label>
+                            <input type="text" class="form-control rounded-1" placeholder="Ac name" name="ac-name"
+                                value="<?php echo $details[0]['ac_name']; ?>">
+                        </div>
                     </div>
                     <div class="mt-5 text-center">
-                        <button class="container-fluid btn btn-dark profile-button" type="submit">Save Profile</button>
+                        <button class="container-fluid btn btn-dark profile-button rounded-1" type="submit">Save Profile</button>
                     </div>
         </form>
     </div>
