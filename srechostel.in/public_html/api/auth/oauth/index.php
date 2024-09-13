@@ -8,7 +8,6 @@ $oauth = json_decode($oauth, true);
 $clientID = $oauth['web']['client_id'];
 $clientSecret = $oauth['web']['client_secret'];
 $redirectUri = $oauth['web']['redirect_uris'][0];
-$ip = $_SERVER['REMOTE_ADDR'];
 
 // Google Client initialization
 $client = new Google_Client();
