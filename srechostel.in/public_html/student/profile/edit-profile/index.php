@@ -17,19 +17,28 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="icon" type="image/x-icon" href="/images/icons/profile-icon.png">
-    <link rel="stylesheet" href="/css-files/toggle.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <?php
 
+    // this package contains which domain you are working.
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
+    $end_point = "css-files/toogle.css";
+    ?>
+    <link rel="stylesheet" href="<?php echo $domain . $end_point; ?>" />
+
+    <?php
+    // poppins font css included.
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
+    ?>
     <style>
-        @import url("https://fonts.googleapis.com/css?family=Poppins:400,500&display=swap");
-
         .form-control:focus {
             box-shadow: none;
             border-color: black;
 
         }
+
         .avatar {
             vertical-align: middle;
             width: 150px;
@@ -52,6 +61,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             padding: 10px 10px;
 
         }
+
         input::-webkit-outer-spin-button,
         input::-webkit-inner-spin-button {
             -webkit-appearance: none;
@@ -62,7 +72,15 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
 <body>
     <?php
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/student-template/common-template/navbar.php";
+
+    // navbar html code is included.
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
+
+    // include the common class files.
+    require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/common.class.php");
+
+    // initialize the common class.
+    $common = new commonClass();
     ?>
 
     <?php
@@ -100,8 +118,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         if (($_FILES['profile-img']['error'] == 0)) {
             $filename = $_FILES['profile-img']['name'];
             $ext = pathinfo($filename, PATHINFO_EXTENSION);
-
-
             if ($ext == "heic" or $ext == "HEIC") {
                 chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/");
                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
@@ -115,7 +131,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 $dir = "tmp/" . $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
                     include $_SERVER['DOCUMENT_ROOT'] . "/../composer/vendor/autoload.php";
-                    $convert = Maestroerror\HeicToJpg::convert("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/" . $_SESSION['yourToken'] . '.heic')->saveAs("/home/u219671451/public_html/testing/srechostel.in/profile-photos/" . $_SESSION['yourToken'] . ".jpg");
+                    $convert = HeicToJpg::convert("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/" . $_SESSION['yourToken'] . '.heic')->saveAs("/home/u219671451/public_html/testing/srechostel.in/profile-photos/" . $_SESSION['yourToken'] . ".jpg");
                     chdir("/home/u219671451/public_html/testing/srechostel.in/profile-photos/tmp/");
                     unlink($_SESSION['yourToken'] . ".heic", );
                     if ($convert) {
@@ -139,20 +155,18 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             }
 
         }
-        include $_SERVER['DOCUMENT_ROOT'] . "/../class-files/common.class.php";
 
-        $details = new commonClass();
-        $result = $details->editSomeData($data);
+        $result = $common->editSomeData($data);
         $f = 0;
         if (isset($_POST['pass-word'])) {
-            $res = $details->changePass($_SESSION['yourToken'], $_POST['pass-word']);
+            $res = $common->changePass($_SESSION['yourToken'], $_POST['pass-word']);
             $f = 1;
         }
         if ($result) {
             // after edited successfully give the success message.
             ?>
 
-          
+
             <?php
         }
 
@@ -162,10 +176,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
     <?php
     include_once($_SERVER["DOCUMENT_ROOT"] . "/../class-files/common.class.php");
-    $stud = new commonClass();
-    $details = $stud->getFullStudDetails($_SESSION['yourToken']);
-    $sur_name = $stud->getSurname();
-    $log_det = $stud->getLoginDetails($_SESSION['yourToken']);
+    $details = $common->getFullStudDetails($_SESSION['yourToken']);
+    $sur_name = $common->getSurname();
+    $log_det = $common->getLoginDetails($_SESSION['yourToken']);
 
     ?>
     <div class="container-fluid alert alert-warning" role="alert">
@@ -277,12 +290,14 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     </div>
         </form>
     </div>
-
-
-
 </body>
 
-<script src="/js-files/ui-component/toggle.js"></script>
+<?php
+// this package contains which domain you are working.
+require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
+$end_point = "js-files/ui-component/toogle.js";
+?>
+<script src="<?php echo $domain . $end_point; ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>

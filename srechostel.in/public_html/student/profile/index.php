@@ -21,7 +21,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     $end_point = "css-files/toogle.css";
     ?>
-    <link rel="stylesheet" href="<?php echo $domain.$end_point; ?>" />
+    <link rel="stylesheet" href="<?php echo $domain . $end_point; ?>" />
     <?php
     // poppins font css included.
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
@@ -187,10 +187,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 </body>
 
 <?php
-// get the js file from the main domain.
-$fileName = "https://testing.srechostel.in/js-files/ui-component/toggle.js";
+// this package contains which domain you are working.
+require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
+$end_point = "js-files/ui-component/toogle.js";
 ?>
-<script src="<?php echo $fileName; ?>"></script>
+<script src="<?php echo $domain.$end_point; ?>"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
     integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
     crossorigin="anonymous"></script>
