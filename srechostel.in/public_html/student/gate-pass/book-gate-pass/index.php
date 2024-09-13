@@ -122,10 +122,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 ?>
                 <div class="position-relative p-5 text-center text-muted bg-body border border-dashed  rounded-1"
                     bis_skin_checked="1">
-
-                    <svg class="bi mt-5 mb-3" width="48" height="48">
-                        <use xlink:href="#check2-circle"></use>
-                    </svg>
                     <?php
                     if ($alreadyBooked[0]) {
                         ?>
