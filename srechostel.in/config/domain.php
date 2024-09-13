@@ -1,2 +1,2 @@
 <?php
-$domain = "https://srechostel.in/";
+$domain = "https://testing.srechostel.in/";
