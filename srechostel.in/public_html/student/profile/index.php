@@ -17,7 +17,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
     // get the js file from the main domain.
-    $fileName = "https://testing.srechostel.in/css-files/toggle.css";
+    $fileName = "https://testing.srechostel.in/api/accounts/profile_photo/";
     ?>
     <link rel="stylesheet" href="<?php echo $filename; ?>" />
     <?php
@@ -38,12 +38,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             border-radius: 50%;
             object-fit: cover;
         }
-
         .w-90 {
             width: 300px;
         }
-
-
         .labels {
             font-size: 11px
         }
@@ -73,7 +70,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     ?>
     <div class="container-fluid alert alert-info" role="alert">
         Do you want to edit something ?
-        <a class="text-decoration-none text-dark" href="/stud-panel/profile/edit-profile">
+        <a class="text-decoration-none text-dark" href="/profile/edit-profile">
             <u>click here</u>
         </a>
     </div>
