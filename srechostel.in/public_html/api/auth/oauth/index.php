@@ -32,7 +32,7 @@ try {
 
         // Database connection
         include_once $_SERVER["DOCUMENT_ROOT"] . "/../class-files/mainconn.class.php";
-        $conn = new Connection();
+        $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
 
         $stmt = $sqlConn->prepare("SELECT user_id, who_is FROM login_auth WHERE email_auth=?");
