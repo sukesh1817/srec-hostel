@@ -285,7 +285,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                     "time_enter"=>$timeEnter,
                     "date_enter"=>$dateEnter,
                     "accepted_by"=>$acceptedBy,
-                )
+                );
                 pass_theme($data);
 
 //                 $htmlContent = <<<EOL
