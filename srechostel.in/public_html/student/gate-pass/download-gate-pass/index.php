@@ -266,7 +266,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                 $encrypted = str_replace("+", "sk", $encrypted);
                 $qrcode = (new QRCode($options))->render("$domain/api/entry/?auth_token_id=$encrypted");
 
-                
+
                 $img_url = $domain."api/accounts/profile_photo/";
 
                 // included the gate pass theme.
@@ -284,7 +284,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                     "time_enter"=>$timeEnter,
                     "date_enter"=>$dateEnter,
                     "accepted_by"=>$acceptedBy,
-                    "img_url"=>$img_url
+                    "img_url"=>$img_url,
+                    "qr_code"=>$qrcode
                 );
                 pass_theme($data);
 
