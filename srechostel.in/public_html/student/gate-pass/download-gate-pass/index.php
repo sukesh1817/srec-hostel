@@ -256,21 +256,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                     ]
                 );
                 $data = $_SESSION['yourToken'];
-                // Define the secret key
+
+                // encryption process.
                 $key = "secret";
-                // Define the encryption method
                 $method = "AES-256-CBC";
-                // Generate a random initialization vector (IV)
                 $iv = openssl_random_pseudo_bytes(openssl_cipher_iv_length($method));
-                // Encrypt the data
                 $encrypted = openssl_encrypt($data, $method, $key, 0, $iv);
-                // Concatenate the IV and the encrypted data
                 $encrypted = base64_encode($iv . $encrypted);
                 $encrypted = str_replace("+", "sk", $encrypted);
-
                 $qrcode = (new QRCode($options))->render("$domain/api/entry/?auth_token_id=$encrypted");
 
+                
                 $img_url = $domain."api/accounts/profile_photo/";
+
                 // included the gate pass theme.
                 require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/modules/download_pass_theme.php";
                 $data = array(
@@ -290,120 +288,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                 );
                 pass_theme($data);
 
-//                 $htmlContent = <<<EOL
-//                 <div class="container-fluid col-lg-12 col-md-12 mt-3 mb-2 w-100">
-//                     <div class="box">
-//                         <div class="icon mb-2"><img style="width: 40px;height:40px;" src="/images/layout-image/download.png" alt="">
-//                         </div>
-//                         <div class="title mb-2"><button style="border-radius:2px;" class="btn btn-dark " id="download-button">download</button>
-//                         </div>
-//                         <div class="subtitle">click to download</button>
-//                         </div>
-//                     </div>
-//                 </div>
-//                 <div id="html-content">
-//                     <div class="container-1">
-//                         <h3 class="text-center title fw-bold">$passType</h3>
-//                         <div class="row">
-//                             <div class="col-lg-12 col-md-12 col-md-12 mt-1">
-//                                 <div class="box">
-//                                     <div class="icon">
-//                                         <img class="avatar img-fluid" src='/profile-photo/' alt='profile-img' width='100' height='100'>
-//                                     </div>
-//                                     <div class="title">Student profile</div>
-//                                     <div class="subtitle">Image</div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <div class="row">
-//                             <div class="col-lg-6 mt-1">
-//                                 <div class="box">
-//                                     <div class="icon"><img style="width: 40px;height:40px;" src="/images/layout-image/name.png" alt=""></div>
-//                                     <div class="title">$name</div>
-//                                     <div class="subtitle">Name</div>
-//                                 </div>
-//                             </div>
-//                             <div class="col-lg-6 mt-1">
-//                                 <div class="box">
-//                                     <div class="icon"><img style="width: 40px;height:40px;" src="/images/layout-image/rollno.png" alt=""></div>
-//                                     <div class="title">$rollNo</div>
-//                                     <div class="subtitle">Rollno</div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <div class="row">
-//                         <div class="col-lg-6 mt-1">
-//                                 <div class="box">
-//                                     <div class="icon"><img style="width: 40px;height:40px;" src="/images/layout-image/dept.png" alt=""></div>
-//                                     <div class="title">$dept</div>
-//                                     <div class="subtitle">Department</div>
-//                                 </div>
-//                             </div>
-//                         <div class="col-lg-6 col-md-6 mt-1">
-//                                 <div class="box">
-//                                     <div class="icon"><img style="width: 40px;height:40px;" src="/images/layout-image/room.png" alt=""></div>
-//                                     <div class="title">$room</div>
-//                                     <div class="subtitle">Room no</div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <div class="row">
-//                                 <div class="col-lg-6 col-md-12 mt-1">
-//                                 <div class="box">
-//                                     <div class="icon"><img style="width: 40px;height:40px;" src="/images/layout-image/hostel.png" alt=""></div>
-//                                     <div class="title">$hostel</div>
-//                                     <div class="subtitle">Hostel</div>
-//                                 </div>
-//                             </div>
-//                             <div class="col-lg-6 col-md-12 mt-6">
-//                                 <div class="box">
-//                                     <div class="icon"><img style="width: 40px;height:40px;" src="/images/layout-image/address.png" alt=""></div>
-//                                     <div class="title">$address</div>
-//                                     <div class="subtitle">Address</div>
-//                                 </div>
-//                         </div>
-//                         </div>
-//                         <div class="row">
-                            
-//                             <div class="col-lg-6 col-md-12 mt-1">
-//                                 <div class="box">
-//                                     <div class="icon"><img style="width: 40px;height:40px;" src="/images/layout-image/from.png" alt=""></div>
-//                                     <div class="title">$timeLeave | $dateLeave</div>
-//                                     <div class="subtitle">From</div>
-//                                 </div>
-//                             </div>
-//                             <div class="col-lg-6 col-md-12 mt-1">
-//                                 <div class="box">
-//                                     <div class="icon"><img style="width: 40px;height:40px;" src="/images/layout-image/to.png" alt=""></div>
-//                                     <div class="title">$timeEnter | $dateEnter</div>
-//                                     <div class="subtitle">To</div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <div class="row">
-//                             <div class="col-lg-12 col-md-12 col-md-12 mt-1">
-//                                 <div class="box">
-//                                     <div class="icon"><img style="width: 40px;height:40px;" src="/images/layout-image/approvedby.png" alt=""></div>
-//                                     <div class="title">$acceptedBy</div>
-//                                     <div class="subtitle">Accepted by</div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                         <div class="row">
-//                             <div class="col-lg-12 col-md-12 col-md-12 mt-1">
-//                                 <div class="box">
-//                                     <div class="icon">
-//                                         <img class="img-fluid" src='$qrcode' alt='QR Code' width='100' height='100'>
-//                                     </div>
-//                                     <div class="title"><a class="text-dark" href="https://srechostel.in/stud-panel/gate-pass/qr-entry/">click to entry with qr</a></div>
-//                                     <div class="subtitle">Qr Link</div>
-//                                 </div>
-//                             </div>
-//                         </div>
-//                     </div>
-//                 </div>        
-// EOL;
-                // echo $htmlContent;
             } else {
                 // header("Content-Type:application/json");
                 if ($passBooked[0]) {
@@ -445,7 +329,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                         </details>
                     </div>
                     <?php
-                    // echo '{"Pass Type":"Out Pass","Messgae":"Admin not accepted"}';
                 } else if ($passBooked[1]) {
                     ?>
                         <div class="msg-container container mt-4">

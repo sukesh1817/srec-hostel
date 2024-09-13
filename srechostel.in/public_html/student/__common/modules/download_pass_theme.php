@@ -119,7 +119,7 @@ function pass_theme($student)
                     <div class="icon">
                         <img class="img-fluid" src='$qrcode' alt='QR Code' width='100' height='100'>
                     </div>
-                    <div class="title"><a class="text-dark" href="/qr-entry/">click to entry with qr</a></div>
+                    <div class="title"><a class="text-dark" href="/gate-pass/qr-code/">click to entry with qr</a></div>
                     <div class="subtitle">Qr Link</div>
                 </div>
             </div>
