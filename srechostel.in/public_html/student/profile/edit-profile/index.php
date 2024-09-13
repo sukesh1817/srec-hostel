@@ -9,6 +9,8 @@ use Intervention\Image\Drivers\Gd\Driver;
 $manager = new ImageManager(new Driver());
 
 // read image from file system
+echo getcwd();
+exit;
 $image = $manager->read('../../images/diet.jpg');
 
 // resize image proportionally to 300px width
