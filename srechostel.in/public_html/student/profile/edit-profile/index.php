@@ -141,6 +141,8 @@ use Intervention\Image\Drivers\Gd\Driver;
                         'outputformat' => 'jpg',
                         'apikey' => $apiKey,
                     ];
+                    echo "<pre>";
+                    print_r($data);
 
                     $ch = curl_init();
                     curl_setopt($ch, CURLOPT_URL, $url);
@@ -148,12 +150,14 @@ use Intervention\Image\Drivers\Gd\Driver;
                     curl_setopt($ch, CURLOPT_POSTFIELDS, $data);
                     curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
                     $response = curl_exec($ch);
+                    print_r($response);
                     curl_close($ch);
+                    echo "</pre>";
 
                     file_put_contents($outputFile, $response);
-                    echo "Image converted successfully.";
+                    // echo "Image converted successfully.";
 
-                    echo getcwd();
+                    // echo getcwd();
                     exit;
                     $manager = new ImageManager(Driver::class);
                     $image = $manager->read("s.png");
