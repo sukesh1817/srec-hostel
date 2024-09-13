@@ -295,7 +295,6 @@ class commonClass
         if ($result) {
             $row = $result->fetch_assoc();
             if (isset($row["user_id"])) {
-
                 return $row;
             }
         }
