@@ -16,10 +16,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php
-    // get the js file from the main domain.
-    $fileName = "https://testing.srechostel.in/api/accounts/profile_photo/";
+
+    // this package contains which domain you are working.
+    require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
+    $end_point = "css-files/toogle.css";
     ?>
-    <link rel="stylesheet" href="<?php echo $filename; ?>" />
+    <link rel="stylesheet" href="<?php echo $domain.$end_point; ?>" />
     <?php
     // poppins font css included.
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
@@ -176,7 +178,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 $end_point = "auth/logout/";
                 ?>
                 <div class="mt-5 text-center">
-                    <a href="<?php echo $api.$end_point ?>" class="container-fluid btn btn-dark profile-button">Logout</a>
+                    <a href="<?php echo $api . $end_point ?>"
+                        class="container-fluid btn btn-dark profile-button">Logout</a>
                 </div>
             </div>
         </div>
