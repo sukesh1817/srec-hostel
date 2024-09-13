@@ -38,9 +38,11 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             border-radius: 50%;
             object-fit: cover;
         }
+
         .w-90 {
             width: 300px;
         }
+
         .labels {
             font-size: 11px
         }
@@ -92,11 +94,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">Full name</label><input type="text"
-                                class="form-control rounded-1" placeholder="full name" value="<?php echo $details[0]['name']; ?>"
-                                readonly>
+                                class="form-control rounded-1" placeholder="full name"
+                                value="<?php echo $details[0]['name']; ?>" readonly>
                         </div>
                         <div class="col-md-6"><label class="labels">Surname</label><input type="text"
-                                class="form-control rounded-1" value="<?php echo $sur_name ?>" placeholder="surname" readonly>
+                                class="form-control rounded-1" value="<?php echo $sur_name ?>" placeholder="surname"
+                                readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
@@ -130,9 +133,15 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         <div class="user-box">
                             <label class="labels">Password</label>
                             <div class="password-container">
-                                <input class="form-control rounded-1" type="password" name="pass-word" id="password"
-                                    value="<?php echo $log_det['pass_word']; ?>" readonly />
-                                <span class="password-toggle-icon"><i class="fas fa-eye"></i></span>
+                                <div class="password-wrapper" style="position: relative;">
+                                    <input class="form-control rounded-1" type="password" name="pass-word" id="password"
+                                        value="<?php echo $log_det['pass_word']; ?>" readonly />
+                                    <span class="password-toggle-icon"
+                                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                        <i class="fas fa-eye"></i>
+                                    </span>
+                                </div>
+
                             </div>
                         </div>
                     </div>
@@ -158,8 +167,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <div class="col-md-12"><label class="labels">Tutor name</label><input type="text"
                             class="form-control rounded-1" placeholder="Tutor name"
                             value="<?php echo $details[0]['tutor_name']; ?>" readonly></div>
-                    <div class="col-md-12"><label class="labels">Ac name</label><input type="text" class="form-control rounded-1"
-                            placeholder="Ac name" value="<?php echo $details[0]['ac_name']; ?>" readonly></div>
+                    <div class="col-md-12"><label class="labels">Ac name</label><input type="text"
+                            class="form-control rounded-1" placeholder="Ac name"
+                            value="<?php echo $details[0]['ac_name']; ?>" readonly></div>
                 </div>
                 <div class="mt-5 text-center"><a href="/logout"
                         class="container-fluid btn btn-dark profile-button">Logout</a></div>
