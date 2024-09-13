@@ -268,7 +268,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                 $encrypted = base64_encode($iv . $encrypted);
                 $encrypted = str_replace("+", "sk", $encrypted);
 
-                $qrcode = (new QRCode($options))->render("https://$domain/api/entry/?auth_token_id=$encrypted");
+                $qrcode = (new QRCode($options))->render("https://srechostel.in/api/entry/?auth_token_id=$encrypted");
 
                 // included the gate pass theme.
                 require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/modules/download_pass_theme.php";
