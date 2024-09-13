@@ -9,16 +9,14 @@ use Intervention\Image\Drivers\Gd\Driver;
 $manager = new ImageManager(new Driver());
 
 // read image from file system
-$image = $manager->read('images/example.jpg');
+$image = $manager->read('../../images/diet.jpg');
 
 // resize image proportionally to 300px width
 $image->scale(width: 300);
 
-// insert watermark
-$image->place('images/watermark.png');
-
 // save modified image in new format 
-$image->toJpg()->save('images/foo.png');
+$image->toJpg()->save('../../images/foo.png');
+
 // Check if the user is a student
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
