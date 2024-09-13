@@ -71,21 +71,31 @@ use Intervention\Image\Drivers\Gd\Driver;
 
 <body>
     <?php
+
+    // navbar html code is included.
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
+
+    // include the common class files.
     require_once $_SERVER["DOCUMENT_ROOT"] . "/../../class-files/common.class.php";
 
+    // initialize the common class.
     $common = new commonClass();
+    ?>
+
+    <?php
 
     if (
-        isset($_POST['sur-name']) &&
-        isset($_POST['address']) &&
-        isset($_POST['mobile-no']) &&
-        isset($_POST['post-code']) &&
-        isset($_POST['room-no']) &&
-        isset($_POST['study-year']) &&
-        isset($_POST['tutor-name']) &&
+        isset($_POST['sur-name']) and
+        isset($_POST['address']) and
+        isset($_POST['mobile-no']) and
+        isset($_POST['post-code']) and
+        isset($_POST['room-no']) and
+        isset($_POST['study-year']) and
+        isset($_POST['tutor-name']) and
         isset($_POST['ac-name'])
+
     ) {
+
         $surname = $_POST['sur-name'];
         $address = $_POST['address'];
         $mobile_no = $_POST['mobile-no'];
@@ -104,84 +114,91 @@ use Intervention\Image\Drivers\Gd\Driver;
             "tutor-name" => $tutor_name,
             "ac-name" => $ac_name
         );
-
-        if ($_FILES['profile-img']['error'] == 0) {
+        if (($_FILES['profile-img']['error'] == 0)) {
             $filename = $_FILES['profile-img']['name'];
-            $ext = strtolower(pathinfo($filename, PATHINFO_EXTENSION));
-            $allowed_extensions = ['heic', 'jpg', 'jpeg', 'png'];
-
-            if (!in_array($ext, $allowed_extensions)) {
-                // die('Unsupported file type.');
-            }
-
-            if ($ext == 'heic') {
+            $ext = pathinfo($filename, PATHINFO_EXTENSION);
+            if ($ext == "heic" or $ext == "HEIC") {
                 chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
                 if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                     unlink($_SESSION['yourToken'] . ".jpg");
+                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/tmp/");
+                    if (file_exists($_SESSION['yourToken'] . $ext)) {
+                        unlink($_SESSION['yourToken'] . $ext);
+                    }
+                    // chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/");
                 }
-                chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
                 $dir = $_SESSION['yourToken'] . '.heic';
                 if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
-                    try {
-                        $manager = new ImageManager(new Driver());
-                        // read image from file system
-                        $image = $manager->read($_SESSION['yourToken'] . ".heic");
-                        // resize image proportionally to 300px width
-                        $image->scale(width: 300);
-                        // save modified image in new format 
-                        chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
-                        $image->toJpg()->save($_SESSION['yourToken'] . '.jpg');
-                        chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/tmp/");
-                        unlink($dir);
-                    } catch (Exception $e) {
-                        echo 'Error processing image: ', $e->getMessage(), "\n";
-                    }
+                    $manager = new ImageManager(new Driver());
+                    // read image from file system
+                    $image = $manager->read($_SESSION['yourToken'] . ".heic");
+                    // resize image proportionally to 300px width
+                    $image->scale(width: 300);
+                    // save modified image in new format 
+                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
+                    $image->toJpg()->save($_SESSION['yourToken'] . '.jpg');
+                    chdir($_SERVER['DOCUMENT_ROOT'] . "/../profile-photos/tmp/");
+                    unlink($_SESSION['yourToken'] . ".heic", );
+                    
+
                 }
+
             } else {
-                chdir($_SERVER['DOCUMENT_ROOT'] . "/../../profile-photos/");
-                if (file_exists($_SESSION['yourToken'] . '.jpg')) {
+                // echo "in jpg";
+                chdir($_SERVER['DOCUMENT_ROOT'] . "/..");
+                // echo getcwd();
+                if (file_exists($_SESSION['yourToken'] . ".jpg")) {
                     unlink($_SESSION['yourToken'] . '.jpg');
                 }
-                $image_name = $_SESSION['yourToken'] . '.jpg';
-                if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $image_name)) {
-                    // Image saved successfully
+                $dir = "profile-photos/" . $_SESSION['yourToken'] . '.jpg';
+                // echo $dir;
+                if (move_uploaded_file($_FILES["profile-img"]["tmp_name"], $dir)) {
+
                 }
             }
+
         }
 
         $result = $common->editSomeData($data);
+        $f = 0;
         if (isset($_POST['pass-word'])) {
             $res = $common->changePass($_SESSION['yourToken'], $_POST['pass-word']);
+            $f = 1;
+        }
+        if ($result) {
+            // after edited successfully give the success message.
+            ?>
+
+
+            <?php
         }
 
-        if ($result) {
-            // Success message
-            echo '<div class="alert alert-success">Profile updated successfully.</div>';
-        }
     }
 
-    // Get the student details
+
+    // get the student details.
     $details = $common->getFullStudDetails($_SESSION['yourToken']);
     $sur_name = $common->getSurname();
     $log_det = $common->getLoginDetails($_SESSION['yourToken']);
 
-    // Write the end point of profile picture
-    $end_point = "api/accounts/profile_photo/";
-    ?>
+    // write the end point of profile picture.
+    $end_point = "api/accounts/profile_photo/"
+        ?>
     <div class="container-fluid alert alert-warning" role="alert">
-        You do not have the access to change some data
+        you do not have the access to change some data
     </div>
     <div class="container rounded bg-white mt-5 mb-5">
         <form action="/profile/edit-profile/" method="post" enctype="multipart/form-data">
             <div class="row">
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
-                        <img class="avatar mt-5" id="avatar" width="150px" src="<?php echo $domain . $end_point; ?>"
-                            alt="Avatar">
-                        <label for="fileInput" class="file-input-label mt-2 m-2"></label>
+                        <img class="avatar mt-5" id="avatar" width="150px" src="<?php echo $domain . $end_point; ?>" alt="Avatar">
+                        <label for="fileInput" class="file-input-label mt-2 m-2">Choose an image</label>
                         <input type="file" id="fileInput" name="profile-img" accept="image/*" />
+
                         <span class="font-weight-bold"><?php echo $details[0]['name']; ?></span><span
-                            class="text-black-50"><?php echo $details[1]['email']; ?></span><span></span>
+                            class="text-black-50"><?php echo $details[1]['email']; ?></span><span>
+                        </span>
                     </div>
                 </div>
                 <div class="col-md-5 border-right">
@@ -197,8 +214,8 @@ use Intervention\Image\Drivers\Gd\Driver;
                             </div>
                             <div class="col-md-6">
                                 <label class="labels">Surname</label>
-                                <input type="text" class="form-control rounded-1" name="sur-name"
-                                    value="<?php echo $sur_name ?>" placeholder="surname">
+                                <input type="text" class="form-control rounded-1" name="sur-name" value="<?php echo $sur_name ?>"
+                                    placeholder="surname">
                             </div>
                         </div>
                         <div class="row mt-3">
@@ -215,78 +232,126 @@ use Intervention\Image\Drivers\Gd\Driver;
                             <div class="col-md-12 mt-4">
                                 <label class="labels">Postcode</label>
                                 <input type="number" class="form-control rounded-1" name="post-code"
-                                    placeholder="enter postcode" value="<?php echo $details[1]['stud_postcode']; ?>">
+                                    placeholder="enter address line 2" value="<?php echo $details[1]['pincode']; ?>">
                             </div>
-                            <div class="col-md-12 mt-4">
-                                <label class="labels">Room No</label>
-                                <input type="number" class="form-control rounded-1" name="room-no"
-                                    placeholder="enter room number" value="<?php echo $details[1]['room_no']; ?>">
+                            <div class="col-md-12">
+                                <label class="labels">Email ID</label><input type="text" class="form-control rounded-1"
+                                    name="email-id" placeholder="enter email id"
+                                    value="<?php echo $details[1]['email']; ?>" readonly>
                             </div>
-                            <div class="col-md-12 mt-4">
-                                <label class="labels">Study Year</label>
-                                <select name="study-year" class="form-control rounded-1">
-                                    <option value="1" <?php if ($details[1]['stud_year'] == 1)
-                                        echo 'selected'; ?>>1
-                                    </option>
-                                    <option value="2" <?php if ($details[1]['stud_year'] == 2)
-                                        echo 'selected'; ?>>2
-                                    </option>
-                                    <option value="3" <?php if ($details[1]['stud_year'] == 3)
-                                        echo 'selected'; ?>>3
-                                    </option>
-                                    <option value="4" <?php if ($details[1]['stud_year'] == 4)
-                                        echo 'selected'; ?>>4
-                                    </option>
-                                </select>
+                            <div class="col-md-12">
+                                <label class="labels">Degree and Branch</label>
+                                <input type="text" class="form-control rounded-1" name="branch-degree" placeholder="education"
+                                    value="<?php echo $details[0]['department']; ?>" readonly>
                             </div>
-                            <div class="col-md-12 mt-4">
-                                <label class="labels">Tutor Name</label>
-                                <input type="text" class="form-control rounded-1" name="tutor-name"
-                                    placeholder="enter tutor name" value="<?php echo $details[1]['tutor_name']; ?>">
+                        </div>
+                        <div class="row mt-1">
+
+                            <div class="col-md-6">
+                                <label class="labels">Year of study</label>
+                                <input name="study-year" type="text" class="form-control rounded-1"
+                                    value="<?php echo $details[0]['year_of_study']; ?>" placeholder="year">
                             </div>
-                            <div class="col-md-12 mt-4">
-                                <label class="labels">AC Name</label>
-                                <input type="text" class="form-control rounded-1" name="ac-name"
-                                    placeholder="enter ac name" value="<?php echo $details[1]['ac_name']; ?>">
+                            <div class="col-md-6">
+                                <label class="labels">Room no</label>
+                                <input name="room-no" type="number" class="form-control rounded-1"
+                                    value="<?php echo $details[1]['room_no']; ?>" placeholder="year">
                             </div>
-                            <div class="col-md-12 mt-4">
-                                <label class="labels">Change Password</label>
-                                <input type="password" class="form-control rounded-1" name="pass-word"
-                                    placeholder="***********">
+                            <div class="col-md-12">
+                                <div class="user-box">
+                                    <label class="labels">Password</label>
+                                    <div class="password-container">
+                                        <div class="password-wrapper" style="position: relative;">
+                                            <input class="form-control rounded-1 rounded-1" type="password" name="pass-word"
+                                                id="password" value="<?php echo $log_det['pass_word']; ?>" />
+                                            <span class="password-toggle-icon"
+                                                style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
+                                                <i class="fas fa-eye"></i>
+                                            </span>
+                                        </div>
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
                 <div class="col-md-4">
                     <div class="p-3 py-5">
-                        <div class="d-flex justify-content-between align-items-center mb-3">
-                            <h4 class="text-right">Settings</h4>
+                        <div class="d-flex justify-content-between align-items-center experience">
+                            <h4 class="text-right">Gurdian information</h4>
+                        </div><br>
+                        <div class="col-md-12">
+                            <label class="labels">Father name</label>
+                            <input type="text" class="form-control rounded-1" name="father-name" placeholder="father name"
+                                value="<?php echo $details[2]['father_name']; ?>" readonly>
                         </div>
-                        <div class="row mt-2">
-                            <div class="col-md-12">
-                                <button class="btn btn-primary profile-button" type="submit">Save Profile</button>
-                            </div>
+                        <div class="col-md-12">
+                            <label class="labels">Mother name</label>
+                            <input type="text" class="form-control rounded-1" name="mother-name" placeholder="mother name"
+                                value="<?php echo $details[2]['mother_name']; ?>" readonly>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Father no</label>
+                            <input type="text" class="form-control rounded-1" name="father-no" placeholder="father no"
+                                value="<?php echo $details[2]['father_contact_no']; ?>" readonly>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Mother no</label>
+                            <input type="text" class="form-control rounded-1" name="mother-no" placeholder="mother no"
+                                value="<?php echo $details[2]['mother_contact_no']; ?>" readonly>
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Tutor name</label>
+                            <input type="text" class="form-control rounded-1" name="tutor-name" placeholder="Tutor name"
+                                value="<?php echo $details[0]['tutor_name']; ?>">
+                        </div>
+                        <div class="col-md-12">
+                            <label class="labels">Ac name</label>
+                            <input type="text" class="form-control rounded-1" placeholder="Ac name" name="ac-name"
+                                value="<?php echo $details[0]['ac_name']; ?>">
                         </div>
                     </div>
-                </div>
-            </div>
+                    <div class="mt-5 text-center">
+                        <button class="container-fluid btn btn-dark profile-button rounded-1" type="submit">Save Profile</button>
+                    </div>
         </form>
     </div>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-1wX0WnEBylBse02vM0eNFFeMBQnYBhhY7nH3hbM9y6O3iJ0WmRg7YcD63V2jLFU9"
-        crossorigin="anonymous"></script>
-    <script>
-        document.getElementById('fileInput').addEventListener('change', function () {
-            var fileInput = this;
-            if (fileInput.files && fileInput.files[0]) {
-                var reader = new FileReader();
-                reader.onload = function (e) {
-                    document.getElementById('avatar').src = e.target.result;
-                }
-                reader.readAsDataURL(fileInput.files[0]);
-            }
-        });
-    </script>
 </body>
 
+<?php
+// this package contains which domain you are working.
+require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
+$end_point = "js-files/ui-component/toggle.js";
+?>
+<script src="<?php echo $domain . $end_point; ?>"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+    crossorigin="anonymous"></script>
+
+    <script>
+    // Get the input and image elements
+    const fileInput = document.getElementById('fileInput');
+    const avatar = document.getElementById('avatar');
+
+    // Add event listener to the input
+    fileInput.addEventListener('change', function() {
+        // Check if a file was selected
+        if (this.files && this.files[0]) {
+            // Create a new FileReader instance
+            const reader = new FileReader();
+
+            // Set up the onload event for the reader
+            reader.onload = function(e) {
+                // Set the src of the image to the uploaded file's data URL
+                avatar.src = e.target.result;
+            };
+
+            // Read the file as a data URL
+            reader.readAsDataURL(this.files[0]);
+        }
+    });
+</script>
+
+</html>
 </html>
