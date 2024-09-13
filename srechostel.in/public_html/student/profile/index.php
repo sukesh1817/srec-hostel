@@ -68,10 +68,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     $sur_name = $stud->getSurname();
     $log_det = $stud->getLoginDetails($_SESSION['yourToken']);
 
-    $profile_url = "https://testing.srechostel.in/api/accounts/profile_photo/";
+    $api = "https://testing.srechostel.in/api/";
+    $end_point = "accounts/profile_image"
 
-
-    ?>
+        ?>
     <div class="container-fluid alert bg-secondary-subtle" role="alert">
         Do you want to edit something ?
         <a class="text-decoration-none text-dark" href="/profile/edit-profile">
@@ -82,7 +82,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         <div class="row">
             <div class="col-md-3 border-right">
                 <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="avatar mt-5 mb-2"
-                        style="width: 150px;" src="<?php echo $profile_url; ?>" alt="profile-picture">
+                        style="width: 150px;" src="<?php echo $api . $end_point; ?>" alt="profile-picture">
                     <span class="font-weight-bold"><?php echo $details[0]['name']; ?></span><span
                         class="text-black-50"><?php echo $details[1]['email']; ?></span><span> </span>
                 </div>
@@ -171,8 +171,13 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             class="form-control rounded-1" placeholder="Ac name"
                             value="<?php echo $details[0]['ac_name']; ?>" readonly></div>
                 </div>
-                <div class="mt-5 text-center"><a href="/logout"
-                        class="container-fluid btn btn-dark profile-button">Logout</a></div>
+
+                <?php
+                $end_point = "auth/logout/";
+                ?>
+                <div class="mt-5 text-center">
+                    <a href="<?php echo $api.$end_point ?>" class="container-fluid btn btn-dark profile-button">Logout</a>
+                </div>
             </div>
         </div>
     </div>
