@@ -1,4 +1,3 @@
-    <script src="script.js"></script>
     window.onload = function() {
         const img = document.getElementById('sourceImage');
         if (!img) return;
