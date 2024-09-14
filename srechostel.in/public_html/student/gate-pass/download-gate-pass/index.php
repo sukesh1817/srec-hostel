@@ -182,7 +182,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
             border-radius: 1px;
         }
     </style>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
   
 </head>
@@ -469,6 +468,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
         integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 <script>
     const button = document.getElementById('download-button');
 
@@ -477,7 +477,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
         const element = document.getElementById('html-content');
         
         // Use html2canvas to capture the content
-        html2canvas(element, { scale: 2 }).then(canvas => {
+        html2canvas(element, { scale: 2 }).then(function(canvas) {
             // Convert the canvas to a JPG image
             const imgData = canvas.toDataURL('image/jpeg');
             
@@ -486,11 +486,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
             link.href = imgData;
             link.download = "<?php echo md5($rollNo); ?>.jpg"; // Set the filename
             link.click(); // Trigger the download
+        }).catch(function(error) {
+            console.error('Error generating image:', error);
         });
     }
 
     button.addEventListener('click', generateImage);
 </script>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
