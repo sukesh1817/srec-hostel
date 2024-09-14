@@ -80,7 +80,7 @@ function pass_theme($student)
                     <div class="subtitle">Hostel</div>
                 </div>
             </div>
-            <div class="col-lg-6 col-md-12 mt-6">
+            <div class="col-lg-6 col-md-12 mt-1">
                 <div class="box">
                     <div class="icon"><img style="width: 40px;height:40px;" src="/images/layout-image/address.png"
                             alt=""></div>
