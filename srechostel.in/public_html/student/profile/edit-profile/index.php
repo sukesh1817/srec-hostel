@@ -167,7 +167,7 @@ use Intervention\Image\Drivers\Gd\Driver;
                 <div class="col-md-3 border-right">
                     <div class="d-flex flex-column align-items-center text-center p-3 py-5">
                         <img class="avatar mt-5" id="avatar" width="150px" src="<?php echo $domain . $end_point; ?>" alt="Avatar">
-                        <label for="fileInput" class="file-input-label mt-2 m-2">Choose an image</label>
+                        <label for="fileInput" class="file-input-label mt-2 m-2"></label>
                         <input type="file" id="fileInput" name="profile-img" accept="image/*" />
 
                         <span class="font-weight-bold"><?php echo $details[0]['name']; ?></span><span
