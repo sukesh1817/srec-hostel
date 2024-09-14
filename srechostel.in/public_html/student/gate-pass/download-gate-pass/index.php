@@ -516,7 +516,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                 // Create a link element
                 const link = document.createElement('a');
                 link.href = imgData;
-                link.download = "<?php echo md5($rollNo); ?>.jpg"; // Set the filename
+                link.download = "<?php echo sha1($rollNo); ?>.jpg"; // Set the filename
                 link.click(); // Trigger the download
             }).catch(function (error) {
                 console.error('Error generating image:', error);
