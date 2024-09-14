@@ -473,33 +473,38 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
 
 
     <script>
-        const imageUrl = document.getElementById("profile").src; 
-        console.log(imageUrl)
 
-        function imageToBase64(url) {
-            return fetch(url)
-                .then(response => response.blob())
-                .then(blob => new Promise((resolve, reject) => {
-                    const reader = new FileReader();
-                    reader.onloadend = () => resolve(reader.result);
-                    reader.onerror = reject;
-                    reader.readAsDataURL(blob);
-                }));
-        }
-
-        // Convert image and log the result
-        imageToBase64(imageUrl)
-            .then(base64 => {
-                console.log('Base64:', base64);
-                // You can also set this Base64 string to an image source or use it as needed
-                // Example: document.getElementById('image').src = base64;
-            })
-            .catch(error => console.error('Error:', error));
     </script>
     <script>
         const button = document.getElementById('download-button');
 
         function generateImage() {
+            const imageUrl = document.getElementById("profile").src;
+            console.log(imageUrl)
+            function imageToBase64(url) {
+                return fetch(url)
+                    .then(response => response.blob())
+                    .then(blob => new Promise((resolve, reject) => {
+                        const reader = new FileReader();
+                        reader.onloadend = () => resolve(reader.result);
+                        reader.onerror = reject;
+                        reader.readAsDataURL(blob);
+                    }));
+            }
+
+            // Convert image and log the result
+            imageToBase64(imageUrl)
+                .then(base64 => {
+                    console.log('Base64:', base64);
+                    // You can also set this Base64 string to an image source or use it as needed
+                    // Example: document.getElementById('image').src = base64;
+                })
+                .catch(error => console.error('Error:', error));
+
+
+
+
+
             // Choose the element that your content will be rendered from
             const element = document.getElementById('html-content');
 
@@ -516,6 +521,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
             }).catch(function (error) {
                 console.error('Error generating image:', error);
             });
+
+
+
+
+
+
         }
 
         button.addEventListener('click', generateImage);
