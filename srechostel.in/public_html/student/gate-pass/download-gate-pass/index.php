@@ -468,26 +468,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     }
     ?>
 
-<script>
-        const img1 = document.getElementById('profile');
-        Potrace.loadImageFromURL(img1.src, function (image) {
-            Potrace.process(image, function (svg) {
-                // Display SVG
-                document.body.innerHTML += svg;
-            });
-        });
-    </script>
+<script src="script.js"></script>
 
-    <script>
-        // Example of converting an image using Potrace (JS)
-        const img2 = document.getElementById('qr-code');
-        Potrace.loadImageFromURL(img2.src, function (image) {
-            Potrace.process(image, function (svg) {
-                // Display SVG
-                document.body.innerHTML += svg;
-            });
-        });
-    </script>
     <script>
         const button = document.getElementById('download-button');
 
