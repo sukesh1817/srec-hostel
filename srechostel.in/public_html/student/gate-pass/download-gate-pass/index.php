@@ -475,62 +475,31 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     <script>
 
     </script>
-    <script>
-        const button = document.getElementById('download-button');
+   <script>
+    const button = document.getElementById('download-button');
 
-        function generateImage() {
-            const imageUrl = document.getElementById("profile").src;
-            console.log(imageUrl)
-            function imageToBase64(url) {
-                return fetch(url)
-                    .then(response => response.blob())
-                    .then(blob => new Promise((resolve, reject) => {
-                        const reader = new FileReader();
-                        reader.onloadend = () => resolve(reader.result);
-                        reader.onerror = reject;
-                        reader.readAsDataURL(blob);
-                    }));
-            }
+    function generateImage() {
+        // Choose the element that your content will be rendered from
+        const element = document.getElementById('html-content');
 
-            // Convert image and log the result
-            imageToBase64(imageUrl)
-                .then(base64 => {
-                    console.log('Base64:', base64);
-                    // You can also set this Base64 string to an image source or use it as needed
-                    // Example: document.getElementById('image').src = base64;
-                })
-                .catch(error => console.error('Error:', error));
+        // Use html2canvas to capture the content with a higher scale for better quality
+        html2canvas(element, { scale: 7 }).then(function (canvas) {
+            // Convert the canvas to a high-quality JPG image (1.0 is the highest quality)
+            const imgData = canvas.toDataURL('image/jpeg', 1.0);
 
+            // Create a link element
+            const link = document.createElement('a');
+            link.href = imgData;
+            link.download = "<?php echo sha1($rollNo); ?>.jpg"; // Set the filename
+            link.click(); // Trigger the download
+        }).catch(function (error) {
+            console.error('Error generating image:', error);
+        });
+    }
 
+    button.addEventListener('click', generateImage);
+</script>
 
-
-
-            // Choose the element that your content will be rendered from
-            const element = document.getElementById('html-content');
-
-            // Use html2canvas to capture the content
-            html2canvas(element, { scale: 5 }).then(function (canvas) {
-                // Convert the canvas to a JPG image
-                const imgData = canvas.toDataURL('image/jpeg');
-
-                // Create a link element
-                const link = document.createElement('a');
-                link.href = imgData;
-                link.download = "<?php echo sha1($rollNo); ?>.jpg"; // Set the filename
-                link.click(); // Trigger the download
-            }).catch(function (error) {
-                console.error('Error generating image:', error);
-            });
-
-
-
-
-
-
-        }
-
-        button.addEventListener('click', generateImage);
-    </script>
 
 
 
