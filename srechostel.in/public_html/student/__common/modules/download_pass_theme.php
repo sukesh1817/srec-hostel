@@ -18,12 +18,6 @@ function pass_theme($student)
 </div>
 <div id="html-content">
 
-<img id="sourceImage" src="<?php echo $student['qr_code'] ?>" alt="Source Image" style="display:none;">
-    <canvas id="canvas" style="display:none;"></canvas>
-    <div id="svgContainer"></div>
-    <script src="script.js"></script>
-
-
     <div class="container-1">
         <h3 class="text-center title fw-bold"><?php echo $student['pass_type'] ?></h3>
         <div class="row">
