@@ -509,7 +509,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
             const element = document.getElementById('html-content');
 
             // Use html2canvas to capture the content
-            html2canvas(element, { scale: 2 }).then(function (canvas) {
+            html2canvas(element, { scale: 5 }).then(function (canvas) {
                 // Convert the canvas to a JPG image
                 const imgData = canvas.toDataURL('image/jpeg');
 
