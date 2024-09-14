@@ -467,24 +467,31 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     }
     ?>
 
-<script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
 
-    <script>
-        const button = document.getElementById('download-button');
+<script>
+    const button = document.getElementById('download-button');
 
-        function generatePDF() {
-            // Choose the element that your content will be rendered to.
-            const element = document.getElementById('html-content');
-            // Choose the element and save the PDF for your user.
-            const opt = {
-                margin: 0.5,           // Define the margins (in inches)
-                html2canvas: { scale: 2 }, // Increase the scale to zoom in
-            };
-            html2pdf().from(element).set(opt).save("<?php echo md5($rollNo); ?>.png");
-        }
+    function generateImage() {
+        // Choose the element that your content will be rendered from
+        const element = document.getElementById('html-content');
+        
+        // Use html2canvas to capture the content
+        html2canvas(element, { scale: 2 }).then(canvas => {
+            // Convert the canvas to a JPG image
+            const imgData = canvas.toDataURL('image/jpeg');
+            
+            // Create a link element
+            const link = document.createElement('a');
+            link.href = imgData;
+            link.download = "<?php echo md5($rollNo); ?>.jpg"; // Set the filename
+            link.click(); // Trigger the download
+        });
+    }
 
-        button.addEventListener('click', generatePDF);
-    </script>
+    button.addEventListener('click', generateImage);
+</script>
+
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
