@@ -27,7 +27,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
     <style>
-        .form-control rounded-1:focus {
+        .form-control:focus {
             box-shadow: none;
             border-color: black;
             color: black;
@@ -96,38 +96,38 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     </div>
                     <div class="row mt-2">
                         <div class="col-md-6"><label class="labels">Full name</label><input type="text"
-                                class="form-control rounded-1" placeholder="full name"
+                                class="form-control" placeholder="full name"
                                 value="<?php echo $details[0]['name']; ?>" readonly>
                         </div>
                         <div class="col-md-6"><label class="labels">Surname</label><input type="text"
-                                class="form-control rounded-1" value="<?php echo $sur_name ?>" placeholder="surname"
+                                class="form-control" value="<?php echo $sur_name ?>" placeholder="surname"
                                 readonly>
                         </div>
                     </div>
                     <div class="row mt-3">
                         <div class="col-md-12"><label class="labels">Mobile Number</label><input type="text"
-                                class="form-control rounded-1" placeholder="enter phone number"
+                                class="form-control" placeholder="enter phone number"
                                 value="<?php echo $details[1]['phone_no']; ?>" readonly></div>
                         <div class="col-md-12"><label class="labels">Address Line</label><textarea type="text"
-                                class="form-control rounded-1 w-100 h-100" placeholder="enter address line 1"
+                                class="form-control w-100 h-100" placeholder="enter address line 1"
                                 readonly><?php echo $details[1]['stud_address']; ?></textarea></div>
                         <div class="col-md-12 mt-4"><label class="labels">Postcode</label><input type="text"
-                                class="form-control rounded-1" placeholder="enter address line 2"
+                                class="form-control" placeholder="enter address line 2"
                                 value="<?php echo $details[1]['pincode']; ?>" readonly></div>
                         <div class="col-md-12"><label class="labels">Email ID</label><input type="text"
-                                class="form-control rounded-1" placeholder="enter email id"
+                                class="form-control" placeholder="enter email id"
                                 value="<?php echo $details[1]['email']; ?>" readonly></div>
                         <div class="col-md-12"><label class="labels">Degree and Branch</label><input type="text"
-                                class="form-control rounded-1" placeholder="education"
+                                class="form-control" placeholder="education"
                                 value="<?php echo $details[0]['department']; ?>" readonly></div>
                     </div>
                     <div class="row mt-1">
                         <div class="col-md-6">
-                            <label class="labels">Year of study</label><input type="text" class="form-control rounded-1"
+                            <label class="labels">Year of study</label><input type="text" class="form-control"
                                 value="<?php echo $details[0]['year_of_study']; ?>" placeholder="year" readonly>
                         </div>
                         <div class="col-md-6">
-                            <label class="labels">Room no</label><input type="text" class="form-control rounded-1"
+                            <label class="labels">Room no</label><input type="text" class="form-control"
                                 value="<?php echo $details[1]['room_no']; ?>" placeholder="year" readonly>
                         </div>
                     </div>
@@ -136,7 +136,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             <label class="labels">Password</label>
                             <div class="password-container">
                                 <div class="password-wrapper" style="position: relative;">
-                                    <input class="form-control rounded-1" type="password" name="pass-word" id="password"
+                                    <input class="form-control" type="password" name="pass-word" id="password"
                                         value="<?php echo $log_det['pass_word']; ?>" readonly />
                                     <span class="password-toggle-icon"
                                         style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;">
@@ -155,22 +155,22 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         <h4 class="text-right">Gurdian information</h4>
                     </div><br>
                     <div class="col-md-12"><label class="labels">Father name</label><input type="text"
-                            class="form-control rounded-1" placeholder="father name"
+                            class="form-control" placeholder="father name"
                             value="<?php echo $details[2]['father_name']; ?>" readonly></div>
                     <div class="col-md-12"><label class="labels">Mother name</label><input type="text"
-                            class="form-control rounded-1" placeholder="mother name"
+                            class="form-control" placeholder="mother name"
                             value="<?php echo $details[2]['mother_name']; ?>" readonly></div>
                     <div class="col-md-12"><label class="labels">Father no</label><input type="text"
-                            class="form-control rounded-1" placeholder="father no"
+                            class="form-control" placeholder="father no"
                             value="<?php echo $details[2]['father_contact_no']; ?>" readonly></div>
                     <div class="col-md-12"><label class="labels">Mother no</label><input type="text"
-                            class="form-control rounded-1" placeholder="mother no"
+                            class="form-control" placeholder="mother no"
                             value="<?php echo $details[2]['mother_contact_no']; ?>" readonly></div>
                     <div class="col-md-12"><label class="labels">Tutor name</label><input type="text"
-                            class="form-control rounded-1" placeholder="Tutor name"
+                            class="form-control" placeholder="Tutor name"
                             value="<?php echo $details[0]['tutor_name']; ?>" readonly></div>
                     <div class="col-md-12"><label class="labels">Ac name</label><input type="text"
-                            class="form-control rounded-1" placeholder="Ac name"
+                            class="form-control" placeholder="Ac name"
                             value="<?php echo $details[0]['ac_name']; ?>" readonly></div>
                 </div>
 
