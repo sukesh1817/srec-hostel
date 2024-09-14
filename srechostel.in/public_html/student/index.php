@@ -100,7 +100,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             </div>
         </div>
     </div>
+
     <?php
+    // included the footbar.
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/footbar.php";
     ?>
 
