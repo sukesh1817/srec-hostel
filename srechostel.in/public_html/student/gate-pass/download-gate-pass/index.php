@@ -476,20 +476,41 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
 
     </script>
  <script>
-        const button = document.getElementById('download-button');
+      const button = document.getElementById('download-button');
 
-        function generatePDF() {
-            // Choose the element that your content will be rendered to.
-            const element = document.getElementById('html-content');
-            // Choose the element and save the PDF for your user.
-            const opt = {
-                margin: 0.5,           // Define the margins (in inches)
-                html2canvas: { scale: 7, useCORS: true }, // Increase the scale to zoom in
-            };
-            html2pdf().from(element).set(opt).save("<?php echo $rollNo ?>.pdf");
+function generatePDF() {
+    const element = document.getElementById('html-content');
+    const images = element.getElementsByTagName('img');
+    let loadedImages = 0;
+
+    for (let i = 0; i < images.length; i++) {
+        if (images[i].complete) {
+            loadedImages++;
+        } else {
+            images[i].addEventListener('load', () => {
+                loadedImages++;
+                if (loadedImages === images.length) {
+                    renderPDF(element);
+                }
+            });
         }
+    }
 
-        button.addEventListener('click', generatePDF);
+    if (loadedImages === images.length) {
+        renderPDF(element);
+    }
+}
+
+function renderPDF(element) {
+    const opt = {
+        margin: 0.5,
+        html2canvas: { scale: 2, useCORS: true }
+    };
+    html2pdf().from(element).set(opt).save("document.pdf");
+}
+
+button.addEventListener('click', generatePDF);
+
     </script>
 
 
