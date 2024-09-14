@@ -184,7 +184,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
         }
     </style>
 
-  
+
 </head>
 
 <body>
@@ -465,35 +465,60 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     }
     ?>
 
-<!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
         integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
 
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
-<script>
-    const button = document.getElementById('download-button');
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
 
-    function generateImage() {
-        // Choose the element that your content will be rendered from
-        const element = document.getElementById('html-content');
-        
-        // Use html2canvas to capture the content
-        html2canvas(element, { scale: 2 }).then(function(canvas) {
-            // Convert the canvas to a JPG image
-            const imgData = canvas.toDataURL('image/jpeg');
-            
-            // Create a link element
-            const link = document.createElement('a');
-            link.href = imgData;
-            link.download = "<?php echo md5($rollNo); ?>.jpg"; // Set the filename
-            link.click(); // Trigger the download
-        }).catch(function(error) {
-            console.error('Error generating image:', error);
-        });
-    }
 
-    button.addEventListener('click', generateImage);
-</script>
+    <script>
+        const imageUrl = document.getElementById("profile").src; 
+
+        function imageToBase64(url) {
+            return fetch(url)
+                .then(response => response.blob())
+                .then(blob => new Promise((resolve, reject) => {
+                    const reader = new FileReader();
+                    reader.onloadend = () => resolve(reader.result);
+                    reader.onerror = reject;
+                    reader.readAsDataURL(blob);
+                }));
+        }
+
+        // Convert image and log the result
+        imageToBase64(imageUrl)
+            .then(base64 => {
+                console.log('Base64:', base64);
+                // You can also set this Base64 string to an image source or use it as needed
+                // Example: document.getElementById('image').src = base64;
+            })
+            .catch(error => console.error('Error:', error));
+    </script>
+    <script>
+        const button = document.getElementById('download-button');
+
+        function generateImage() {
+            // Choose the element that your content will be rendered from
+            const element = document.getElementById('html-content');
+
+            // Use html2canvas to capture the content
+            html2canvas(element, { scale: 2 }).then(function (canvas) {
+                // Convert the canvas to a JPG image
+                const imgData = canvas.toDataURL('image/jpeg');
+
+                // Create a link element
+                const link = document.createElement('a');
+                link.href = imgData;
+                link.download = "<?php echo md5($rollNo); ?>.jpg"; // Set the filename
+                link.click(); // Trigger the download
+            }).catch(function (error) {
+                console.error('Error generating image:', error);
+            });
+        }
+
+        button.addEventListener('click', generateImage);
+    </script>
 
 
 
