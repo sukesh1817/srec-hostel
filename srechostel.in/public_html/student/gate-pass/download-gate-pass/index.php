@@ -485,7 +485,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
         // Use html2canvas to capture the content with a higher scale for better quality
         html2canvas(element, { scale: 7 }).then(function (canvas) {
             // Convert the canvas to a high-quality JPG image (1.0 is the highest quality)
-            const imgData = canvas.toDataURL('image/jpeg', 1.0);
+            const imgData = canvas.toDataURL('image/jpeg', 5.0);
 
             // Create a link element
             const link = document.createElement('a');
