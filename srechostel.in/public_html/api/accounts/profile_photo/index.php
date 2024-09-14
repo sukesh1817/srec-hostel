@@ -1,7 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
 require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "api/accounts/profile_photo/is-valid-person.php";
-
-
 if (isset($_SESSION['yourToken'])) {
     header("Content-Type: image/jpg");
     $rollNo = $_SESSION['yourToken'];
