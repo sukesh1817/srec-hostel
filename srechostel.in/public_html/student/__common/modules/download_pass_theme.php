@@ -5,16 +5,18 @@ function pass_theme($student)
 ?>
 
 <div class="container-fluid col-lg-12 col-md-12 mt-3 mb-2 w-100">
-    <div class="box">
-        <div class="icon mb-2"><img style="width: 40px;height:40px;" src="/images/layout-image/download.png" alt="">
-        </div>
-        <div class="title mb-2">
-            <button style="border-radius:2px;" class="btn btn-dark "
-                id="download-button">download</button>
-        </div>
-        <div class="subtitle">click to download</button>
-        </div>
-    </div>
+    <?php
+    // <div class="box">
+    //     <div class="icon mb-2"><img style="width: 40px;height:40px;" src="/images/layout-image/download.png" alt="">
+    //     </div>
+    //     <div class="title mb-2">
+    //         <button style="border-radius:2px;" class="btn btn-dark "
+    //             id="download-button">download</button>
+    //     </div>
+    //     <div class="subtitle">click to download</button>
+    //     </div>
+    // </div>
+    ?>
 </div>
 <div id="html-content">
 
