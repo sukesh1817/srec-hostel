@@ -421,7 +421,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
 
             ?>
             <div class="msg-container container container mt-4">
-
                 <h1>
                     Nothing is booked
                 </h1>
