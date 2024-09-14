@@ -186,7 +186,26 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
         integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script>
+        const img1 = document.getElementById('profile');
+        Potrace.loadImageFromURL(img1.src, function (image) {
+            Potrace.process(image, function (svg) {
+                // Display SVG
+                document.body.innerHTML += svg;
+            });
+        });
+    </script>
 
+    <script>
+        // Example of converting an image using Potrace (JS)
+        const img2 = document.getElementById('qr-code');
+        Potrace.loadImageFromURL(img2.src, function (image) {
+            Potrace.process(image, function (svg) {
+                // Display SVG
+                document.body.innerHTML += svg;
+            });
+        });
+    </script>
 </head>
 
 <body>
@@ -468,26 +487,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     }
     ?>
 
-    <script>
-        const img = document.getElementById('profile');
-        Potrace.loadImageFromURL(img.src, function (image) {
-            Potrace.process(image, function (svg) {
-                // Display SVG
-                document.body.innerHTML += svg;
-            });
-        });
-    </script>
 
-<script>
-    // Example of converting an image using Potrace (JS)
-    const img = document.getElementById('qr-code');
-    Potrace.loadImageFromURL(img.src, function(image) {
-        Potrace.process(image, function(svg) {
-            // Display SVG
-            document.body.innerHTML += svg;
-        });
-    });
-</script>
     <script>
         const button = document.getElementById('download-button');
 
