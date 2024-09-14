@@ -475,23 +475,23 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     <script>
 
     </script>
- <script>
-        const button = document.getElementById('download-button');
+<script>
+    const button = document.getElementById('download-button');
 
-        function generatePDF() {
-            // Choose the element that your content will be rendered to.
-            const element = document.getElementById('html-content');
-            // Choose the element and save the PDF for your user.
-            const opt = {
-                margin: 0.5,           // Define the margins (in inches)
-                html2canvas: { scale: 2 }, // Increase the scale to zoom in
-            };
-            html2pdf().from(element).set(opt).save("<?php echo md5($rollNo); ?>.pdf");
-        }
+    function generatePDF() {
+        const element = document.getElementById('html-content');
+        const opt = {
+            margin: 0.5,           // Margins (in inches)
+            filename: "<?php echo md5($rollNo); ?>.pdf", // Dynamic PDF name using PHP
+            image: { type: 'jpeg', quality: 0.98 },
+            html2canvas: { scale: 2 }, // Higher scale for better resolution
+            jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+        };
+        html2pdf().from(element).set(opt).save();
+    }
 
-        button.addEventListener('click', generatePDF);
-    </script>
-
+    button.addEventListener('click', generatePDF);
+</script>
 
 
 
