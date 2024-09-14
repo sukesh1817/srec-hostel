@@ -1,4 +1,5 @@
 <?php
+// check the login user is student
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 ?>
 
@@ -20,12 +21,14 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
 
     <?php
+    // included the poppins font.
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
 </head>
 
 <body>
     <?php
+    // included the navbar.
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
     ?>
 
