@@ -3,6 +3,7 @@
 use chillerlan\QRCode\QRCode;
 use chillerlan\QRCode\QROptions;
 
+header("Access-Control-Allow-Origin: *");
 // check the login person is student.
 require_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
