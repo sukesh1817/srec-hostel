@@ -25,7 +25,7 @@ function pass_theme($student)
                 <div class="box">
                     <div class="icon">
                         
-                        <img id="profile" class="avatar img-fluid" src='<?php echo $student['img_url'] ?>' crossorigin="anonymous" alt='profile-img'
+                        <img id="profile" class="avatar img-fluid" src='<?php echo $student['img_url'] ?>'  alt='profile-img'
                             width='100' height='100'>
                     </div>
                     <div class="title">Student profile</div>
@@ -120,7 +120,7 @@ function pass_theme($student)
             <div class="col-lg-12 col-md-12 col-md-12 mt-1">
                 <div class="box">
                     <div class="icon">
-                        <img id="qr-code" class="img-fluid" src='<?php echo $student['qr_code']; ?>' alt='QR Code' crossorigin="anonymous" width='100' height='100'>
+                        <img id="qr-code" class="img-fluid" src='<?php echo $student['qr_code']; ?>' alt='QR Code'  width='100' height='100'>
                     </div>
                     <div class="title"><a class="text-dark" href="/gate-pass/qr-code/">click to entry with qr</a></div>
                     <div class="subtitle">Qr Link</div>

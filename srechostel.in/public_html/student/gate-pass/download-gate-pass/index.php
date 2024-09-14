@@ -484,7 +484,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
             // Choose the element and save the PDF for your user.
             const opt = {
                 margin: 0.5,           // Define the margins (in inches)
-                html2canvas: { scale: 2 }, // Increase the scale to zoom in
+                html2canvas: { scale: 2, useCORS: true }, // Increase the scale to zoom in
             };
             html2pdf().from(element).set(opt).save("<?php echo $rollNo ?>.pdf");
         }
