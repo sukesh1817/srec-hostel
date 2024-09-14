@@ -475,30 +475,22 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
     <script>
 
     </script>
-   <script>
-    const button = document.getElementById('download-button');
+ <script>
+        const button = document.getElementById('download-button');
 
-    function generateImage() {
-        // Choose the element that your content will be rendered from
-        const element = document.getElementById('html-content');
+        function generatePDF() {
+            // Choose the element that your content will be rendered to.
+            const element = document.getElementById('html-content');
+            // Choose the element and save the PDF for your user.
+            const opt = {
+                margin: 0.5,           // Define the margins (in inches)
+                html2canvas: { scale: 2 }, // Increase the scale to zoom in
+            };
+            html2pdf().from(element).set(opt).save("<?php echo md5($rollNo); ?>.png");
+        }
 
-        // Use html2canvas to capture the content with a higher scale for better quality
-        html2canvas(element, { scale: 7 }).then(function (canvas) {
-            // Convert the canvas to a high-quality JPG image (1.0 is the highest quality)
-            const imgData = canvas.toDataURL('image/jpeg', 5.0);
-
-            // Create a link element
-            const link = document.createElement('a');
-            link.href = imgData;
-            link.download = "<?php echo sha1($rollNo); ?>.jpg"; // Set the filename
-            link.click(); // Trigger the download
-        }).catch(function (error) {
-            console.error('Error generating image:', error);
-        });
-    }
-
-    button.addEventListener('click', generateImage);
-</script>
+        button.addEventListener('click', generatePDF);
+    </script>
 
 
 
