@@ -474,6 +474,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
 
     <script>
         const imageUrl = document.getElementById("profile").src; 
+        console.log(imageUrl)
 
         function imageToBase64(url) {
             return fetch(url)
