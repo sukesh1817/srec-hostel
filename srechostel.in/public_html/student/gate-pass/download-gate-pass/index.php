@@ -486,7 +486,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . "/../../config/domain.php";
                 margin: 0.5,           // Define the margins (in inches)
                 html2canvas: { scale: 2 }, // Increase the scale to zoom in
             };
-            html2pdf().from(element).set(opt).save("<?php echo md5($rollNo); ?>.png");
+            html2pdf().from(element).set(opt).save("<?php echo md5($rollNo); ?>.pdf");
         }
 
         button.addEventListener('click', generatePDF);
