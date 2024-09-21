@@ -84,7 +84,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php" ;
                             echo "Individual complaint";
                         } ?>
                     </h2>
-
+                        <hr>
                     <?php
                     if ($which_is_booked == 1) {
                         show_common_complaint($row);
