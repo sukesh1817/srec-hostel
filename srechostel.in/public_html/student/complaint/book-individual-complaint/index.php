@@ -17,13 +17,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
     <style>
-        body {
-            font-family: "Poppins", sans-serif;
-            font-style: normal;
-            font-weight: 500;
-            /* font-size: 40px; */
 
-        }
 
         .cont {
             max-width: 600px;
