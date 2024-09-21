@@ -1,4 +1,6 @@
-<p?php // check the login user is student include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php" ; ?>
+<?php // check the login user is student 
+include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php" ; 
+?>
 
     <!DOCTYPE html>
     <html lang="en">
