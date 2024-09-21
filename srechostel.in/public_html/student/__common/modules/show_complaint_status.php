@@ -17,6 +17,11 @@ function show_common_complaint($row)
                 <div class="col-6 value"><?php echo $row['complaint_summary'] ?></div>
             </div>
         </div>
+        <p class="text-center">
+            <a href="/complaint/edit-complaint/" class="btn btn-dark px-5 mb-5 rounded-1" type="button">
+                Change something
+            </a>
+        </p>
     </div>
     <?php
 }
@@ -52,6 +57,11 @@ function show_individual_complaint($row)
                 <div class="col-6 value"><?php echo $row['complaint_summary'] ?></div>
             </div>
         </div>
+        <p class="text-center">
+            <a href="/complaint/edit-complaint/" class="btn btn-dark px-5 mb-5 rounded-1" type="button">
+                Change something
+            </a>
+        </p>
     </div>
     <?php
 }

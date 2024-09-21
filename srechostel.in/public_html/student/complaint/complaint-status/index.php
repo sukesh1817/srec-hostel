@@ -92,12 +92,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php" ;
                         show_individual_complaint($row);
                     }
                     ?>
-                    <p class="text-center">
-                        <a href="/stud-panel/complaint/edit-complaint/" class="btn btn-dark px-5 mb-5 rounded-1"
-                            type="button">
-                            Change something
-                        </a>
-                    </p>
                 </div>
             </div>
             <?php
