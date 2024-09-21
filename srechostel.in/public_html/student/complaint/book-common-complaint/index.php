@@ -18,7 +18,7 @@
         ?>
         <?php
         // common class is included.
-        require_once($_SERVER["DOCUMENT_ROOT"] . "/../class-files/common.class.php");
+        require_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/common.class.php");
 
         // common class is initialized.
         $complaint = new commonClass();
