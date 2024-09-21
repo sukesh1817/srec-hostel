@@ -87,8 +87,12 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php" ;
                         <hr>
                     <?php
                     if ($which_is_booked == 1) {
+                        $newDate = date("d-m-Y", strtotime($row['date_of_complaint']));
+                        $row['date_of_comaplint'] = $newDate;
                         show_common_complaint($row);
                     } else {
+                        $newDate = date("d-m-Y", strtotime($row['date_of_complaint']));
+                        $row['date_of_comaplint'] = $newDate;
                         show_individual_complaint($row);
                     }
                     ?>
