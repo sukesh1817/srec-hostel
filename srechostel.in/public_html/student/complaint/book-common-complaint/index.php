@@ -15,6 +15,21 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         // poppins font css included.
         require_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
         ?>
+            <style>
+  
+        .cont {
+            max-width: 600px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+        }
+
+        textarea {
+            resize: none;
+        }
+    </style>
     </head>
 
     <body>
