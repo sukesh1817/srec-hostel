@@ -107,29 +107,6 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             </a>
                         </div>
                     </div>
-                    <div class="notification rounded-1" role="alert" aria-live="assertive" aria-atomic="true">
-                        <div class="notification-header">
-                            <h3 class="notification-title">Notification</h3>
-                            <i type="button" class="btn-close-1" data-bs-dismiss="notification" aria-label="Close"><svg
-                                    xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-x"
-                                    viewBox="0 0 16 16">
-                                    <path
-                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                                </svg></i>
-                        </div>
-                        <div class="notification-container">
-                            <div class="notification-media">
-                                <img src="https://blog.tryshiftcdn.com/uploads/2021/01/notifications@2x.jpg" alt=""
-                                    class="notification-user-avatar">
-                                <i class="fa fa-thumbs-up notification-reaction"></i>
-                            </div>
-                            <div class="notification-content">
-                                <p class="notification-text">
-                                    <strong>Your complaint booked successfully</strong>
-                                </p>
-                            </div>
-                        </div>
-                    </div>
                 <?php
             }
 
@@ -141,7 +118,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
                         <h2 class="text-center">Common Complaint</h2>
                         <hr>
-                        <form class="needs-validation" action="/stud-panel/complaint/book-common-complaint/" method="post"
+                        <form class="needs-validation" action="/complaint/book-common-complaint/" method="post"
                             enctype="multipart/form-data">
                             <label class='form-label' class="form-label" for="dept">Your department</label>
                             <select class="form-select rounded-1 mb-2" id="dept" name="dept"
