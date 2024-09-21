@@ -76,7 +76,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
         }
         ?>
         <div class="container mt-5" bis_skin_checked="1">
-            <div class="position-relative  text-center text-muted bg-body border border-dashed rounded-1 mx-2"
+            <div class="position-relative  text-muted bg-body border border-dashed rounded-1 mx-2"
                 bis_skin_checked="1">
 
                 <svg class="bi mb-3" width="48" height="48">
