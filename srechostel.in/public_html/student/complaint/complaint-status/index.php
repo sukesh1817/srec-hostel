@@ -74,12 +74,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php" ;
                 $row = $complaint->retriveMyComplaint("individual_complaint");
             }
             ?>
-            <div class="container mt-5" bis_skin_checked="1">
+            <div class="container mt-2" bis_skin_checked="1">
                 <div class="position-relative  text-muted bg-body  mx-2" bis_skin_checked="1">
-
-                    <svg class="bi mb-3" width="48" height="48">
-                        <use xlink:href="#check2-circle"></use>
-                    </svg>
                     <h1 class="text-body-emphasis text-center">Complaint Information</h1>
                     <h2 class="text-body-emphasis text-center">
                         <?php if ($which_is_booked == 1) {
