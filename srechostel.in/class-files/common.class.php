@@ -140,8 +140,8 @@ class commonClass
         if(isset($file['name'])){
             $imagePath = $rollNo . '-' . trim($date);
             $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
-            chdir($_SERVER["DOCUMENT_ROOT"] . '/..');
-            $dir = "files/complaints/individual-complaints/" . $imagePath . '.' . $extension;
+            chdir($_SERVER["DOCUMENT_ROOT"] . '/../../');
+            $dir = "files/student-files/complaints/individual-complaints/" . $imagePath . '.' . $extension;
             $tmp = $file['tmp_name'];
             $imagePath = $imagePath . ".$extension";
             if (move_uploaded_file($tmp, $dir)) {
