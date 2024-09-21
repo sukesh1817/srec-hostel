@@ -50,8 +50,8 @@ class commonClass
 
         if(isset($file['name'])) {
             $rollNo = $data["rollNo"];
-            chdir($_SERVER["DOCUMENT_ROOT"] . '/..');
-            chdir("files/complaints/common-complaints/");
+            chdir($_SERVER["DOCUMENT_ROOT"] . '/../../');
+            chdir("files/student-files/complaints/common-complaints/");
             $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
             $imagePath = $rollNo . '-' . trim($date);
             $dir = $imagePath . '.' . $extension;
