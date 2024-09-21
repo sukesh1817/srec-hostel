@@ -33,10 +33,10 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 Here you can register throught the register form and also you can see the status of your registration
             </p>
             <div class="d-inline-flex gap-2 mb-5">
-                <a href="/stud-panel/complaint/book-common-complaint/" class=" btn btn-dark  rounded-1">
+                <a href="/complaint/book-common-complaint/" class=" btn btn-dark  rounded-1">
                     common
                 </a>
-                <a href="/stud-panel/complaint/book-individual-complaint/" class="btn btn-outline-dark  rounded-1">
+                <a href="/complaint/book-individual-complaint/" class="btn btn-outline-dark  rounded-1">
                     Individual
                 </a>
             </div>
