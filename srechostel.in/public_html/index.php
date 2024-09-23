@@ -195,6 +195,9 @@ if (isset($_COOKIE['SessId'])) {
         </div>
     </section>
 
+    <div id="loading_indicator" class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -203,9 +206,7 @@ if (isset($_COOKIE['SessId'])) {
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
-        <div id="loading_indicator" class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+
 
         const passwordIcon = document.getElementById("pass-icon");
         const passwordField = document.getElementById("password");
