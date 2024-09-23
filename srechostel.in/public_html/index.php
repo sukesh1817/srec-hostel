@@ -78,6 +78,15 @@ if (isset($_COOKIE['SessId'])) {
             --bs-btn-disabled-border-color: #212529;
             --bs-gradient: none
         }
+        #loading_indicator {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+
+            z-index: 9999;
+            opacity: 1;
+            transition: opacity 0.5s ease; /* Adds smooth transition for opacity */
+        }
     </style>
 </head>
 
@@ -238,17 +247,23 @@ if (isset($_COOKIE['SessId'])) {
         });
     </script>
 
-    <script>
+<script>
         document.onreadystatechange = function () {
             if (document.readyState !== "complete") {
                 document.querySelector("body").style.visibility = "hidden";
                 document.getElementById("loading_indicator").style.visibility = "visible";
             } else {
                 setTimeout(() => {
-                    console.log("sample")
-                    document.getElementById("loading_indicator").style.display = "none";
-                    document.querySelector("body").style.visibility = "visible";
-                }, 3000)
+                    // Fade out the spinner
+                    const spinner = document.getElementById("loading_indicator");
+                    spinner.style.opacity = "0";
+                    
+                    // Wait for the transition to complete (0.5s) then hide it
+                    setTimeout(() => {
+                        spinner.style.display = "none";
+                        document.querySelector("body").style.visibility = "visible";
+                    }, 500); // Matches the duration of the opacity transition
+                }, 3000);
             }
         };
     </script>
