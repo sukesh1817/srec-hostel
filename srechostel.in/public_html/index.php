@@ -244,6 +244,7 @@ if (isset($_COOKIE['SessId'])) {
                 document.getElementById("loading_indicator").style.visibility = "visible";
             } else {
                 setTimeout(() => {
+                    console.log("sample")
                     document.getElementById("loading_indicator").style.display = "none";
                     document.querySelector("body").style.visibility = "visible";
                 }, 3000)
