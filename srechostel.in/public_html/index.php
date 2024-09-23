@@ -107,10 +107,11 @@ if (isset($_COOKIE['SessId'])) {
                                             <div class="col-12">
                                                 <div class="d-flex gap-3 flex-column">
                                                     <?php
-                                                        require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/domain.php";
-                                                        $end_point = "api/auth/oauth/";
+                                                    require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/domain.php";
+                                                    $end_point = "api/auth/oauth/";
                                                     ?>
-                                                    <a href="<?php echo $domain.$end_point; ?>" class="btn btn-lg btn-fill-dark rounded-1">
+                                                    <a href="<?php echo $domain . $end_point; ?>"
+                                                        class="btn btn-lg btn-fill-dark rounded-1">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-google"
                                                             viewBox="0 0 16 16">
@@ -139,7 +140,8 @@ if (isset($_COOKIE['SessId'])) {
                                                         <label for="password"
                                                             class="form-label rounded-1">password</label>
                                                         <span class="password-toggle-icon">
-                                                            <i style="display: none;" id="pass-icon" class="fas fa-eye"></i>
+                                                            <i style="display: none;" id="pass-icon"
+                                                                class="fas fa-eye"></i>
                                                         </span>
                                                     </div>
                                                 </div>
@@ -201,6 +203,10 @@ if (isset($_COOKIE['SessId'])) {
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
     <script>
+        <div id="loading_indicator" class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+
         const passwordIcon = document.getElementById("pass-icon");
         const passwordField = document.getElementById("password");
 
@@ -229,6 +235,20 @@ if (isset($_COOKIE['SessId'])) {
         $("#pass-icon").mousedown(function () {
             return false;
         });
+    </script>
+
+    <script>
+        document.onreadystatechange = function () {
+            if (document.readyState !== "complete") {
+                document.querySelector("body").style.visibility = "hidden";
+                document.getElementById("loading_indicator").style.visibility = "visible";
+            } else {
+                setTimeout(() => {
+                    document.getElementById("loading_indicator").style.display = "none";
+                    document.querySelector("body").style.visibility = "visible";
+                }, 3000)
+            }
+        };
     </script>
 
 
