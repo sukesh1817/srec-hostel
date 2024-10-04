@@ -258,7 +258,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             <div class="container">
                 <?php
                 if (isset($_POST["year"]) && isset($_POST['department'])) {
-                    include_once $_SERVER["DOCUMENT_ROOT"] . '/../class-files/' . "connection.class.php";
+                    include_once $_SERVER["DOCUMENT_ROOT"] . '/../../class-files/' . "connection.class.php";
                     $conn = new Connection();
                     $sqlConn = $conn->returnConn();
                     $year = $_POST["year"];
