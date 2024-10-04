@@ -202,91 +202,145 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     </div><br>
 
     <div class="bg-light-subtle">
-        <div class="container mt-2 text-center">
-            <div class="dropdown d-inline-block">
-                <button class="btn btn-dark rounded-1 dropdown-toggle" type="button" id="dropdownMenuButton"
-                    data-bs-toggle="dropdown" aria-expanded="false">
-                    Search by
-                </button>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                    <!-- Year and Department dropdowns remain unchanged -->
-                    ...
-                </ul>
-            </div>
-
-            <form id="search-form" action="/admin-panel/stud-details/search/" method="post"
-                class="mt-3 d-inline-block text-center">
-                <!-- Hidden inputs for year and department -->
-                <input type="hidden" name="year" id="yearValue" value="<?php echo $_POST['year'] ?? ''; ?>">
-                <input type="hidden" name="department" id="departmentValue"
-                    value="<?php echo $_POST['department'] ?? ''; ?>">
-                <input type="hidden" name="hostel" value="<?php echo $_POST['hostel'] ?? 'men-hostel-1'; ?>">
-
-                <div class="card p-3 d-inline-flex">
-                    <div class="card-body d-flex justify-content-between align-items-center">
-                        <p class="card-text mb-0">
-                            <span id="selectedYear">Year - <?php echo $_POST['year'] ?? 'NULL'; ?></span>
-                            <button type="button" id="removeYear" class="btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-x-circle mb-1" viewBox="0 0 16 16">
-                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                    <path
-                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                                </svg>
-                            </button>
-                        </p>
-                        <p class="card-text mb-0 ms-3">
-                            <span id="selectedDepartment">Department -
-                                <?php echo $_POST['department'] ?? 'NULL'; ?></span>
-                            <button type="button" id="removeDepartment" class="btn">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor"
-                                    class="bi bi-x-circle mb-1" viewBox="0 0 16 16">
-                                    <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
-                                    <path
-                                        d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
-                                </svg>
-                            </button>
-                        </p>
-                    </div>
-                </div>
-
-                <button type="submit" class="btn btn-outline-dark mt-3" id="submitButton" disabled>Search</button>
-            </form>
+    <div class="container mt-2 text-center">
+        <div class="dropdown d-inline-block">
+            <button class="btn btn-dark rounded-1 dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                Search by
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" href="#">Year</a>
+                    <ul class="dropdown-menu">
+                        <?php if ($_POST['hostel'] == 'Men-hostel-1') { ?>
+                            <li><a id="year-1" class="dropdown-item i" href="#">2</a></li>
+                            <li><a id="year-2" class="dropdown-item i" href="#">3</a></li>
+                        <?php } else if ($_POST['hostel'] == 'Men-hostel-2') { ?>
+                            <li><a id="year-1" class="dropdown-item i" href="#">1</a></li>
+                            <li><a id="year-2" class="dropdown-item i" href="#">4</a></li>
+                        <?php } else { ?>
+                            <li><a id="year-1" class="dropdown-item i" href="#">1</a></li>
+                            <li><a id="year-2" class="dropdown-item i" href="#">2</a></li>
+                            <li><a id="year-3" class="dropdown-item i" href="#">3</a></li>
+                            <li><a id="year-4" class="dropdown-item i" href="#">4</a></li>
+                        <?php } ?>
+                    </ul>
+                </li>
+                <li class="dropdown-submenu">
+                    <a class="dropdown-item dropdown-toggle" href="#">Department</a>
+                    <ul class="dropdown-menu">
+                        <li><a id="dept-ai" class="dropdown-item i" href="#">B.Tech AIDS</a></li>
+                        <li><a id="dept-it" class="dropdown-item i" href="#">B.Tech IT</a></li>
+                        <li><a id="dept-ece" class="dropdown-item i" href="#">B.E ECE</a></li>
+                        <li><a id="dept-eee" class="dropdown-item i" href="#">B.E EEE</a></li>
+                        <li><a id="dept-mech" class="dropdown-item i" href="#">B.E MECH</a></li>
+                        <li><a id="dept-bme" class="dropdown-item i" href="#">B.E BME</a></li>
+                        <li><a id="dept-metch" class="dropdown-item i" href="#">M.Tech CSE</a></li>
+                        <li><a id="dept-civil" class="dropdown-item i" href="#">B.E CIVIL</a></li>
+                        <li><a id="dept-aero" class="dropdown-item i" href="#">B.E AERO</a></li>
+                        <li><a id="dept-ra" class="dropdown-item i" href="#">B.E RA</a></li>
+                        <li><a id="dept-cse" class="dropdown-item i" href="#">B.E CSE</a></li>
+                        <li><a id="dept-eie" class="dropdown-item i" href="#">B.E EIE</a></li>
+                        <li><a id="dept-mba" class="dropdown-item i" href="#">MBA</a></li>
+                    </ul>
+                </li>
+            </ul>
         </div>
 
-        <main>
-            <div class="container">
-                <?php
-                if (isset($_POST["year"]) && isset($_POST['department'])) {
-                    include_once $_SERVER["DOCUMENT_ROOT"] . '/../../class-files/' . "connection.class.php";
-                    $conn = new Connection();
-                    $sqlConn = $conn->returnConn();
-                    $year = $_POST["year"];
-                    $dept = $_POST['department'];
-                    $sqlQuery = "SELECT * FROM stud_details WHERE year_of_study=$year and department='$dept';";
-                    $result = $sqlConn->query($sqlQuery);
-                    if ($result && $result->num_rows > 0) {
-                        echo '<div class="container m-3"><table class="table table-striped"><thead><tr><th>Name</th><th>Roll No</th><th>Department</th><th>Year of study</th><th>Room No</th><th>Personal No</th><th>Father No</th></tr></thead><tbody>';
-
-                        while ($row = $result->fetch_assoc()) {
-                            $user_id = $row['user_id'];
-                            $sqlPersonal = "SELECT * FROM stud_personal_details WHERE user_id=$user_id;";
-                            $personalResult = $sqlConn->query($sqlPersonal);
-                            $row1 = $personalResult->fetch_assoc();
-
-                            $sqlGuardian = "SELECT * FROM stud_gurdian_details WHERE user_id=$user_id;";
-                            $guardianResult = $sqlConn->query($sqlGuardian);
-                            $row2 = $guardianResult->fetch_assoc();
-
-                            echo '<tr><td>' . $row['name'] . '</td><td>' . $row['user_id'] . '</td><td>' . $row['department'] . '</td><td>' . $row['year_of_study'] . '</td><td>' . $row1['room_no'] . '</td><td>' . $row1['phone_no'] . '</td><td>' . $row2['father_contact_no'] . '</td></tr>';
-                        }
-                        echo '</tbody></table></div>';
-                    }
-                }
-                ?>
+        <form id="search-form" action="/admin-panel/stud-details/search/" method="post" class="mt-3 d-inline-block text-center">
+            <input type="hidden" name="year" id="yearValue" value="<?php echo isset($_POST['year']) ? $_POST['year'] : ''; ?>">
+            <input type="hidden" name="department" id="departmentValue" value="<?php echo isset($_POST['department']) ? $_POST['department'] : ''; ?>">
+            <input type="hidden" name="hostel" value="<?php echo isset($_POST['hostel']) ? $_POST['hostel'] : 'men-hostel-1'; ?>">
+            
+            <div class="card p-man d-inline-flex">
+                <div class="card-body p-man d-flex align-items-center">
+                    <p class="card-text mb-0 p-man">
+                        <span id="selectedYear">Year - <?php echo isset($_POST['year']) ? $_POST['year'] : 'NULL'; ?></span>
+                        <button type="button" id="removeYear" class="btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle mb-1" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </button>
+                    </p>
+                    <p class="card-text mb-0 ms-3">
+                        <span id="selectedDepartment">Department - <?php echo isset($_POST['department']) ? $_POST['department'] : 'NULL'; ?></span>
+                        <button type="button" id="removeDepartment" class="btn">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-circle mb-1" viewBox="0 0 16 16">
+                                <path d="M8 15A7 7 0 1 1 8 1a7 7 0 0 1 0 14m0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16" />
+                                <path d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708" />
+                            </svg>
+                        </button>
+                    </p>
+                </div>
             </div>
-        </main>
+
+            <button type="submit" class="btn btn-outline-dark mt-3" id="submitButton" disabled>Search</button>
+        </form>
     </div>
+
+    <main>
+        <div class="container">
+            <?php
+            if (isset($_POST["year"]) && isset($_POST['department'])) {
+                include_once $_SERVER["DOCUMENT_ROOT"] . '/' . '../class-files/' . "connection.class.php";
+                $conn = new Connection();
+                $sqlConn = $conn->returnConn();
+                $year = $_POST["year"];
+                $dept = $_POST['department'];
+                $sqlQuery = "SELECT * FROM stud_details WHERE year_of_study=$year and department='$dept';";
+
+                $result = $sqlConn->query($sqlQuery);
+                if ($result->num_rows > 0) {
+                    $row = $result->fetch_all(MYSQLI_ASSOC);
+                }
+            }
+            ?>
+            <div class="container m-3">
+                <table class="table">
+                    <?php if (isset($row[0])) { ?>
+                        <thead>
+                            <tr>
+                                <th>Name</th>
+                                <th>Roll No</th>
+                                <th>Department</th>
+                                <th>Year of study</th>
+                                <th>Room No</th>
+                                <th>Personal No</th>
+                                <th>Father No</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        <?php 
+                        $i = 0;
+                        while (isset($row[$i])) {
+                            $user_id = $row[$i]['user_id'];
+
+                            $sqlQuery = "SELECT * FROM stud_personal_details WHERE user_id=$user_id;";
+                            $res = $sqlConn->query($sqlQuery);
+                            $result2 = $res->fetch_all(MYSQLI_ASSOC);
+                            $res->close();
+                        ?>
+                            <tr>
+                                <td><?php echo $row[$i]["name"]; ?></td>
+                                <td><?php echo $row[$i]["roll_no"]; ?></td>
+                                <td><?php echo $row[$i]["department"]; ?></td>
+                                <td><?php echo $row[$i]["year_of_study"]; ?></td>
+                                <td><?php echo $result2[0]["room_no"]; ?></td>
+                                <td><?php echo $result2[0]["personal_no"]; ?></td>
+                                <td><?php echo $result2[0]["father_no"]; ?></td>
+                            </tr>
+                        <?php 
+                            $i++;
+                        } 
+                        ?>
+                        </tbody>
+                    <?php } ?>
+                </table>
+            </div>
+        </div>
+    </main>
+</div>
+
 
 
 
