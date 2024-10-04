@@ -79,148 +79,42 @@ if (isset($_COOKIE['SessId'])) {
             --bs-gradient: none
         }
 
-        /* #loading_indicator {
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            z-index: 9999;
-            opacity: 1;
-            transition: opacity 0.5s ease;
-        } */
-        .spinner {
-            font-size: 40px;
-            position: relative;
-            display: inline-block;
-            width: 1em;
-            height: 1em;
+
+        svg {
+            width: 3.25em;
+            transform-origin: center;
+            animation: rotate4 2s linear infinite;
         }
 
-        .spinner.center {
-            position: absolute;
-            left: 0;
-            right: 0;
-            top: 0;
-            bottom: 0;
-            margin: auto;
+        circle {
+            fill: none;
+            stroke: hsl(214, 97%, 59%);
+            stroke-width: 2;
+            stroke-dasharray: 1, 200;
+            stroke-dashoffset: 0;
+            stroke-linecap: round;
+            animation: dash4 1.5s ease-in-out infinite;
         }
 
-        .spinner .spinner-blade {
-            position: absolute;
-            left: 0.4629em;
-            bottom: 0;
-            width: 0.074em;
-            height: 0.2777em;
-            border-radius: 0.0555em;
-            background-color: transparent;
-            -webkit-transform-origin: center -0.2222em;
-            -ms-transform-origin: center -0.2222em;
-            transform-origin: center -0.2222em;
-            animation: spinner-fade9234 1s infinite linear;
+        @keyframes rotate4 {
+            100% {
+                transform: rotate(360deg);
+            }
         }
 
-        .spinner .spinner-blade:nth-child(1) {
-            -webkit-animation-delay: 0s;
-            animation-delay: 0s;
-            -webkit-transform: rotate(0deg);
-            -ms-transform: rotate(0deg);
-            transform: rotate(0deg);
-        }
-
-        .spinner .spinner-blade:nth-child(2) {
-            -webkit-animation-delay: 0.083s;
-            animation-delay: 0.083s;
-            -webkit-transform: rotate(30deg);
-            -ms-transform: rotate(30deg);
-            transform: rotate(30deg);
-        }
-
-        .spinner .spinner-blade:nth-child(3) {
-            -webkit-animation-delay: 0.166s;
-            animation-delay: 0.166s;
-            -webkit-transform: rotate(60deg);
-            -ms-transform: rotate(60deg);
-            transform: rotate(60deg);
-        }
-
-        .spinner .spinner-blade:nth-child(4) {
-            -webkit-animation-delay: 0.249s;
-            animation-delay: 0.249s;
-            -webkit-transform: rotate(90deg);
-            -ms-transform: rotate(90deg);
-            transform: rotate(90deg);
-        }
-
-        .spinner .spinner-blade:nth-child(5) {
-            -webkit-animation-delay: 0.332s;
-            animation-delay: 0.332s;
-            -webkit-transform: rotate(120deg);
-            -ms-transform: rotate(120deg);
-            transform: rotate(120deg);
-        }
-
-        .spinner .spinner-blade:nth-child(6) {
-            -webkit-animation-delay: 0.415s;
-            animation-delay: 0.415s;
-            -webkit-transform: rotate(150deg);
-            -ms-transform: rotate(150deg);
-            transform: rotate(150deg);
-        }
-
-        .spinner .spinner-blade:nth-child(7) {
-            -webkit-animation-delay: 0.498s;
-            animation-delay: 0.498s;
-            -webkit-transform: rotate(180deg);
-            -ms-transform: rotate(180deg);
-            transform: rotate(180deg);
-        }
-
-        .spinner .spinner-blade:nth-child(8) {
-            -webkit-animation-delay: 0.581s;
-            animation-delay: 0.581s;
-            -webkit-transform: rotate(210deg);
-            -ms-transform: rotate(210deg);
-            transform: rotate(210deg);
-        }
-
-        .spinner .spinner-blade:nth-child(9) {
-            -webkit-animation-delay: 0.664s;
-            animation-delay: 0.664s;
-            -webkit-transform: rotate(240deg);
-            -ms-transform: rotate(240deg);
-            transform: rotate(240deg);
-        }
-
-        .spinner .spinner-blade:nth-child(10) {
-            -webkit-animation-delay: 0.747s;
-            animation-delay: 0.747s;
-            -webkit-transform: rotate(270deg);
-            -ms-transform: rotate(270deg);
-            transform: rotate(270deg);
-        }
-
-        .spinner .spinner-blade:nth-child(11) {
-            -webkit-animation-delay: 0.83s;
-            animation-delay: 0.83s;
-            -webkit-transform: rotate(300deg);
-            -ms-transform: rotate(300deg);
-            transform: rotate(300deg);
-        }
-
-        .spinner .spinner-blade:nth-child(12) {
-            -webkit-animation-delay: 0.913s;
-            animation-delay: 0.913s;
-            -webkit-transform: rotate(330deg);
-            -ms-transform: rotate(330deg);
-            transform: rotate(330deg);
-        }
-
-        @keyframes spinner-fade9234 {
+        @keyframes dash4 {
             0% {
-                background-color: #69717d;
+                stroke-dasharray: 1, 200;
+                stroke-dashoffset: 0;
+            }
+
+            50% {
+                stroke-dasharray: 90, 200;
+                stroke-dashoffset: -35px;
             }
 
             100% {
-                background-color: transparent;
+                stroke-dashoffset: -125px;
             }
         }
     </style>
@@ -306,20 +200,7 @@ if (isset($_COOKIE['SessId'])) {
                                                 </div>
                                             </div>
 
-                                            <div id="loading_indicator" class="spinner center ">
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                                <div class="spinner-blade"></div>
-                                            </div>
+
 
                                         </form>
                                         <div class="row">
@@ -355,9 +236,11 @@ if (isset($_COOKIE['SessId'])) {
         </div>
     </section>
 
-    <!-- <div id="loading_indicator" class="spinner-border p-4" role="status">
-        <span class="sr-only">Loading...</span>
-    </div> -->
+    <div id="loading_indicator">
+        <svg viewBox="25 25 50 50">
+            <circle r="20" cy="50" cx="50" fill="#ffff"></circle>
+        </svg>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -398,7 +281,7 @@ if (isset($_COOKIE['SessId'])) {
         });
     </script>
 
-<script>
+    <script>
         document.onreadystatechange = function () {
             if (document.readyState !== "complete") {
                 document.querySelector("body").style.visibility = "hidden";
