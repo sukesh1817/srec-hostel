@@ -152,7 +152,7 @@ class Admin
         }
 
         if (!empty($dept)) {
-            $sql .= " AND dept = ?";
+            $sql .= " AND deptment = ?";
             $params[] = $sqlConn->real_escape_string($dept);
         }
 
