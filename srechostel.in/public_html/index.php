@@ -214,11 +214,9 @@ if (isset($_COOKIE['SessId'])) {
         </div>
     </section>
 
-    <div id="loading_indicator">
-        <div class="spinner-border spin" role="status">
+        <div id="loading_indicator" class="spinner-border spin" role="status">
             <span class="visually-hidden"></span>
         </div>
-    </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
