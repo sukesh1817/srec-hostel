@@ -190,9 +190,6 @@ if (isset($_COOKIE['SessId'])) {
 
                                                 </div>
                                             </div>
-
-
-
                                         </form>
                                         <div class="row">
                                             <div id="mgsyir" class="col-12">
