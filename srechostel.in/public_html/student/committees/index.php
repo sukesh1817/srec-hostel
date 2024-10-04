@@ -67,7 +67,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <p>We are delighted to welcome you to the Food Committee section of our hostel website! This is
                         where your passion for food and community can come together to make a significant impact on our
                         dining experience.</p>
-                    <a href="/committies/food-committee/" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committee/food-committee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
@@ -85,7 +85,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         passion for sports and teamwork will help shape our events, enhancing our community's fitness
                         and camaraderie.
                     </p>
-                    <a href="/committies/sports-committee/" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committee/sports-committee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
@@ -102,7 +102,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         contributing to the green spaces of our hostel and making our surroundings more beautiful and
                         sustainable. Your involvement is crucial in fostering a love for nature and enhancing our
                         communal living environment.</p>
-                    <a href="/committies/garden-committee/" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committee/garden-committee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
@@ -120,7 +120,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <p>Welcome to the Wi-Fi Committee section of our hostel website! Here, we focus on ensuring a
                         reliable and efficient internet experience for all hostel residents. Your input and
                         collaboration are essential in helping us maintain and improve our Wi-Fi services.</p>
-                    <a href="/committies/wifi-committee/" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committee/wifi-committee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
@@ -137,7 +137,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         conducive environment for study and research, ensuring that all residents have access to the
                         resources they need for academic success. Your involvement is crucial in maintaining and
                         enhancing our library services.</p>
-                    <a href="/committies/library-committee/" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committee/library-committee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
@@ -153,7 +153,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <p>Welcome to the Cleanliness Committee section of our hostel website! Here, we focus on maintaining
                         a clean and hygienic environment for all residents. Your participation is vital in promoting
                         good health and a pleasant living atmosphere within the hostel.</p>
-                    <a href="/committies/cleanliness-committee/" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committee/cleanliness-committee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>

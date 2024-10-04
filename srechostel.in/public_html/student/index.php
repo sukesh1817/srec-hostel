@@ -54,7 +54,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 book
                 your gate pass seamlessly.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-lg-center justify-content-md-start" bis_skin_checked="1">
-                <a href="gate-pass/" type="button" class="btn btn-outline-dark btn-lg px-4 me-md-2 rounded-1">Book
+                <a href="/gate-pass/" type="button" class="btn btn-outline-dark btn-lg px-4 me-md-2 rounded-1">Book
                     gatepass</a>
             </div>
         </div>
@@ -74,7 +74,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         booking
                         information of the token.</p>
                     <div class="d-grid gap-2 d-md-flex justify-content-md-start" bis_skin_checked="1">
-                        <a href="/stud-panel/token/" class="btn btn-dark btn-lg px-4 me-md-2 rounded-1">Book food</a>
+                        <a href="/token/" class="btn btn-dark btn-lg px-4 me-md-2 rounded-1">Book food</a>
                     </div>
                 </div>
             </div>
@@ -88,9 +88,9 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 <p class="lead">You can book your complaint through the complaint form , it contains personal and common
                     complaint , you can book it, after the our hostel team will contact you soon.</p>
                 <div class="d-grid gap-2 d-md-flex justify-content-md-start mb-4 mb-lg-3" bis_skin_checked="1">
-                    <a href="/stud-panel/complaint/book-common-complaint/"
+                    <a href="/complaint/book-common-complaint/"
                         class="btn btn-dark btn-lg px-4 me-md-2 fw-bold rounded-1">Common</a>
-                    <a href="/stud-panel/complaint/book-individual-complaint/"
+                    <a href="/complaint/book-individual-complaint/"
                         class="btn btn-outline-secondary btn-lg px-4 rounded-1">Personal</a>
                 </div>
             </div>
