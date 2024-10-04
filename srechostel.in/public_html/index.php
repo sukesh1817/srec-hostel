@@ -107,7 +107,7 @@ if (isset($_COOKIE['SessId'])) {
                                         <div class="row">
                                             <div class="col-12">
                                                 <div class="mb-5">
-                                                    <h4 class="text-center underlined">Hello to,<br> Sri Ramakrishana
+                                                    <h4 class="text-center underlined">Welcome to,<br> Sri Ramakrishana
                                                         Engineering College Hostel</h4>
                                                 </div>
                                             </div>
