@@ -1,6 +1,6 @@
 <?php
 // this file gets the connection from the database
-include_once("mainconn.class.php");
+include_once("../mainconn.class.php");
 
 class Admin
 {
@@ -133,7 +133,47 @@ class Admin
         }
     }
 
-    public function search_students($name = '', $rollno = '', $dept = '')
+    public function search_students_group($year = null, $department = null) {
+        // Create a new connection object
+        $conn = new MainConnection();
+        $sqlConn = $conn->returnConn();
+    
+        // Initialize an empty array to store search conditions
+        $conditions = [];
+    
+        // Add year condition if provided
+        if (!empty($year)) {
+            $conditions[] = "year_of_study = $year";
+        }
+    
+        // Add department condition if provided
+        if (!empty($department)) {
+            $conditions[] = "department = '$department'";
+        }
+    
+        // Form the WHERE clause if there are any conditions
+        $whereClause = !empty($conditions) ? 'WHERE ' . implode(' AND ', $conditions) : '';
+    
+        // Define the SQL query
+        $sqlQuery = "SELECT * FROM stud_details $whereClause";
+    
+        // Execute the query and fetch results
+        $result = $sqlConn->query($sqlQuery);
+    
+        // Check if results are found
+        if ($result->num_rows > 0) {
+            // Fetch all matching rows and return them
+            $rows = [];
+            while ($row = $result->fetch_assoc()) {
+                $rows[] = $row;
+            }
+            return $rows;
+        } else {
+            // No results found, return an empty array
+            return [];
+        }
+    }
+    public function search_students_individual($name = '', $rollno = '', $dept = '')
     {
         # Getting connection from MySQL
         $conn = new MainConnection();
