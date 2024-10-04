@@ -31,7 +31,7 @@
               } ?>"
               href="/gate-pass/">Gate pass</a></li>
           <li class="nav-item me-1"><a
-              class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "committies")) {
+              class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "committees")) {
                 echo "active";
               } ?>"
               href="/committies/">Committie</a></li>
