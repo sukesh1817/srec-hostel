@@ -259,27 +259,25 @@ if (isset($_COOKIE['SessId'])) {
         });
     </script>
 
-    <script>
-        document.onreadystatechange = function () {
-            if (document.readyState !== "complete") {
-                document.querySelector("body").style.visibility = "hidden";
-                document.getElementById("loading_indicator").style.visibility = "visible";
-            } else {
-                setTimeout(() => {
-                    // Fade out the spinner
-                    const spinner = document.getElementById("loading_indicator");
-                    spinner.style.opacity = "0";
+   <script>
+    $(document).ready(function () {
+    // Initially hide the body
+    $("body").css("visibility", "hidden");
+    
+    // Show the loading indicator
+    $("#loading_indicator").css("visibility", "visible");
 
-                    // Wait for the transition to complete (0.5s) then hide it
-                    setTimeout(() => {
-                        spinner.style.display = "none";
-                        document.querySelector("body").style.visibility = "visible";
-                        document.querySelector("body").style.opacity = "1"; // Fade in body
-                    }, 500); // Matches the duration of the opacity transition
-                }, 1000);
-            }
-        };
-    </script>
+    // Once the document is fully loaded
+    $(window).on("load", function () {
+        // Fade out the spinner
+        $("#loading_indicator").fadeOut(500, function () {
+            // After spinner is hidden, make the body visible and fade it in
+            $("body").css("visibility", "visible").hide().fadeIn(500);
+        });
+    });
+});
+
+   </script>
 
 
 
