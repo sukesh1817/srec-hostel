@@ -211,18 +211,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <li class="dropdown-submenu">
                     <a class="dropdown-item dropdown-toggle" href="#">Year</a>
                     <ul class="dropdown-menu">
-                        <?php if ($_POST['hostel'] == 'Men-hostel-1') { ?>
-                            <li><a id="year-1" class="dropdown-item i" href="#">2</a></li>
-                            <li><a id="year-2" class="dropdown-item i" href="#">3</a></li>
-                        <?php } else if ($_POST['hostel'] == 'Men-hostel-2') { ?>
-                            <li><a id="year-1" class="dropdown-item i" href="#">1</a></li>
-                            <li><a id="year-2" class="dropdown-item i" href="#">4</a></li>
-                        <?php } else { ?>
                             <li><a id="year-1" class="dropdown-item i" href="#">1</a></li>
                             <li><a id="year-2" class="dropdown-item i" href="#">2</a></li>
                             <li><a id="year-3" class="dropdown-item i" href="#">3</a></li>
                             <li><a id="year-4" class="dropdown-item i" href="#">4</a></li>
-                        <?php } ?>
                     </ul>
                 </li>
                 <li class="dropdown-submenu">
