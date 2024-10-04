@@ -138,7 +138,7 @@ class Admin
         # Getting connection from MySQL
         $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
-        $sql = "SELECT * FROM students WHERE 1=1";
+        $sql = "SELECT * FROM stud_details WHERE 1=1";
         $params = [];
 
         if (!empty($name)) {
