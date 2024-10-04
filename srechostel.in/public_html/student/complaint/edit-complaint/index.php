@@ -45,7 +45,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 isset($_POST["complaint_summary"])
             ) {
                 //common complaint
-                $array = array(
+                $array = array (
                     "dept" => $_POST['department'],
                     "text" => $_POST['complaint_summary'],
                     "rollNo" => $_SESSION['yourToken']
@@ -138,6 +138,8 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 </div>
                         </main>
                     <?php
+                                        exit;
+
                 } else {
                     ?>
                         <main>
@@ -153,6 +155,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                                 </div>
                         </main>
                     <?php
+                    exit;
                 }
             }
         }
