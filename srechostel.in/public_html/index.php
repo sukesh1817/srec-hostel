@@ -298,7 +298,7 @@ if (isset($_COOKIE['SessId'])) {
                                                         type="submit">
                                                         <span>Login</span>
                                                         <div style="display:none" id="loader"
-                                                            class="ms-1 spinner-border">
+                                                            class="ms-1 spinner-border spinner-border-sm">
 
                                                         </div>
                                                     </button>
