@@ -414,7 +414,7 @@ if (isset($_COOKIE['SessId'])) {
                         spinner.style.display = "none";
                         document.querySelector("body").style.visibility = "visible";
                     }, 500); // Matches the duration of the opacity transition
-                }, 3000);
+                }, 1000);
             }
         };
     </script>
