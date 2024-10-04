@@ -78,15 +78,151 @@ if (isset($_COOKIE['SessId'])) {
             --bs-btn-disabled-border-color: #212529;
             --bs-gradient: none
         }
-        #loading_indicator {
+
+        /* #loading_indicator {
             position: fixed;
             top: 50%;
             left: 50%;
-
             z-index: 9999;
             opacity: 1;
-            transition: opacity 0.5s ease; /* Adds smooth transition for opacity */
-        }
+            transition: opacity 0.5s ease;
+        } */
+        .spinner {
+  font-size: 28px;
+  position: relative;
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+}
+
+.spinner.center {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+
+.spinner .spinner-blade {
+  position: absolute;
+  left: 0.4629em;
+  bottom: 0;
+  width: 0.074em;
+  height: 0.2777em;
+  border-radius: 0.0555em;
+  background-color: transparent;
+  -webkit-transform-origin: center -0.2222em;
+  -ms-transform-origin: center -0.2222em;
+  transform-origin: center -0.2222em;
+  animation: spinner-fade9234 1s infinite linear;
+}
+
+.spinner .spinner-blade:nth-child(1) {
+  -webkit-animation-delay: 0s;
+  animation-delay: 0s;
+  -webkit-transform: rotate(0deg);
+  -ms-transform: rotate(0deg);
+  transform: rotate(0deg);
+}
+
+.spinner .spinner-blade:nth-child(2) {
+  -webkit-animation-delay: 0.083s;
+  animation-delay: 0.083s;
+  -webkit-transform: rotate(30deg);
+  -ms-transform: rotate(30deg);
+  transform: rotate(30deg);
+}
+
+.spinner .spinner-blade:nth-child(3) {
+  -webkit-animation-delay: 0.166s;
+  animation-delay: 0.166s;
+  -webkit-transform: rotate(60deg);
+  -ms-transform: rotate(60deg);
+  transform: rotate(60deg);
+}
+
+.spinner .spinner-blade:nth-child(4) {
+  -webkit-animation-delay: 0.249s;
+  animation-delay: 0.249s;
+  -webkit-transform: rotate(90deg);
+  -ms-transform: rotate(90deg);
+  transform: rotate(90deg);
+}
+
+.spinner .spinner-blade:nth-child(5) {
+  -webkit-animation-delay: 0.332s;
+  animation-delay: 0.332s;
+  -webkit-transform: rotate(120deg);
+  -ms-transform: rotate(120deg);
+  transform: rotate(120deg);
+}
+
+.spinner .spinner-blade:nth-child(6) {
+  -webkit-animation-delay: 0.415s;
+  animation-delay: 0.415s;
+  -webkit-transform: rotate(150deg);
+  -ms-transform: rotate(150deg);
+  transform: rotate(150deg);
+}
+
+.spinner .spinner-blade:nth-child(7) {
+  -webkit-animation-delay: 0.498s;
+  animation-delay: 0.498s;
+  -webkit-transform: rotate(180deg);
+  -ms-transform: rotate(180deg);
+  transform: rotate(180deg);
+}
+
+.spinner .spinner-blade:nth-child(8) {
+  -webkit-animation-delay: 0.581s;
+  animation-delay: 0.581s;
+  -webkit-transform: rotate(210deg);
+  -ms-transform: rotate(210deg);
+  transform: rotate(210deg);
+}
+
+.spinner .spinner-blade:nth-child(9) {
+  -webkit-animation-delay: 0.664s;
+  animation-delay: 0.664s;
+  -webkit-transform: rotate(240deg);
+  -ms-transform: rotate(240deg);
+  transform: rotate(240deg);
+}
+
+.spinner .spinner-blade:nth-child(10) {
+  -webkit-animation-delay: 0.747s;
+  animation-delay: 0.747s;
+  -webkit-transform: rotate(270deg);
+  -ms-transform: rotate(270deg);
+  transform: rotate(270deg);
+}
+
+.spinner .spinner-blade:nth-child(11) {
+  -webkit-animation-delay: 0.83s;
+  animation-delay: 0.83s;
+  -webkit-transform: rotate(300deg);
+  -ms-transform: rotate(300deg);
+  transform: rotate(300deg);
+}
+
+.spinner .spinner-blade:nth-child(12) {
+  -webkit-animation-delay: 0.913s;
+  animation-delay: 0.913s;
+  -webkit-transform: rotate(330deg);
+  -ms-transform: rotate(330deg);
+  transform: rotate(330deg);
+}
+
+@keyframes spinner-fade9234 {
+  0% {
+    background-color: #69717d;
+  }
+
+  100% {
+    background-color: transparent;
+  }
+}
     </style>
 </head>
 
@@ -162,33 +298,49 @@ if (isset($_COOKIE['SessId'])) {
                                                         type="submit">
                                                         <span>Login</span>
                                                         <div style="display:none" id="loader"
-                                                            class="ms-1 spinner-grow spinner-grow-sm">
+                                                            class="ms-1 spinner-border">
 
                                                         </div>
                                                     </button>
 
                                                 </div>
                                             </div>
-                                    </div>
-                                    </form>
-                                    <div class="row">
-                                        <div id="mgsyir" class="col-12">
-                                            <div class="toast-container position-fixed bottom-0 end-0 p-3">
-                                                <div id="liveToast" class="toast" role="alert" aria-live="assertive"
-                                                    aria-atomic="true">
-                                                    <div class="toast-header">
-                                                        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
-                                                            fill="currentColor"
-                                                            class="bi bi-emoji-expressionless-fill me-2"
-                                                            viewBox="0 0 16 16">
-                                                            <path
-                                                                d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M4.5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1m5 0h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1m-5 4h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1" />
-                                                        </svg> <strong class="me-auto">Wrong Credentials</strong>
-                                                        <button type="button" class="btn-close" data-bs-dismiss="toast"
-                                                            aria-label="Close"></button>
-                                                    </div>
-                                                    <div class="toast-body">
-                                                        Please Try Again.
+
+                                            <div id="loading_indicator" class="spinner center ">
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                                <div class="spinner-blade"></div>
+                                            </div>
+
+                                        </form>
+                                        <div class="row">
+                                            <div id="mgsyir" class="col-12">
+                                                <div class="toast-container position-fixed bottom-0 end-0 p-3">
+                                                    <div id="liveToast" class="toast" role="alert" aria-live="assertive"
+                                                        aria-atomic="true">
+                                                        <div class="toast-header">
+                                                            <svg xmlns="http://www.w3.org/2000/svg" width="16"
+                                                                height="16" fill="currentColor"
+                                                                class="bi bi-emoji-expressionless-fill me-2"
+                                                                viewBox="0 0 16 16">
+                                                                <path
+                                                                    d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16M4.5 6h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1m5 0h2a.5.5 0 0 1 0 1h-2a.5.5 0 0 1 0-1m-5 4h7a.5.5 0 0 1 0 1h-7a.5.5 0 0 1 0-1" />
+                                                            </svg> <strong class="me-auto">Wrong Credentials</strong>
+                                                            <button type="button" class="btn-close"
+                                                                data-bs-dismiss="toast" aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="toast-body">
+                                                            Please Try Again.
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -201,12 +353,11 @@ if (isset($_COOKIE['SessId'])) {
                 </div>
             </div>
         </div>
-        </div>
     </section>
 
-    <div id="loading_indicator" class="spinner-border p-4" role="status">
-            <span class="sr-only">Loading...</span>
-        </div>
+    <!-- <div id="loading_indicator" class="spinner-border p-4" role="status">
+        <span class="sr-only">Loading...</span>
+    </div> -->
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"
         integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
@@ -247,7 +398,7 @@ if (isset($_COOKIE['SessId'])) {
         });
     </script>
 
-<script>
+    <script>
         document.onreadystatechange = function () {
             if (document.readyState !== "complete") {
                 document.querySelector("body").style.visibility = "hidden";
@@ -257,7 +408,7 @@ if (isset($_COOKIE['SessId'])) {
                     // Fade out the spinner
                     const spinner = document.getElementById("loading_indicator");
                     spinner.style.opacity = "0";
-                    
+
                     // Wait for the transition to complete (0.5s) then hide it
                     setTimeout(() => {
                         spinner.style.display = "none";
