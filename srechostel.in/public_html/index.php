@@ -260,7 +260,7 @@ if (isset($_COOKIE['SessId'])) {
     </script>
 
    <script>
-    $(document).ready(function () {
+  $(document).ready(function () {
     // Initially hide the body
     $("body").css("visibility", "hidden");
     
@@ -271,11 +271,12 @@ if (isset($_COOKIE['SessId'])) {
     $(window).on("load", function () {
         // Fade out the spinner
         $("#loading_indicator").fadeOut(500, function () {
-            // After spinner is hidden, make the body visible and fade it in
+            // Make the body visible and fade it in
             $("body").css("visibility", "visible").hide().fadeIn(500);
         });
     });
 });
+
 
    </script>
 
