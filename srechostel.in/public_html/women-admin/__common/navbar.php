@@ -3,7 +3,7 @@
   <div class="container" bis_skin_checked="1">
     <div class="d-flex justify-content-start me-5">
       <a class="navbar-brand justify-content-start fs-4 text-white fw-medium" href="/">
-      <small>Women Admin</small> 
+      Women
       </a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
@@ -13,7 +13,7 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel"
       bis_skin_checked="1">
       <div class="offcanvas-header" bis_skin_checked="1">
-        <h5 class="offcanvas-title" id="offcanvasLabel">Women Admin</h5>
+        <h5 class="offcanvas-title" id="offcanvasLabel">Women</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body" bis_skin_checked="1">
