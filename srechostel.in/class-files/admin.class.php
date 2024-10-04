@@ -1,168 +1,110 @@
 <?php
-// this file get the connection from the database
-include_once("connection.class.php");
+// Include the connection class to establish a database connection
+include_once("mainconn.class.php");
 
 class Admin
 {
+    private $conn;
 
-    // this function delete the user by using the user data.
-    // it do deletion in two ways.
-    // 1. single user deletion (using the rollno of the student).
-    // 2. multi user deletion (using some of the data of the students). 
-    public function deleteUser($keys, $values)
+    public function __construct()
     {
-        # getting connection from mysql
-        $conn = new Connection();
-        $sqlConn = $conn->returnConn();
-
-        # sanitize the input values
-        $pointer = 0;
-        foreach ($values as $value) {
-            $values[$pointer] = mysqli_real_escape_string($sqlConn, $value);
-            $pointer++;
-        }
-
-        if (in_array("dept", $keys) and in_array("year", $keys)) {
-
-        } else if (in_array("group_of_roll_no", $keys)) {
-            $rollNos = $values[0];
-            $rollNo = explode(",", $values[0]);
-            $rollNo = $rollNos[0];
-            $query1 = "DELETE FROM `login_auth` WHERE  user_id in ($rollNos);";
-            $query2 = "DELETE FROM `stud_details` WHERE  roll_no in ($rollNos);";
-            $query3 = "DELETE FROM `stud_personal_details` WHERE  roll_no in ($rollNos);";
-            $query4 = "DELETE FROM `stud_gurdian_details` WHERE  roll_no in ($rollNos);";
-            $query5 = "DELETE FROM `student_session` WHERE  student_rollno in ($rollNos);";
-            if (
-                $sqlConn->query($query1) == TRUE and $sqlConn->query($query2) == TRUE and
-                $sqlConn->query($query3) == TRUE and $sqlConn->query($query4) == TRUE and
-                $sqlConn->query($query5) == TRUE
-            ) {
-                $query1 = "SELECT user_id FROM `login_auth` WHERE user_id='$rollNo';";
-                $query2 = "SELECT roll_no FROM `stud_details` WHERE roll_no='$rollNo';";
-                $query3 = "SELECT roll_no FROM `stud_personal_details` WHERE roll_no='$rollNo';";
-                $query4 = "SELECT roll_no FROM `stud_gurdian_details` WHERE roll_no='$rollNo';";
-                $query5 = "SELECT student_rollno FROM `student_session` WHERE student_rollno='$rollNo';";
-                $result1 = $sqlConn->query($query1);
-                $result2 = $sqlConn->query($query2);
-                $result3 = $sqlConn->query($query3);
-                $result4 = $sqlConn->query($query4);
-                $result5 = $sqlConn->query($query5);
-                $row1 = $result1->fetch_assoc();
-                $row2 = $result2->fetch_assoc();
-                $row3 = $result3->fetch_assoc();
-                $row4 = $result4->fetch_assoc();
-                $row5 = $result5->fetch_assoc();
-                if (
-                    isset($row1['user_id']) or isset($row2['roll_no']) or
-                    isset($row3['roll_no']) or isset($row4['roll_no']) or
-                    isset($row1['student_rollno'])
-                ) {
-
-                    return array("ACCOUNT_DELETED_FAILED_STUDENT_GROUP", "group");
-                } else {
-                    echo "done";
-                    return array("ACCOUNT_DELETED_SUCCESS_STUDENT_GROUP", "group");
-                }
-            }
-        } else if ($keys[0] == "user_id") {
-
-            # this code first check who is the user student or staff or watch man.
-            # then it backup the data to another table before deletion in the main table.
-            # if the user accounts deleted successfully then give the success message.
-            # else give the message account deletion failed.
-            $rollNo = $values[0];
-
-            try {
-
-                $query0 = "SELECT who_is FROM `login_auth` WHERE user_id='$rollNo';";
-                $result = $sqlConn->query($query0);
-                error_reporting(0);
-                $whois = $result->fetch_assoc()['who_is'];
-                if ($whois == "Student") {
-                    $query1 = "DELETE FROM `login_auth` WHERE user_id='$rollNo';";
-                    $query2 = "DELETE FROM `stud_details` WHERE roll_no='$rollNo';";
-                    $query3 = "DELETE FROM `stud_personal_details` WHERE roll_no='$rollNo';";
-                    $query4 = "DELETE FROM `stud_gurdian_details` WHERE roll_no='$rollNo';";
-                    $query5 = "DELETE FROM `student_session` WHERE student_rollno='$rollNo';";
-                    if (
-                        $sqlConn->query($query1) == TRUE and $sqlConn->query($query2) == TRUE and
-                        $sqlConn->query($query3) == TRUE and $sqlConn->query($query4) == TRUE and
-                        $sqlConn->query($query5) == TRUE
-                    ) {
-
-                        $query1 = "SELECT user_id FROM `login_auth` WHERE user_id='$rollNo';";
-                        $query2 = "SELECT roll_no FROM `stud_details` WHERE roll_no='$rollNo';";
-                        $query3 = "SELECT roll_no FROM `stud_personal_details` WHERE roll_no='$rollNo';";
-                        $query4 = "SELECT roll_no FROM `stud_gurdian_details` WHERE roll_no='$rollNo';";
-                        $query5 = "SELECT student_rollno FROM `student_session` WHERE student_rollno='$rollNo';";
-                        $result1 = $sqlConn->query($query1);
-                        $result2 = $sqlConn->query($query2);
-                        $result3 = $sqlConn->query($query3);
-                        $result4 = $sqlConn->query($query4);
-                        $result5 = $sqlConn->query($query5);
-                        $row1 = $result1->fetch_assoc();
-                        $row2 = $result2->fetch_assoc();
-                        $row3 = $result3->fetch_assoc();
-                        $row4 = $result4->fetch_assoc();
-                        $row5 = $result5->fetch_assoc();
-                        if (
-                            isset($row1['user_id']) or isset($row2['roll_no']) or
-                            isset($row3['roll_no']) or isset($row4['roll_no']) or
-                            isset($row1['student_rollno'])
-                        ) {
-                            return array("ACCOUNT_DELETED_FAILED_STUDENT", $rollNo);
-                        } else {
-                            return array("ACCOUNT_DELETED_SUCCESS_STUDENT", $rollNo);
-                        }
-                    } else {
-                        return array("ACCOUNT_DELETED_FAILED_STUDENT", $rollNo);
-                    }
-                } else if ($whois == "Staff") {
-                    # TODO : deletion of the staff accounts
-                } else {
-                    return array("ACCOUNT_DELETED_FAILED_STUDENT", $rollNo);
-                }
-            } catch (Exception $e) {
-
-            }
-
-
-
-        } else if ($keys[0] == "year") {
-
-        } else {
-
-        }
+        $connection = new Connection();
+        $this->conn = $connection->returnConn();
     }
 
+    // Method to delete users (single or multiple)
+    public function deleteUser($keys, $values)
+    {
+        $sqlConn = $this->conn;
 
+        // Sanitize input values
+        foreach ($values as &$value) {
+            $value = mysqli_real_escape_string($sqlConn, $value);
+        }
 
+        if (in_array("group_of_roll_no", $keys)) {
+            $rollNos = $values[0];
+            $rollNoArray = explode(",", $rollNos);
+            $rollNoList = "'" . implode("','", $rollNoArray) . "'";
+
+            // Prepare deletion queries
+            $queries = [
+                "DELETE FROM `login_auth` WHERE user_id IN ($rollNoList)",
+                "DELETE FROM `stud_details` WHERE roll_no IN ($rollNoList)",
+                "DELETE FROM `stud_personal_details` WHERE roll_no IN ($rollNoList)",
+                "DELETE FROM `stud_gurdian_details` WHERE roll_no IN ($rollNoList)",
+                "DELETE FROM `student_session` WHERE student_rollno IN ($rollNoList)"
+            ];
+
+            foreach ($queries as $query) {
+                if (!$sqlConn->query($query)) {
+                    return ["ACCOUNT_DELETED_FAILED_STUDENT_GROUP", "group"];
+                }
+            }
+            return ["ACCOUNT_DELETED_SUCCESS_STUDENT_GROUP", "group"];
+        } elseif ($keys[0] == "user_id") {
+            $rollNo = $values[0];
+            $whois = $this->getUserRole($rollNo);
+
+            if ($whois == "Student") {
+                return $this->deleteStudent($rollNo);
+            } elseif ($whois == "Staff") {
+                // TODO: Add staff deletion logic here
+            } else {
+                return ["ACCOUNT_DELETED_FAILED_STUDENT", $rollNo];
+            }
+        }
+
+        return ["ACCOUNT_DELETED_FAILED_STUDENT", "Invalid request"];
+    }
+
+    private function getUserRole($rollNo)
+    {
+        $query = "SELECT who_is FROM `login_auth` WHERE user_id='$rollNo'";
+        $result = $this->conn->query($query);
+        return $result->fetch_assoc()['who_is'] ?? null;
+    }
+
+    private function deleteStudent($rollNo)
+    {
+        $queries = [
+            "DELETE FROM `login_auth` WHERE user_id='$rollNo'",
+            "DELETE FROM `stud_details` WHERE roll_no='$rollNo'",
+            "DELETE FROM `stud_personal_details` WHERE roll_no='$rollNo'",
+            "DELETE FROM `stud_gurdian_details` WHERE roll_no='$rollNo'",
+            "DELETE FROM `student_session` WHERE student_rollno='$rollNo'"
+        ];
+
+        foreach ($queries as $query) {
+            if (!$this->conn->query($query)) {
+                return ["ACCOUNT_DELETED_FAILED_STUDENT", $rollNo];
+            }
+        }
+        return ["ACCOUNT_DELETED_SUCCESS_STUDENT", $rollNo];
+    }
+
+    // Method to search for students
     public function search_students($name = '', $rollno = '', $dept = '')
     {
-        # getting connection from mysql
-        $conn = new Connection();
-        $conn = $conn->returnConn();
         $sql = "SELECT * FROM students WHERE 1=1";
         $params = [];
 
         if (!empty($name)) {
             $sql .= " AND name LIKE ?";
-            $params[] = "%" . $conn->real_escape_string($name) . "%";
+            $params[] = "%" . $this->conn->real_escape_string($name) . "%";
         }
 
         if (!empty($rollno)) {
             $sql .= " AND rollno = ?";
-            $params[] = $conn->real_escape_string($rollno);
+            $params[] = $this->conn->real_escape_string($rollno);
         }
 
         if (!empty($dept)) {
             $sql .= " AND dept = ?";
-            $params[] = $conn->real_escape_string($dept);
+            $params[] = $this->conn->real_escape_string($dept);
         }
 
-        $stmt = $conn->prepare($sql);
-
+        $stmt = $this->conn->prepare($sql);
         if ($params) {
             $types = str_repeat('s', count($params));
             $stmt->bind_param($types, ...$params);
@@ -177,7 +119,7 @@ class Admin
         }
 
         $stmt->close();
-
         return ['status' => 'success', 'data' => $students];
     }
 }
+?>
