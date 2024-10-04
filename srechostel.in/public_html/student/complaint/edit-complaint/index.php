@@ -73,6 +73,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                             </div>
                     </main>
                     <?php
+                    exit;
                 } else {
                     ?>
 
@@ -90,6 +91,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     </main>
 
                     <?php
+                    exit;
                 }
 
             }
