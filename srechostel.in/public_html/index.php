@@ -80,42 +80,20 @@ if (isset($_COOKIE['SessId'])) {
         }
 
 
-        svg {
-            width: 3.25em;
-            transform-origin: center;
-            animation: rotate4 2s linear infinite;
-        }
-
-        circle {
-            fill: none;
-            stroke: hsl(214, 97%, 59%);
-            stroke-width: 2;
-            stroke-dasharray: 1, 200;
-            stroke-dashoffset: 0;
-            stroke-linecap: round;
-            animation: dash4 1.5s ease-in-out infinite;
-        }
-
-        @keyframes rotate4 {
-            100% {
-                transform: rotate(360deg);
-            }
-        }
-
-        @keyframes dash4 {
-            0% {
-                stroke-dasharray: 1, 200;
-                stroke-dashoffset: 0;
-            }
-
-            50% {
-                stroke-dasharray: 90, 200;
-                stroke-dashoffset: -35px;
-            }
-
-            100% {
-                stroke-dashoffset: -125px;
-            }
+        .spin {
+            width: 80px;  /* Increased width for the spinner */
+            height: 80px; /* Increased height for the spinner */
+            border: 2px solid #000; /* Thicker border */
+            border-top-color: transparent; /* Keep the top transparent for the spinning effect */
+            margin: auto; /* Center the spinner */
+            display: flex; /* Flex to center spinner vertically */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            position: fixed; /* Fixed position to center in viewport */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
+            right: 0; /* Align to the right */
+            bottom: 0; /* Align to the bottom */
         }
     </style>
 </head>
@@ -237,9 +215,9 @@ if (isset($_COOKIE['SessId'])) {
     </section>
 
     <div id="loading_indicator">
-        <svg viewBox="25 25 50 50">
-            <circle r="20" cy="50" cx="50" ></circle>
-        </svg>
+        <div class="spinner-border spin" role="status">
+            <span class="visually-hidden"></span>
+        </div>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.7.1.min.js"

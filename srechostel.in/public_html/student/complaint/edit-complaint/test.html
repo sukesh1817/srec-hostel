@@ -1,19 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Black Loader</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css"> <!-- Link to custom CSS -->
+    <style>
+        /* Custom CSS for the spinner */
+        .spin {
+            width: 80px;  /* Increased width for the spinner */
+            height: 80px; /* Increased height for the spinner */
+            border: 2px solid #000; /* Thicker border */
+            border-top-color: transparent; /* Keep the top transparent for the spinning effect */
+            margin: auto; /* Center the spinner */
+            display: flex; /* Flex to center spinner vertically */
+            justify-content: center; /* Center horizontally */
+            align-items: center; /* Center vertically */
+            position: fixed; /* Fixed position to center in viewport */
+            top: 0; /* Align to the top */
+            left: 0; /* Align to the left */
+            right: 0; /* Align to the right */
+            bottom: 0; /* Align to the bottom */
+        }
+    </style>
 </head>
-<body class="bg-dark text-white">
-    <div class="container-fluid h-100 d-flex justify-content-center align-items-center">
-        <div class="loader"></div>
+
+<body class="d-flex justify-content-center align-items-center vh-100 bg-light">
+    <div class="spinner-border spin" role="status">
+        <span class="visually-hidden"></span>
     </div>
 
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
+
 </html>
