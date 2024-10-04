@@ -270,26 +270,22 @@ if (isset($_COOKIE['SessId'])) {
         });
     </script>
 
-  <script>
-    // Show spinner before everything is ready
-$(document).ready(function () {
-    // Initially hide body and show loading spinner
-    $("body").css("visibility", "hidden");
-    $("#loading_indicator").css("visibility", "visible").css("opacity", "1");
+    <script>
+        $(document).ready(function () {
+            $("body").css("visibility", "hidden");
+            $("#loading_indicator").css("visibility", "visible");
 
-    // Wait for all elements to load
-    $(window).on("load", function () {
-        setTimeout(function () {
-            // Fade out the spinner
-            $("#loading_indicator").fadeOut(500, function () {
-                // After fading out, make the body visible
-                $("body").css("visibility", "visible").css("opacity", "1"); // Fade in body
-            });
-        }, 1000); // Wait for 1 second before fading out spinner
-    });
-});
+            setTimeout(function () {
+                // Fade out the spinner
+                $("#loading_indicator").fadeOut(500, function () {
+                    // After fading out, make the body visible
+                    $("body").css("visibility", "visible").css("opacity", "1"); // Fade in body
+                });
+            }, 1000);
+        });
 
-  </script>
+
+    </script>
 
 
 
