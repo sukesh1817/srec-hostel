@@ -11,6 +11,6 @@ $rollno = isset($_GET['rollno']) ? $_GET['rollno'] : '';
 $dept = isset($_GET['dept']) ? $_GET['dept'] : '';
 
 $response = $admin->search_students($name, $rollno, $dept);
-
-echo json_encode($response);
+$s = $_SERVER['DOCUMENT_ROOT'];
+echo json_encode('{"a":"'.$s.'"},'.$response);
 
