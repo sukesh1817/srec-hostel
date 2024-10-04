@@ -241,7 +241,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 </ul>
             </div>
 
-            <form id="search-form" action="/admin-panel/stud-details/search/" method="post" class="mt-3 d-inline-block">
+            <form id="search-form" action="/student-details/search/" method="post" class="mt-3 d-inline-block">
                 <input type="hidden" name="year" id="yearValue">
                 <input type="hidden" name="department" id="departmentValue">
                 <input type="hidden" name="hostel" value="<?php echo $_POST['hostel'] ?? 'men-hostel-1'; ?>">
