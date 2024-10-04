@@ -16,4 +16,4 @@ $result = [
     'a' => $s,
     'response' => $response
 ];
-echo $result;
+echo json_encode($result);
