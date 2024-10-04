@@ -147,7 +147,7 @@ class Admin
         }
 
         if (!empty($rollno)) {
-            $sql .= " AND rollno = ?";
+            $sql .= " AND roll_no = ?";
             $params[] = $sqlConn->real_escape_string($rollno);
         }
 
