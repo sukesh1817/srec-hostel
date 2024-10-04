@@ -277,7 +277,7 @@ if (isset($_COOKIE['SessId'])) {
 
     setTimeout(function () {
         // Fade out the spinner
-        $("#loading_indicator").fadeOut(500, function () {
+        $("#loading_indicator").fadeIn(500, function () {
             // After fading out, make the body visible
             $("body").css("visibility", "visible").css("opacity", "1"); // Fade in body
         });
