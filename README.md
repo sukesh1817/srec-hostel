@@ -9,23 +9,22 @@ Visit the live version at: [srechostel.in](https://srechostel.in)
 
 The project contains several folders, each serving a different purpose:
 
-- **/Modules**  
-  Contains specific modules for handling different functionalities such as student registration, room allocation, fee management, etc.
+- **/public_html/student/**  
+  Contains the files of student features such as food token booking, gate pass booking, raise compalint, etc.
 
-- **/Database**  
-  SQL scripts and database management files used to set up and manage the hostel database.
+- **/public_html/staff/**  
+  Contains the files of staff features such as food booking for events, accommodation booking, generate your bills, etc.
 
-- **/UI**  
-  Front-end components including HTML, CSS, and JavaScript files that manage the user interface.
+- **/public_html/<ADMIN_NAME>-admin/**  
+  Contains the files of hostel admin(Eg : women hostel admin), features such as manage student records, monitor student data such as food token booking, gate pass accept/reject  etc.
 
 - **/Backend**  
-  Server-side logic written in [Python/Node.js/Java] to handle API requests, business logic, and database integrations.
+  Server-side logic written in [php] to handle API requests, business logic, and database integrations.
 
-- **/Config**  
-  Configuration files including environment variables and credentials for system setup.
+- **/config/**  
+  Configuration files including database and google oauth credentials for system setup.
 
-- **/Logs**  
-  System logs for error tracking, system events, and performance monitoring.
+
 
 ## Features
 
@@ -35,27 +34,15 @@ The project contains several folders, each serving a different purpose:
 - **Room Management**  
   Allocate rooms and manage the availability of hostel space.
 
-- **Fee Management**  
-  Track and manage hostel fees, generate invoices, and monitor payments.
-
 - **Complaint Management**  
   Log complaints and track their resolution status.
 
 - **Reports**  
   Generate reports for room occupancy, student data, financials, and more.
 
-## Getting Started
 
-Follow these steps to set up the project on your local machine.
 
-### Prerequisites
 
-Ensure you have the following installed:
-
-- [Node.js](https://nodejs.org/) or [Python](https://www.python.org/)
-- [MySQL](https://www.mysql.com/) (or the database system you're using)
-
-### Installation
 
 1. Clone the repository:
    ```bash
