@@ -210,19 +210,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 </button>
                 <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <li class="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#">Year</a>
-                    </li>
-                    <li class="dropdown-submenu">
-                        <a class="dropdown-item dropdown-toggle" href="#">Department</a>
+                    <a class="dropdown-item dropdown-toggle" href="#">Year</a>
                         <ul class="dropdown-menu">
                             <li><a id="year-1" class="dropdown-item i" href="#">1</a></li>
                             <li><a id="year-2" class="dropdown-item i" href="#">2</a></li>
                             <li><a id="year-3" class="dropdown-item i" href="#">3</a></li>
                             <li><a id="year-4" class="dropdown-item i" href="#">4</a></li>
-
-
                         </ul>
                     </li>
+    
                     <li class="dropdown-submenu">
                         <a class="dropdown-item dropdown-toggle" href="#">Department</a>
                         <ul class="dropdown-menu">
