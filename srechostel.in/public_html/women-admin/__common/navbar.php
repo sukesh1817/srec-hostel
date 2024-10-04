@@ -2,8 +2,8 @@
 
   <div class="container" bis_skin_checked="1">
     <div class="d-flex justify-content-start me-5">
-      <a class="navbar-brand justify-content-start fs-4 text-white fw-medium" href="/stud-panel">
-        Home
+      <a class="navbar-brand justify-content-start fs-4 text-white fw-medium" href="/">
+      <small>Women Admin</small> 
       </a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
