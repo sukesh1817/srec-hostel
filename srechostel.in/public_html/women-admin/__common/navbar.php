@@ -13,7 +13,7 @@
     <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvas" aria-labelledby="offcanvasLabel"
       bis_skin_checked="1">
       <div class="offcanvas-header" bis_skin_checked="1">
-        <h5 class="offcanvas-title" id="offcanvasLabel">Admin</h5>
+        <h5 class="offcanvas-title" id="offcanvasLabel">Women Admin</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
       </div>
       <div class="offcanvas-body" bis_skin_checked="1">
@@ -22,27 +22,27 @@
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "stud-details")) {
                 echo "active";
               } ?>"
-              href="/admin-panel/stud-details/">Student records</a></li>
+              href="/stud-details/">Student records</a></li>
           <li class="nav-item"><a
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "token-records")) {
                 echo "active";
               } ?>"
-              href="/admin-panel/token-records/">Token records</a></li>
+              href="/token-records/">Token records</a></li>
           <li class="nav-item"><a
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "accommodation")) {
                 echo "active";
               } ?>"
-              href="/admin-panel/accommodation/">Accommodation</a></li>
+              href="/accommodation/">Accommodation</a></li>
           <li class="nav-item"><a
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "complaint")) {
                 echo "active";
               } ?>"
-              href="/admin-panel/complaint/">Complaints</a></li>
+              href="/complaint/">Complaints</a></li>
           <li class="nav-item"><a
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "gate-pass")) {
                 echo "active";
               } ?>"
-              href="/admin-panel/gate-pass/">Gate pass</a></li>
+              href="/gate-pass/">Gate pass</a></li>
           <li class="nav-item"><a class="btn btn-outline-light rounded-1" href="/logout">Logout</a></li>
 
         </ul>
