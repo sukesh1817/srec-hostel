@@ -109,7 +109,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php" ;
                         <div class="container-fluid py-5" bis_skin_checked="1">
                             <h1 class="display-5 fw-bold">Complaint not booked</h1>
                             <p class="col-md-8 fs-4">Please book the Complaint after check the status of the complaint.</p>
-                            <a href="/stud-panel/complaint" class="btn btn-dark btn-lg rounded-1">book complaint <span
+                            <a href="/complaint" class="btn btn-dark btn-lg rounded-1">book complaint <span
                                     id="count-down"> </span></a>
                         </div>
                     </div>

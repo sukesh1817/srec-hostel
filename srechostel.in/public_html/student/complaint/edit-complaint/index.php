@@ -371,7 +371,7 @@ if ($which_is_booked) {
 
                 <h2 class="text-center">Common Complaint</h2>
                 <hr>
-                <form class="needs-validation" action="/stud-panel/complaint/edit-complaint/" method="post"
+                <form class="needs-validation" action="/complaint/edit-complaint/" method="post"
                     enctype="multipart/form-data">
                     <label class='form-label' class="form-label" for="dept">Your department</label>
                     <select class="form-select rounded-1 mb-2" id="dept" name="department" aria-label="Default select example">
@@ -433,7 +433,7 @@ if ($which_is_booked) {
 
                     <h2 class="text-center">Individual Complaint</h2>
                     <hr>
-                    <form class="needs-validation" action="/stud-panel/complaint/edit-complaint/" method="post"
+                    <form class="needs-validation" action="/complaint/edit-complaint/" method="post"
                         enctype="multipart/form-data">
 
                         <!-- 
@@ -470,7 +470,7 @@ if ($which_is_booked) {
                 <div class="container-fluid py-5" bis_skin_checked="1">
                     <h1 class="display-5 fw-bold">Complaint not booked</h1>
                     <p class="col-md-8 fs-4">Please book the Complaint to check the status of the comaplint.</p>
-                    <a href="/stud-panel/complaint" class="btn btn-dark btn-lg rounded-1">book complaint <span
+                    <a href="/complaint" class="btn btn-dark btn-lg rounded-1">book complaint <span
                             id="count-down"> </span></a>
                 </div>
             </div>

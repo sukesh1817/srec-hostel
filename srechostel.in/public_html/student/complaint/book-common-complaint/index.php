@@ -66,7 +66,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 <p class="col-lg-6 mx-auto mb-4">
                     Hostel admin will contact you soon
                 </p>
-                <a href="/stud-panel/complaint/complaint-status/" class=" btn btn-dark mb-5 rounded-1">
+                <a href="/complaint/complaint-status/" class=" btn btn-dark mb-5 rounded-1">
                     Check complaint status
                 </a>
             </div>
@@ -101,7 +101,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         <p class="col-lg-6 mx-auto mb-4">
                             Your complaint will received , admin will contact you soon
                         </p>
-                        <a href="/stud-panel/complaint/complaint-status/" class=" btn btn-dark mb-5 rounded-1">
+                        <a href="/complaint/complaint-status/" class=" btn btn-dark mb-5 rounded-1">
                             check complaint status
                         </a>
                     </div>
