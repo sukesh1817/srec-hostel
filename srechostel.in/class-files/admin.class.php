@@ -58,7 +58,7 @@ class Admin
                     isset($row3['roll_no']) or isset($row4['roll_no']) or
                     isset($row1['student_rollno'])
                 ) {
-                    
+
                     return array("ACCOUNT_DELETED_FAILED_STUDENT_GROUP", "group");
                 } else {
                     echo "done";
@@ -72,12 +72,12 @@ class Admin
             # if the user accounts deleted successfully then give the success message.
             # else give the message account deletion failed.
             $rollNo = $values[0];
-    
+
             try {
 
                 $query0 = "SELECT who_is FROM `login_auth` WHERE user_id='$rollNo';";
                 $result = $sqlConn->query($query0);
-                error_reporting(0); 
+                error_reporting(0);
                 $whois = $result->fetch_assoc()['who_is'];
                 if ($whois == "Student") {
                     $query1 = "DELETE FROM `login_auth` WHERE user_id='$rollNo';";
@@ -134,5 +134,50 @@ class Admin
         } else {
 
         }
+    }
+
+
+
+    public function search_students($name = '', $rollno = '', $dept = '')
+    {
+        # getting connection from mysql
+        $conn = new Connection();
+        $conn = $conn->returnConn();
+        $sql = "SELECT * FROM students WHERE 1=1";
+        $params = [];
+
+        if (!empty($name)) {
+            $sql .= " AND name LIKE ?";
+            $params[] = "%" . $conn->real_escape_string($name) . "%";
+        }
+
+        if (!empty($rollno)) {
+            $sql .= " AND rollno = ?";
+            $params[] = $conn->real_escape_string($rollno);
+        }
+
+        if (!empty($dept)) {
+            $sql .= " AND dept = ?";
+            $params[] = $conn->real_escape_string($dept);
+        }
+
+        $stmt = $conn->prepare($sql);
+
+        if ($params) {
+            $types = str_repeat('s', count($params));
+            $stmt->bind_param($types, ...$params);
+        }
+
+        $stmt->execute();
+        $result = $stmt->get_result();
+        $students = [];
+
+        while ($row = $result->fetch_assoc()) {
+            $students[] = $row;
+        }
+
+        $stmt->close();
+
+        return ['status' => 'success', 'data' => $students];
     }
 }

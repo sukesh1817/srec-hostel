@@ -1,11 +1,9 @@
 <?php
-/*
-this code checks wheather the person is admin or not,
-if admin allow them ,
-else do not allow them
-*/
-include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
+// check the login user is women admin or not.
+require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 ?>
+
+
 <!DOCTYPE html>
 <html lang="en" data-bs-theme="light">
 
@@ -22,12 +20,12 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
         rel="stylesheet">
     <link rel="stylesheet" href="/css-files/toast.css">
+    <?php
+    // included the poppins font.
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
+    ?>
     <style>
-        body {
-            font-family: "Poppins", sans-serif;
-            font-weight: 400;
-            font-style: normal;
-        }
+    
 
         .btn-outline-light:hover {
             color: black;
@@ -119,9 +117,7 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
         .form-container .link:hover {
             text-decoration: underline;
         }
-    </style>
 
-    <style>
         .filter-container label {
             font-weight: bold;
             display: block;
@@ -188,8 +184,9 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 <body class="noto-sans">
 
 
-    <?php
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/navbar.php";
+<?php
+    // included the navbar.
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
     ?>
     <div class="float-end mx-3 my-3">
         <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="left"
@@ -207,14 +204,6 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
     </div><br>
 
     <div class="bg-light-subtle">
-        <div class="container">
-            <?php
-            if (isset($_POST['hostel'])) {
-                $hostel = $_POST['hostel'];
-                echo "<h3 class='text-center mt-3'>$hostel<h3>";
-            }
-            ?>
-        </div>
         <div class="container mt-2 text-center">
             <div class="dropdown d-inline-block">
                 <button class="btn btn-dark rounded-1 dropdown-toggle" type="button" id="dropdownMenuButton"
