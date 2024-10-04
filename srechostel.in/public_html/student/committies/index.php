@@ -13,16 +13,15 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        /* .avatar {
+        .avatar {
             background-color: white;
             vertical-align: middle;
             width: 60px;
             height: 60px;
             border-radius: 50px;
             object-fit: cover;
-        } */
-    </style>
-    <style>
+        }
+
         /* .committee-item {
             display: flex;
             align-items: start;
@@ -68,7 +67,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <p>We are delighted to welcome you to the Food Committee section of our hostel website! This is
                         where your passion for food and community can come together to make a significant impact on our
                         dining experience.</p>
-                    <a href="/stud-panel/committies/food-committiee/" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committies/food-committiee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
@@ -86,7 +85,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         passion for sports and teamwork will help shape our events, enhancing our community's fitness
                         and camaraderie.
                     </p>
-                    <a href="#" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committies/sports-committiee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
@@ -103,7 +102,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         contributing to the green spaces of our hostel and making our surroundings more beautiful and
                         sustainable. Your involvement is crucial in fostering a love for nature and enhancing our
                         communal living environment.</p>
-                    <a href="#" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committies/garden-committiee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
@@ -121,7 +120,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <p>Welcome to the Wi-Fi Committee section of our hostel website! Here, we focus on ensuring a
                         reliable and efficient internet experience for all hostel residents. Your input and
                         collaboration are essential in helping us maintain and improve our Wi-Fi services.</p>
-                    <a href="#" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committies/wifi-committiee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
@@ -138,7 +137,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                         conducive environment for study and research, ensuring that all residents have access to the
                         resources they need for academic success. Your involvement is crucial in maintaining and
                         enhancing our library services.</p>
-                    <a href="#" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committies/library-committiee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
@@ -154,7 +153,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     <p>Welcome to the Cleanliness Committee section of our hostel website! Here, we focus on maintaining
                         a clean and hygienic environment for all residents. Your participation is vital in promoting
                         good health and a pleasant living atmosphere within the hostel.</p>
-                    <a href="#" class="btn btn-dark rounded-1 committee-button">
+                    <a href="/committies/cleanliness-committiee/" class="btn btn-dark rounded-1 committee-button">
                         current status
                     </a>
                 </div>
