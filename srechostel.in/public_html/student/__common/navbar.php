@@ -34,7 +34,7 @@
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "committees")) {
                 echo "active";
               } ?>"
-              href="/committies/">Committie</a></li>
+              href="/committees/">Committee</a></li>
           <li class="nav-item me-1"><a
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "complaint")) {
                 echo "active";
