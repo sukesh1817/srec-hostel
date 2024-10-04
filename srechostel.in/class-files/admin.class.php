@@ -8,7 +8,7 @@ class Admin
 
     public function __construct()
     {
-        $connection = new Connection();
+        $connection = new MainConnection();
         $this->conn = $connection->returnConn();
     }
 
