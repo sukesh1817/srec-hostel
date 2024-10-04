@@ -1,3 +1,8 @@
+<?php
+// check the login user is student
+include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -8,17 +13,17 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <style>
-        .avatar {
+        /* .avatar {
             background-color: white;
             vertical-align: middle;
             width: 60px;
             height: 60px;
             border-radius: 50px;
             object-fit: cover;
-        }
+        } */
     </style>
     <style>
-        .committee-item {
+        /* .committee-item {
             display: flex;
             align-items: start;
         }
@@ -33,24 +38,22 @@
 
         .committee-button {
             margin-top: 1rem;
-        }
+        } */
     </style>
 
     <?php
-
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/poppins.php";
-
-
-
+    // included the poppins font.
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
+
 </head>
 
 <body>
 
     <?php
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/student-template/common-template/navbar.php";
+    // included the navbar.
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
     ?>
-
     <div class="container px-4 py-5" id="hanging-icons">
         <h2 class="pb-2 border-bottom">Committee Member Info</h2>
         <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">

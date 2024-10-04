@@ -8,8 +8,8 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
   <?php
-  include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/poppins.php";
-
+  // included the poppins font.
+  include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
   ?>
   <style>
     .container {
@@ -197,200 +197,201 @@
     }
   </style>
 
-<style>
-        /* Style the Image Used to Trigger the Modal */
-        img {
-            border-radius: 5px;
-            cursor: pointer;
-            transition: 0.3s;
-        }
+  <style>
+    /* Style the Image Used to Trigger the Modal */
+    img {
+      border-radius: 5px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
 
-        img:hover {
-            opacity: 0.7;
-        }
+    img:hover {
+      opacity: 0.7;
+    }
 
-        /* The Modal (background) */
-        #image-viewer {
-            display: none;
-            position: fixed;
-            z-index: 1;
-            padding-top: 100px;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            overflow: auto;
-            background-color: rgb(0, 0, 0);
-            background-color: rgba(0, 0, 0, 0.9);
-        }
+    /* The Modal (background) */
+    #image-viewer {
+      display: none;
+      position: fixed;
+      z-index: 1;
+      padding-top: 100px;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      overflow: auto;
+      background-color: rgb(0, 0, 0);
+      background-color: rgba(0, 0, 0, 0.9);
+    }
 
-        .modal-content {
-            margin: auto;
-            display: block;
-            width: 80%;
-            max-width: 700px;
-        }
+    .modal-content {
+      margin: auto;
+      display: block;
+      width: 80%;
+      max-width: 700px;
+    }
 
-        .modal-content {
-            animation-name: zoom;
-            animation-duration: 0.6s;
-        }
+    .modal-content {
+      animation-name: zoom;
+      animation-duration: 0.6s;
+    }
 
-        @keyframes zoom {
-            from {
-                transform: scale(0)
-            }
+    @keyframes zoom {
+      from {
+        transform: scale(0)
+      }
 
-            to {
-                transform: scale(1)
-            }
-        }
+      to {
+        transform: scale(1)
+      }
+    }
 
-        #image-viewer .close {
-            position: absolute;
-            top: 15px;
-            right: 35px;
-            color: #f1f1f1;
-            font-size: 40px;
-            font-weight: bold;
-            transition: 0.3s;
-        }
+    #image-viewer .close {
+      position: absolute;
+      top: 15px;
+      right: 35px;
+      color: #f1f1f1;
+      font-size: 40px;
+      font-weight: bold;
+      transition: 0.3s;
+    }
 
-        #image-viewer .close:hover,
-        #image-viewer .close:focus {
-            color: #bbb;
-            text-decoration: none;
-            cursor: pointer;
-        }
+    #image-viewer .close:hover,
+    #image-viewer .close:focus {
+      color: #bbb;
+      text-decoration: none;
+      cursor: pointer;
+    }
 
-        @media only screen and (max-width: 700px) {
-            .modal-content {
-                width: 100%;
-            }
-        }
-    </style>
+    @media only screen and (max-width: 700px) {
+      .modal-content {
+        width: 100%;
+      }
+    }
+  </style>
 </head>
+
 <body>
-    <?php
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/student-template/common-template/navbar.php";
-
-    ?>
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <div class="profile-picture">
-                    <img src="https://via.placeholder.com/120" alt="Profile Picture">
-                    <h3>Ajay M</h3>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-3 py-5">
-                    <div class="d-flex justify-content-between align-items-center mb-3">
-                        <h4 class="text-right">Leader Information</h4>
-                    </div>
-                    <div class="row mt-2 border-bottom">
-                        <div class="col-md-6"><label class="labels">Name</label>
-                            <p class="details">Ajay M</p>
-                        </div>
-                        <div class="col-md-6"><label class="labels">Year of study</label>
-                            <p class="details">III</p>
-                        </div>
-                    </div>
-                    <div class="row mt-2">
-                        <div class="border-bottom">
-                            <div class="col-md-12"><label class="labels">Degree</label>
-                                <p class="details">B.Tech</p>
-                            </div>
-                            <div class="col-md-12"><label class="labels">Branch</label>
-                                <p class="details">IT</p>
-                            </div>
-                        </div>
-                        <div class="border-bottom mt-2">
-                            <div class="col-md-12"><label class="labels">Men hostel</label>
-                                <p class="details">I</p>
-                            </div>
-                            <div class="col-md-12"><label class="labels">Room no</label>
-                                <p class="details">203</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="p-3 py-5">
-                    <h4>Leader of the Week</h4>
-                    <label class="labels mb-3" style="font-weight: 500;">Your Ratings</label>
-                    <div class="rating">
-                        <input type="radio" id="star-5" name="star-radio" value="5">
-                        <label for="star-5">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path pathLength="360"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                </path>
-                            </svg>
-                        </label>
-                        <input type="radio" id="star-4" name="star-radio" value="4">
-                        <label for="star-4">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path pathLength="360"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                </path>
-                            </svg>
-                        </label>
-                        <input type="radio" id="star-3" name="star-radio" value="3">
-                        <label for="star-3">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path pathLength="360"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                </path>
-                            </svg>
-                        </label>
-                        <input type="radio" id="star-2" name="star-radio" value="2">
-                        <label for="star-2">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path pathLength="360"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                </path>
-                            </svg>
-                        </label>
-                        <input type="radio" id="star-1" name="star-radio" value="1">
-                        <label for="star-1">
-                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
-                                <path pathLength="360"
-                                    d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
-                                </path>
-                            </svg>
-                        </label>
-                    </div>
-                    <div class="comment-box mt-3">
-                        <label class="labels mb-3" style="font-weight: 500;">Your Opinion</label>
-                        <input type="text" placeholder="Share your opinion">
-                    </div>
-                    <div class="mt-3">
-                        <button class="submit-btn">Submit</button>
-                    </div>
-                </div>
-            </div>
+  <?php
+  // included the navbar.
+  include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
+  ?>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <div class="profile-picture">
+          <img src="https://via.placeholder.com/120" alt="Profile Picture">
+          <h3>Ajay M</h3>
         </div>
-        <div class="achievements">
-            <h2>Leader Achievements</h2>
-            <div class="grid images">
-                <img class="photo" src="https://via.placeholder.com/150" alt="Achievement">
-                <img src="https://via.placeholder.com/150" alt="Achievement">
-                <img src="https://via.placeholder.com/150" alt="Achievement">
-                <img src="https://via.placeholder.com/150" alt="Achievement">
-                <img src="https://via.placeholder.com/150" alt="Achievement">
-                <img src="https://via.placeholder.com/150" alt="Achievement">
-                <img src="https://via.placeholder.com/150" alt="Achievement">
-                <img src="https://via.placeholder.com/150" alt="Achievement">
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 py-5">
+          <div class="d-flex justify-content-between align-items-center mb-3">
+            <h4 class="text-right">Leader Information</h4>
+          </div>
+          <div class="row mt-2 border-bottom">
+            <div class="col-md-6"><label class="labels">Name</label>
+              <p class="details">Ajay M</p>
             </div>
+            <div class="col-md-6"><label class="labels">Year of study</label>
+              <p class="details">III</p>
+            </div>
+          </div>
+          <div class="row mt-2">
+            <div class="border-bottom">
+              <div class="col-md-12"><label class="labels">Degree</label>
+                <p class="details">B.Tech</p>
+              </div>
+              <div class="col-md-12"><label class="labels">Branch</label>
+                <p class="details">IT</p>
+              </div>
+            </div>
+            <div class="border-bottom mt-2">
+              <div class="col-md-12"><label class="labels">Men hostel</label>
+                <p class="details">I</p>
+              </div>
+              <div class="col-md-12"><label class="labels">Room no</label>
+                <p class="details">203</p>
+              </div>
+            </div>
+          </div>
         </div>
+      </div>
+      <div class="col-md-4">
+        <div class="p-3 py-5">
+          <h4>Leader of the Week</h4>
+          <label class="labels mb-3" style="font-weight: 500;">Your Ratings</label>
+          <div class="rating">
+            <input type="radio" id="star-5" name="star-radio" value="5">
+            <label for="star-5">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path pathLength="360"
+                  d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                </path>
+              </svg>
+            </label>
+            <input type="radio" id="star-4" name="star-radio" value="4">
+            <label for="star-4">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path pathLength="360"
+                  d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                </path>
+              </svg>
+            </label>
+            <input type="radio" id="star-3" name="star-radio" value="3">
+            <label for="star-3">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path pathLength="360"
+                  d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                </path>
+              </svg>
+            </label>
+            <input type="radio" id="star-2" name="star-radio" value="2">
+            <label for="star-2">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path pathLength="360"
+                  d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                </path>
+              </svg>
+            </label>
+            <input type="radio" id="star-1" name="star-radio" value="1">
+            <label for="star-1">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path pathLength="360"
+                  d="M12,17.27L18.18,21L16.54,13.97L22,9.24L14.81,8.62L12,2L9.19,8.62L2,9.24L7.45,13.97L5.82,21L12,17.27Z">
+                </path>
+              </svg>
+            </label>
+          </div>
+          <div class="comment-box mt-3">
+            <label class="labels mb-3" style="font-weight: 500;">Your Opinion</label>
+            <input type="text" placeholder="Share your opinion">
+          </div>
+          <div class="mt-3">
+            <button class="submit-btn">Submit</button>
+          </div>
+        </div>
+      </div>
     </div>
+    <div class="achievements">
+      <h2>Leader Achievements</h2>
+      <div class="grid images">
+        <img class="photo" src="https://via.placeholder.com/150" alt="Achievement">
+        <img src="https://via.placeholder.com/150" alt="Achievement">
+        <img src="https://via.placeholder.com/150" alt="Achievement">
+        <img src="https://via.placeholder.com/150" alt="Achievement">
+        <img src="https://via.placeholder.com/150" alt="Achievement">
+        <img src="https://via.placeholder.com/150" alt="Achievement">
+        <img src="https://via.placeholder.com/150" alt="Achievement">
+        <img src="https://via.placeholder.com/150" alt="Achievement">
+      </div>
+    </div>
+  </div>
 
-    <div id="image-viewer">
+  <div id="image-viewer">
     <button type="button" class="btn-close btn-close-white close" aria-label="Close"></button>
     <img class="modal-content" id="full-image">
-    </div>
+  </div>
 
 
 </body>

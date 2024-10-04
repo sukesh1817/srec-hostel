@@ -21,7 +21,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 </head>
 
 <body>
-<?php
+    <?php
     // included the navbar.
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
     ?>
