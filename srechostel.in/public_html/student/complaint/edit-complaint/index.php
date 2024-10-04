@@ -101,16 +101,16 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
             ) {
 
                 //individual complaint
-                $complaint = new commonClass();
                 $details = $complaint->getFullStudDetails($_SESSION['yourToken']);
                 $name = $details[0]["name"];
                 $roomNo = $details[1]["room_no"];
                 $rollNo = $details[0]["roll_no"];
+                $dept = $details[0]["department"];
                 $array = array(
                     "name" => $name,
                     "roomNo" => $roomNo,
                     "rollNo" => $_SESSION['yourToken'],
-                    "dept" => $_POST['department'],
+                    "dept" => $dept,
                     "text" => $_POST['complaint_details']
                 );
                 $edit = '';
