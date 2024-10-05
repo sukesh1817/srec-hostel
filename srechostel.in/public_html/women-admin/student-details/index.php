@@ -447,6 +447,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
                         // If there are suggestions, show the dropdown
                         if (response.length > 0) {
+                            console.log(rresponse)
                             response.forEach(function (suggestion) {
                                 console.log(suggestion)
                                 let suggestionItem = $('<li>').addClass('dropdown-item').text(suggestion);
