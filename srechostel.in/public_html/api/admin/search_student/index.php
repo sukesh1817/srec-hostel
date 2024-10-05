@@ -9,8 +9,19 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/..' . "/class-files/api/admin.class.p
 $admin = new Admin();
 
 if (isset($_POST['year']) || isset($_POST['department'])) {
-    $year = $_POST['year'] ?? null;
-    $department = $_POST['department'] ?? null;
+    $year = null;
+    $department = null;
+    if (isset($_POST['year'])) {
+        if ($_POST['year'] != 'NULL') {
+            $year = $_POST['year'];
+        } 
+    }
+    if (isset($_POST['department'])) {
+        if ($_POST['department'] != 'NULL') {
+            $department = $_POST['department'] ;
+        } 
+    }
+
     $students = $admin->search_students_group($year, $department);
     $students = json_decode($students, true);
     echo json_encode($students);

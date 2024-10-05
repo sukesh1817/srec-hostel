@@ -276,7 +276,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <form id="search-form" action="/student-details/" method="post" class="mb-4">
                         <div class="mb-3">
                             <select class="form-select rounded-1" id="yearSelect" name="year" aria-label="Select Year">
-                                <option selected disabled>Choose Year</option>
+                                <option selected disabled value="NULL">Choose Year</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
                                 <option value="3">3</option>
@@ -287,7 +287,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         <div class="mb-3">
                             <select class="form-select rounded-1" id="departmentSelect" name="department"
                                 aria-label="Select Department">
-                                <option selected disabled>Choose Department</option>
+                                <option selected disabled value="NULL">Choose Department</option>
                                 <option value="B.Tech AIDS">B.Tech AIDS</option>
                                 <option value="B.Tech IT">B.Tech IT</option>
                                 <option value="B.E ECE">B.E ECE</option>
@@ -573,52 +573,63 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
 <script>
     $(document).ready(function () {
-        $('#departmentSelect').change(function () {
-            $("#myTable").show()
-            $("#downloadButton").show()
-            $('#myUL').hide();
-            <?php //included the orginal domain ?>
-            domain = "<?php echo $domain ?>"
-            const selectedDepartment = $(this).val(); // Get selected department value
+    const domain = "<?php echo $domain ?>"; // Included the original domain
 
-            // Make an AJAX request
-            $.ajax({
-                url: domain + '/api/admin/search_student/', // Replace with your endpoint
-                type: 'POST',
-                data: { department: selectedDepartment },
-                success: function (data) {
-                    $('#myTable tbody').empty();
-                    console.log(data)
-                    // Check if data is returned
-                    if (data.length > 0) {
-                        // Loop through the data and append rows to the table
-                        data.forEach(item => {
-                            $('#myTable tbody').append(`
+    // Function to fetch and display students
+    function fetchStudents() {
+        const selectedDepartment = $('#departmentSelect').val(); // Get selected department value
+        const selectedYear = $('#yearSelect').val(); // Get selected year value
+
+        $("#myTable").show();
+        $("#downloadButton").show();
+        $('#myUL').hide();
+
+        // Make an AJAX request
+        $.ajax({
+            url: domain + '/api/admin/search_student/', // Replace with your endpoint
+            type: 'POST',
+            data: { department: selectedDepartment, year: selectedYear },
+            success: function (data) {
+                $('#myTable tbody').empty();
+                // Check if data is returned
+                if (data.length > 0) {
+                    // Loop through the data and append rows to the table
+                    data.forEach(item => {
+                        $('#myTable tbody').append(`
+                            <tr>
+                                <td>${item.roll_no}</td>
+                                <td>${item.name}</td>
+                                <td>${item.department}</td>
+                                <td>${item.year_of_study}</td>
+                                <td><a class="btn btn-dark btn-sm" href="show-more/?roll_no=${item.roll_no}">Show More</a></td>
+                            </tr>
+                        `);
+                    });
+                } else {
+                    // If no data, show a message
+                    $('#myTable tbody').append(`
                         <tr>
-                            <td>${item.roll_no}</td>
-                            <td>${item.name}</td>
-                            <td>${item.department}</td>
-                            <td>${item.year_of_study}</td>
-                            <td><a class="btn btn-dark btn-sm" href="show-more/?roll_no=${item.roll_no}">Show More</a></td>
-                            <!-- Add more columns as needed -->
+                            <td colspan="5" class="text-center text-danger">No records found.</td>
                         </tr>
                     `);
-                        });
-                    } else {
-                        // If no data, show a message
-                        $('#myTable tbody').append(`
-                    <tr>
-                        <td colspan="4" class="text-center text-danger">No records found.</td>
-                    </tr>
-                `);
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('AJAX Error: ', status, error);
                 }
-            });
+            },
+            error: function (xhr, status, error) {
+                console.error('AJAX Error: ', status, error);
+            }
         });
+    }
+
+    // Event listener for department change
+    $('#departmentSelect').change(function () {
+        fetchStudents();
     });
+
+    // Event listener for year change
+    $('#yearSelect').change(function () {
+        fetchStudents();
+    });
+});
 </script>
 
 
