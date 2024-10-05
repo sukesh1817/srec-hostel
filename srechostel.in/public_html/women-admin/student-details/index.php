@@ -423,7 +423,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
 
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/../../' . "domain.php";
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 ?>
 <script>
     $(document).ready(function () {
