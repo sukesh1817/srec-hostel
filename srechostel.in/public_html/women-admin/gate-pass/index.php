@@ -422,8 +422,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             }
         }
 
-        // Attach change event to the select elements
-        $('#yearSelect, #departmentSelect, #passStatus, #passType').on('change', fetchPassData);
+  
+        $('#yearSelect').on('change', function() {
+            fetchPassData();
+        });
+        $('#departmentSelect').on('change', function() {
+            fetchPassData();
+        });
+        $('#passStatus').on('change', function() {
+            fetchPassData();
+        });
+        $('#passType').on('change', function() {
+            fetchPassData();
+        });
     });
 </script>
 
