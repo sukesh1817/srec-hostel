@@ -273,7 +273,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         </p>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-outline-dark mt-3" id="submitButton" disabled>Search</button>
             </form>
         </div>
     </div>
