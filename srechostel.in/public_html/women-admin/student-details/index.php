@@ -446,7 +446,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
     <div class="container mt-4">
         <p class="text-center">
-        <button id="downloadButton" class="btn btn-warning mt-3">Download as XLSX</button>
+        <button style="display: none;" id="downloadButton" class="btn btn-warning mt-3">Download as XLSX</button>
 
         </p>
         <table id="myTable" style="display: none;" class="table table-striped">
@@ -548,6 +548,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
     $(document).ready(function () {
         $('#departmentSelect').change(function () {
             $("#myTable").show()
+            $("#downloadButton").show()
             <?php //included the orginal domain ?>
             domain = "<?php echo $domain ?>"
             const selectedDepartment = $(this).val(); // Get selected department value
