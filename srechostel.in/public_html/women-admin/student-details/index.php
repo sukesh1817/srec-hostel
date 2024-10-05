@@ -283,7 +283,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <input type="hidden" name="department" id="departmentValue">
 
                 <div class="dropdown text-center" style="width: 200%; max-width: 400px; margin: auto;">
-                    <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
+                    <input type="text" id="searchQueryInput" class="form-control rounded-1" placeholder="Search by name, rollno"
                         aria-label="Search">
                     <ul id="myUL" class="dropdown-menu scrollable-dropdown"
                         style="display: none; position: absolute; width: 100%; z-index: 1000;">
