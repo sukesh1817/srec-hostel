@@ -562,10 +562,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         data.forEach(item => {
                             $('#resultsTable tbody').append(`
                         <tr>
-                            <td>${item.roll_number}</td>
+                            <td>${item.roll_no}</td>
                             <td>${item.name}</td>
                             <td>${item.department}</td>
-                            <td>${item.year}</td>
+                            <td>${item.year_of_study}</td>
                             <!-- Add more columns as needed -->
                         </tr>
                     `);
