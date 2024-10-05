@@ -487,6 +487,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
         $('#searchQueryInput').on('keyup', function () {
             const suggestionsList = $('#myUL');
             suggestionsList.show()
+            $('#myTable').hide();
             let query = $(this).val();
             if (query.length > 0) {
                 <?php //included the orginal domain ?>
@@ -552,6 +553,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
         $('#departmentSelect').change(function () {
             $("#myTable").show()
             $("#downloadButton").show()
+            $('#myUL').hide();
             <?php //included the orginal domain ?>
             domain = "<?php echo $domain ?>"
             const selectedDepartment = $(this).val(); // Get selected department value
@@ -598,6 +600,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
 <script>
     document.getElementById("downloadButton").addEventListener("click", function () {
+        $('#myUL').hide();
         // Get the table and its rows
         var table = document.getElementById("myTable"); // Replace with your table ID
         var data = [];
