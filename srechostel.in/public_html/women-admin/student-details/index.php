@@ -217,7 +217,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
     <div class="bg-light-subtle py-4">
         <div class="container mt-2 text-center">
-            <div class="dropdown d-inline-block">
+            <!-- <div class="dropdown d-inline-block">
                 <button class="btn btn-dark rounded-1 dropdown-toggle" type="button" id="dropdownMenuButton"
                     data-bs-toggle="dropdown" aria-expanded="false">
                     Search by
@@ -252,7 +252,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </div> -->
 
             <!-- Search Form with Search Box -->
             <form id="search-form" action="/student-details/" method="post" class="mt-3 d-inline-block">
@@ -278,23 +278,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 </div>
 
 
-                <div class="card d-inline-flex">
+                <!-- <div class="card d-inline-flex">
                     <div class="card-body p-man d-flex align-items-center">
                         <p class="card-text mb-0 p-man">
                             <span id="selectedYear">Year - NULL</span>
                             <button type="button" id="removeYear" class="btn">
-                                <!-- SVG X -->
                             </button>
                         </p>
                         <p class="card-text mb-0 ms-3">
                             <span id="selectedDepartment">Department - NULL</span>
                             <button type="button" id="removeDepartment" class="btn">
-                                <!-- SVG X -->
                             </button>
                         </p>
                     </div>
                 </div>
-                <button type="submit" class="btn btn-outline-dark mt-3" id="submitButton" disabled>Search</button>
+                <button type="submit" class="btn btn-outline-dark mt-3" id="submitButton" disabled>Search</button> -->
             </form>
         </div>
     </div>
