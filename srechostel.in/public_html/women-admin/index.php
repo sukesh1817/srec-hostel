@@ -56,7 +56,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         <h1 class="display-5 fw-bold">Student Details</h1>
                         <p class="col-md-8 fs-4">Here You Can See About The Student Details By Clicking
                             The Below Button.</p>
-                        <a href="/stud-details" class="btn btn-dark rounded-1 btn-lg">See Details</a>
+                        <a href="/student-details" class="btn btn-dark rounded-1 btn-lg">See Details</a>
                     </div>
                 </div>
 
