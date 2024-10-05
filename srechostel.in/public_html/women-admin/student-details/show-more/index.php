@@ -29,7 +29,7 @@ if (isset($_GET['roll_no'])) {
         $result2 = $stmt2->get_result();
         $personal_details = $result2->fetch_assoc();
 
-        $sql3 = "SELECT * FROM stud_guardian_details WHERE roll_no = ?";
+        $sql3 = "SELECT * FROM stud_gurdian_details WHERE roll_no = ?";
         $stmt3 = $sqlConn->prepare($sql3);
         $stmt3->bind_param('i', $roll_no);
         $stmt3->execute();
