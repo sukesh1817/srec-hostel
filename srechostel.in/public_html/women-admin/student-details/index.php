@@ -262,7 +262,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <div class="col-12 col-md-8">
                     <form id="search-form" action="/student-details/" method="post" class="mb-4">
                         <div class="mb-3">
-                            <select class="form-select" id="yearSelect" name="year" aria-label="Select Year">
+                            <select class="form-select rounded-1" id="yearSelect" name="year" aria-label="Select Year">
                                 <option selected disabled>Choose Year</option>
                                 <option value="1">1</option>
                                 <option value="2">2</option>
@@ -272,7 +272,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         </div>
 
                         <div class="mb-3">
-                            <select class="form-select" id="departmentSelect" name="department"
+                            <select class="form-select rounded-1" id="departmentSelect" name="department"
                                 aria-label="Select Department">
                                 <option selected disabled>Choose Department</option>
                                 <option value="B.Tech AIDS">B.Tech AIDS</option>
@@ -294,8 +294,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         <div class="mb-3">
                             <input type="hidden" name="year" id="yearValue">
                             <input type="hidden" name="department" id="departmentValue">
-                            <div class="input-group">
-                                <input type="text" id="searchQueryInput" class="form-control"
+                            <div>
+                                <input type="text" id="searchQueryInput" class="form-control rounded-1 "
                                     placeholder="Search by name, rollno" aria-label="Search" autocomplete="off"
                                     data-bs-toggle="dropdown" aria-expanded="false">
                                 <ul id="myUL" class="dropdown-menu"
