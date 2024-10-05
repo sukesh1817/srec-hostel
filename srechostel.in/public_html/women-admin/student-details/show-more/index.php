@@ -104,10 +104,11 @@ if (isset($_GET['roll_no'])) {
                             <p class="card-text">No guardian details found.</p>
                         <?php endif; ?>
                     </div>
+                    <div class="text-center mt-3">
+                        <a href="/student-details/" class="btn btn-dark btn-lg rounded-1">Back</a>
+                    </div>
                 </div>
-                <div class="text-center mt-3">
-                    <a href="/student-details/" class="btn btn-dark btn-lg rounded-1">Back</a>
-                </div>
+
             </div>
         </body>
 
