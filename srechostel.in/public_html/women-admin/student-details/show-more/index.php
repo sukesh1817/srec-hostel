@@ -109,12 +109,12 @@ if (isset($_GET['roll_no'])) {
                             if ($guardian_details['guardian_name'] != null) {
                                 ?>
                                 <p class="card-text"><strong>Local gurdian name:</strong>
-                                    <?php echo htmlspecialchars($guardian_details['gurdian_name']); ?></p>
+                                    <?php echo htmlspecialchars($guardian_details['guardian_name']); ?></p>
                                 <?php
-                                if ($guardian_details['gurdian_contact_no'] != 0) {
+                                if ($guardian_details['guardian_contact_no'] != 0) {
                                     ?>
                                     <p class="card-text"><strong>Local gurdian number:</strong>
-                                        <?php echo htmlspecialchars($guardian_details['gurdian_contact_no']); ?></p>
+                                        <?php echo htmlspecialchars($guardian_details['guardian_contact_no']); ?></p>
                                     <?php
 
                                 }
