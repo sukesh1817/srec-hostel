@@ -44,7 +44,7 @@ if (isset($_GET['roll_no'])) {
                         <p class="card-text"><strong>AC Name:</strong> <?php echo htmlspecialchars($student['ac_name']); ?></p>
                     </div>
                 </div>
-                <a href="index.php" class="btn btn-primary mt-3">Back</a> <!-- Link to go back to the previous page -->
+                <a href="/student-details/" class="btn btn-dark mt-3">Back</a> <!-- Link to go back to the previous page -->
             </div>
         </body>
         </html>
