@@ -550,7 +550,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
             // Make an AJAX request
             $.ajax({
-                url: domain + '/api/admin/dearch_student/', // Replace with your endpoint
+                url: domain + '/api/admin/search_student/', // Replace with your endpoint
                 type: 'POST',
                 data: { department: selectedDepartment },
                 success: function (data) {
