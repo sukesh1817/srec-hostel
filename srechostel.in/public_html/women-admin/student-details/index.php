@@ -422,55 +422,60 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     crossorigin="anonymous"></script>
 
 
+
+<?php
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../../' . "domain.php";
+?>
 <script>
-$(document).ready(function () {
-    $('#searchQueryInput').keyup(function () {
-        let query = $(this).val();
-        console.log("hello")
-        if (query.length > 0) {
-            domain = "https://testing.srechostel.in"
-            // Make AJAX request to fetch suggestions
-            $.ajax({
-                url: domain+'/api/admin/search_student/',  // Replace with your API endpoint
-                type: 'GET',
-                query: query,
-                crossDomain: true,
-                success: function (response) {
-                    const suggestionsList = $('#suggestionsList');
-                    const dropdown = $('#suggestionsDropdown');
+    $(document).ready(function () {
+        $('#searchQueryInput').keyup(function () {
+            let query = $(this).val();
+            console.log("hello")
+            if (query.length > 0) {
+                <?php //included the orginal domain ?>
+                domain = "https://<?php echo $domain ?>"
+                // Make AJAX request to fetch suggestions
+                $.ajax({
+                    url: domain + '/api/admin/search_student/',  // Replace with your API endpoint
+                    type: 'GET',
+                    query: query,
+                    crossDomain: true,
+                    success: function (response) {
+                        const suggestionsList = $('#suggestionsList');
+                        const dropdown = $('#suggestionsDropdown');
 
-                    // Clear existing suggestions
-                    suggestionsList.empty();
+                        // Clear existing suggestions
+                        suggestionsList.empty();
 
-                    // If there are suggestions, show the dropdown
-                    if (response.length > 0) {
-                        response.forEach(function (suggestion) {
-                            let suggestionItem = $('<li>').addClass('dropdown-item').text(suggestion);
+                        // If there are suggestions, show the dropdown
+                        if (response.length > 0) {
+                            response.forEach(function (suggestion) {
+                                let suggestionItem = $('<li>').addClass('dropdown-item').text(suggestion);
 
-                            // Add click event to fill input with the suggestion
-                            suggestionItem.on('click', function () {
-                                $('#searchQueryInput').val(suggestion);
-                                dropdown.addClass('d-none'); // Hide dropdown after selection
+                                // Add click event to fill input with the suggestion
+                                suggestionItem.on('click', function () {
+                                    $('#searchQueryInput').val(suggestion);
+                                    dropdown.addClass('d-none'); // Hide dropdown after selection
+                                });
+
+                                // Append the suggestion item to the list
+                                suggestionsList.append(suggestionItem);
                             });
 
-                            // Append the suggestion item to the list
-                            suggestionsList.append(suggestionItem);
-                        });
-
-                        dropdown.removeClass('d-none'); // Show dropdown
-                    } else {
-                        dropdown.addClass('d-none'); // Hide dropdown if no suggestions
+                            dropdown.removeClass('d-none'); // Show dropdown
+                        } else {
+                            dropdown.addClass('d-none'); // Hide dropdown if no suggestions
+                        }
+                    },
+                    error: function () {
+                        console.error('Error fetching suggestions');
                     }
-                },
-                error: function () {
-                    console.error('Error fetching suggestions');
-                }
-            });
-        } else {
-            $('#suggestionsDropdown').addClass('d-none'); // Hide dropdown if input is empty
-        }
-    });
-});
+                });
+            } else {
+                $('#suggestionsDropdown').addClass('d-none'); // Hide dropdown if input is empty
+            }
+        });
+    })
 </script>
 
 </html>
