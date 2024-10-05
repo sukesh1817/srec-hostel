@@ -246,9 +246,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <input type="hidden" name="department" id="departmentValue">
 
                 <div class="input-group mb-3">
-                    <input id="searchQueryInput" type="text" class="form-control" placeholder="Search by name, roll number, etc."
-                        aria-label="Search" aria-describedby="basic-addon2" name="searchQuery">
+                    <input type="text" class="form-control" placeholder="Search by name, roll number, etc."
+                        aria-label="Search" aria-describedby="basic-addon2" name="searchQuery" id="searchQueryInput"
+                        autocomplete="off">
                     <button class="btn btn-dark" type="submit">Search</button>
+
+                    <!-- Dropdown for suggestions -->
                     <div class="dropdown d-none" id="suggestionsDropdown">
                         <ul class="dropdown-menu" aria-labelledby="searchQueryInput" id="suggestionsList">
                             <!-- Suggestions will be injected here -->
@@ -670,52 +673,51 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
 
 <script>
-// Mock function to simulate an API call for search suggestions
-function fetchSuggestions(query) {
-    return new Promise((resolve) => {
-        setTimeout(() => {
-            const suggestions = ['John Doe', 'Jane Smith', 'James Brown', 'Jessica White'];
-            const filtered = suggestions.filter(item => item.toLowerCase().includes(query.toLowerCase()));
-            resolve(filtered);
-        }, 500); // Simulate a delay
-    });
-}
+$(document).ready(function () {
+    $('#searchQueryInput').on('input', function () {
+        let query = $(this).val();
+        
+        if (query.length > 0) {
+            // Make AJAX request to fetch suggestions
+            $.ajax({
+                url: '/api/admin/search_student/',  // Replace with your API endpoint
+                type: 'GET',
+                data: { searchQuery: query },
+                success: function (response) {
+                    const suggestionsList = $('#suggestionsList');
+                    const dropdown = $('#suggestionsDropdown');
 
-// Event listener for search input
-document.getElementById('searchQueryInput').addEventListener('input', async function () {
-    const query = this.value;
+                    // Clear existing suggestions
+                    suggestionsList.empty();
 
-    // Fetch suggestions if input is not empty
-    if (query.length > 0) {
-        const suggestions = await fetchSuggestions(query);
+                    // If there are suggestions, show the dropdown
+                    if (response.length > 0) {
+                        response.forEach(function (suggestion) {
+                            let suggestionItem = $('<li>').addClass('dropdown-item').text(suggestion);
 
-        const dropdown = document.getElementById('suggestionsDropdown');
-        const suggestionsList = document.getElementById('suggestionsList');
+                            // Add click event to fill input with the suggestion
+                            suggestionItem.on('click', function () {
+                                $('#searchQueryInput').val(suggestion);
+                                dropdown.addClass('d-none'); // Hide dropdown after selection
+                            });
 
-        // Clear existing suggestions
-        suggestionsList.innerHTML = '';
+                            // Append the suggestion item to the list
+                            suggestionsList.append(suggestionItem);
+                        });
 
-        // If there are suggestions, show the dropdown
-        if (suggestions.length > 0) {
-            suggestions.forEach(suggestion => {
-                const suggestionItem = document.createElement('li');
-                suggestionItem.classList.add('dropdown-item');
-                suggestionItem.textContent = suggestion;
-                suggestionsList.appendChild(suggestionItem);
-
-                // Add click event to fill input with the suggestion
-                suggestionItem.addEventListener('click', function () {
-                    document.getElementById('searchQueryInput').value = suggestion;
-                    dropdown.classList.add('d-none'); // Hide dropdown after selection
-                });
+                        dropdown.removeClass('d-none'); // Show dropdown
+                    } else {
+                        dropdown.addClass('d-none'); // Hide dropdown if no suggestions
+                    }
+                },
+                error: function () {
+                    console.error('Error fetching suggestions');
+                }
             });
-            dropdown.classList.remove('d-none'); // Show dropdown
         } else {
-            dropdown.classList.add('d-none'); // Hide dropdown if no suggestions
+            $('#suggestionsDropdown').addClass('d-none'); // Hide dropdown if input is empty
         }
-    } else {
-        document.getElementById('suggestionsDropdown').classList.add('d-none'); // Hide dropdown if input is empty
-    }
+    });
 });
 </script>
 

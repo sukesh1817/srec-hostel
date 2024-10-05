@@ -173,46 +173,50 @@ class Admin
             return [];
         }
     }
-    public function search_students_individual($name = '', $rollno = '', $dept = '')
+    public function search_students_individual($query = '')
     {
         # Getting connection from MySQL
         $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
         $sql = "SELECT * FROM stud_details WHERE 1=1";
         $params = [];
-
-        if (!empty($name)) {
-            $sql .= " AND name LIKE ?";
-            $params[] = "%" . $sqlConn->real_escape_string($name) . "%";
+    
+        if (!empty($query)) {
+            // Check if the query is numeric (assuming roll number is numeric)
+            if (is_numeric($query)) {
+                $sql .= " AND roll_no = ?";
+                $params[] = $sqlConn->real_escape_string($query);
+            } 
+            // Check if the query is in the list of departments
+            else if (in_array(strtoupper($query), ['AI&DS', 'IT', 'ECE', 'EEE', 'MECH', 'BME', 'CIVIL', 'AERO', 'RA', 'CSE', 'EIE', 'MBA'])) {
+                $sql .= " AND deptment = ?";
+                $params[] = $sqlConn->real_escape_string($query);
+            }
+            // Otherwise, treat it as a name search
+            else {
+                $sql .= " AND name LIKE ?";
+                $params[] = "%" . $sqlConn->real_escape_string($query) . "%";
+            }
         }
-
-        if (!empty($rollno)) {
-            $sql .= " AND roll_no = ?";
-            $params[] = $sqlConn->real_escape_string($rollno);
-        }
-
-        if (!empty($dept)) {
-            $sql .= " AND deptment = ?";
-            $params[] = $sqlConn->real_escape_string($dept);
-        }
-
+    
         $stmt = $sqlConn->prepare($sql);
-
+    
         if ($params) {
             $types = str_repeat('s', count($params));
             $stmt->bind_param($types, ...$params);
         }
-
+    
         $stmt->execute();
         $result = $stmt->get_result();
         $students = [];
-
+    
         while ($row = $result->fetch_assoc()) {
             $students[] = $row;
         }
-
+    
         $stmt->close();
-
+    
         return ['status' => 'success', 'data' => $students];
     }
+    
 }
