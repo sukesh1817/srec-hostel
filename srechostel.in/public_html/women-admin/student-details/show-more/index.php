@@ -1,6 +1,6 @@
 <?php
 // Include the main connection class
-require_once $_SERVER['DOCUMENT_ROOT']."/../../".'class-files/connection.class.php';
+require_once $_SERVER['DOCUMENT_ROOT'] . "/../../" . 'class-files/connection.class.php';
 
 // Check if roll_no is set in the URL
 if (isset($_GET['roll_no'])) {
@@ -24,29 +24,43 @@ if (isset($_GET['roll_no'])) {
         ?>
         <!DOCTYPE html>
         <html lang="en">
+
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Student Details</title>
             <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+            <?php
+            // included the poppins font.
+            include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
+            ?>
         </head>
+
         <body>
+            <?php
+            // included the navbar.
+            include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
+            ?>
             <div class="container mt-5">
                 <h2>Student Details</h2>
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title"><?php echo htmlspecialchars($student['name']); ?></h5>
                         <p class="card-text"><strong>Roll No:</strong> <?php echo htmlspecialchars($student['roll_no']); ?></p>
-                        <p class="card-text"><strong>Department:</strong> <?php echo htmlspecialchars($student['department']); ?></p>
+                        <p class="card-text"><strong>Department:</strong>
+                            <?php echo htmlspecialchars($student['department']); ?></p>
                         <p class="card-text"><strong>Hostel:</strong> <?php echo htmlspecialchars($student['hostel']); ?></p>
-                        <p class="card-text"><strong>Year of Study:</strong> <?php echo htmlspecialchars($student['year_of_study']); ?></p>
-                        <p class="card-text"><strong>Tutor Name:</strong> <?php echo htmlspecialchars($student['tutor_name']); ?></p>
+                        <p class="card-text"><strong>Year of Study:</strong>
+                            <?php echo htmlspecialchars($student['year_of_study']); ?></p>
+                        <p class="card-text"><strong>Tutor Name:</strong>
+                            <?php echo htmlspecialchars($student['tutor_name']); ?></p>
                         <p class="card-text"><strong>AC Name:</strong> <?php echo htmlspecialchars($student['ac_name']); ?></p>
                     </div>
                 </div>
-                <a href="/student-details/" class="btn btn-dark mt-3">Back</a> <!-- Link to go back to the previous page -->
+                <a href="/student-details/" class="container btn btn-dark mt-3">Back</a> <!-- Link to go back to the previous page -->
             </div>
         </body>
+
         </html>
         <?php
     } else {
