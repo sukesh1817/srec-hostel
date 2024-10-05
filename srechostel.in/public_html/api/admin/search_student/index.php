@@ -11,7 +11,27 @@ $admin = new Admin();
 if (isset($_POST['year']) || isset($_POST['department'])) {
     $year = $_POST['year'] ?? null;
     $department = $_POST['department'] ?? null;
-    $response = $admin->search_students_group($year, $department);
+    $students = $admin->search_students_group($year, $department);
+    $response = [];
+
+    if (!empty($students)) {
+        foreach ($students as $student) {
+            // Append student details to the response array
+            $response[] = [
+                'name' => $student['name'],
+                'department' => $student['department'],
+                'year' => $student['year_of_study'],
+                'hostel' => $student['hostel']  // Include any additional fields as needed
+            ];
+        }
+    } else {
+        $response = [
+            'message' => 'No records found.',
+            'alert' => 'warning'
+        ];
+    }
+
+    // Set the content type to JSON and return the response
     echo json_encode($response);
 }
 
