@@ -11,8 +11,18 @@ $admin = new Admin();
 if (isset($_GET['pass_type']) && isset($_GET['pass_status'])) {
     $pass_type = $_GET['pass_type'];
     $pass_status = $_GET['pass_status'];
-    $department = isset($_GET['department']) ? $_GET['department'] : null;
-    $year = isset($_GET['year']) ? $_GET['year'] : null;
+    $year = null;
+    $department = null;
+    if (isset($_POST['year'])) {
+        if ($_POST['year'] != 'NULL') {
+            $year = $_GET['year'];
+        } 
+    }
+    if (isset($_POST['department'])) {
+        if ($_POST['department'] != 'NULL') {
+            $department = $_GET['department'] ;
+        } 
+    }
 
     $data = $admin->getPassData($admin, $pass_type, $pass_status, $department, $year);
 
