@@ -264,7 +264,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
                         aria-label="Search">
                     <ul id="myUL" class="list-unstyled"
-                        style="display: none; position: absolute; width: 100%; z-index: 1000;">
+                        style="position: absolute; width: 100%; z-index: 1000;">
                         <li><a href="#">Adele</a></li>
                         <li><a href="#">Agnes</a></li>
                         <li><a href="#">Billy</a></li>
