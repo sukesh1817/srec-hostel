@@ -398,10 +398,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         } else {
                             data.forEach(item => {
                                 output += `<tr>
-                                    <td>${item.roll_number}</td>
-                                    <td>${item.name}</td>
+                                    <td>${item.roll_no}</td>
+                                    <td>${item.stud_name}</td>
                                     <td>${item.department}</td>
-                                    <td>${item.year}</td>
+                                    <td>${item.year_of_study}</td>
                                     <td><button class="btn btn-info">Details</button></td>
                                 </tr>`;
                             });
