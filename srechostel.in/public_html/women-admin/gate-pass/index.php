@@ -391,7 +391,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                     success: function (data) {
                         // Handle success
                         let output = '';
-                        if (passStatus == 0) {
+                        if (passStatus == 0 && data.length > 0) {
                             if (data.error) {
                                 output += `<tr><td colspan="5">Error: ${data.error}</td></tr>`;
                             } else {
@@ -411,7 +411,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                             }
                             $('#myTable tbody').html(output);
                             $('#myTable').show();
-                        } else {
+                        } else if (passStatus == 0 && data.length > 0) {
                             $('#dynamicHeaderRow').find('.dynamic-header').remove();
                             $('#dynamicHeaderRow').append(`<th class="dynamic-header">Status</th>`);
                             if (data.error) {
@@ -429,6 +429,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                             }
                             $('#myTable tbody').html(output);
                             $('#myTable').show();
+                        } else if (data.length == 0) {
+                            $('#myTable tbody').append(`
+                        <tr>
+                            <td colspan="5" class="text-center text-danger">No records found.</td>
+                        </tr>
+                    `);
                         }
 
                     },
