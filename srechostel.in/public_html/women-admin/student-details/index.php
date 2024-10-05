@@ -310,10 +310,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                             <div class="input-group">
                                 <input type="text" id="searchQueryInput" class="form-control"
                                     placeholder="Search by name, rollno" aria-label="Search" autocomplete="off">
-                                <ul id="myUL" class="list-group scrollable-dropdown" style="display: none;">
-                                    <!-- Suggestion items will be populated here -->
-                                </ul>
                             </div>
+                            <ul id="myUL" class="list-group scrollable-dropdown" style="display: none;">
+                                <!-- Suggestion items will be populated here -->
+                            </ul>
                         </div>
 
 
