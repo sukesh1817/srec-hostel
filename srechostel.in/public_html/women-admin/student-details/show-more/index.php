@@ -86,8 +86,10 @@ if (isset($_GET['roll_no'])) {
                             </p>
                             <p class="card-text"><strong>Phone:</strong>
                                 <?php echo htmlspecialchars($personal_details['phone_no']); ?></p>
+                            <p class="card-text"><strong>Blood group:</strong>
+                                <?php echo htmlspecialchars($personal_details['blood_group']); ?></p>
                             <p class="card-text"><strong>Address:</strong>
-                                <?php echo htmlspecialchars($personal_details['stud_address']); ?>
+                                <?php echo htmlspecialchars($personal_details['stud_address']) . " - " . htmlspecialchars($personal_details['pincode']); ?>
                             </p>
                         <?php else: ?>
                             <p class="card-text">No personal details found.</p>
@@ -98,7 +100,9 @@ if (isset($_GET['roll_no'])) {
                         <?php if ($guardian_details): ?>
                             <p class="card-text"><strong>Father Name:</strong>
                                 <?php echo htmlspecialchars($guardian_details['father_name']); ?></p>
-                            <p class="card-text"><strong>Contact Number:</strong>
+                            <p class="card-text"><strong>Mother Name:</strong>
+                                <?php echo htmlspecialchars($guardian_details['mother_name']); ?></p>
+                            <p class="card-text"><strong>Father Number:</strong>
                                 <?php echo htmlspecialchars($guardian_details['father_contact_no']); ?></p>
                         <?php else: ?>
                             <p class="card-text">No guardian details found.</p>
