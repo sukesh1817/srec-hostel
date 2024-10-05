@@ -296,12 +296,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                             <input type="hidden" name="department" id="departmentValue">
                             <div class="input-group">
                                 <input type="text" id="searchQueryInput" class="form-control"
-                                    placeholder="Search by name, rollno" aria-label="Search">
-                                <ul id="myUL" class="dropdown-menu scrollable-dropdown mt-4"
+                                    placeholder="Search by name, rollno" aria-label="Search" autocomplete="off"
+                                    data-bs-toggle="dropdown" aria-expanded="false">
+                                <ul id="myUL" class="dropdown-menu"
                                     style="display: none; position: absolute; width: 100%; z-index: 1000;">
+                                    <!-- Dropdown items will be populated here -->
                                 </ul>
                             </div>
                         </div>
+
                     </form>
 
 
@@ -446,7 +449,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
     <div class="container mt-4">
         <p class="text-center">
-        <button style="display: none;" id="downloadButton" class="btn btn-warning mt-3">Download as XLSX</button>
+            <button style="display: none;" id="downloadButton" class="btn btn-warning mt-3">Download as XLSX</button>
 
         </p>
         <table id="myTable" style="display: none;" class="table table-striped">
@@ -534,7 +537,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
 
             } else {
-                $('#suggestionsDropdown').addClass('d-none'); // Hide dropdown if input is empty
+                $('#myUL').hide(); // Hide dropdown if input is empty
             }
         });
     })
@@ -577,7 +580,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         });
                     } else {
                         // If no data, show a message
-                    $('#myTable tbody').append(`
+                        $('#myTable tbody').append(`
                     <tr>
                         <td colspan="4" class="text-center text-danger">No records found.</td>
                     </tr>
@@ -619,4 +622,5 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
         XLSX.writeFile(wb, "students_data.xlsx");
     });
 </script>
+
 </html>
