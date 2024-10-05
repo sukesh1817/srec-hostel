@@ -244,19 +244,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <input type="hidden" name="year" id="yearValue">
                 <input type="hidden" name="department" id="departmentValue">
 
-                <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search by name, roll number, etc."
-                        aria-label="Search" aria-describedby="basic-addon2" name="searchQuery" id="searchQueryInput"
-                        autocomplete="off">
-                    <button class="btn btn-dark" type="submit">Search</button>
-
-                    <!-- Dropdown for suggestions -->
-                    <div class="dropdown d-none" id="suggestionsDropdown">
-                        <ul class="dropdown-menu" aria-labelledby="searchQueryInput" id="suggestionsList">
-                            <!-- Suggestions will be injected here -->
+                <div class="dropdown">
+                    <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
+                        aria-label="Search">
+                    <div id="suggestionsDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton"
+                        style="display: none;">
+                        <ul id="suggestionsList" class="list-unstyled">
+                            <!-- Suggestions will be appended here -->
                         </ul>
                     </div>
                 </div>
+
 
                 <div class="card d-inline-flex">
                     <div class="card-body p-man d-flex align-items-center">
@@ -448,15 +446,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
                         // If there are suggestions, show the dropdown
                         if (Array.isArray(response['data']) && response['data'].length > 0) {
-                            response['data'].forEach(function (suggestion) {
-                                // Create a list item for each suggestion
+                            response['data'].forEach(function (student) {
+                                // Create a list item for each student suggestion
                                 let suggestionItem = $('<li>')
                                     .addClass('dropdown-item')
-                                    .text(`${suggestion.name} - ${suggestion.roll_no} (${suggestion.department})`)  // Customize display text
+                                    .text(`${student.name} - Roll No: ${student.roll_no} - Dept: ${student.department}`)  // Customize display text
 
-                                    // Add click event to fill input with the suggestion
+                                    // Add click event to fill input with the selected suggestion
                                     .on('click', function () {
-                                        $('#searchQueryInput').val(suggestion.name); // Fill the input with the selected suggestion
+                                        $('#searchQueryInput').val(student.name); // Fill the input with the selected student's name
                                         dropdown.addClass('d-none'); // Hide dropdown after selection
                                     });
 
@@ -473,6 +471,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         console.error('Error fetching suggestions');
                     }
                 });
+
 
 
             } else {
