@@ -227,7 +227,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             /* Change background color on hover */
         }
 
-        
+        .scrollable-dropdown {
+            max-height: 350px;
+            /* Set maximum height for the dropdown */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            overflow-x: hidden;
+            /* Disable horizontal scrolling */
+            border: 1px solid #ccc;
+            /* Optional: border for the dropdown */
+            border-radius: 0.25rem;
+            /* Optional: rounded corners */
+            background-color: white;
+            /* Optional: background color */
+        }
     </style>
 
 
@@ -297,7 +310,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                             <div class="input-group">
                                 <input type="text" id="searchQueryInput" class="form-control"
                                     placeholder="Search by name, rollno" aria-label="Search" autocomplete="off">
-                                <ul id="myUL" class="list-group dropdown-menu" style="display: none;">
+                                <ul id="myUL" class="list-group scrollable-dropdown" style="display: none;">
                                     <!-- Suggestion items will be populated here -->
                                 </ul>
                             </div>
