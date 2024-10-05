@@ -247,7 +247,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
 </head>
 
-<body class="noto-sans">
+<body >
 
 
     <?php

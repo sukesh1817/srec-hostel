@@ -1,4 +1,8 @@
 <?php
+// check the login user is women admin or not.
+require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
+
+
 // Include the main connection class
 require_once $_SERVER['DOCUMENT_ROOT'] . "/../../" . 'class-files/connection.class.php';
 
@@ -61,7 +65,10 @@ if (isset($_GET['roll_no'])) {
         </head>
 
         <body>
-            <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php"; ?>
+            <?php
+            // include the navbar
+             include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php"; 
+             ?>
             <div class="container mt-5 mb-4">
                 <h2 class="text-center mb-4">Student Details</h2>
                 <div class="card mx-auto" style="max-width: 600px;">
