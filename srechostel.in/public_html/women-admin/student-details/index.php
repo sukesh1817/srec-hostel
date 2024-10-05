@@ -176,7 +176,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
     <style>
         .scrollable-dropdown {
-            max-height: 400px;
+            max-height: 350px;
             /* Set maximum height for the dropdown */
             overflow-y: auto;
             /* Enable vertical scrolling */
@@ -480,15 +480,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         suggestionsList.empty();
                         students.forEach((student, index) => {
                             let suggestionItem = $(`
-        <li class="list-group-item d-flex justify-content-between align-items-center px-4">
-            <div>
-                <strong>${student.name}</strong><br>
-                <small>Department: ${student.department}</small><br>
-                <small>Roll No: ${student.roll_no}</small>
-            </div>
-            <a href="show-more/?roll_no=${student.roll_no}" class="btn btn-link">Show More</a>
-        </li>
-    `);
+                            <li class="list-group-item d-flex justify-content-between align-items-center px-4">
+                                <div>
+                                    <strong>${student.name}</strong><br>
+                                    <small>Department: ${student.department}</small><br>
+                                    <small>Roll No: ${student.roll_no}</small>
+                                </div>
+                                <a href="show-more/?roll_no=${student.roll_no}" class="btn btn-link">Show More</a>
+                            </li>
+                        `);
 
                             // Append the suggestion item to the list
                             suggestionsList.append(suggestionItem);
