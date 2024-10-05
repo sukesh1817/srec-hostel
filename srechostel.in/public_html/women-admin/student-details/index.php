@@ -305,13 +305,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         </div>
 
                         <div class="mb-3">
-                            <input type="hidden" name="year" id="yearValue">
-                            <input type="hidden" name="department" id="departmentValue">
+        
                             <div class="input-group">
                                 <input type="text" id="searchQueryInput" class="form-control"
                                     placeholder="Search by name, rollno" aria-label="Search" autocomplete="off">
                             </div>
-                            <ul id="myUL" class="list-group scrollable-dropdown" style="display: none;">
+                            <ul id="myUL" class="list-group scrollable-dropdown mt-2" style="display: none;">
                                 <!-- Suggestion items will be populated here -->
                             </ul>
                         </div>
