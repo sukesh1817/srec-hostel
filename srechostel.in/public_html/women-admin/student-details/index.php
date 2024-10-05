@@ -258,7 +258,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                             </ul>
                         </li>
                         <li class="dropdown-submenu">
-                            <span class="dropdown-item dropdown-toggle" href="#">Department</span>
+                            <span class="dropdown-item dropdown-toggle">Department</span>
                             <ul class="dropdown-menu">
                                 <li><span id="dept-ai" class="dropdown-item">B.Tech AIDS</span></li>
                                 <li><span id="dept-it" class="dropdown-item">B.Tech IT</span></li>
@@ -292,8 +292,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     </ul>
                 </div>
 
-                <!-- Uncomment below if you want to display selected year and department -->
-                <!-- 
+                
                 <div class="card d-inline-flex">
                     <div class="card-body p-man d-flex align-items-center">
                         <p class="card-text mb-0 p-man">
@@ -308,7 +307,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         </p>
                     </div>
                 </div>
-                -->
+               
                 
                 <button type="submit" class="btn btn-outline-dark mt-3 w-100" id="submitButton" disabled>Search</button>
             </form>
