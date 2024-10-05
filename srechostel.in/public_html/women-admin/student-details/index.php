@@ -259,46 +259,50 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     <div class="bg-light-subtle py-4 row">
         <div class="container mt-2 text-center">
             <div class="row justify-content-center">
-                <div class="col-12 col-md-6 mb-3">
-                    <div class="dropdown d-inline-block w-100">
-                        <button class="btn btn-dark dropdown-toggle rounded-1 w-100" type="button"
-                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
-                            Search by
-                        </button>
-                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle">Year</a>
-                                <ul class="dropdown-menu">
-                                    <li><a id="year-1" class="dropdown-item">1</a></li>
-                                    <li><a id="year-2" class="dropdown-item">2</a></li>
-                                    <li><a id="year-3" class="dropdown-item">3</a></li>
-                                    <li><a id="year-4" class="dropdown-item">4</a></li>
-                                </ul>
-                            </li>
-                            <li class="dropdown-submenu">
-                                <a class="dropdown-item dropdown-toggle">Department</a>
-                                <ul class="dropdown-menu">
-                                    <li><a id="dept-ai" class="dropdown-item">B.Tech AIDS</a></li>
-                                    <li><a id="dept-it" class="dropdown-item">B.Tech IT</a></li>
-                                    <li><a id="dept-ece" class="dropdown-item">B.E ECE</a></li>
-                                    <li><a id="dept-eee" class="dropdown-item">B.E EEE</a></li>
-                                    <li><a id="dept-mech" class="dropdown-item">B.E MECH</a></li>
-                                    <li><a id="dept-bme" class="dropdown-item">B.E BME</a></li>
-                                    <li><a id="dept-metch" class="dropdown-item">M.Tech CSE</a></li>
-                                    <li><a id="dept-civil" class="dropdown-item">B.E CIVIL</a></li>
-                                    <li><a id="dept-aero" class="dropdown-item">B.E AERO</a></li>
-                                    <li><a id="dept-ra" class="dropdown-item">B.E RA</a></li>
-                                    <li><a id="dept-cse" class="dropdown-item">B.E CSE</a></li>
-                                    <li><a id="dept-eie" class="dropdown-item">B.E EIE</a></li>
-                                    <li><a id="dept-mba" class="dropdown-item">B.E MBA</a></li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
+            <div class="container mt-5">
+    <form id="search-form" action="/student-details/" method="post" class="w-100">
+        <div class="mb-3">
+            <label for="yearSelect" class="form-label">Select Year</label>
+            <select class="form-select" id="yearSelect" name="year" aria-label="Select Year">
+                <option selected disabled>Choose Year</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="departmentSelect" class="form-label">Select Department</label>
+            <select class="form-select" id="departmentSelect" name="department" aria-label="Select Department">
+                <option selected disabled>Choose Department</option>
+                <option value="B.Tech AIDS">B.Tech AIDS</option>
+                <option value="B.Tech IT">B.Tech IT</option>
+                <option value="B.E ECE">B.E ECE</option>
+                <option value="B.E EEE">B.E EEE</option>
+                <option value="B.E MECH">B.E MECH</option>
+                <option value="B.E BME">B.E BME</option>
+                <option value="M.Tech CSE">M.Tech CSE</option>
+                <option value="B.E CIVIL">B.E CIVIL</option>
+                <option value="B.E AERO">B.E AERO</option>
+                <option value="B.E RA">B.E RA</option>
+                <option value="B.E CSE">B.E CSE</option>
+                <option value="B.E EIE">B.E EIE</option>
+                <option value="B.E MBA">B.E MBA</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label for="searchQueryInput" class="form-label">Search</label>
+            <input type="text" id="searchQueryInput" class="form-control" placeholder="Search by name or roll number" aria-label="Search">
+        </div>
+
+        <button type="submit" class="btn btn-dark">Search</button>
+    </form>
+</div>
         
 
-                <form id="search-form" action="/student-details/" method="post" class="col-12 col-md-6">
+                <form id="search-form" action="/student-details/" method="post" class="d-inline-block col-12 col-md-6">
                     <input type="hidden" name="year" id="yearValue">
                     <input type="hidden" name="department" id="departmentValue">
 
