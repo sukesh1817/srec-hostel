@@ -21,12 +21,11 @@ $admin = new Admin();
 // }
 
 
-$name = isset($_GET['name']) ? $_GET['name'] : '';
-$rollno = isset($_GET['rollno']) ? $_GET['rollno'] : '';
-$dept = isset($_GET['dept']) ? $_GET['dept'] : '';
+$query = isset($_GET['query']) ? $_GET['query'] : '';
 
-$response = $admin->search_students_individual($name, $rollno, $dept);
+
+$response = $admin->search_students_individual($query);
 $result = [
-    'response' => $response
+    'data' => $response
 ];
 echo json_encode($result);
