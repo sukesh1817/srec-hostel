@@ -273,7 +273,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     </div>
 
                     <div class="mb-3">
-                        <label for="departmentSelect" class="form-label">Select Department</label>
+                        <label for="departmentSelect" class="form-label text-start">Select Department</label>
                         <select class="form-select" id="departmentSelect" name="department" aria-label="Select Department">
                             <option selected disabled>Choose Department</option>
                             <option value="B.Tech AIDS">B.Tech AIDS</option>
