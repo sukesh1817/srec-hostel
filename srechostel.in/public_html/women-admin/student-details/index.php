@@ -471,7 +471,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <th>Name</th>
                     <th>Department</th>
                     <th>Year</th>
-                    <th>More</th>
+                    <th>More details</th>
                     <!-- Add more columns as needed -->
                 </tr>
             </thead>
@@ -557,6 +557,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             }
         });
     })
+
+
+    $(document).on('click', function(event) {
+        const target = $(event.target);
+        if (!target.closest('#searchQueryInput').length && !target.closest('#myUL').length) {
+            $('#myUL').hide(); // Hide the suggestion list
+        }
+    });
 </script>
 
 
