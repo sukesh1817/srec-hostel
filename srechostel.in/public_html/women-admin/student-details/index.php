@@ -432,7 +432,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             console.log("hello")
             if (query.length > 0) {
                 <?php //included the orginal domain ?>
-                domain = "https://<?php echo $domain ?>"
+                domain = "<?php echo $domain ?>"
                 // Make AJAX request to fetch suggestions
                 $.ajax({
                     url: domain + '/api/admin/search_student/',  // Replace with your API endpoint
