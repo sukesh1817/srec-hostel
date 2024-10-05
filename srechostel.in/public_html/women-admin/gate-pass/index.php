@@ -241,6 +241,18 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             background-color: white;
             /* Optional: background color */
         }
+
+        #myTable {
+    transition: opacity 0.3s ease-in-out;
+}
+
+#loader {
+    display: none;
+    text-align: center;
+    font-size: 18px;
+    color: #007bff; /* Bootstrap primary color */
+}
+
     </style>
 
 
@@ -347,6 +359,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
         </table>
     </div>
 </div>
+<div id="loader" style="display:none;">Loading...</div>
+
 
 </body>
 
@@ -376,6 +390,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
             // Only send the request if all fields have been selected
             if (passType && passStatus) {
+                $('#loader').show(); // Show loader before sending request
+
                 $.ajax({
                     url: domain + '/api/admin/manage_pass_request/get_student_pass/index.php',
                     type: 'GET',
@@ -421,8 +437,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                             output += `<tr><td colspan="5" class="text-center text-danger">No records found.</td></tr>`;
                         }
 
+                        // Animate table updates
                         $('#myTable tbody').fadeOut(300, function () {
-                            $(this).html(output).fadeIn(300); // Animate fading out, updating content, and fading back in
+                            $(this).html(output).fadeIn(300); // Fade in after updating content
                         });
 
                         $('#myTable').toggle(output.length > 0); // Show or hide the table based on output
@@ -440,6 +457,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         }
                         $('#myTable tbody').html(`<tr><td colspan="5" class="text-danger text-center">${errorMessage}</td></tr>`);
                         $('#myTable').show();
+                    },
+                    complete: function () {
+                        $('#loader').hide(); // Hide loader after request completes
                     }
                 });
             } else {
@@ -457,6 +477,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
         });
     });
 </script>
+
 
 
 
