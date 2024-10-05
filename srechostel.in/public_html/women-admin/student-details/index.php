@@ -248,7 +248,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
                         aria-label="Search">
                     <div id="suggestionsDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton"
-                        style="display: none;">
+                        >
                         <ul id="suggestionsList" class="list-unstyled">
                             <li>sample</li>
                             <li>sample</li>
