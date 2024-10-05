@@ -256,7 +256,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
         </span>
     </div>
 
-    <div class="bg-light-subtle py-4">
+    <div class="bg-light-subtle py-4 row">
         <div class="container mt-2 text-center">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-6 mb-3">
@@ -296,9 +296,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         </ul>
                     </div>
                 </div>
-                <br>
+        
 
-                <form id="search-form" action="/student-details/" method="post" class="d-inline-block col-12 col-md-6">
+                <form id="search-form" action="/student-details/" method="post" class="d-inline-block col-12 col-md-6 row">
                     <input type="hidden" name="year" id="yearValue">
                     <input type="hidden" name="department" id="departmentValue">
 
