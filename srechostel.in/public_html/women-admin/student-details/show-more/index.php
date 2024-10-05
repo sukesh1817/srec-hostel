@@ -64,7 +64,7 @@ if (isset($_GET['roll_no'])) {
                 <h2 class="text-center mb-4">Student Details</h2>
                 <div class="card mx-auto" style="max-width: 600px;">
                     <div class="card-body">
-                        <h5 class="card-title text-center"><?php echo htmlspecialchars($student['name']); ?></h5>
+                        <h4 class="card-title text-center"><?php echo htmlspecialchars($student['name']); ?></h4>
                         <p class="card-text"><strong>Roll No:</strong> <?php echo htmlspecialchars($student['roll_no']); ?></p>
                         <p class="card-text"><strong>Department:</strong> <?php echo htmlspecialchars($student['department']); ?></p>
                         <p class="card-text"><strong>Hostel:</strong> <?php echo htmlspecialchars($student['hostel']); ?></p>
@@ -73,7 +73,7 @@ if (isset($_GET['roll_no'])) {
                         <p class="card-text"><strong>AC Name:</strong> <?php echo htmlspecialchars($student['ac_name']); ?></p>
                         
                         <!-- Display Personal Details -->
-                        <h6 class="mt-4">Personal Details</h6>
+                        <h5 class="mt-4">Personal Details</h5>
                         <?php if ($personal_details): ?>
                             <p class="card-text"><strong>Date of Birth:</strong> <?php echo htmlspecialchars($personal_details['date_of_birth']); ?></p>
                             <p class="card-text"><strong>Email:</strong> <?php echo htmlspecialchars($personal_details['email']); ?></p>
@@ -83,7 +83,7 @@ if (isset($_GET['roll_no'])) {
                         <?php endif; ?>
 
                         <!-- Display Guardian Details -->
-                        <h6 class="mt-4">Guardian Details</h6>
+                        <h5 class="mt-4">Guardian Details</h5>
                         <?php if ($guardian_details): ?>
                             <p class="card-text"><strong>Father Name:</strong> <?php echo htmlspecialchars($guardian_details['father_name']); ?></p>
                             <p class="card-text"><strong>Contact Number:</strong> <?php echo htmlspecialchars($guardian_details['father_contact_no']); ?></p>
