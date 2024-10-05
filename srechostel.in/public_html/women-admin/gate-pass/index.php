@@ -253,26 +253,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     // included the navbar.
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
     ?>
-    <div class="float-end mx-3 my-3">
-        <span class="d-inline-block" tabindex="0" data-bs-toggle="popover" data-bs-placement="left"
-            data-bs-trigger="hover focus" data-bs-content="Want to delete a user click this">
-            <button type="button" class="btn btn-sm btn-danger rounded-1" data-bs-toggle="modal"
-                data-bs-target="#exampleModal">
-                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash3"
-                    viewBox="0 0 16 16">
-                    <path
-                        d="M6.5 1h3a.5.5 0 0 1 .5.5v1H6v-1a.5.5 0 0 1 .5-.5M11 2.5v-1A1.5 1.5 0 0 0 9.5 0h-3A1.5 1.5 0 0 0 5 1.5v1H1.5a.5.5 0 0 0 0 1h.538l.853 10.66A2 2 0 0 0 4.885 16h6.23a2 2 0 0 0 1.994-1.84l.853-10.66h.538a.5.5 0 0 0 0-1zm1.958 1-.846 10.58a1 1 0 0 1-.997.92h-6.23a1 1 0 0 1-.997-.92L3.042 3.5zm-7.487 1a.5.5 0 0 1 .528.47l.5 8.5a.5.5 0 0 1-.998.06L5 5.03a.5.5 0 0 1 .47-.53Zm5.058 0a.5.5 0 0 1 .47.53l-.5 8.5a.5.5 0 1 1-.998-.06l.5-8.5a.5.5 0 0 1 .528-.47M8 4.5a.5.5 0 0 1 .5.5v8.5a.5.5 0 0 1-1 0V5a.5.5 0 0 1 .5-.5" />
-                </svg>
-                Delete user
-            </button>
-        </span>
-    </div>
+
 
     <div class="bg-light-subtle py-4">
         <div class="container mt-2 text-center">
             <div class="row justify-content-center">
                 <div class="col-12 col-md-8">
-                    <form id="search-form" action="/student-details/" method="post" class="mb-4">
+                    <form method="post" class="mb-4">
                         <div class="mb-3">
                             <select class="form-select rounded-1" id="yearSelect" name="year" aria-label="Select Year">
                                 <option selected disabled value="NULL">Choose Year</option>
@@ -303,159 +290,22 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                             </select>
                         </div>
 
-                        <div class="mb-3">
-        
-                            <div class="input-group">
-                                <input type="text" id="searchQueryInput" class="form-control"
-                                    placeholder="Search by name, rollno" aria-label="Search" autocomplete="off">
-                            </div>
-                            <ul id="myUL" class="list-group scrollable-dropdown mt-2" style="display: none;">
-                                <!-- Suggestion items will be populated here -->
-                            </ul>
-                        </div>
 
+                        <div class="mb-3">
+                            <select class="form-select rounded-1" id="passStatus" name="passStatus" aria-label="Select pass type">
+                                <option selected disabled value="NULL">Choose status of pass</option>
+                                <option value="1">Accepted</option>
+                                <option value="0">Pending</option>
+                            </select>
+                        </div>
 
                     </form>
-
-
                 </div>
             </div>
         </div>
     </div>
 
 
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Account deletion</h1>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="mb-3">
-                        <div class="btn-group d-flex justify-content-center">
-                            <button id="single-btn" type="button" class="btn btn-outline-dark btn-sm"
-                                data-bs-toggle="collapse" data-bs-target="#collapseSingle" aria-expanded="false"
-                                aria-controls="collapseSingle" onclick="toggleForms('collapseSingle')">Single user
-                                delete</button>
-                            <button id="multi-btn" type="button" class="btn btn-outline-dark btn-sm"
-                                data-bs-toggle="collapse" data-bs-target="#collapseMulti" aria-expanded="false"
-                                aria-controls="collapseMulti" onclick="toggleForms('collapseMulti')">Multi user
-                                delete</button>
-                        </div>
-
-                        <div class="collapse multi-collapse" id="collapseSingle">
-                            <div class="container mt-3 ms-3">
-                                <div class="form-container">
-                                    <div class="logo-container">Single account delete</div>
-                                    <form id="single-form" class="form">
-                                        <div class="form-group mb-3">
-                                            <label for="user_id">Roll no</label>
-                                            <input type="number" id="user_id" name="user_id"
-                                                placeholder="Enter the roll no" required="">
-                                        </div>
-                                        <button class="btn btn-dark rounded-1" type="submit">Delete user</button>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="collapse multi-collapse" id="collapseMulti">
-                            <div class="container mt-3 ms-3">
-                                <div class="form-container">
-                                    <div class="logo-container">Multi account delete</div>
-                                    <div class="form">
-                                        <div class="filter-container">
-                                            <label for="filterType">Select The Filter</label>
-                                            <select id="filterType" onchange="toggleInputFields()">
-                                                <option value="rollNumbers">Roll Numbers</option>
-                                                <option value="departmentYear">Department & Year</option>
-                                                <option value="yearOnly">Year Only</option>
-                                            </select>
-
-                                            <form id="roll-nos-form" method="post">
-                                                <div id="rollNumbersInput" class="filter-input">
-                                                    <label class="mt-1" for="rollNumber">Enter Roll Number</label>
-                                                    <input class="rounded-1" type="text" id="rollNumber"
-                                                        placeholder="Enter Roll Number">
-
-                                                    <div class="btn-group mt-2 container-fluid" role="group"
-                                                        aria-label="Default button group">
-                                                        <button class="btn btn-dark container-fluid rounded-start-1"
-                                                            onclick="addRollNumber()" type="button">Add Roll
-                                                            Number</button>
-                                                        <button
-                                                            class="btn btn-outline-dark container-fluid rounded-end-1"
-                                                            type="submit">Delete
-                                                            users</button>
-                                                    </div>
-
-                                                    <div class="error-message mt-2" id="rollNumberError">Please enter a
-                                                        valid
-                                                        roll number.</div>
-
-                                                    <div id="rollnoList" class="rollno-list"></div>
-                                                    <input type="hidden" id="rollNumbers" name="rollNumbers">
-                                                </div>
-                                            </form>
-
-                                            <form id="dept-year-form" method="post">
-                                                <div id="departmentYearInput" class="filter-input">
-                                                    <label class="mt-1" for="dept_group">Select Department</label>
-                                                    <select id="dept_group">
-                                                        <option value="AIDS">AIDS</option>
-                                                        <option value="CSC">CSC</option>
-                                                        <option value="IT">IT</option>
-                                                    </select>
-                                                    <label class="mt-1" for="year_group">Year</label>
-                                                    <select id="year_group">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                    <button class="btn btn-dark mt-2 container-fluid rounded-1"
-                                                        type="submit">Delete
-                                                        users</button>
-
-                                                    <div class="error-message mt-2" id="departmentYearError">Please
-                                                        enter
-                                                        valid department and year.</div>
-                                                </div>
-                                            </form>
-
-                                            <form id="year-form" method="post">
-                                                <div id="yearOnlyInput" class="filter-input">
-                                                    <label class="mt-1" for="year_only">Select Year</label>
-                                                    <select id="year_only">
-                                                        <option value="1">1</option>
-                                                        <option value="2">2</option>
-                                                        <option value="3">3</option>
-                                                        <option value="4">4</option>
-                                                    </select>
-                                                    <button class="btn btn-dark mt-2 container-fluid rounded-1"
-                                                        type="submit">Delete
-                                                        users</button>
-                                                    <div class="error-message mt-2" id="yearOnlyError">Please enter a
-                                                        valid
-                                                        year.</div>
-                                                </div>
-                                            </form>
-
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="toast-success" class="toast toast-success">Success! Your account has been successfully
-                    deleted.</div>
-                <div id="toast-error" class="toast toast-error">Error! There was a problem deleting your account.
-                </div>
-            </div>
-        </div>
-    </div>
 
     <div class="container mt-4">
         <p class="text-center">
@@ -470,11 +320,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <th>Department</th>
                     <th>Year</th>
                     <th>More details</th>
-                    <!-- Add more columns as needed -->
+                    
                 </tr>
             </thead>
             <tbody>
-                <!-- Data will be inserted here -->
+               
+
             </tbody>
         </table>
     </div>
