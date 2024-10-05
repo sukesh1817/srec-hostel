@@ -676,7 +676,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 $(document).ready(function () {
     $('#searchQueryInput').keyup(function () {
         let query = $(this).val();
-        
+        console.log("hello")
         if (query.length > 0) {
             // Make AJAX request to fetch suggestions
             $.ajax({
