@@ -333,13 +333,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     <div class="container mt-4">
         <table id="myTable" style="display: none;" class="table table-striped">
             <thead>
-                <tr>
+                <tr id="dynamicHeaderRow">
                     <th>Roll Number</th>
                     <th>Name</th>
                     <th>Department</th>
                     <th>Year</th>
                     <th>More details</th>
-
                 </tr>
             </thead>
             <tbody>
@@ -397,6 +396,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                             if (data.error) {
                                 output += `<tr><td colspan="5">Error: ${data.error}</td></tr>`;
                             } else {
+                                $('#dynamicHeaderRow').append(`<th class="dynamic-header">Year: ${year}</th>`);
                                 data.forEach(item => {
                                     output += `<tr>
                                     <td>${item.roll_no}</td>
