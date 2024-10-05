@@ -429,8 +429,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         }
 
                         // Animate table updates
-                        $('#myTable tbody').fadeOut(1000, function () {
-                            $(this).html(output).fadeIn(1000); // Fade in after updating content
+                        $('#myTable tbody').fadeOut(200, function () {
+                            $(this).html(output).fadeIn(200); // Fade in after updating content
                         });
 
                         $('#myTable').toggle(output.length > 0); // Show or hide the table based on output
