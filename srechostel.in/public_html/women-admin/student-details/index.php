@@ -174,32 +174,43 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
         }
     </style>
 
-   <style>
-    .scrollable-dropdown {
-    max-height: 400px; /* Set maximum height for the dropdown */
-    overflow-y: auto;  /* Enable vertical scrolling */
-    overflow-x: hidden; /* Disable horizontal scrolling */
-    border: 1px solid #ccc; /* Optional: border for the dropdown */
-    border-radius: 0.25rem; /* Optional: rounded corners */
-    background-color: white; /* Optional: background color */
-}
+    <style>
+        .scrollable-dropdown {
+            max-height: 400px;
+            /* Set maximum height for the dropdown */
+            overflow-y: auto;
+            /* Enable vertical scrolling */
+            overflow-x: hidden;
+            /* Disable horizontal scrolling */
+            border: 1px solid #ccc;
+            /* Optional: border for the dropdown */
+            border-radius: 0.25rem;
+            /* Optional: rounded corners */
+            background-color: white;
+            /* Optional: background color */
+        }
 
-.dropdown-menu {
-    margin: 0; /* Remove default margins */
-    padding: 0; /* Remove default padding */
-    list-style-type: none; /* Remove default list styling */
-}
+        .dropdown-menu {
+            margin: 0;
+            /* Remove default margins */
+            padding: 0;
+            /* Remove default padding */
+            list-style-type: none;
+            /* Remove default list styling */
+        }
 
-.dropdown-menu li {
-    padding: 10px; /* Padding for each item */
-    cursor: pointer; /* Change cursor to pointer */
-}
+        .dropdown-menu li {
+            padding: 10px;
+            /* Padding for each item */
+            cursor: pointer;
+            /* Change cursor to pointer */
+        }
 
-.dropdown-menu li:hover {
-    background-color: #f1f1f1; /* Change background color on hover */
-}
-
-   </style>
+        .dropdown-menu li:hover {
+            background-color: #f1f1f1;
+            /* Change background color on hover */
+        }
+    </style>
 
 
 
@@ -272,13 +283,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <input type="hidden" name="department" id="departmentValue">
 
                 <div class="dropdown text-center" style="width: 200%; max-width: 400px; margin: auto;">
-    <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
-        aria-label="Search">
-    <ul id="myUL" class="dropdown-menu scrollable-dropdown"
-        style="display: none; position: absolute; width: 100%; z-index: 1000;">
-        <!-- Suggestions will be populated here -->
-    </ul>
-</div>
+                    <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
+                        aria-label="Search">
+                    <ul id="myUL" class="dropdown-menu scrollable-dropdown"
+                        style="display: none; position: absolute; width: 100%; z-index: 1000;">
+                        <!-- Suggestions will be populated here -->
+                    </ul>
+                </div>
 
 
 
@@ -468,7 +479,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         suggestionsList.empty();
 
                         if (Array.isArray(response['data']) && response['data'].length > 0) {
-                            response['data'].forEach(function (student) {
+                            response['data'].forEach(function (student, index) {
                                 let suggestionItem = $(`
                                     <li class="list-group-item d-flex justify-content-between align-items-center px-4">
                                         <div>
@@ -478,9 +489,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                                         </div>
                                         <a href="show-more/?roll_no=${student.roll_no}" class="btn btn-link">Show More</a>
                                     </li>
-                                     <hr>
+                                    
                                 `);
                                 suggestionsList.append(suggestionItem);
+                                if (index < students.length - 1) {
+                                    suggestionsList.append('<hr>');
+                                }
                             });
                         } else {
                         }
