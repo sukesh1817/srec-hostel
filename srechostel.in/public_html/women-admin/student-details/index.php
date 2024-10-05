@@ -228,21 +228,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
         }
 
         #myUL {
-            width: 100%;
-            /* Match the width of the input */
-            max-width: 400px;
-            /* Optional: set a max-width */
-            min-width: 100px;
-            /* Optional: set a min-width */
-            z-index: 1000;
-            /* Ensure it appears above other content */
-        }
+    max-width: 100%; /* Prevent UL from exceeding the screen width */
+    overflow: hidden; /* Prevent overflow of list items */
+}
 
-        /* Optional: Style the dropdown items */
-        .dropdown-item {
-            white-space: nowrap;
-            /* Prevent line breaks in dropdown items */
-        }
+.list-group-item {
+    max-width: 100%; /* Prevent individual items from stretching too wide */
+    white-space: nowrap; /* Prevent text from breaking into multiple lines */
+    overflow: hidden; /* Hide overflow text */
+    text-overflow: ellipsis; /* Show ellipsis for overflowing text */
+}
+
     </style>
 
 
