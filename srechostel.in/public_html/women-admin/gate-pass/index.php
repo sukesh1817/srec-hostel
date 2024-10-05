@@ -241,18 +241,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             background-color: white;
             /* Optional: background color */
         }
-
-        #myTable {
-    transition: opacity 0.3s ease-in-out;
-}
-
-#loader {
-    display: none;
-    text-align: center;
-    font-size: 18px;
-    color: #007bff; /* Bootstrap primary color */
-}
-
     </style>
 
 
@@ -343,24 +331,27 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
 
     <div class="container mt-4">
-    <div class="table-responsive">
-        <table id="myTable" style="display: none;" class="table table-striped table-bordered table-hover">
-            <thead class="thead-light">
-                <tr id="dynamicHeaderRow">
-                    <th>Roll Number</th>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Year</th>
-                </tr>
-            </thead>
-            <tbody>
-                <!-- Dynamic rows will be inserted here -->
-            </tbody>
-        </table>
+        <div class="table-responsive">
+            <table id="myTable" style="display: none;" class="table table-striped table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr id="dynamicHeaderRow">
+                        <th>Roll Number</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Year</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dynamic rows will be inserted here -->
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
-<div id="loader" style="display:none;">Loading...</div>
-
+    <div id="loader" class="d-none text-center mt-3">
+        <div class="spinner-border" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
 
 </body>
 
@@ -390,7 +381,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
             // Only send the request if all fields have been selected
             if (passType && passStatus) {
-                $('#loader').show(); // Show loader before sending request
+                $('#loader').removeClass('d-none'); // Show loader before sending request
 
                 $.ajax({
                     url: domain + '/api/admin/manage_pass_request/get_student_pass/index.php',
@@ -459,7 +450,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         $('#myTable').show();
                     },
                     complete: function () {
-                        $('#loader').hide(); // Hide loader after request completes
+                        $('#loader').addClass('d-none'); // Hide loader after request completes
                     }
                 });
             } else {
@@ -477,6 +468,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
         });
     });
 </script>
+
 
 
 
