@@ -674,7 +674,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
 <script>
 $(document).ready(function () {
-    $('#searchQueryInput').on('input', function () {
+    $('#searchQueryInput').keyup(function () {
         let query = $(this).val();
         
         if (query.length > 0) {
