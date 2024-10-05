@@ -71,10 +71,9 @@ if (isset($_GET['roll_no'])) {
                         <p class="card-text"><strong>Year of Study:</strong> <?php echo htmlspecialchars($student['year_of_study']); ?></p>
                         <p class="card-text"><strong>Tutor Name:</strong> <?php echo htmlspecialchars($student['tutor_name']); ?></p>
                         <p class="card-text"><strong>AC Name:</strong> <?php echo htmlspecialchars($student['ac_name']); ?></p>
-                        
-                        <!-- Display Personal Details -->
-                        <h5 class="mt-4">Personal Details</h5>
                         <hr>
+
+                        <h5 class="mt-4">Personal Details</h5>
                         <?php if ($personal_details): ?>
                             <p class="card-text"><strong>Date of Birth:</strong> <?php echo htmlspecialchars($personal_details['date_of_birth']); ?></p>
                             <p class="card-text"><strong>Email:</strong> <?php echo htmlspecialchars($personal_details['email']); ?></p>
@@ -82,10 +81,9 @@ if (isset($_GET['roll_no'])) {
                         <?php else: ?>
                             <p class="card-text">No personal details found.</p>
                         <?php endif; ?>
-
-                        <!-- Display Guardian Details -->
-                        <h5 class="mt-4">Guardian Details</h5>
                         <hr>
+
+                        <h5 class="mt-4">Guardian Details</h5>
                         <?php if ($guardian_details): ?>
                             <p class="card-text"><strong>Father Name:</strong> <?php echo htmlspecialchars($guardian_details['father_name']); ?></p>
                             <p class="card-text"><strong>Contact Number:</strong> <?php echo htmlspecialchars($guardian_details['father_contact_no']); ?></p>
@@ -101,15 +99,11 @@ if (isset($_GET['roll_no'])) {
         </body>
         </html>
         <?php
-        // Close statements
-        $stmt2->close();
-        $stmt3->close();
+
     } else {
-        // If no student found, display a message
         echo "<div class='container mt-5'><h4>No student found with the provided Roll Number.</h4></div>";
     }
 
-    $stmt->close();
 } else {
     echo "<div class='container mt-5'><h4>Roll Number is not specified.</h4></div>";
 }
