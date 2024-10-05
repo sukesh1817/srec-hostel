@@ -227,23 +227,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             /* Change background color on hover */
         }
 
-        #myUL {
-            max-width: 100%;
-            /* Prevent UL from exceeding the screen width */
-            overflow: hidden;
-            /* Prevent overflow of list items */
-        }
-
-        .list-group-item {
-            max-width: 100%;
-            /* Prevent individual items from stretching too wide */
-            white-space: nowrap;
-            /* Prevent text from breaking into multiple lines */
-            overflow: hidden;
-            /* Hide overflow text */
-            text-overflow: ellipsis;
-            /* Show ellipsis for overflowing text */
-        }
+        
     </style>
 
 
@@ -307,13 +291,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                             </select>
                         </div>
 
-                        <div class="dropdown text-center mb-3">
-                            <input type="text" id="searchQueryInput" class="form-control rounded-1"
-                                placeholder="Search by name, rollno" aria-label="Search">
-                            <ul id="myUL" class="dropdown-menu scrollable-dropdown"
-                                style="display: none; position: absolute; width: 100%; z-index: 1000;">
-                                <!-- Suggestions will be populated here -->
-                            </ul>
+                        <div class="mb-3">
+                            <input type="hidden" name="year" id="yearValue">
+                            <input type="hidden" name="department" id="departmentValue">
+                            <div class="input-group">
+                                <input type="text" id="searchQueryInput" class="form-control"
+                                    placeholder="Search by name, rollno" aria-label="Search" autocomplete="off">
+                                <ul id="myUL" class="list-group dropdown-menu" style="display: none;">
+                                    <!-- Suggestion items will be populated here -->
+                                </ul>
+                            </div>
                         </div>
 
 
