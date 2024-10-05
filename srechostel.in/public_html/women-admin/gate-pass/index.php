@@ -349,7 +349,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     </div>
     <div id="loader" class="d-none text-center mt-3">
         <div class="spinner-border" role="status">
-            <span class="sr-only">Loading...</span>
+            <span class="sr-only"></span>
         </div>
     </div>
 
@@ -429,8 +429,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         }
 
                         // Animate table updates
-                        $('#myTable tbody').fadeOut(300, function () {
-                            $(this).html(output).fadeIn(300); // Fade in after updating content
+                        $('#myTable tbody').fadeOut(1000, function () {
+                            $(this).html(output).fadeIn(1000); // Fade in after updating content
                         });
 
                         $('#myTable').toggle(output.length > 0); // Show or hide the table based on output
