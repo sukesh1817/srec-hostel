@@ -10,7 +10,7 @@ if (isset($_GET['roll_no'])) {
     $conn = new Connection();
     $sqlConn = $conn->returnConn();
 
-    // Prepare the SQL statement
+    // Prepare the SQL statement for student details
     $sql = "SELECT * FROM stud_details WHERE roll_no = ?";
     $stmt = $sqlConn->prepare($sql);
     $stmt->bind_param('i', $roll_no); // Assuming roll_no is an integer
@@ -20,22 +20,33 @@ if (isset($_GET['roll_no'])) {
     // Fetch the student details
     if ($result->num_rows > 0) {
         $student = $result->fetch_assoc();
+
+        // Prepare SQL for additional details
+        $sql2 = "SELECT * FROM stud_personal_details WHERE roll_no = ?";
+        $stmt2 = $sqlConn->prepare($sql2);
+        $stmt2->bind_param('i', $roll_no);
+        $stmt2->execute();
+        $result2 = $stmt2->get_result();
+        $personal_details = $result2->fetch_assoc();
+
+        $sql3 = "SELECT * FROM stud_guardian_details WHERE roll_no = ?";
+        $stmt3 = $sqlConn->prepare($sql3);
+        $stmt3->bind_param('i', $roll_no);
+        $stmt3->execute();
+        $result3 = $stmt3->get_result();
+        $guardian_details = $result3->fetch_assoc();
+
         // Display student details
         ?>
         <!DOCTYPE html>
         <html lang="en">
-
-        <>
+        <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>Student Details</title>
             <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
                 integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-            <?php
-            // included the poppins font.
-            include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
-            ?>
-
+            <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php"; ?>
             <style>
                 .card {
                     border-radius: 8px;
@@ -44,42 +55,53 @@ if (isset($_GET['roll_no'])) {
 
                 .card-text {
                     margin-bottom: 0.5rem;
-                    /* Reduce space between paragraphs */
                 }
             </style>
-            </head>
+        </head>
+        <body>
+            <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php"; ?>
+            <div class="container mt-5">
+                <h2 class="text-center mb-4">Student Details</h2>
+                <div class="card mx-auto" style="max-width: 600px;">
+                    <div class="card-body">
+                        <h5 class="card-title text-center"><?php echo htmlspecialchars($student['name']); ?></h5>
+                        <p class="card-text"><strong>Roll No:</strong> <?php echo htmlspecialchars($student['roll_no']); ?></p>
+                        <p class="card-text"><strong>Department:</strong> <?php echo htmlspecialchars($student['department']); ?></p>
+                        <p class="card-text"><strong>Hostel:</strong> <?php echo htmlspecialchars($student['hostel']); ?></p>
+                        <p class="card-text"><strong>Year of Study:</strong> <?php echo htmlspecialchars($student['year_of_study']); ?></p>
+                        <p class="card-text"><strong>Tutor Name:</strong> <?php echo htmlspecialchars($student['tutor_name']); ?></p>
+                        <p class="card-text"><strong>AC Name:</strong> <?php echo htmlspecialchars($student['ac_name']); ?></p>
+                        
+                        <!-- Display Personal Details -->
+                        <h6 class="mt-4">Personal Details</h6>
+                        <?php if ($personal_details): ?>
+                            <p class="card-text"><strong>Date of Birth:</strong> <?php echo htmlspecialchars($personal_details['date_of_birth']); ?></p>
+                            <p class="card-text"><strong>Email:</strong> <?php echo htmlspecialchars($personal_details['email']); ?></p>
+                            <p class="card-text"><strong>Phone:</strong> <?php echo htmlspecialchars($personal_details['phone_no']); ?></p>
+                        <?php else: ?>
+                            <p class="card-text">No personal details found.</p>
+                        <?php endif; ?>
 
-            <body>
-                <?php
-                // included the navbar.
-                include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
-                ?>
-                <div class="container mt-5">
-                    <h2>Student Details</h2>
-                    <div class="card">
-                        <div class="card-body">
-                            <h5 class="card-title"><?php echo htmlspecialchars($student['name']); ?></h5>
-                            <p class="card-text"><strong>Roll No:</strong> <?php echo htmlspecialchars($student['roll_no']); ?>
-                            </p>
-                            <p class="card-text"><strong>Department:</strong>
-                                <?php echo htmlspecialchars($student['department']); ?></p>
-                            <p class="card-text"><strong>Hostel:</strong> <?php echo htmlspecialchars($student['hostel']); ?>
-                            </p>
-                            <p class="card-text"><strong>Year of Study:</strong>
-                                <?php echo htmlspecialchars($student['year_of_study']); ?></p>
-                            <p class="card-text"><strong>Tutor Name:</strong>
-                                <?php echo htmlspecialchars($student['tutor_name']); ?></p>
-                            <p class="card-text"><strong>AC Name:</strong> <?php echo htmlspecialchars($student['ac_name']); ?>
-                            </p>
-                        </div>
+                        <!-- Display Guardian Details -->
+                        <h6 class="mt-4">Guardian Details</h6>
+                        <?php if ($guardian_details): ?>
+                            <p class="card-text"><strong>Father Name:</strong> <?php echo htmlspecialchars($guardian_details['father_name']); ?></p>
+                            <p class="card-text"><strong>Contact Number:</strong> <?php echo htmlspecialchars($guardian_details['father_contact_no']); ?></p>
+                        <?php else: ?>
+                            <p class="card-text">No guardian details found.</p>
+                        <?php endif; ?>
                     </div>
-                    <a href="/student-details/" class="btn btn-dark btn-lg mt-3">Back</a>
-                    <!-- Link to go back to the previous page -->
                 </div>
-            </body>
-
+                <div class="text-center mt-3">
+                    <a href="/student-details/" class="btn btn-dark btn-lg">Back</a>
+                </div>
+            </div>
+        </body>
         </html>
         <?php
+        // Close statements
+        $stmt2->close();
+        $stmt3->close();
     } else {
         // If no student found, display a message
         echo "<div class='container mt-5'><h4>No student found with the provided Roll Number.</h4></div>";
