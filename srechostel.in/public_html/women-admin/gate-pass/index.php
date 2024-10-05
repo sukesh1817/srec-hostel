@@ -430,6 +430,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                             $('#myTable tbody').html(output);
                             $('#myTable').show();
                         } else if (data.length == 0) {
+                            $('#dynamicHeaderRow').hide()
                             $('#myTable tbody').append(`
                         <tr>
                             <td colspan="5" class="text-center text-danger">No records found.</td>
