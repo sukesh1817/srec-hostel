@@ -437,7 +437,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                 $.ajax({
                     url: domain + '/api/admin/search_student/',  // Replace with your API endpoint
                     type: 'GET',
-                    query: query,
+                    data: query,
                     crossDomain: true,
                     success: function (response) {
                         const suggestionsList = $('#suggestionsList');
