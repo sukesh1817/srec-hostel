@@ -464,18 +464,20 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 <script>
     $(document).ready(function () {
         $('#searchQueryInput').on('keyup', function () {
+            const suggestionsList = $('#myUL');
+            suggestionsList.show()
             let query = $(this).val();
             if (query.length > 0) {
                 <?php //included the orginal domain ?>
                 domain = "<?php echo $domain ?>"
-                // Make AJAX request to fetch suggestions
+                
                 $.ajax({
-                    url: domain + '/api/admin/search_student/',  // Replace with your API endpoint
+                    url: domain + '/api/admin/search_student/',  
                     type: 'GET',
                     data: { query: query },
                     crossDomain: true,
                     success: function (response) {
-                        const suggestionsList = $('#myUL');
+
                         suggestionsList.empty();
 
                         if (Array.isArray(response['data']) && response['data'].length > 0) {
