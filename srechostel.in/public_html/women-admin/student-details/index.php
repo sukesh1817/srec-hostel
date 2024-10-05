@@ -471,6 +471,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <th>Name</th>
                     <th>Department</th>
                     <th>Year</th>
+                    <th>More</th>
                     <!-- Add more columns as needed -->
                 </tr>
             </thead>
@@ -590,6 +591,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                             <td>${item.name}</td>
                             <td>${item.department}</td>
                             <td>${item.year_of_study}</td>
+                            <td><a class="btn btn-dark btn-sm" href="show-more/?roll_no=${item.roll_no}">Show More</a></td>
                             <!-- Add more columns as needed -->
                         </tr>
                     `);
