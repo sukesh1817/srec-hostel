@@ -260,7 +260,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <input type="hidden" name="year" id="yearValue">
                 <input type="hidden" name="department" id="departmentValue">
 
-                <div class="dropdown">
+                <div class="dropdown container-fluid">
                     <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
                         aria-label="Search">
                     <ul id="myUL">
