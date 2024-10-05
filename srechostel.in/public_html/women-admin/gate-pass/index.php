@@ -338,7 +338,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <th>Name</th>
                     <th>Department</th>
                     <th>Year</th>
-                    <th>More details</th>
                 </tr>
             </thead>
             <tbody>
@@ -396,36 +395,40 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                             if (data.error) {
                                 output += `<tr><td colspan="5">Error: ${data.error}</td></tr>`;
                             } else {
-                                $('#dynamicHeaderRow').append(`<th class="dynamic-header">Year: ${year}</th>`);
+                                $('#dynamicHeaderRow').find('.dynamic-header').remove();
+                                $('#dynamicHeaderRow').append(`<th class="dynamic-header">accept</th>`);
+                                $('#dynamicHeaderRow').append(`<th class="dynamic-header">decline</th>`);
                                 data.forEach(item => {
                                     output += `<tr>
                                     <td>${item.roll_no}</td>
                                     <td>${item.stud_name}</td>
                                     <td>${item.department}</td>
                                     <td>${item.year_of_study}</td>
-                                    <td><button class="btn btn-accept btn-sm">Accept</button></td>
-                                    <td><button class="btn btn-decline">Decline</button></td>
+                                    <td><button class="btn btn-success btn-sm">Accept</button></td>
+                                    <td><button class="btn btn-danger">Decline</button></td>
                                 </tr>`;
                                 });
                             }
                             $('#myTable tbody').html(output);
                             $('#myTable').show();
                         } else {
+                            $('#dynamicHeaderRow').find('.dynamic-header').remove();
+                            $('#dynamicHeaderRow').append(`<th class="dynamic-header">Status</th>`);
                             if (data.error) {
-                            output += `<tr><td colspan="5">Error: ${data.error}</td></tr>`;
-                        } else {
-                            data.forEach(item => {
-                                output += `<tr>
+                                output += `<tr><td colspan="5">Error: ${data.error}</td></tr>`;
+                            } else {
+                                data.forEach(item => {
+                                    output += `<tr>
                                     <td>${item.roll_no}</td>
                                     <td>${item.stud_name}</td>
                                     <td>${item.department}</td>
                                     <td>${item.year_of_study}</td>
                                     <td><button class="btn btn-success btn-sm">${item.accepted_by}</button></td>
                                 </tr>`;
-                            });
-                        }
-                        $('#myTable tbody').html(output);
-                        $('#myTable').show();
+                                });
+                            }
+                            $('#myTable tbody').html(output);
+                            $('#myTable').show();
                         }
 
                     },
