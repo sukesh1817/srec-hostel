@@ -427,7 +427,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 ?>
 <script>
     $(document).ready(function () {
-        $('#searchQueryInput').keyup(function () {
+        $('#searchQueryInput').on('keyup',function () {
             let query = $(this).val();
             console.log("hello")
             if (query.length > 0) {
