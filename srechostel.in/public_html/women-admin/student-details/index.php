@@ -297,27 +297,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         <input type="hidden" name="department" id="departmentValue">
                         <div class="input-group">
                             <input type="text" id="searchQueryInput" class="form-control" placeholder="Search by name, rollno" aria-label="Search">
-                            <button class="btn btn-dark" type="submit">Search</button>
+                            <ul id="myUL" class="dropdown-menu scrollable-dropdown"
+                            style="display: none; position: absolute; width: 100%; z-index: 1000;">
+                        </ul>
                         </div>
                     </div>
                 </form>
 
-                <div class="card d-inline-flex">
-                    <div class="card-body d-flex align-items-center justify-content-between">
-                        <div class="d-flex align-items-center me-3">
-                            <span id="selectedYear" class="me-2">Year: <strong>NULL</strong></span>
-                            <button type="button" id="removeYear" class="btn btn-danger btn-sm" title="Remove Year">
-                                <i class="bi bi-x-circle"></i>
-                            </button>
-                        </div>
-                        <div class="d-flex align-items-center">
-                            <span id="selectedDepartment" class="me-2">Department: <strong>NULL</strong></span>
-                            <button type="button" id="removeDepartment" class="btn btn-danger btn-sm" title="Remove Department">
-                                <i class="bi bi-x-circle"></i>
-                            </button>
-                        </div>
-                    </div>
-                </div>
+               
             </div>
         </div>
     </div>
