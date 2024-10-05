@@ -257,7 +257,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <button class="btn btn-dark" type="submit">Search</button>
                 </div>
 
-                <div class="card p-man d-inline-flex">
+                <div class="card d-inline-flex">
                     <div class="card-body p-man d-flex align-items-center">
                         <p class="card-text mb-0 p-man">
                             <span id="selectedYear">Year - NULL</span>
@@ -273,6 +273,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         </p>
                     </div>
                 </div>
+                <button type="submit" class="btn btn-outline-dark mt-3" id="submitButton" disabled>Search</button>
             </form>
         </div>
     </div>
