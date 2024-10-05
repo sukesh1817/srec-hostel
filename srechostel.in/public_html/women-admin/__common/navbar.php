@@ -19,10 +19,10 @@
       <div class="offcanvas-body" bis_skin_checked="1">
         <ul class="navbar-nav flex-grow-1 justify-content-between">
           <li class="nav-item"><a
-              class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "stud-details")) {
+              class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "student-details")) {
                 echo "active";
               } ?>"
-              href="/stud-details/">Student records</a></li>
+              href="/student-details/">Student records</a></li>
           <li class="nav-item"><a
               class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "token-records")) {
                 echo "active";
