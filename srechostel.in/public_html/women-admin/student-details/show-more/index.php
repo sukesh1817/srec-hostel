@@ -40,6 +40,7 @@ if (isset($_GET['roll_no'])) {
         ?>
         <!DOCTYPE html>
         <html lang="en">
+
         <head>
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -58,6 +59,7 @@ if (isset($_GET['roll_no'])) {
                 }
             </style>
         </head>
+
         <body>
             <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php"; ?>
             <div class="container mt-5">
@@ -66,18 +68,27 @@ if (isset($_GET['roll_no'])) {
                     <div class="card-body">
                         <h4 class="card-title text-center"><?php echo htmlspecialchars($student['name']); ?></h4>
                         <p class="card-text"><strong>Roll No:</strong> <?php echo htmlspecialchars($student['roll_no']); ?></p>
-                        <p class="card-text"><strong>Department:</strong> <?php echo htmlspecialchars($student['department']); ?></p>
+                        <p class="card-text"><strong>Department:</strong>
+                            <?php echo htmlspecialchars($student['department']); ?></p>
                         <p class="card-text"><strong>Hostel:</strong> <?php echo htmlspecialchars($student['hostel']); ?></p>
-                        <p class="card-text"><strong>Year of Study:</strong> <?php echo htmlspecialchars($student['year_of_study']); ?></p>
-                        <p class="card-text"><strong>Tutor Name:</strong> <?php echo htmlspecialchars($student['tutor_name']); ?></p>
+                        <p class="card-text"><strong>Year of Study:</strong>
+                            <?php echo htmlspecialchars($student['year_of_study']); ?></p>
+                        <p class="card-text"><strong>Tutor Name:</strong>
+                            <?php echo htmlspecialchars($student['tutor_name']); ?></p>
                         <p class="card-text"><strong>AC Name:</strong> <?php echo htmlspecialchars($student['ac_name']); ?></p>
                         <hr>
 
                         <h5 class="mt-4">Personal Details</h5>
                         <?php if ($personal_details): ?>
-                            <p class="card-text"><strong>Date of Birth:</strong> <?php echo htmlspecialchars($personal_details['date_of_birth']); ?></p>
-                            <p class="card-text"><strong>Email:</strong> <?php echo htmlspecialchars($personal_details['email']); ?></p>
-                            <p class="card-text"><strong>Phone:</strong> <?php echo htmlspecialchars($personal_details['phone_no']); ?></p>
+                            <p class="card-text"><strong>Date of Birth:</strong>
+                                <?php echo htmlspecialchars($personal_details['date_of_birth']); ?></p>
+                            <p class="card-text"><strong>Email:</strong> <?php echo htmlspecialchars($personal_details['email']); ?>
+                            </p>
+                            <p class="card-text"><strong>Phone:</strong>
+                                <?php echo htmlspecialchars($personal_details['phone_no']); ?></p>
+                            <p class="card-text"><strong>Address:</strong>
+                                <?php echo htmlspecialchars($personal_details['stud_address']); ?>
+                            </p>
                         <?php else: ?>
                             <p class="card-text">No personal details found.</p>
                         <?php endif; ?>
@@ -85,18 +96,21 @@ if (isset($_GET['roll_no'])) {
 
                         <h5 class="mt-4">Guardian Details</h5>
                         <?php if ($guardian_details): ?>
-                            <p class="card-text"><strong>Father Name:</strong> <?php echo htmlspecialchars($guardian_details['father_name']); ?></p>
-                            <p class="card-text"><strong>Contact Number:</strong> <?php echo htmlspecialchars($guardian_details['father_contact_no']); ?></p>
+                            <p class="card-text"><strong>Father Name:</strong>
+                                <?php echo htmlspecialchars($guardian_details['father_name']); ?></p>
+                            <p class="card-text"><strong>Contact Number:</strong>
+                                <?php echo htmlspecialchars($guardian_details['father_contact_no']); ?></p>
                         <?php else: ?>
                             <p class="card-text">No guardian details found.</p>
                         <?php endif; ?>
                     </div>
                 </div>
                 <div class="text-center mt-3">
-                    <a href="/student-details/" class="btn btn-dark btn-lg">Back</a>
+                    <a href="/student-details/" class="btn btn-dark btn-lg rounded-1">Back</a>
                 </div>
             </div>
         </body>
+
         </html>
         <?php
 
