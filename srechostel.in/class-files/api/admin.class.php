@@ -1,6 +1,6 @@
 <?php
 // this file gets the connection from the database
-include_once($_SERVER['DOCUMENT_ROOT']."/.."."/class-files/mainconn.class.php");
+include_once($_SERVER['DOCUMENT_ROOT'] . "/.." . "/class-files/mainconn.class.php");
 
 class Admin
 {
@@ -133,46 +133,49 @@ class Admin
         }
     }
 
-    public function search_students_group($year = null, $department = null) {
-        // Create a new connection object
-        $conn = new MainConnection();
-        $sqlConn = $conn->returnConn();
-    
-        // Initialize an empty array to store search conditions
-        $conditions = [];
-    
-        // Add year condition if provided
-        if (!empty($year)) {
-            $conditions[] = "year_of_study = $year";
-        }
-    
-        // Add department condition if provided
-        if (!empty($department)) {
-            $conditions[] = "department = '$department'";
-        }
-    
-        // Form the WHERE clause if there are any conditions
-        $whereClause = !empty($conditions) ? 'WHERE ' . implode(' AND ', $conditions) : '';
-    
-        // Define the SQL query
-        $sqlQuery = "SELECT * FROM stud_details $whereClause";
-    
-        // Execute the query and fetch results
-        $result = $sqlConn->query($sqlQuery);
-    
-        // Check if results are found
-        if ($result->num_rows > 0) {
-            // Fetch all matching rows and return them
-            $rows = [];
-            while ($row = $result->fetch_assoc()) {
-                $rows[] = $row;
-            }
-            return $rows;
-        } else {
-            // No results found, return an empty array
-            return [];
+    public function search_students_group($year = null, $department = null)
+{
+    // Create a new connection object
+    $conn = new MainConnection();
+    $sqlConn = $conn->returnConn();
+
+    // Initialize an empty array to store search conditions
+    $conditions = [];
+
+    // Add year condition if provided
+    if (!empty($year)) {
+        $conditions[] = "year_of_study = $year";
+    }
+
+    // Add department condition if provided
+    if (!empty($department)) {
+        $conditions[] = "department = '$department'";
+    }
+
+    // Form the WHERE clause if there are any conditions
+    $whereClause = !empty($conditions) ? 'WHERE ' . implode(' AND ', $conditions) : '';
+
+    // Define the SQL query
+    $sqlQuery = "SELECT * FROM stud_details $whereClause";
+
+    // Execute the query and fetch results
+    $result = $sqlConn->query($sqlQuery);
+
+    // Prepare the response array
+    $response = [];
+
+    // Check if results are found
+    if ($result->num_rows > 0) {
+        // Fetch all matching rows and add them to the response array
+        while ($row = $result->fetch_assoc()) {
+            $response[] = $row;
         }
     }
+
+    // Return the JSON response as a string
+    return json_encode($response);
+}
+
     public function search_students_individual($query = '')
     {
         # Getting connection from MySQL
@@ -180,14 +183,14 @@ class Admin
         $sqlConn = $conn->returnConn();
         $sql = "SELECT * FROM stud_details WHERE 1=1";
         $params = [];
-    
+
         if (!empty($query)) {
             // Check if the query is numeric (assuming roll number is numeric)
             if (is_numeric($query)) {
                 // Use LIKE to find roll numbers starting with the given query
                 $sql .= " AND roll_no LIKE ?";
                 $params[] = $sqlConn->real_escape_string($query) . "%"; // Append % for partial matching
-            } 
+            }
             // Check if the query is in the list of departments
             else if (in_array(strtoupper($query), ['AI&DS', 'IT', 'ECE', 'EEE', 'MECH', 'BME', 'CIVIL', 'AERO', 'CSE', 'EIE', 'MBA'])) {
                 $sql .= " AND deptment = ?";
@@ -199,26 +202,26 @@ class Admin
                 $params[] = "%" . $sqlConn->real_escape_string($query) . "%";
             }
         }
-    
+
         $stmt = $sqlConn->prepare($sql);
-    
+
         if ($params) {
             $types = str_repeat('s', count($params));
             $stmt->bind_param($types, ...$params);
         }
-    
+
         $stmt->execute();
         $result = $stmt->get_result();
         $students = [];
-    
+
         while ($row = $result->fetch_assoc()) {
             $students[] = $row;
         }
-    
+
         $stmt->close();
-    
+
         return ['data' => $students];
     }
-    
-    
+
+
 }
