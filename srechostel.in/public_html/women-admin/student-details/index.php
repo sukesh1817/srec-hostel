@@ -524,7 +524,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                                     <small>Department: ${student.department}</small><br>
                                     <small>Roll No: ${student.roll_no}</small>
                                 </div>
-                                <a href="show-more/?roll_no=${student.roll_no}" class="btn btn-link">Show More</a>
+                                <a class="btn btn-dark btn-sm" href="show-more/?roll_no=${student.roll_no}">Show More</a>
                             </li>
                         `);
 
@@ -532,9 +532,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                             suggestionsList.append(suggestionItem);
 
                             // Append <hr> for all except the last item
-                            if (index < students.length - 1) {
-                                suggestionsList.append('<hr>');
-                            }
+                            // if (index < students.length - 1) {
+                            //     suggestionsList.append('<hr>');
+                            // }
                         });
 
                         // Show dropdown if there are suggestions
