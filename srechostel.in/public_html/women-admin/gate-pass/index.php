@@ -375,7 +375,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             const department = $('#departmentSelect').val();
             const year = $('#yearSelect').val();
 
-            domain = "<?php echo $domain ?>"
+            const domain = "<?php echo $domain ?>"
 
             // Only send the request if all fields have been selected
             if (passType && passStatus && department && year) {
