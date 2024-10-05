@@ -1,0 +1,6 @@
+User-agent: *
+Disallow: /admin/
+Disallow: /temp/
+Disallow: /private/
+Allow: /public/
+Sitemap: https://www.srechostel.in/sitemap.xml
