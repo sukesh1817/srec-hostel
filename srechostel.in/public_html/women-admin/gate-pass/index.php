@@ -292,10 +292,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
 
                         <div class="mb-3">
-                            <select class="form-select rounded-1" id="passStatus" name="passStatus" aria-label="Select pass type">
+                            <select class="form-select rounded-1" id="passStatus" name="passStatus" aria-label="Select pass status">
                                 <option selected disabled value="NULL">Choose status of pass</option>
                                 <option value="1">Accepted</option>
                                 <option value="0">Pending</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <select class="form-select rounded-1" id="passType" name="passType" aria-label="Select pass type">
+                                <option selected disabled value="NULL">Choose type of pass</option>
+                                <option value="1">Out pass</option>
+                                <option value="2">General home pass</option>
+                                <option value="3">Working day pass</option>
                             </select>
                         </div>
 
