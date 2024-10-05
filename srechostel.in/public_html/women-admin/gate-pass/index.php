@@ -378,7 +378,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             const domain = "<?php echo $domain ?>"
 
             // Only send the request if all fields have been selected
-            if (passType && passStatus && department && year) {
+            if (passType && passStatus) {
                 // Prepare the AJAX request
                 $.ajax({
                     url: domain+'/api/admin/manage_pass_request/get_student_pass/index.php', // Replace with the actual path to your PHP file
