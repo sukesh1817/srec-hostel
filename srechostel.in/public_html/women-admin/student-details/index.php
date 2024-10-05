@@ -246,7 +246,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <input type="hidden" name="department" id="departmentValue">
 
                 <div class="input-group mb-3">
-                    <input type="text" class="form-control" placeholder="Search by name, roll number, etc."
+                    <input id="searchQueryInput" type="text" class="form-control" placeholder="Search by name, roll number, etc."
                         aria-label="Search" aria-describedby="basic-addon2" name="searchQuery">
                     <button class="btn btn-dark" type="submit">Search</button>
                     <div class="dropdown d-none" id="suggestionsDropdown">
