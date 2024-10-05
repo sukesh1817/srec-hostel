@@ -448,7 +448,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
     <div class="container mt-4">
     <button id="downloadButton" class="btn btn-primary mt-3">Download as XLSX</button>
-        <table id="resultsTable" style="display: none;" class="table table-striped">
+        <table id="myTable" style="display: none;" class="table table-striped">
             <thead>
                 <tr>
                     <th>Roll Number</th>
@@ -546,7 +546,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 <script>
     $(document).ready(function () {
         $('#departmentSelect').change(function () {
-            $("#resultsTable").show()
+            $("#myTable").show()
             <?php //included the orginal domain ?>
             domain = "<?php echo $domain ?>"
             const selectedDepartment = $(this).val(); // Get selected department value
@@ -557,7 +557,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                 type: 'POST',
                 data: { department: selectedDepartment },
                 success: function (data) {
-                    $('#resultsTable tbody').empty();
+                    $('#myTable tbody').empty();
                     console.log(data)
                     // Check if data is returned
                     if (data.length > 0) {
@@ -593,14 +593,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
 <script>
     document.getElementById("downloadButton").addEventListener("click", function () {
-        // Get the <ul> element and its items
-        var ul = document.getElementById("resultsTable");
+        // Get the table and its rows
+        var table = document.getElementById("myTable"); // Replace with your table ID
         var data = [];
 
-        // Iterate through the <li> elements and get their text content
-        for (var i = 0; i < ul.children.length; i++) {
-            var li = ul.children[i];
-            data.push([li.textContent.trim()]); // Add the text to the data array
+        // Iterate through the rows of the table
+        for (var i = 0; i < table.rows.length; i++) {
+            var row = [];
+            for (var j = 0; j < table.rows[i].cells.length; j++) {
+                row.push(table.rows[i].cells[j].innerText.trim()); // Get text content of each cell
+            }
+            data.push(row); // Add the row to the data array
         }
 
         // Create a new workbook and a worksheet
