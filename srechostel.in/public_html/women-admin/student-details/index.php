@@ -447,6 +447,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     </div>
 
     <div class="container mt-4">
+    <button id="downloadButton" class="btn btn-primary mt-3">Download as XLSX</button>
         <table id="resultsTable" style="display: none;" class="table table-striped">
             <thead>
                 <tr>
@@ -464,6 +465,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     </div>
 
 </body>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -587,4 +590,28 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
     });
 </script>
 
+
+<script>
+    document.getElementById("downloadButton").addEventListener("click", function () {
+        // Get the <ul> element and its items
+        var ul = document.getElementById("resultsTable");
+        var data = [];
+
+        // Iterate through the <li> elements and get their text content
+        for (var i = 0; i < ul.children.length; i++) {
+            var li = ul.children[i];
+            data.push([li.textContent.trim()]); // Add the text to the data array
+        }
+
+        // Create a new workbook and a worksheet
+        var wb = XLSX.utils.book_new();
+        var ws = XLSX.utils.aoa_to_sheet(data);
+
+        // Append the worksheet to the workbook
+        XLSX.utils.book_append_sheet(wb, ws, "Students");
+
+        // Generate XLSX file and trigger download
+        XLSX.writeFile(wb, "students_data.xlsx");
+    });
+</script>
 </html>

@@ -13,16 +13,12 @@ if (isset($_POST['year']) || isset($_POST['department'])) {
     $department = $_POST['department'] ?? null;
     $students = $admin->search_students_group($year, $department);
     $students = json_decode($students, true);
-
-  
-    // Set the content type to JSON and return the response
     echo json_encode($students);
+} else {
+    $query = isset($_GET['query']) ? $_GET['query'] : '';
+    $response = $admin->search_students_individual($query);
+    echo json_encode($response);
 }
 
 
-// $query = isset($_GET['query']) ? $_GET['query'] : '';
 
-
-// $response = $admin->search_students_individual($query);
-
-// echo json_encode($response);
