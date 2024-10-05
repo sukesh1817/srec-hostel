@@ -55,7 +55,6 @@ if (isset($_GET['roll_no'])) {
     }
 
     $stmt->close();
-    $sqlConn->close();
 } else {
     echo "<div class='container mt-5'><h4>Roll Number is not specified.</h4></div>";
 }
