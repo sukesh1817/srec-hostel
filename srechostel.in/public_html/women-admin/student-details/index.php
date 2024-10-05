@@ -155,7 +155,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
         }
 
 
-      
+
 
         .error-message {
             color: #ff6b6b;
@@ -176,37 +176,51 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
     <style>
         .dropdown {
-    position: relative; /* Required for absolute positioning of the list */
-}
+            position: relative;
+            /* Required for absolute positioning of the list */
+        }
 
-#searchQueryInput {
-    width: 100%; /* Takes the full width of the container */
-    max-width: 400px; /* Maximum width */
-}
+        #searchQueryInput {
+            width: 100%;
+            /* Takes the full width of the container */
+            max-width: 400px;
+            /* Maximum width */
+        }
 
-#myUL {
-    display: none; /* Hide initially */
-    position: absolute; /* Position it below the input */
-    background-color: white; /* Background for the dropdown */
-    border: 1px solid #ccc; /* Optional border */
-    border-radius: 4px; /* Optional rounded corners */
-    margin-top: 2px; /* Space between input and dropdown */
-    width: 100%; /* Matches the width of the input */
-    z-index: 1000; /* Ensures it appears on top */
-}
+        #myUL {
+            display: none;
+            /* Hide initially */
+            position: absolute;
+            /* Position it below the input */
+            background-color: white;
+            /* Background for the dropdown */
+            border: 1px solid #ccc;
+            /* Optional border */
+            border-radius: 4px;
+            /* Optional rounded corners */
+            margin-top: 2px;
+            /* Space between input and dropdown */
+            width: 100%;
+            /* Matches the width of the input */
+            z-index: 1000;
+            /* Ensures it appears on top */
+        }
 
-#myUL li a {
-    display: block; /* Makes each item a block */
-    padding: 10px; /* Padding for items */
-    text-decoration: none; /* Remove underline */
-    color: black; /* Text color */
-}
+        #myUL li a {
+            display: block;
+            /* Makes each item a block */
+            padding: 10px;
+            /* Padding for items */
+            text-decoration: none;
+            /* Remove underline */
+            color: black;
+            /* Text color */
+        }
 
-#myUL li a:hover {
-    background-color: #f1f1f1; /* Highlight on hover */
-}
-
-
+        #myUL li a:hover {
+            background-color: #f1f1f1;
+            /* Highlight on hover */
+        }
     </style>
 
 
@@ -282,7 +296,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <div class="dropdown text-center" style="width: 200%; max-width: 400px; margin: auto;">
                     <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
                         aria-label="Search">
-                    <ul  id="myUL" class="list-unstyled"
+                    <ul id="myUL" class="list-unstyled"
                         style="display:none; position: absolute; width: 100%; z-index: 1000;">
                         <li><a href="#">Adele</a></li>
                         <li><a href="#">Agnes</a></li>
@@ -470,9 +484,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             if (query.length > 0) {
                 <?php //included the orginal domain ?>
                 domain = "<?php echo $domain ?>"
-                
+
                 $.ajax({
-                    url: domain + '/api/admin/search_student/',  
+                    url: domain + '/api/admin/search_student/',
                     type: 'GET',
                     data: { query: query },
                     crossDomain: true,
@@ -482,7 +496,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
                         if (Array.isArray(response['data']) && response['data'].length > 0) {
                             response['data'].forEach(function (student) {
-                                let suggestionItem = $('<li>').text(`${student.name} - Roll No: ${student.roll_no} - Dept: ${student.department}`)  
+                                let suggestionItem = $(`
+                                    <li class="list-group-item d-flex justify-content-between align-items-center">
+                                        <div>
+                                            <strong>${student.name}</strong><br>
+                                            <small>Department: ${student.department}</small><br>
+                                            <small>Roll No: ${student.roll_no}</small>
+                                        </div>
+                                        <a href="show-more/?roll_no=${student.roll_no}" class="btn btn-link">Show More</a>
+                                    </li>
+                                `);
                                 suggestionsList.append(suggestionItem);
                             });
                         } else {
