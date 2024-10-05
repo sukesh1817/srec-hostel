@@ -390,6 +390,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         let output = '';
 
                         if (data.error) {
+                            // Handle server-side error message
                             output += `<tr><td colspan="5" class="text-danger text-center">Error: ${data.error}</td></tr>`;
                         } else if (data.length > 0) {
                             $('#dynamicHeaderRow').find('.dynamic-header').remove();
@@ -421,13 +422,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                             output += `<tr><td colspan="5" class="text-center text-danger">No records found.</td></tr>`;
                         }
 
-                        $('#myTable tbody').fadeOut(300, function () {
-                            $(this).html(output).fadeIn(300); // Animate fading out, updating content, and fading back in
-                        });
-
+                        $('#myTable tbody').html(output);
                         $('#myTable').toggle(output.length > 0); // Show or hide the table based on output
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
+                        // Enhanced error handling
                         let errorMessage;
                         if (jqXHR.status === 0) {
                             errorMessage = 'Network error: Please check your internet connection.';
@@ -444,9 +443,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                 });
             } else {
                 // Clear table if any field is not selected
-                $('#myTable tbody').fadeOut(300, function () {
-                    $(this).html('').fadeIn(300); // Fade out before clearing and fade back in
-                });
+                $('#myTable tbody').html('');
                 $('#myTable').hide();
             }
         }
@@ -457,7 +454,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
         });
     });
 </script>
-
 
 
 
