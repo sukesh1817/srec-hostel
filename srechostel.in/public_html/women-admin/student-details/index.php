@@ -260,21 +260,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <input type="hidden" name="year" id="yearValue">
                 <input type="hidden" name="department" id="departmentValue">
 
-                <div style="width: 200%" class="dropdown">
+                <div class="dropdown text-center" style="width: 100%; max-width: 400px; margin: auto;">
                     <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
                         aria-label="Search">
-                    <ul id="myUL">
+                    <ul id="myUL" class="list-unstyled"
+                        style="display: none; position: absolute; width: 100%; z-index: 1000;">
                         <li><a href="#">Adele</a></li>
                         <li><a href="#">Agnes</a></li>
-
                         <li><a href="#">Billy</a></li>
                         <li><a href="#">Bob</a></li>
-
                         <li><a href="#">Calvin</a></li>
                         <li><a href="#">Christina</a></li>
                         <li><a href="#">Cindy</a></li>
                     </ul>
                 </div>
+
 
 
                 <!-- <div class="card d-inline-flex">
