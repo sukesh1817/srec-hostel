@@ -224,6 +224,10 @@ class Admin
     }
 
     function getPassData($admin, $pass_type, $pass_status, $department = null, $year = null) {
+
+        $conn = new MainConnection();
+        $sqlConn = $conn->returnConn();
+
         $sql = "";
         $conditions = [];
         $params = [];
@@ -270,7 +274,7 @@ class Admin
         }
     
         // Prepare the statement
-        $stmt = $admin->prepare($sql);
+        $stmt = $sqlConn->prepare($sql);
         if ($stmt === false) {
             return ['error' => 'Failed to prepare statement'];
         }
