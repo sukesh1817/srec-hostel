@@ -104,6 +104,22 @@ if (isset($_GET['roll_no'])) {
                                 <?php echo htmlspecialchars($guardian_details['mother_name']); ?></p>
                             <p class="card-text"><strong>Father Number:</strong>
                                 <?php echo htmlspecialchars($guardian_details['father_contact_no']); ?></p>
+
+                            <?php
+                            if ($guardian_details['gurdian_name'] != null) {
+                                ?>
+                                <p class="card-text"><strong>Local gurdian name:</strong>
+                                    <?php echo htmlspecialchars($guardian_details['gurdian_name']); ?></p>
+                                <?php
+                                if ($guardian_details['gurdian_contact_no'] != 0) {
+                                    ?>
+                                    <p class="card-text"><strong>Local gurdian number:</strong>
+                                        <?php echo htmlspecialchars($guardian_details['gurdian_contact_no']); ?></p>
+                                    <?php
+
+                                }
+                            }
+                            ?>
                         <?php else: ?>
                             <p class="card-text">No guardian details found.</p>
                         <?php endif; ?>
