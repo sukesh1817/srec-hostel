@@ -297,7 +297,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                             <div class="input-group">
                                 <input type="text" id="searchQueryInput" class="form-control"
                                     placeholder="Search by name, rollno" aria-label="Search">
-                                <ul id="myUL" class="dropdown-menu scrollable-dropdown"
+                                <ul id="myUL" class="dropdown-menu scrollable-dropdown mt-4"
                                     style="display: none; position: absolute; width: 100%; z-index: 1000;">
                                 </ul>
                             </div>
