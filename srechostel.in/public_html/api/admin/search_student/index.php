@@ -8,20 +8,20 @@ include_once $_SERVER["DOCUMENT_ROOT"] . '/..' . "/class-files/api/admin.class.p
 
 $admin = new Admin();
 
-// if (isset($_POST['year']) || isset($_POST['department'])) {
-//     $year = $_POST['year'] ?? null;
-//     $department = $_POST['department'] ?? null;
+if (isset($_POST['year']) || isset($_POST['department'])) {
+    $year = $_POST['year'] ?? null;
+    $department = $_POST['department'] ?? null;
 
-//     $students = $admin->search_students_group($year, $department);
+    $students = $admin->search_students_group($year, $department);
 
-//     if (!empty($students)) {
-//         foreach ($students as $student) {
-//             echo "<p>" . $student['name'] . " - " . $student['department'] . " - Year " . $student['year_of_study'] . "</p>";
-//         }
-//     } else {
-//         echo "<p class='alert alert-warning'>No records found.</p>";
-//     }
-// }
+    if (!empty($students)) {
+        foreach ($students as $student) {
+            echo "<p>" . $student['name'] . " - " . $student['department'] . " - Year " . $student['year_of_study'] . "</p>";
+        }
+    } else {
+        echo "<p class='alert alert-warning'>No records found.</p>";
+    }
+}
 
 
 $query = isset($_GET['query']) ? $_GET['query'] : '';

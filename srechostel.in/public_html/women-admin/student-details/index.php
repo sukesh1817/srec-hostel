@@ -257,58 +257,60 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     </div>
 
     <div class="bg-light-subtle py-4">
-    <div class="container mt-2 text-center">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-8">
-                <form id="search-form" action="/student-details/" method="post" class="mb-4">
-                    <div class="mb-3">
-                        <label for="yearSelect" class="form-label">Select Year</label>
-                        <select class="form-select" id="yearSelect" name="year" aria-label="Select Year">
-                            <option selected disabled>Choose Year</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <label for="departmentSelect" class="form-label text-start">Select Department</label>
-                        <select class="form-select" id="departmentSelect" name="department" aria-label="Select Department">
-                            <option selected disabled>Choose Department</option>
-                            <option value="B.Tech AIDS">B.Tech AIDS</option>
-                            <option value="B.Tech IT">B.Tech IT</option>
-                            <option value="B.E ECE">B.E ECE</option>
-                            <option value="B.E EEE">B.E EEE</option>
-                            <option value="B.E MECH">B.E MECH</option>
-                            <option value="B.E BME">B.E BME</option>
-                            <option value="M.Tech CSE">M.Tech CSE</option>
-                            <option value="B.E CIVIL">B.E CIVIL</option>
-                            <option value="B.E AERO">B.E AERO</option>
-                            <option value="B.E RA">B.E RA</option>
-                            <option value="B.E CSE">B.E CSE</option>
-                            <option value="B.E EIE">B.E EIE</option>
-                            <option value="B.E MBA">B.E MBA</option>
-                        </select>
-                    </div>
-
-                    <div class="mb-3">
-                        <input type="hidden" name="year" id="yearValue">
-                        <input type="hidden" name="department" id="departmentValue">
-                        <div class="input-group">
-                            <input type="text" id="searchQueryInput" class="form-control" placeholder="Search by name, rollno" aria-label="Search">
-                            <ul id="myUL" class="dropdown-menu scrollable-dropdown"
-                            style="display: none; position: absolute; width: 100%; z-index: 1000;">
-                        </ul>
+        <div class="container mt-2 text-center">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8">
+                    <form id="search-form" action="/student-details/" method="post" class="mb-4">
+                        <div class="mb-3">
+                            <label for="yearSelect" class="form-label">Select Year</label>
+                            <select class="form-select" id="yearSelect" name="year" aria-label="Select Year">
+                                <option selected disabled>Choose Year</option>
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="4">4</option>
+                            </select>
                         </div>
-                    </div>
-                </form>
 
-               
+                        <div class="mb-3">
+                            <label for="departmentSelect" class="form-label text-start">Select Department</label>
+                            <select class="form-select" id="departmentSelect" name="department"
+                                aria-label="Select Department">
+                                <option selected disabled>Choose Department</option>
+                                <option value="B.Tech AIDS">B.Tech AIDS</option>
+                                <option value="B.Tech IT">B.Tech IT</option>
+                                <option value="B.E ECE">B.E ECE</option>
+                                <option value="B.E EEE">B.E EEE</option>
+                                <option value="B.E MECH">B.E MECH</option>
+                                <option value="B.E BME">B.E BME</option>
+                                <option value="M.Tech CSE">M.Tech CSE</option>
+                                <option value="B.E CIVIL">B.E CIVIL</option>
+                                <option value="B.E AERO">B.E AERO</option>
+                                <option value="B.E RA">B.E RA</option>
+                                <option value="B.E CSE">B.E CSE</option>
+                                <option value="B.E EIE">B.E EIE</option>
+                                <option value="B.E MBA">B.E MBA</option>
+                            </select>
+                        </div>
+
+                        <div class="mb-3">
+                            <input type="hidden" name="year" id="yearValue">
+                            <input type="hidden" name="department" id="departmentValue">
+                            <div class="input-group">
+                                <input type="text" id="searchQueryInput" class="form-control"
+                                    placeholder="Search by name, rollno" aria-label="Search">
+                                <ul id="myUL" class="dropdown-menu scrollable-dropdown"
+                                    style="display: none; position: absolute; width: 100%; z-index: 1000;">
+                                </ul>
+                            </div>
+                        </div>
+                    </form>
+
+
+                </div>
             </div>
         </div>
     </div>
-</div>
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -444,6 +446,23 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
         </div>
     </div>
 
+    <div class="container mt-4">
+        <table id="resultsTable" style="display: none;" class="table table-striped">
+            <thead>
+                <tr>
+                    <th>Roll Number</th>
+                    <th>Name</th>
+                    <th>Department</th>
+                    <th>Year</th>
+                    <!-- Add more columns as needed -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Data will be inserted here -->
+            </tbody>
+        </table>
+    </div>
+
 </body>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
@@ -515,6 +534,57 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             }
         });
     })
+</script>
+
+
+
+
+
+<script>
+    $(document).ready(function () {
+        $('#departmentSelect').change(function () {
+            $("#resultsTable").show()
+            <?php //included the orginal domain ?>
+            domain = "<?php echo $domain ?>"
+            const selectedDepartment = $(this).val(); // Get selected department value
+
+            // Make an AJAX request
+            $.ajax({
+                url: domain + '/api/admin/dearch_student/', // Replace with your endpoint
+                type: 'POST',
+                data: { department: selectedDepartment },
+                success: function (data) {
+                    $('#resultsTable tbody').empty();
+                    console.log(data)
+                    // Check if data is returned
+                    if (data.length > 0) {
+                        // Loop through the data and append rows to the table
+                        data.forEach(item => {
+                            $('#resultsTable tbody').append(`
+                        <tr>
+                            <td>${item.roll_number}</td>
+                            <td>${item.name}</td>
+                            <td>${item.department}</td>
+                            <td>${item.year}</td>
+                            <!-- Add more columns as needed -->
+                        </tr>
+                    `);
+                        });
+                    } else {
+                        // If no data, show a message
+                    $('#resultsTable tbody').append(`
+                    <tr>
+                        <td colspan="4" class="text-center text-danger">No records found.</td>
+                    </tr>
+                `);
+                    }
+                },
+                error: function (xhr, status, error) {
+                    console.error('AJAX Error: ', status, error);
+                }
+            });
+        });
+    });
 </script>
 
 </html>
