@@ -134,47 +134,47 @@ class Admin
     }
 
     public function search_students_group($year = null, $department = null)
-{
-    // Create a new connection object
-    $conn = new MainConnection();
-    $sqlConn = $conn->returnConn();
+    {
+        // Create a new connection object
+        $conn = new MainConnection();
+        $sqlConn = $conn->returnConn();
 
-    // Initialize an empty array to store search conditions
-    $conditions = [];
+        // Initialize an empty array to store search conditions
+        $conditions = [];
 
-    // Add year condition if provided
-    if (!empty($year)) {
-        $conditions[] = "year_of_study = $year";
-    }
-
-    // Add department condition if provided
-    if (!empty($department)) {
-        $conditions[] = "department = '$department'";
-    }
-
-    // Form the WHERE clause if there are any conditions
-    $whereClause = !empty($conditions) ? 'WHERE ' . implode(' AND ', $conditions) : '';
-
-    // Define the SQL query
-    $sqlQuery = "SELECT * FROM stud_details $whereClause";
-
-    // Execute the query and fetch results
-    $result = $sqlConn->query($sqlQuery);
-
-    // Prepare the response array
-    $response = [];
-
-    // Check if results are found
-    if ($result->num_rows > 0) {
-        // Fetch all matching rows and add them to the response array
-        while ($row = $result->fetch_assoc()) {
-            $response[] = $row;
+        // Add year condition if provided
+        if (!empty($year)) {
+            $conditions[] = "year_of_study = $year";
         }
-    }
 
-    // Return the JSON response as a string
-    return json_encode($response);
-}
+        // Add department condition if provided
+        if (!empty($department)) {
+            $conditions[] = "department = '$department'";
+        }
+
+        // Form the WHERE clause if there are any conditions
+        $whereClause = !empty($conditions) ? 'WHERE ' . implode(' AND ', $conditions) : '';
+
+        // Define the SQL query
+        $sqlQuery = "SELECT * FROM stud_details $whereClause";
+
+        // Execute the query and fetch results
+        $result = $sqlConn->query($sqlQuery);
+
+        // Prepare the response array
+        $response = [];
+
+        // Check if results are found
+        if ($result->num_rows > 0) {
+            // Fetch all matching rows and add them to the response array
+            while ($row = $result->fetch_assoc()) {
+                $response[] = $row;
+            }
+        }
+
+        // Return the JSON response as a string
+        return json_encode($response);
+    }
 
     public function search_students_individual($query = '')
     {
