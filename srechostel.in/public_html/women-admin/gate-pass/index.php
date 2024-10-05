@@ -405,7 +405,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                                     <td>${item.department}</td>
                                     <td>${item.year_of_study}</td>
                                     <td><button class="btn btn-success btn-sm">Accept</button></td>
-                                    <td><button class="btn btn-danger">Decline</button></td>
+                                    <td><button class="btn btn-danger btn-sm">Decline</button></td>
                                 </tr>`;
                                 });
                             }
