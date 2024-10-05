@@ -427,52 +427,53 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 ?>
 <script>
     $(document).ready(function () {
-        $('#searchQueryInput').on('keyup',function () {
+        $('#searchQueryInput').on('keyup', function () {
             let query = $(this).val();
             if (query.length > 0) {
                 <?php //included the orginal domain ?>
                 domain = "<?php echo $domain ?>"
                 // Make AJAX request to fetch suggestions
                 $.ajax({
-    url: domain + '/api/admin/search_student/',  // Replace with your API endpoint
-    type: 'GET',
-    data: { query: query },
-    crossDomain: true,
-    success: function (response) {
-        console.log(response['data']);  // Log the received data to the console
-        const suggestionsList = $('#suggestionsList');
-        const dropdown = $('#suggestionsDropdown');
+                    url: domain + '/api/admin/search_student/',  // Replace with your API endpoint
+                    type: 'GET',
+                    data: { query: query },
+                    crossDomain: true,
+                    success: function (response) {
+                        console.log(response['data']);  // Log the received data to the console
+                        const suggestionsList = $('#suggestionsList');
+                        const dropdown = $('#suggestionsDropdown');
 
-        // Clear existing suggestions
-        suggestionsList.empty();
+                        // Clear existing suggestions
+                        suggestionsList.empty();
 
-        // If there are suggestions, show the dropdown
-        if (Array.isArray(response['data']) && response['data'].length > 0) {
-            response['data'].forEach(function (suggestion) {
-                // Create a list item for each suggestion
-                let suggestionItem = $('<li>')
-                    .addClass('dropdown-item')
-                    .text(suggestion.name)  // Assuming each suggestion is an object with a 'name' property
+                        // If there are suggestions, show the dropdown
+                        if (Array.isArray(response['data']) && response['data'].length > 0) {
+                            response['data'].forEach(function (suggestion) {
+                                // Create a list item for each suggestion
+                                let suggestionItem = $('<li>')
+                                    .addClass('dropdown-item')
+                                    .text(`${suggestion.name} - ${suggestion.roll_no} (${suggestion.department})`)  // Customize display text
 
-                    // Add click event to fill input with the suggestion
-                    .on('click', function () {
-                        $('#searchQueryInput').val(suggestion.name); // Fill the input with the selected suggestion
-                        dropdown.addClass('d-none'); // Hide dropdown after selection
-                    });
+                                    // Add click event to fill input with the suggestion
+                                    .on('click', function () {
+                                        $('#searchQueryInput').val(suggestion.name); // Fill the input with the selected suggestion
+                                        dropdown.addClass('d-none'); // Hide dropdown after selection
+                                    });
 
-                // Append the suggestion item to the list
-                suggestionsList.append(suggestionItem);
-            });
+                                // Append the suggestion item to the list
+                                suggestionsList.append(suggestionItem);
+                            });
 
-            dropdown.removeClass('d-none'); // Show dropdown
-        } else {
-            dropdown.addClass('d-none'); // Hide dropdown if no suggestions
-        }
-    },
-    error: function () {
-        console.error('Error fetching suggestions');
-    }
-});
+                            dropdown.removeClass('d-none'); // Show dropdown
+                        } else {
+                            dropdown.addClass('d-none'); // Hide dropdown if no suggestions
+                        }
+                    },
+                    error: function () {
+                        console.error('Error fetching suggestions');
+                    }
+                });
+
 
             } else {
                 $('#suggestionsDropdown').addClass('d-none'); // Hide dropdown if input is empty
