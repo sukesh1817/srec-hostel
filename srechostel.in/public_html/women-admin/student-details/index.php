@@ -249,30 +249,30 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     </button>
     <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
         <li class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle" href="#">Year</a>
+            <a class="dropdown-item dropdown-toggle" >Year</a>
             <ul class="dropdown-menu">
-                <li><a id="year-1" class="dropdown-item" href="#">1</a></li>
-                <li><a id="year-2" class="dropdown-item" href="#">2</a></li>
-                <li><a id="year-3" class="dropdown-item" href="#">3</a></li>
-                <li><a id="year-4" class="dropdown-item" href="#">4</a></li>
+                <li><a id="year-1" class="dropdown-item" >1</a></li>
+                <li><a id="year-2" class="dropdown-item" >2</a></li>
+                <li><a id="year-3" class="dropdown-item" >3</a></li>
+                <li><a id="year-4" class="dropdown-item" >4</a></li>
             </ul>
         </li>
         <li class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle" href="#">Department</a>
+            <a class="dropdown-item dropdown-toggle" >Department</a>
             <ul class="dropdown-menu">
-                <li><a id="dept-ai" class="dropdown-item" href="#">B.Tech AIDS</a></li>
-                <li><a id="dept-it" class="dropdown-item" href="#">B.Tech IT</a></li>
-                <li><a id="dept-ece" class="dropdown-item" href="#">B.E ECE</a></li>
-                <li><a id="dept-eee" class="dropdown-item" href="#">B.E EEE</a></li>
-                <li><a id="dept-mech" class="dropdown-item" href="#">B.E MECH</a></li>
-                <li><a id="dept-bme" class="dropdown-item" href="#">B.E BME</a></li>
-                <li><a id="dept-metch" class="dropdown-item" href="#">M.Tech CSE</a></li>
-                <li><a id="dept-civil" class="dropdown-item" href="#">B.E CIVIL</a></li>
-                <li><a id="dept-aero" class="dropdown-item" href="#">B.E AERO</a></li>
-                <li><a id="dept-ra" class="dropdown-item" href="#">B.E RA</a></li>
-                <li><a id="dept-cse" class="dropdown-item" href="#">B.E CSE</a></li>
-                <li><a id="dept-eie" class="dropdown-item" href="#">B.E EIE</a></li>
-                <li><a id="dept-mba" class="dropdown-item" href="#">B.E MBA</a></li>
+                <li><a id="dept-ai" class="dropdown-item" >B.Tech AIDS</a></li>
+                <li><a id="dept-it" class="dropdown-item" >B.Tech IT</a></li>
+                <li><a id="dept-ece" class="dropdown-item" >B.E ECE</a></li>
+                <li><a id="dept-eee" class="dropdown-item" >B.E EEE</a></li>
+                <li><a id="dept-mech" class="dropdown-item" >B.E MECH</a></li>
+                <li><a id="dept-bme" class="dropdown-item" >B.E BME</a></li>
+                <li><a id="dept-metch" class="dropdown-item" >M.Tech CSE</a></li>
+                <li><a id="dept-civil" class="dropdown-item" >B.E CIVIL</a></li>
+                <li><a id="dept-aero" class="dropdown-item" >B.E AERO</a></li>
+                <li><a id="dept-ra" class="dropdown-item" >B.E RA</a></li>
+                <li><a id="dept-cse" class="dropdown-item" >B.E CSE</a></li>
+                <li><a id="dept-eie" class="dropdown-item" >B.E EIE</a></li>
+                <li><a id="dept-mba" class="dropdown-item" >B.E MBA</a></li>
             </ul>
         </li>
     </ul>
