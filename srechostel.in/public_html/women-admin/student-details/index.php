@@ -563,7 +563,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                     if (data.length > 0) {
                         // Loop through the data and append rows to the table
                         data.forEach(item => {
-                            $('#resultsTable tbody').append(`
+                            $('#myTable tbody').append(`
                         <tr>
                             <td>${item.roll_no}</td>
                             <td>${item.name}</td>
@@ -575,7 +575,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         });
                     } else {
                         // If no data, show a message
-                    $('#resultsTable tbody').append(`
+                    $('#myTable tbody').append(`
                     <tr>
                         <td colspan="4" class="text-center text-danger">No records found.</td>
                     </tr>
