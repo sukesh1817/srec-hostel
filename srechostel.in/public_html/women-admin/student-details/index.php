@@ -294,18 +294,22 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
                 
                 <div class="card d-inline-flex">
-                    <div class="card-body p-man d-flex align-items-center">
-                        <p class="card-text mb-0 p-man">
-                            <span id="selectedYear">Year - NULL</span>
-                            <button type="button" id="removeYear" class="btn">
-                            </button>
-                        </p>
-                        <p class="card-text mb-0 ms-3">
-                            <span id="selectedDepartment">Department - NULL</span>
-                            <button type="button" id="removeDepartment" class="btn">
-                            </button>
-                        </p>
-                    </div>
+    <div class="card-body d-flex align-items-center">
+        <div class="d-flex align-items-center me-3">
+            <span id="selectedYear" class="me-2">Year: <strong>NULL</strong></span>
+            <button type="button" id="removeYear" class="btn btn-danger btn-sm" title="Remove Year">
+                <i class="bi bi-x-circle"></i> <!-- Bootstrap Icons for a clear visual cue -->
+            </button>
+        </div>
+        <div class="d-flex align-items-center">
+            <span id="selectedDepartment" class="me-2">Department: <strong>NULL</strong></span>
+            <button type="button" id="removeDepartment" class="btn btn-danger btn-sm" title="Remove Department">
+                <i class="bi bi-x-circle"></i>
+            </button>
+        </div>
+    </div>
+</div>
+
                 </div>
                
                 
