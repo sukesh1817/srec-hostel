@@ -262,7 +262,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <div class="col-12 col-md-8">
                     <form id="search-form" action="/student-details/" method="post" class="mb-4">
                         <div class="mb-3">
-                            <label for="yearSelect" class="form-label">Select Year</label>
                             <select class="form-select" id="yearSelect" name="year" aria-label="Select Year">
                                 <option selected disabled>Choose Year</option>
                                 <option value="1">1</option>
@@ -273,7 +272,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         </div>
 
                         <div class="mb-3">
-                            <label for="departmentSelect" class="form-label text-start">Select Department</label>
                             <select class="form-select" id="departmentSelect" name="department"
                                 aria-label="Select Department">
                                 <option selected disabled>Choose Department</option>
