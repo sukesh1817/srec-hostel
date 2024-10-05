@@ -478,26 +478,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                         const suggestionsList = $('#myUL');
                         suggestionsList.empty();
 
-                        // If there are suggestions, show the dropdown
                         if (Array.isArray(response['data']) && response['data'].length > 0) {
                             response['data'].forEach(function (student) {
-                                console.log(student)
-                                // Create a list item for each student suggestion
-                                    let suggestionItem = $('<li>').text(`${student.name} - Roll No: ${student.roll_no} - Dept: ${student.department}`)  // Customize display text
-
-                                    // Add click event to fill input with the selected suggestion
-                                    .on('click', function () {
-                                        $('#searchQueryInput').val(student.name); // Fill the input with the selected student's name
-                                        dropdown.addClass('d-none'); // Hide dropdown after selection
-                                    });
-
-                                // Append the suggestion item to the list
+                                let suggestionItem = $('<li>').text(`${student.name} - Roll No: ${student.roll_no} - Dept: ${student.department}`)  
                                 suggestionsList.append(suggestionItem);
                             });
-
-                            dropdown.removeClass('d-none'); // Show dropdown
                         } else {
-                            dropdown.addClass('d-none'); // Hide dropdown if no suggestions
                         }
                     },
                     error: function () {
