@@ -250,7 +250,19 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <div id="suggestionsDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton"
                         style="display: none;">
                         <ul id="suggestionsList" class="list-unstyled">
-                            <!-- Suggestions will be appended here -->
+                            <li>sample</li>
+                            <li>sample</li>
+                            <li>sample</li>
+                            <li>sample</li>
+                            <li>sample</li>
+                            <li>sample</li>
+                            <li>sample</li>
+                            <li>sample</li>
+                            <li>sample</li>
+                            <li>sample</li>
+                            <li>sample</li>
+                            <li>sample</li>
+                            
                         </ul>
                     </div>
                 </div>
