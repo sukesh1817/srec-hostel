@@ -74,6 +74,7 @@ if (isset($_GET['roll_no'])) {
                         
                         <!-- Display Personal Details -->
                         <h5 class="mt-4">Personal Details</h5>
+                        <hr>
                         <?php if ($personal_details): ?>
                             <p class="card-text"><strong>Date of Birth:</strong> <?php echo htmlspecialchars($personal_details['date_of_birth']); ?></p>
                             <p class="card-text"><strong>Email:</strong> <?php echo htmlspecialchars($personal_details['email']); ?></p>
@@ -84,6 +85,7 @@ if (isset($_GET['roll_no'])) {
 
                         <!-- Display Guardian Details -->
                         <h5 class="mt-4">Guardian Details</h5>
+                        <hr>
                         <?php if ($guardian_details): ?>
                             <p class="card-text"><strong>Father Name:</strong> <?php echo htmlspecialchars($guardian_details['father_name']); ?></p>
                             <p class="card-text"><strong>Contact Number:</strong> <?php echo htmlspecialchars($guardian_details['father_contact_no']); ?></p>
