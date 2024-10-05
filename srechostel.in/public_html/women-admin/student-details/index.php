@@ -445,7 +445,10 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     </div>
 
     <div class="container mt-4">
-    <button id="downloadButton" class="btn btn-primary mt-3">Download as XLSX</button>
+        <p class="text-center">
+        <button id="downloadButton" class="btn btn-warning mt-3">Download as XLSX</button>
+
+        </p>
         <table id="myTable" style="display: none;" class="table table-striped">
             <thead>
                 <tr>
