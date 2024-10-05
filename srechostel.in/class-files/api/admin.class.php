@@ -263,7 +263,7 @@ class Admin
     
         // Add optional year condition
         if ($year) {
-            $conditions[] = "s.year = ?";
+            $conditions[] = "s.year_of_study = ?";
             $params[] = $year;
             $types .= "i"; // 'i' for integer (if year is an integer)
         }
