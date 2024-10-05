@@ -24,6 +24,21 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
     <style>
+        .dropdown-submenu {
+            position: relative;
+        }
+
+        .dropdown-submenu .dropdown-menu {
+            top: 0;
+            left: 100%;
+            margin-top: 0;
+            margin-left: .1rem;
+            display: none; /* Hide by default */
+        }
+
+        .dropdown-submenu:hover .dropdown-menu {
+            display: block; /* Show on hover */
+        }
         .btn-outline-light:hover {
             color: black;
         }
