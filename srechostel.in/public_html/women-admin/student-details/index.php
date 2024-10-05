@@ -434,6 +434,7 @@ $(document).ready(function () {
                 url: domain+'/api/admin/search_student/',  // Replace with your API endpoint
                 type: 'GET',
                 query: query,
+                crossDomain: true,
                 success: function (response) {
                     const suggestionsList = $('#suggestionsList');
                     const dropdown = $('#suggestionsDropdown');
