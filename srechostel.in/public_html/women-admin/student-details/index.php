@@ -475,28 +475,35 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                     data: { query: query },
                     crossDomain: true,
                     success: function (response) {
-
+                        const suggestionsList = $('#myUL');
+                        const students = response['data'];
                         suggestionsList.empty();
+                        students.forEach((student, index) => {
+                            let suggestionItem = $(`
+        <li class="list-group-item d-flex justify-content-between align-items-center px-4">
+            <div>
+                <strong>${student.name}</strong><br>
+                <small>Department: ${student.department}</small><br>
+                <small>Roll No: ${student.roll_no}</small>
+            </div>
+            <a href="show-more/?roll_no=${student.roll_no}" class="btn btn-link">Show More</a>
+        </li>
+    `);
 
-                        if (Array.isArray(response['data']) && response['data'].length > 0) {
-                            response['data'].forEach(function (student, index) {
-                                let suggestionItem = $(`
-                                    <li class="list-group-item d-flex justify-content-between align-items-center px-4">
-                                        <div>
-                                            <strong>${student.name}</strong><br>
-                                            <small>Department: ${student.department}</small><br>
-                                            <small>Roll No: ${student.roll_no}</small>
-                                        </div>
-                                        <a href="show-more/?roll_no=${student.roll_no}" class="btn btn-link">Show More</a>
-                                    </li>
-                                    
-                                `);
-                                suggestionsList.append(suggestionItem);
-                                if (index < students.length - 1) {
-                                    suggestionsList.append('<hr>');
-                                }
-                            });
+                            // Append the suggestion item to the list
+                            suggestionsList.append(suggestionItem);
+
+                            // Append <hr> for all except the last item
+                            if (index < students.length - 1) {
+                                suggestionsList.append('<hr>');
+                            }
+                        });
+
+                        // Show dropdown if there are suggestions
+                        if (students.length > 0) {
+                            $('#myUL').removeClass('d-none'); // Show dropdown
                         } else {
+                            $('#myUL').addClass('d-none'); // Hide dropdown if no suggestions
                         }
                     },
                     error: function () {
