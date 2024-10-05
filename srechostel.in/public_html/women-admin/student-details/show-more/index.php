@@ -106,7 +106,7 @@ if (isset($_GET['roll_no'])) {
                                 <?php echo htmlspecialchars($guardian_details['father_contact_no']); ?></p>
 
                             <?php
-                            if ($guardian_details['gurdian_name'] != null) {
+                            if ($guardian_details['guardian_name'] != null) {
                                 ?>
                                 <p class="card-text"><strong>Local gurdian name:</strong>
                                     <?php echo htmlspecialchars($guardian_details['gurdian_name']); ?></p>
