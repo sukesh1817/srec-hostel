@@ -1,6 +1,6 @@
 <?php
 // this file gets the connection from the database
-include_once("/../mainconn.class.php");
+include_once($_SERVER['DOCUMENT_ROOT']."/.."."/class-files/api/mainconn.class.php");
 
 class Admin
 {
