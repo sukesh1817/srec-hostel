@@ -226,6 +226,23 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             background-color: #f1f1f1;
             /* Change background color on hover */
         }
+
+        #myUL {
+            width: 100%;
+            /* Match the width of the input */
+            max-width: 400px;
+            /* Optional: set a max-width */
+            min-width: 100px;
+            /* Optional: set a min-width */
+            z-index: 1000;
+            /* Ensure it appears above other content */
+        }
+
+        /* Optional: Style the dropdown items */
+        .dropdown-item {
+            white-space: nowrap;
+            /* Prevent line breaks in dropdown items */
+        }
     </style>
 
 
@@ -292,16 +309,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                         <div class="mb-3">
                             <input type="hidden" name="year" id="yearValue">
                             <input type="hidden" name="department" id="departmentValue">
-                            <div>
-                                <input type="text" id="searchQueryInput" class="form-control rounded-1 "
-                                    placeholder="Search by name, rollno" aria-label="Search" autocomplete="off"
-                                    data-bs-toggle="dropdown" aria-expanded="false">
-                                <ul id="myUL" class="dropdown-menu"
-                                    style="display: none; position: absolute; width: 100%; z-index: 1000;">
-                                    <!-- Dropdown items will be populated here -->
+                            <div class="input-group">
+                                <input type="text" id="searchQueryInput" class="form-control"
+                                    placeholder="Search by name, rollno" aria-label="Search" autocomplete="off">
+                                <ul id="myUL" class="list-group dropdown-menu" style="display: none;">
+                                    <!-- Suggestion items will be populated here -->
                                 </ul>
                             </div>
                         </div>
+
 
                     </form>
 
@@ -486,6 +502,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             const suggestionsList = $('#myUL');
             suggestionsList.show()
             $('#myTable').hide();
+            $("#downloadButton").hide()
+
             let query = $(this).val();
             if (query.length > 0) {
                 <?php //included the orginal domain ?>
