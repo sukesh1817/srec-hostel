@@ -28,7 +28,5 @@ $query = isset($_GET['query']) ? $_GET['query'] : '';
 
 
 $response = $admin->search_students_individual($query);
-$result = [
-    'data' => $response
-];
-echo json_encode($result);
+
+echo json_encode($response);
