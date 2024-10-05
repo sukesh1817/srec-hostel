@@ -62,7 +62,7 @@ if (isset($_GET['roll_no'])) {
 
         <body>
             <?php include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php"; ?>
-            <div class="container mt-5">
+            <div class="container mt-5 mb-4">
                 <h2 class="text-center mb-4">Student Details</h2>
                 <div class="card mx-auto" style="max-width: 600px;">
                     <div class="card-body">
@@ -105,7 +105,7 @@ if (isset($_GET['roll_no'])) {
                         <?php endif; ?>
                     </div>
                     <div class="text-center mt-3">
-                        <a href="/student-details/" class="btn btn-dark btn-lg rounded-1">Back</a>
+                        <a href="/student-details/" class="btn btn-dark btn-lg rounded-1 px-3">Back</a>
                     </div>
                 </div>
 
