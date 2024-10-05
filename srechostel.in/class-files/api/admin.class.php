@@ -223,5 +223,72 @@ class Admin
         return ['data' => $students];
     }
 
+    function getPassData($admin, $pass_type, $pass_status, $department = null, $year = null) {
+        $sql = "";
+        $conditions = [];
+        $params = [];
+        $types = "";
+    
+        switch ($pass_type) {
+            case 1:
+                $sql = "SELECT g.*, s.year FROM gate_pass g JOIN stud_details s ON g.student_id = s.id WHERE 1=1";
+                break;
+            case 2:
+                $sql = "SELECT w.*, s.year FROM working_day_pass w JOIN stud_details s ON w.student_id = s.id WHERE 1=1";
+                break;
+            case 3:
+                $sql = "SELECT g.*, s.year FROM general_home_pass g JOIN stud_details s ON g.student_id = s.id WHERE 1=1";
+                break;
+            default:
+                return ['error' => 'Invalid pass type'];
+        }
+    
+        // Add pass_status condition
+        if ($pass_status == 1) {
+            $conditions[] = "already_booked = 1 AND allowed_or_not = 1";
+        } else {
+            $conditions[] = "already_booked = 1 AND allowed_or_not = 0";
+        }
+    
+        // Add optional department condition
+        if ($department) {
+            $conditions[] = "s.department = ?";
+            $params[] = $department;
+            $types .= "s"; // 's' for string
+        }
+    
+        // Add optional year condition
+        if ($year) {
+            $conditions[] = "s.year = ?";
+            $params[] = $year;
+            $types .= "i"; // 'i' for integer (if year is an integer)
+        }
+    
+        // Combine conditions into the SQL query
+        if (!empty($conditions)) {
+            $sql .= " AND " . implode(" AND ", $conditions);
+        }
+    
+        // Prepare the statement
+        $stmt = $admin->prepare($sql);
+        if ($stmt === false) {
+            return ['error' => 'Failed to prepare statement'];
+        }
+    
+        // Bind parameters
+        if (!empty($params)) {
+            $stmt->bind_param($types, ...$params);
+        }
+    
+        // Execute the statement
+        $stmt->execute();
+    
+        // Get the result
+        $result = $stmt->get_result();
+        $data = $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
+    
+        $stmt->close();
+        return $data;
+    }
 
 }
