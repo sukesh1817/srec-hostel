@@ -432,7 +432,7 @@ $(document).ready(function () {
             $.ajax({
                 url: '/api/admin/search_student/',  // Replace with your API endpoint
                 type: 'GET',
-                query: query
+                query: query,
                 success: function (response) {
                     const suggestionsList = $('#suggestionsList');
                     const dropdown = $('#suggestionsDropdown');
