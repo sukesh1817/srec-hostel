@@ -33,12 +33,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             left: 100%;
             margin-top: 0;
             margin-left: .1rem;
-            display: none; /* Hide by default */
+            display: none;
+            /* Hide by default */
         }
 
         .dropdown-submenu:hover .dropdown-menu {
-            display: block; /* Show on hover */
+            display: block;
+            /* Show on hover */
         }
+
         .btn-outline-light:hover {
             color: black;
         }
@@ -254,85 +257,86 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     </div>
 
     <div class="bg-light-subtle py-4">
-    <div class="container mt-2 text-center">
-        <div class="row justify-content-center">
-            <div class="col-12 col-md-6 mb-3">
-            <div class="dropdown d-inline-block w-100">
-    <button class="btn btn-dark dropdown-toggle rounded-1 w-100" type="button" id="dropdownMenuButton"
-        data-bs-toggle="dropdown" aria-expanded="false">
-        Search by
-    </button>
-    <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-        <li class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle" >Year</a>
-            <ul class="dropdown-menu">
-                <li><a id="year-1" class="dropdown-item" >1</a></li>
-                <li><a id="year-2" class="dropdown-item" >2</a></li>
-                <li><a id="year-3" class="dropdown-item" >3</a></li>
-                <li><a id="year-4" class="dropdown-item" >4</a></li>
-            </ul>
-        </li>
-        <li class="dropdown-submenu">
-            <a class="dropdown-item dropdown-toggle" >Department</a>
-            <ul class="dropdown-menu">
-                <li><a id="dept-ai" class="dropdown-item" >B.Tech AIDS</a></li>
-                <li><a id="dept-it" class="dropdown-item" >B.Tech IT</a></li>
-                <li><a id="dept-ece" class="dropdown-item" >B.E ECE</a></li>
-                <li><a id="dept-eee" class="dropdown-item" >B.E EEE</a></li>
-                <li><a id="dept-mech" class="dropdown-item" >B.E MECH</a></li>
-                <li><a id="dept-bme" class="dropdown-item" >B.E BME</a></li>
-                <li><a id="dept-metch" class="dropdown-item" >M.Tech CSE</a></li>
-                <li><a id="dept-civil" class="dropdown-item" >B.E CIVIL</a></li>
-                <li><a id="dept-aero" class="dropdown-item" >B.E AERO</a></li>
-                <li><a id="dept-ra" class="dropdown-item" >B.E RA</a></li>
-                <li><a id="dept-cse" class="dropdown-item" >B.E CSE</a></li>
-                <li><a id="dept-eie" class="dropdown-item" >B.E EIE</a></li>
-                <li><a id="dept-mba" class="dropdown-item" >B.E MBA</a></li>
-            </ul>
-        </li>
-    </ul>
-</div>
+        <div class="container mt-2 text-center">
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-6 mb-3">
+                    <div class="dropdown d-inline-block w-100">
+                        <button class="btn btn-dark dropdown-toggle rounded-1 w-100" type="button"
+                            id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            Search by
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle">Year</a>
+                                <ul class="dropdown-menu">
+                                    <li><a id="year-1" class="dropdown-item">1</a></li>
+                                    <li><a id="year-2" class="dropdown-item">2</a></li>
+                                    <li><a id="year-3" class="dropdown-item">3</a></li>
+                                    <li><a id="year-4" class="dropdown-item">4</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown-submenu">
+                                <a class="dropdown-item dropdown-toggle">Department</a>
+                                <ul class="dropdown-menu">
+                                    <li><a id="dept-ai" class="dropdown-item">B.Tech AIDS</a></li>
+                                    <li><a id="dept-it" class="dropdown-item">B.Tech IT</a></li>
+                                    <li><a id="dept-ece" class="dropdown-item">B.E ECE</a></li>
+                                    <li><a id="dept-eee" class="dropdown-item">B.E EEE</a></li>
+                                    <li><a id="dept-mech" class="dropdown-item">B.E MECH</a></li>
+                                    <li><a id="dept-bme" class="dropdown-item">B.E BME</a></li>
+                                    <li><a id="dept-metch" class="dropdown-item">M.Tech CSE</a></li>
+                                    <li><a id="dept-civil" class="dropdown-item">B.E CIVIL</a></li>
+                                    <li><a id="dept-aero" class="dropdown-item">B.E AERO</a></li>
+                                    <li><a id="dept-ra" class="dropdown-item">B.E RA</a></li>
+                                    <li><a id="dept-cse" class="dropdown-item">B.E CSE</a></li>
+                                    <li><a id="dept-eie" class="dropdown-item">B.E EIE</a></li>
+                                    <li><a id="dept-mba" class="dropdown-item">B.E MBA</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <br>
+
+                <form id="search-form" action="/student-details/" method="post" class="d-inline-block col-12 col-md-6">
+                    <input type="hidden" name="year" id="yearValue">
+                    <input type="hidden" name="department" id="departmentValue">
+
+                    <div class="dropdown text-center mb-3">
+                        <input type="text" id="searchQueryInput" class="form-control rounded-1"
+                            placeholder="Search by name, rollno" aria-label="Search">
+                        <ul id="myUL" class="dropdown-menu scrollable-dropdown"
+                            style="display: none; position: absolute; width: 100%; z-index: 1000;">
+                            <!-- Suggestions will be populated here -->
+                        </ul>
+                    </div>
+
+
+                    <div class="card d-inline-flex">
+                        <div class="card-body d-flex align-items-center">
+                            <div class="d-flex align-items-center me-3">
+                                <span id="selectedYear" class="me-2">Year: <strong>NULL</strong></span>
+                                <button type="button" id="removeYear" class="btn btn-danger btn-sm" title="Remove Year">
+                                    <i class="bi bi-x-circle"></i> <!-- Bootstrap Icons for a clear visual cue -->
+                                </button>
+                            </div>
+                            <div class="d-flex align-items-center">
+                                <span id="selectedDepartment" class="me-2">Department: <strong>NULL</strong></span>
+                                <button type="button" id="removeDepartment" class="btn btn-danger btn-sm"
+                                    title="Remove Department">
+                                    <i class="bi bi-x-circle"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
 
             </div>
 
-            <form id="search-form" action="/student-details/" method="post" class="d-inline-block col-12 col-md-6">
-                <input type="hidden" name="year" id="yearValue">
-                <input type="hidden" name="department" id="departmentValue">
 
-                <div class="dropdown text-center mb-3">
-                    <input type="text" id="searchQueryInput" class="form-control rounded-1"
-                        placeholder="Search by name, rollno" aria-label="Search">
-                    <ul id="myUL" class="dropdown-menu scrollable-dropdown"
-                        style="display: none; position: absolute; width: 100%; z-index: 1000;">
-                        <!-- Suggestions will be populated here -->
-                    </ul>
-                </div>
-
-                
-                <div class="card d-inline-flex">
-    <div class="card-body d-flex align-items-center">
-        <div class="d-flex align-items-center me-3">
-            <span id="selectedYear" class="me-2">Year: <strong>NULL</strong></span>
-            <button type="button" id="removeYear" class="btn btn-danger btn-sm" title="Remove Year">
-                <i class="bi bi-x-circle"></i> <!-- Bootstrap Icons for a clear visual cue -->
-            </button>
-        </div>
-        <div class="d-flex align-items-center">
-            <span id="selectedDepartment" class="me-2">Department: <strong>NULL</strong></span>
-            <button type="button" id="removeDepartment" class="btn btn-danger btn-sm" title="Remove Department">
-                <i class="bi bi-x-circle"></i>
-            </button>
-        </div>
-    </div>
-</div>
-
-                </div>
-               
-                
             </form>
         </div>
     </div>
-</div>
+    </div>
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
