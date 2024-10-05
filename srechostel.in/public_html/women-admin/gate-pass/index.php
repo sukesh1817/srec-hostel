@@ -339,7 +339,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <th>Name</th>
                     <th>Department</th>
                     <th>Year</th>
-                    <th>Actions</th> <!-- Adding a column for action buttons -->
                 </tr>
             </thead>
             <tbody>
