@@ -296,7 +296,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <div class="dropdown text-center" style="width: 200%; max-width: 400px; margin: auto;">
                     <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
                         aria-label="Search">
-                    <ul id="myUL" class="list-unstyled dropdown-menu scrollable-dropdown"
+                    <ul id="myUL" class="dropdown-menu scrollable-dropdown"
                         style="display:none; position: absolute; width: 100%; z-index: 1000;">
                         
                     </ul>
