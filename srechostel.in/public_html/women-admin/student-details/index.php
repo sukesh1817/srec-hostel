@@ -173,12 +173,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             display: block;
             /* Show if error is active */
         }
-
-
-
-
-
-
     </style>
 
 
@@ -255,6 +249,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     <input type="text" class="form-control" placeholder="Search by name, roll number, etc."
                         aria-label="Search" aria-describedby="basic-addon2" name="searchQuery">
                     <button class="btn btn-dark" type="submit">Search</button>
+                    <div class="dropdown d-none" id="suggestionsDropdown">
+                        <ul class="dropdown-menu" aria-labelledby="searchQueryInput" id="suggestionsList">
+                            <!-- Suggestions will be injected here -->
+                        </ul>
+                    </div>
                 </div>
 
                 <div class="card d-inline-flex">
@@ -667,6 +666,57 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 console.error('Error:', error);
             });
     });
+</script>
+
+
+<script>
+// Mock function to simulate an API call for search suggestions
+function fetchSuggestions(query) {
+    return new Promise((resolve) => {
+        setTimeout(() => {
+            const suggestions = ['John Doe', 'Jane Smith', 'James Brown', 'Jessica White'];
+            const filtered = suggestions.filter(item => item.toLowerCase().includes(query.toLowerCase()));
+            resolve(filtered);
+        }, 500); // Simulate a delay
+    });
+}
+
+// Event listener for search input
+document.getElementById('searchQueryInput').addEventListener('input', async function () {
+    const query = this.value;
+
+    // Fetch suggestions if input is not empty
+    if (query.length > 0) {
+        const suggestions = await fetchSuggestions(query);
+
+        const dropdown = document.getElementById('suggestionsDropdown');
+        const suggestionsList = document.getElementById('suggestionsList');
+
+        // Clear existing suggestions
+        suggestionsList.innerHTML = '';
+
+        // If there are suggestions, show the dropdown
+        if (suggestions.length > 0) {
+            suggestions.forEach(suggestion => {
+                const suggestionItem = document.createElement('li');
+                suggestionItem.classList.add('dropdown-item');
+                suggestionItem.textContent = suggestion;
+                suggestionsList.appendChild(suggestionItem);
+
+                // Add click event to fill input with the suggestion
+                suggestionItem.addEventListener('click', function () {
+                    document.getElementById('searchQueryInput').value = suggestion;
+                    dropdown.classList.add('d-none'); // Hide dropdown after selection
+                });
+            });
+            dropdown.classList.remove('d-none'); // Show dropdown
+        } else {
+            dropdown.classList.add('d-none'); // Hide dropdown if no suggestions
+        }
+    } else {
+        document.getElementById('suggestionsDropdown').classList.add('d-none'); // Hide dropdown if input is empty
+    }
+});
 </script>
 
 </html>
