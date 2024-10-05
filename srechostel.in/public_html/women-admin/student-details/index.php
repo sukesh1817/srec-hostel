@@ -428,9 +428,10 @@ $(document).ready(function () {
         let query = $(this).val();
         console.log("hello")
         if (query.length > 0) {
+            domain = "https://testing.srechostel.in"
             // Make AJAX request to fetch suggestions
             $.ajax({
-                url: '/api/admin/search_student/',  // Replace with your API endpoint
+                url: domain+'/api/admin/search_student/',  // Replace with your API endpoint
                 type: 'GET',
                 query: query,
                 success: function (response) {
