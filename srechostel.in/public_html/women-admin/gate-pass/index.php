@@ -363,75 +363,67 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 ?>
+
+
+
 <script>
     $(document).ready(function () {
-        $('#searchQueryInput').on('keyup', function () {
-            const suggestionsList = $('#myUL');
-            suggestionsList.show()
-            $('#myTable').hide();
-            $("#downloadButton").hide()
+        function fetchPassData() {
+            // Get form values
+            const passType = $('#passType').val();
+            const passStatus = $('#passStatus').val();
+            const department = $('#departmentSelect').val();
+            const year = $('#yearSelect').val();
 
-            let query = $(this).val();
-            if (query.length > 0) {
-                <?php //included the orginal domain ?>
-                domain = "<?php echo $domain ?>"
+            domain = <?php echo $domain ?>
 
+            // Only send the request if all fields have been selected
+            if (passType && passStatus && department && year) {
+                // Prepare the AJAX request
                 $.ajax({
-                    url: domain + '/api/admin/search_student/',
+                    url: domain+'/api/admin/manage_pass_request/get_student_pass/index.php', // Replace with the actual path to your PHP file
                     type: 'GET',
-                    data: { query: query },
-                    crossDomain: true,
-                    success: function (response) {
-                        const suggestionsList = $('#myUL');
-                        const students = response['data'];
-                        suggestionsList.empty();
-                        students.forEach((student, index) => {
-                            let suggestionItem = $(`
-                            <li class="list-group-item d-flex justify-content-between align-items-center px-4">
-                                <div>
-                                    <strong>${student.name}</strong><br>
-                                    <small>Department: ${student.department}</small><br>
-                                    <small>Roll No: ${student.roll_no}</small>
-                                </div>
-                                <a class="btn btn-dark btn-sm" href="show-more/?roll_no=${student.roll_no}">Show More</a>
-                            </li>
-                        `);
-
-                            // Append the suggestion item to the list
-                            suggestionsList.append(suggestionItem);
-
-                            // Append <hr> for all except the last item
-                            // if (index < students.length - 1) {
-                            //     suggestionsList.append('<hr>');
-                            // }
-                        });
-
-                        // Show dropdown if there are suggestions
-                        if (students.length > 0) {
-                            $('#myUL').removeClass('d-none'); // Show dropdown
-                        } else {
-                            $('#myUL').addClass('d-none'); // Hide dropdown if no suggestions
-                        }
+                    data: {
+                        pass_type: passType,
+                        pass_status: passStatus,
+                        department: department,
+                        year: year
                     },
-                    error: function () {
-                        console.error('Error fetching suggestions');
+                    dataType: 'json',
+                    success: function (data) {
+                        // Handle success
+                        let output = '';
+                        if (data.error) {
+                            output += `<tr><td colspan="5">Error: ${data.error}</td></tr>`;
+                        } else {
+                            data.forEach(item => {
+                                output += `<tr>
+                                    <td>${item.roll_number}</td>
+                                    <td>${item.name}</td>
+                                    <td>${item.department}</td>
+                                    <td>${item.year}</td>
+                                    <td><button class="btn btn-info">Details</button></td>
+                                </tr>`;
+                            });
+                        }
+                        $('#myTable tbody').html(output);
+                        $('#myTable').show();
+                    },
+                    error: function (jqXHR, textStatus, errorThrown) {
+                        // Handle errors
+                        $('#myTable tbody').html(`<tr><td colspan="5">Error: ${textStatus} - ${errorThrown}</td></tr>`);
+                        $('#myTable').show();
                     }
                 });
-
-
-
             } else {
-                $('#myUL').hide(); // Hide dropdown if input is empty
+                // Clear table if any field is not selected
+                $('#myTable tbody').html('');
+                $('#myTable').hide();
             }
-        });
-    })
-
-
-    $(document).on('click', function (event) {
-        const target = $(event.target);
-        if (!target.closest('#searchQueryInput').length && !target.closest('#myUL').length) {
-            $('#myUL').hide(); // Hide the suggestion list
         }
+
+        // Attach change event to the select elements
+        $('#yearSelect, #departmentSelect, #passStatus, #passType').on('change', fetchPassData);
     });
 </script>
 
@@ -439,94 +431,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
 
 
-<script>
-    $(document).ready(function () {
-        const domain = "<?php echo $domain ?>"; // Included the original domain
-
-        // Function to fetch and display students
-        function fetchStudents() {
-            const selectedDepartment = $('#departmentSelect').val(); // Get selected department value
-            const selectedYear = $('#yearSelect').val(); // Get selected year value
-
-            $("#myTable").show();
-            $("#downloadButton").show();
-            $('#myUL').hide();
-
-            // Make an AJAX request
-            $.ajax({
-                url: domain + '/api/admin/search_student/', // Replace with your endpoint
-                type: 'POST',
-                data: { department: selectedDepartment, year: selectedYear },
-                success: function (data) {
-                    $('#myTable tbody').empty();
-                    // Check if data is returned
-                    if (data.length > 0) {
-                        // Loop through the data and append rows to the table
-                        data.forEach(item => {
-                            $('#myTable tbody').append(`
-                            <tr>
-                                <td>${item.roll_no}</td>
-                                <td>${item.name}</td>
-                                <td>${item.department}</td>
-                                <td>${item.year_of_study}</td>
-                                <td><a class="btn btn-dark btn-sm" href="show-more/?roll_no=${item.roll_no}">Show More</a></td>
-                            </tr>
-                        `);
-                        });
-                    } else {
-                        // If no data, show a message
-                        $('#myTable tbody').append(`
-                        <tr>
-                            <td colspan="5" class="text-center text-danger">No records found.</td>
-                        </tr>
-                    `);
-                    }
-                },
-                error: function (xhr, status, error) {
-                    console.error('AJAX Error: ', status, error);
-                }
-            });
-        }
-
-        // Event listener for department change
-        $('#departmentSelect').change(function () {
-            fetchStudents();
-        });
-
-        // Event listener for year change
-        $('#yearSelect').change(function () {
-            fetchStudents();
-        });
-    });
-</script>
 
 
-<script>
-    document.getElementById("downloadButton").addEventListener("click", function () {
-        $('#myUL').hide();
-        // Get the table and its rows
-        var table = document.getElementById("myTable"); // Replace with your table ID
-        var data = [];
-
-        // Iterate through the rows of the table
-        for (var i = 0; i < table.rows.length; i++) {
-            var row = [];
-            for (var j = 0; j < table.rows[i].cells.length; j++) {
-                row.push(table.rows[i].cells[j].innerText.trim()); // Get text content of each cell
-            }
-            data.push(row); // Add the row to the data array
-        }
-
-        // Create a new workbook and a worksheet
-        var wb = XLSX.utils.book_new();
-        var ws = XLSX.utils.aoa_to_sheet(data);
-
-        // Append the worksheet to the workbook
-        XLSX.utils.book_append_sheet(wb, ws, "Students");
-
-        // Generate XLSX file and trigger download
-        XLSX.writeFile(wb, "students_data.xlsx");
-    });
-</script>
 
 </html>
