@@ -367,19 +367,16 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 <script>
     $(document).ready(function () {
         function fetchPassData() {
-            // Get form values
             const passType = $('#passType').val();
             const passStatus = $('#passStatus').val();
             const department = $('#departmentSelect').val();
             const year = $('#yearSelect').val();
-
-            const domain = "<?php echo $domain ?>"
+            const domain = "<?php echo $domain ?>";
 
             // Only send the request if all fields have been selected
             if (passType && passStatus) {
-                // Prepare the AJAX request
                 $.ajax({
-                    url: domain + '/api/admin/manage_pass_request/get_student_pass/index.php', // Replace with the actual path to your PHP file
+                    url: domain + '/api/admin/manage_pass_request/get_student_pass/index.php',
                     type: 'GET',
                     data: {
                         pass_type: passType,
@@ -389,59 +386,57 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                     },
                     dataType: 'json',
                     success: function (data) {
-                        // Handle success
                         let output = '';
-                        if (passStatus == 0 && data.length > 0) {
-                            if (data.error) {
-                                output += `<tr><td colspan="5">Error: ${data.error}</td></tr>`;
-                            } else {
-                                $('#dynamicHeaderRow').find('.dynamic-header').remove();
-                                $('#dynamicHeaderRow').append(`<th class="dynamic-header">accept</th>`);
-                                $('#dynamicHeaderRow').append(`<th class="dynamic-header">decline</th>`);
-                                data.forEach(item => {
-                                    output += `<tr>
-                                    <td>${item.roll_no}</td>
-                                    <td>${item.stud_name}</td>
-                                    <td>${item.department}</td>
-                                    <td>${item.year_of_study}</td>
-                                    <td><button class="btn btn-success btn-sm">Accept</button></td>
-                                    <td><button class="btn btn-danger btn-sm">Decline</button></td>
-                                </tr>`;
-                                });
-                            }
-                            $('#myTable tbody').html(output);
-                            $('#myTable').show();
-                        } else if (passStatus == 0 && data.length > 0) {
+
+                        if (data.error) {
+                            // Handle server-side error message
+                            output += `<tr><td colspan="5" class="text-danger text-center">Error: ${data.error}</td></tr>`;
+                        } else if (data.length > 0) {
                             $('#dynamicHeaderRow').find('.dynamic-header').remove();
-                            $('#dynamicHeaderRow').append(`<th class="dynamic-header">Status</th>`);
-                            if (data.error) {
-                                output += `<tr><td colspan="5">Error: ${data.error}</td></tr>`;
-                            } else {
+                            if (passStatus == 0) {
+                                $('#dynamicHeaderRow').append(`<th class="dynamic-header">Accept</th><th class="dynamic-header">Decline</th>`);
                                 data.forEach(item => {
                                     output += `<tr>
-                                    <td>${item.roll_no}</td>
-                                    <td>${item.stud_name}</td>
-                                    <td>${item.department}</td>
-                                    <td>${item.year_of_study}</td>
-                                    <td><button class="btn btn-success btn-sm">${item.accepted_by}</button></td>
-                                </tr>`;
+                                        <td>${item.roll_no}</td>
+                                        <td>${item.stud_name}</td>
+                                        <td>${item.department}</td>
+                                        <td>${item.year_of_study}</td>
+                                        <td><button class="btn btn-success btn-sm">Accept</button></td>
+                                        <td><button class="btn btn-danger btn-sm">Decline</button></td>
+                                    </tr>`;
+                                });
+                            } else {
+                                $('#dynamicHeaderRow').append(`<th class="dynamic-header">Status</th>`);
+                                data.forEach(item => {
+                                    output += `<tr>
+                                        <td>${item.roll_no}</td>
+                                        <td>${item.stud_name}</td>
+                                        <td>${item.department}</td>
+                                        <td>${item.year_of_study}</td>
+                                        <td><button class="btn btn-success btn-sm">${item.accepted_by}</button></td>
+                                    </tr>`;
                                 });
                             }
-                            $('#myTable tbody').html(output);
-                            $('#myTable').show();
-                        } else if (data.length == 0) {
-                            $('#dynamicHeaderRow').hide()
-                            $('#myTable tbody').append(`
-                        <tr>
-                            <td colspan="5" class="text-center text-danger">No records found.</td>
-                        </tr>
-                    `);
+                        } else {
+                            output += `<tr><td colspan="5" class="text-center text-danger">No records found.</td></tr>`;
                         }
 
+                        $('#myTable tbody').html(output);
+                        $('#myTable').toggle(output.length > 0); // Show or hide the table based on output
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
-                        // Handle errors
-                        $('#myTable tbody').html(`<tr><td colspan="5">Error: ${textStatus} - ${errorThrown}</td></tr>`);
+                        // Enhanced error handling
+                        let errorMessage;
+                        if (jqXHR.status === 0) {
+                            errorMessage = 'Network error: Please check your internet connection.';
+                        } else if (jqXHR.status === 404) {
+                            errorMessage = 'Error: Requested page not found.';
+                        } else if (jqXHR.status === 500) {
+                            errorMessage = 'Error: Internal Server Error.';
+                        } else {
+                            errorMessage = `Error: ${textStatus} - ${errorThrown}`;
+                        }
+                        $('#myTable tbody').html(`<tr><td colspan="5" class="text-danger text-center">${errorMessage}</td></tr>`);
                         $('#myTable').show();
                     }
                 });
@@ -452,21 +447,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             }
         }
 
-
-        $('#yearSelect').on('change', function () {
-            fetchPassData();
-        });
-        $('#departmentSelect').on('change', function () {
-            fetchPassData();
-        });
-        $('#passStatus').on('change', function () {
-            fetchPassData();
-        });
-        $('#passType').on('change', function () {
+        // Event listeners for dropdown changes
+        $('#yearSelect, #departmentSelect, #passStatus, #passType').on('change', function () {
             fetchPassData();
         });
     });
 </script>
+
 
 
 
