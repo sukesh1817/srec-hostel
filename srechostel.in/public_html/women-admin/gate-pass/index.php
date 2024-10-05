@@ -331,21 +331,23 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
 
     <div class="container mt-4">
-        <table id="myTable" style="display: none;" class="table table-striped">
-            <thead>
+    <div class="table-responsive">
+        <table id="myTable" style="display: none;" class="table table-striped table-bordered table-hover">
+            <thead class="thead-light">
                 <tr id="dynamicHeaderRow">
                     <th>Roll Number</th>
                     <th>Name</th>
                     <th>Department</th>
                     <th>Year</th>
+                    <th>Actions</th> <!-- Adding a column for action buttons -->
                 </tr>
             </thead>
             <tbody>
-
-
+                <!-- Dynamic rows will be inserted here -->
             </tbody>
         </table>
     </div>
+</div>
 
 </body>
 
