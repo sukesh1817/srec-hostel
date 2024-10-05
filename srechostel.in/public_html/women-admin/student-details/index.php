@@ -190,9 +190,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             display: block;
             /* Show if error is active */
         }
-    </style>
 
-    <style>
         .scrollable-dropdown {
             max-height: 350px;
             /* Set maximum height for the dropdown */
