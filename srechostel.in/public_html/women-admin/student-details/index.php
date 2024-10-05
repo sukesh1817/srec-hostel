@@ -298,7 +298,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 </div>
         
 
-                <form id="search-form" action="/student-details/" method="post" class="d-inline-block col-12 col-md-6 row">
+                <form id="search-form" action="/student-details/" method="post" class="col-12 col-md-6">
                     <input type="hidden" name="year" id="yearValue">
                     <input type="hidden" name="department" id="departmentValue">
 
