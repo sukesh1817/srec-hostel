@@ -238,7 +238,7 @@ class Admin
                 $sql = "SELECT g.*, s.year_of_study FROM gate_pass g JOIN stud_details s ON g.roll_no = s.roll_no WHERE 1=1";
                 break;
             case 2:
-                $sql = "SELECT w.*, s.year_of_study FROM working_day_pass w JOIN stud_details s ON w.roll_no = s.roll_no WHERE 1=1";
+                $sql = "SELECT w.*, s.year_of_study FROM working_days_pass w JOIN stud_details s ON w.roll_no = s.roll_no WHERE 1=1";
                 break;
             case 3:
                 $sql = "SELECT g.*, s.year_of_study FROM general_home_pass g JOIN stud_details s ON g.roll_no = s.roll_no WHERE 1=1";
