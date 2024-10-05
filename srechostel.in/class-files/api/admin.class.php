@@ -184,11 +184,12 @@ class Admin
         if (!empty($query)) {
             // Check if the query is numeric (assuming roll number is numeric)
             if (is_numeric($query)) {
-                $sql .= " AND roll_no = ?";
-                $params[] = $sqlConn->real_escape_string($query);
+                // Use LIKE to find roll numbers starting with the given query
+                $sql .= " AND roll_no LIKE ?";
+                $params[] = $sqlConn->real_escape_string($query) . "%"; // Append % for partial matching
             } 
             // Check if the query is in the list of departments
-            else if (in_array(strtoupper($query), ['AI&DS', 'IT', 'ECE', 'EEE', 'MECH', 'BME', 'CIVIL', 'AERO', 'RA', 'CSE', 'EIE', 'MBA'])) {
+            else if (in_array(strtoupper($query), ['AI&DS', 'IT', 'ECE', 'EEE', 'MECH', 'BME', 'CIVIL', 'AERO', 'CSE', 'EIE', 'MBA'])) {
                 $sql .= " AND deptment = ?";
                 $params[] = $sqlConn->real_escape_string($query);
             }
@@ -218,5 +219,6 @@ class Admin
     
         return ['data' => $students];
     }
+    
     
 }
