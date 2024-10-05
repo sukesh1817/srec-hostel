@@ -381,7 +381,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             if (passType && passStatus) {
                 // Prepare the AJAX request
                 $.ajax({
-                    url: domain+'/api/admin/manage_pass_request/get_student_pass/index.php', // Replace with the actual path to your PHP file
+                    url: domain + '/api/admin/manage_pass_request/get_student_pass/index.php', // Replace with the actual path to your PHP file
                     type: 'GET',
                     data: {
                         pass_type: passType,
@@ -393,7 +393,25 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                     success: function (data) {
                         // Handle success
                         let output = '';
-                        if (data.error) {
+                        if (passStatus == 0) {
+                            if (data.error) {
+                                output += `<tr><td colspan="5">Error: ${data.error}</td></tr>`;
+                            } else {
+                                data.forEach(item => {
+                                    output += `<tr>
+                                    <td>${item.roll_no}</td>
+                                    <td>${item.stud_name}</td>
+                                    <td>${item.department}</td>
+                                    <td>${item.year_of_study}</td>
+                                    <td><button class="btn btn-accept btn-sm">Accept</button></td>
+                                    <td><button class="btn btn-decline">Decline</button></td>
+                                </tr>`;
+                                });
+                            }
+                            $('#myTable tbody').html(output);
+                            $('#myTable').show();
+                        } else {
+                            if (data.error) {
                             output += `<tr><td colspan="5">Error: ${data.error}</td></tr>`;
                         } else {
                             data.forEach(item => {
@@ -402,12 +420,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                                     <td>${item.stud_name}</td>
                                     <td>${item.department}</td>
                                     <td>${item.year_of_study}</td>
-                                    <td><button class="btn btn-info">Details</button></td>
+                                    <td><button class="btn btn-success btn-sm">${item.accepted_by}</button></td>
                                 </tr>`;
                             });
                         }
                         $('#myTable tbody').html(output);
                         $('#myTable').show();
+                        }
+
                     },
                     error: function (jqXHR, textStatus, errorThrown) {
                         // Handle errors
@@ -422,17 +442,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             }
         }
 
-  
-        $('#yearSelect').on('change', function() {
+
+        $('#yearSelect').on('change', function () {
             fetchPassData();
         });
-        $('#departmentSelect').on('change', function() {
+        $('#departmentSelect').on('change', function () {
             fetchPassData();
         });
-        $('#passStatus').on('change', function() {
+        $('#passStatus').on('change', function () {
             fetchPassData();
         });
-        $('#passType').on('change', function() {
+        $('#passType').on('change', function () {
             fetchPassData();
         });
     });
