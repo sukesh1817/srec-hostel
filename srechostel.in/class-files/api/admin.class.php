@@ -216,7 +216,7 @@ class Admin
     
         $stmt->close();
     
-        return ['status' => 'success', 'data' => $students];
+        return ['data' => $students];
     }
     
 }
