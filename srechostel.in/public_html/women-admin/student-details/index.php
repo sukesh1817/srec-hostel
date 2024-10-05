@@ -156,21 +156,22 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
 
         #myUL {
-  list-style-type: none;
-  padding: 0;
-  margin: 0;
-}
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
 
-#myUL li a {
-  border: 1px solid #ddd;
-  margin-top: -1px; /* Prevent double borders */
-  background-color: #f6f6f6;
-  padding: 12px;
-  text-decoration: none;
-  font-size: 18px;
-  color: black;
-  display: block
-}
+        #myUL li a {
+            border: 1px solid #ddd;
+            margin-top: -1px;
+            /* Prevent double borders */
+            background-color: #f6f6f6;
+            padding: 12px;
+            text-decoration: none;
+            font-size: 18px;
+            color: black;
+            display: block
+        }
 
         .error-message {
             color: #ff6b6b;
@@ -262,19 +263,17 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <div class="dropdown">
                     <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
                         aria-label="Search">
-                    <div id="suggestionsDropdown" class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                        <ul id="myUL">
-                            <li><a href="#">Adele</a></li>
-                            <li><a href="#">Agnes</a></li>
+                    <ul id="myUL">
+                        <li><a href="#">Adele</a></li>
+                        <li><a href="#">Agnes</a></li>
 
-                            <li><a href="#">Billy</a></li>
-                            <li><a href="#">Bob</a></li>
+                        <li><a href="#">Billy</a></li>
+                        <li><a href="#">Bob</a></li>
 
-                            <li><a href="#">Calvin</a></li>
-                            <li><a href="#">Christina</a></li>
-                            <li><a href="#">Cindy</a></li>
-                        </ul>
-                    </div>
+                        <li><a href="#">Calvin</a></li>
+                        <li><a href="#">Christina</a></li>
+                        <li><a href="#">Cindy</a></li>
+                    </ul>
                 </div>
 
 
