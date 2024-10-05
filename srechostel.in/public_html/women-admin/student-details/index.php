@@ -155,7 +155,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
         }
 
 
-
+      
 
         .error-message {
             color: #ff6b6b;
@@ -176,69 +176,37 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
     <style>
         .dropdown {
-            position: relative;
-            /* Required for absolute positioning of the list */
-        }
+    position: relative; /* Required for absolute positioning of the list */
+}
 
-        #searchQueryInput {
-            width: 100%;
-            /* Takes the full width of the container */
-            max-width: 400px;
-            /* Maximum width */
-        }
+#searchQueryInput {
+    width: 100%; /* Takes the full width of the container */
+    max-width: 400px; /* Maximum width */
+}
 
-        #myUL {
-            display: none;
-            /* Hide initially */
-            position: absolute;
-            /* Position it below the input */
-            background-color: white;
-            /* Background for the dropdown */
-            border: 1px solid #ccc;
-            /* Optional border */
-            border-radius: 4px;
-            /* Optional rounded corners */
-            margin-top: 2px;
-            /* Space between input and dropdown */
-            width: 100%;
-            /* Matches the width of the input */
-            z-index: 1000;
-            /* Ensures it appears on top */
-        }
+#myUL {
+    display: none; /* Hide initially */
+    position: absolute; /* Position it below the input */
+    background-color: white; /* Background for the dropdown */
+    border: 1px solid #ccc; /* Optional border */
+    border-radius: 4px; /* Optional rounded corners */
+    margin-top: 2px; /* Space between input and dropdown */
+    width: 100%; /* Matches the width of the input */
+    z-index: 1000; /* Ensures it appears on top */
+}
 
-        #myUL li a {
-            display: block;
-            /* Makes each item a block */
-            padding: 10px;
-            /* Padding for items */
-            text-decoration: none;
-            /* Remove underline */
-            color: black;
-            /* Text color */
-        }
+#myUL li a {
+    display: block; /* Makes each item a block */
+    padding: 10px; /* Padding for items */
+    text-decoration: none; /* Remove underline */
+    color: black; /* Text color */
+}
 
-        #myUL li a:hover {
-            background-color: #f1f1f1;
-            /* Highlight on hover */
-        }
+#myUL li a:hover {
+    background-color: #f1f1f1; /* Highlight on hover */
+}
 
-        #myUL {
-            list-style-type: none;
-            padding: 0;
-            margin: 0;
-        }
 
-        #myUL li a {
-            border: 1px solid #ddd;
-            margin-top: -1px;
-            /* Prevent double borders */
-            background-color: #f6f6f6;
-            padding: 12px;
-            text-decoration: none;
-            font-size: 18px;
-            color: black;
-            display: block
-        }
     </style>
 
 
@@ -314,7 +282,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 <div class="dropdown text-center" style="width: 200%; max-width: 400px; margin: auto;">
                     <input type="text" id="searchQueryInput" class="form-control" placeholder="Search..."
                         aria-label="Search">
-                    <ul id="myUL" class="list-unstyled" style="position: absolute; width: 100%; z-index: 1000;">
+                    <ul  id="myUL" class="list-unstyled"
+                        style="display:none; position: absolute; width: 100%; z-index: 1000;">
                         <li><a href="#">Adele</a></li>
                         <li><a href="#">Agnes</a></li>
                         <li><a href="#">Billy</a></li>
@@ -506,20 +475,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                     data: { query: query },
                     crossDomain: true,
                     success: function (response) {
-                        console.log(response['data']);  // Log the received data to the console
-                        const suggestionsList = $('#suggestionsList');
-                        const dropdown = $('#suggestionsDropdown');
-
-                        // Clear existing suggestions
+                        const suggestionsList = $('#myUL');
                         suggestionsList.empty();
 
                         // If there are suggestions, show the dropdown
                         if (Array.isArray(response['data']) && response['data'].length > 0) {
                             response['data'].forEach(function (student) {
+                                console.log(student)
                                 // Create a list item for each student suggestion
-                                let suggestionItem = $('<li>')
-                                    .addClass('dropdown-item')
-                                    .text(`${student.name} - Roll No: ${student.roll_no} - Dept: ${student.department}`)  // Customize display text
+                                    let suggestionItem = $('<li>').text(`${student.name} - Roll No: ${student.roll_no} - Dept: ${student.department}`)  // Customize display text
 
                                     // Add click event to fill input with the selected suggestion
                                     .on('click', function () {
