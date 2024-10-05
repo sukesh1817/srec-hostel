@@ -256,85 +256,72 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
         </span>
     </div>
 
-    <div class="bg-light-subtle py-4 row">
-        <div class="container mt-2 text-center">
-            <div class="row justify-content-center">
-                <div class="container mt-5">
-                    <form id="search-form" action="/student-details/" method="post" class="w-100">
-                        <div class="mb-3">
-                            <label for="yearSelect" class="form-label">Select Year</label>
-                            <select class="form-select" id="yearSelect" name="year" aria-label="Select Year">
-                                <option selected disabled>Choose Year</option>
-                                <option value="1">1</option>
-                                <option value="2">2</option>
-                                <option value="3">3</option>
-                                <option value="4">4</option>
-                            </select>
-                        </div>
+    <div class="bg-light-subtle py-4">
+    <div class="container mt-2 text-center">
+        <div class="row justify-content-center">
+            <div class="col-12 col-md-8">
+                <form id="search-form" action="/student-details/" method="post" class="mb-4">
+                    <div class="mb-3">
+                        <label for="yearSelect" class="form-label">Select Year</label>
+                        <select class="form-select" id="yearSelect" name="year" aria-label="Select Year">
+                            <option selected disabled>Choose Year</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="4">4</option>
+                        </select>
+                    </div>
 
-                        <div class="mb-3">
-                            <label for="departmentSelect" class="form-label">Select Department</label>
-                            <select class="form-select" id="departmentSelect" name="department"
-                                aria-label="Select Department">
-                                <option selected disabled>Choose Department</option>
-                                <option value="B.Tech AIDS">B.Tech AIDS</option>
-                                <option value="B.Tech IT">B.Tech IT</option>
-                                <option value="B.E ECE">B.E ECE</option>
-                                <option value="B.E EEE">B.E EEE</option>
-                                <option value="B.E MECH">B.E MECH</option>
-                                <option value="B.E BME">B.E BME</option>
-                                <option value="M.Tech CSE">M.Tech CSE</option>
-                                <option value="B.E CIVIL">B.E CIVIL</option>
-                                <option value="B.E AERO">B.E AERO</option>
-                                <option value="B.E RA">B.E RA</option>
-                                <option value="B.E CSE">B.E CSE</option>
-                                <option value="B.E EIE">B.E EIE</option>
-                                <option value="B.E MBA">B.E MBA</option>
-                            </select>
-                        </div>
+                    <div class="mb-3">
+                        <label for="departmentSelect" class="form-label">Select Department</label>
+                        <select class="form-select" id="departmentSelect" name="department" aria-label="Select Department">
+                            <option selected disabled>Choose Department</option>
+                            <option value="B.Tech AIDS">B.Tech AIDS</option>
+                            <option value="B.Tech IT">B.Tech IT</option>
+                            <option value="B.E ECE">B.E ECE</option>
+                            <option value="B.E EEE">B.E EEE</option>
+                            <option value="B.E MECH">B.E MECH</option>
+                            <option value="B.E BME">B.E BME</option>
+                            <option value="M.Tech CSE">M.Tech CSE</option>
+                            <option value="B.E CIVIL">B.E CIVIL</option>
+                            <option value="B.E AERO">B.E AERO</option>
+                            <option value="B.E RA">B.E RA</option>
+                            <option value="B.E CSE">B.E CSE</option>
+                            <option value="B.E EIE">B.E EIE</option>
+                            <option value="B.E MBA">B.E MBA</option>
+                        </select>
+                    </div>
 
-                    </form>
+                    <div class="mb-3">
+                        <input type="hidden" name="year" id="yearValue">
+                        <input type="hidden" name="department" id="departmentValue">
+                        <div class="input-group">
+                            <input type="text" id="searchQueryInput" class="form-control" placeholder="Search by name, rollno" aria-label="Search">
+                            <button class="btn btn-dark" type="submit">Search</button>
+                        </div>
+                    </div>
+                </form>
+
+                <div class="card d-inline-flex">
+                    <div class="card-body d-flex align-items-center justify-content-between">
+                        <div class="d-flex align-items-center me-3">
+                            <span id="selectedYear" class="me-2">Year: <strong>NULL</strong></span>
+                            <button type="button" id="removeYear" class="btn btn-danger btn-sm" title="Remove Year">
+                                <i class="bi bi-x-circle"></i>
+                            </button>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <span id="selectedDepartment" class="me-2">Department: <strong>NULL</strong></span>
+                            <button type="button" id="removeDepartment" class="btn btn-danger btn-sm" title="Remove Department">
+                                <i class="bi bi-x-circle"></i>
+                            </button>
+                        </div>
+                    </div>
                 </div>
-
-
-                <form id="search-form" action="/student-details/" method="post" class="d-inline-block col-12 col-md-6">
-                    <input type="hidden" name="year" id="yearValue">
-                    <input type="hidden" name="department" id="departmentValue">
-
-                    <div class="dropdown text-center mb-3">
-                        <input type="text" id="searchQueryInput" class="form-control rounded-1"
-                            placeholder="Search by name, rollno" aria-label="Search">
-                        <ul id="myUL" class="dropdown-menu scrollable-dropdown"
-                            style="display: none; position: absolute; width: 100%; z-index: 1000;">
-                            <!-- Suggestions will be populated here -->
-                        </ul>
-                    </div>
-
-
-                    <div class="card d-inline-flex">
-                        <div class="card-body d-flex align-items-center">
-                            <div class="d-flex align-items-center me-3">
-                                <span id="selectedYear" class="me-2">Year: <strong>NULL</strong></span>
-                                <button type="button" id="removeYear" class="btn btn-danger btn-sm" title="Remove Year">
-                                    <i class="bi bi-x-circle"></i> <!-- Bootstrap Icons for a clear visual cue -->
-                                </button>
-                            </div>
-                            <div class="d-flex align-items-center">
-                                <span id="selectedDepartment" class="me-2">Department: <strong>NULL</strong></span>
-                                <button type="button" id="removeDepartment" class="btn btn-danger btn-sm"
-                                    title="Remove Department">
-                                    <i class="bi bi-x-circle"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-
             </div>
-
-
-            </form>
         </div>
     </div>
+</div>
 
 
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
