@@ -176,7 +176,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
    <style>
     .scrollable-dropdown {
-    max-height: 200px; /* Set maximum height for the dropdown */
+    max-height: 400px; /* Set maximum height for the dropdown */
     overflow-y: auto;  /* Enable vertical scrolling */
     overflow-x: hidden; /* Disable horizontal scrolling */
     border: 1px solid #ccc; /* Optional: border for the dropdown */
