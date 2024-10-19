@@ -522,13 +522,11 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     },
                     dataType: "json",
                     success: function (data) {
-                        var block = $("#"+r).val();
-
-
+                    
                         if (data['Message'] == "Pass successfully accepted") {
-                           block.remove();
+                            $("#"+r).remove();
                         } else {
-                            block.remove();
+                            $("#"+r).remove();
                         }
                     },
                     error: function (error) {
