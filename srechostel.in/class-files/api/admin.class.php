@@ -329,7 +329,7 @@ class Admin
             $updateResult = $stmt->execute();
 
             if ($updateResult) {
-                print_r("sa");
+                print($table);
                 $stmt = $sqlConn->prepare("SELECT allowed_or_not FROM `$table` WHERE roll_no = ?");
                 $stmt->bind_param('i', $rollNo);
                 $stmt->execute();
