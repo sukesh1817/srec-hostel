@@ -5,7 +5,7 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 header('Content-Type: application/json');
 
 
-include_once ($_SERVER["DOCUMENT_ROOT"] . "/../class-files/pass.class.php");
+include_once $_SERVER["DOCUMENT_ROOT"] . '/..' . "/class-files/api/admin.class.php";
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Sanitize and validate input parameters
@@ -15,16 +15,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $whoIs = filter_input(INPUT_POST, 'who_is', FILTER_SANITIZE_STRING);
 
     if ($rollNo && $type && $action !== null && $whoIs) {
-        $pass = new Pass_class();
+        $admin = new Admin();
 
-        if ($action === true) {
+        if ($action == 1) {
             // Action to accept the pass
-            $result = $pass->acceptThePass($rollNo, $type, $whoIs);
+            $result = $admin->acceptThePass($rollNo, $type, $whoIs);
             header("Content-Type: application/json");
             echo json_encode(['Message' => $result ? 'Pass successfully accepted' : 'Pass acceptance failed']);
         } else {
             // Action to decline the pass
-            $result = $pass->declineThePass($rollNo, $type);
+            $result = $admin->declineThePass($rollNo, $type);
             header("Content-Type: application/json");
             echo json_encode(['Message' => $result ? 'Pass successfully declined' : 'Pass decline failed']);
         }

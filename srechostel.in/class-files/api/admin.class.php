@@ -223,7 +223,8 @@ class Admin
         return ['data' => $students];
     }
 
-    function getPassData($admin, $pass_type, $pass_status, $department = null, $year = null) {
+    function getPassData($admin, $pass_type, $pass_status, $department = null, $year = null)
+    {
 
         $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
@@ -232,7 +233,7 @@ class Admin
         $conditions = [];
         $params = [];
         $types = "";
-    
+
         switch ($pass_type) {
             case 1:
                 $sql = "SELECT g.*, s.year_of_study FROM gate_pass g JOIN stud_details s ON g.roll_no = s.roll_no WHERE 1=1";
@@ -246,53 +247,105 @@ class Admin
             default:
                 return ['error' => 'Invalid pass type'];
         }
-    
+
         // Add pass_status condition
         if ($pass_status == 1) {
             $conditions[] = "already_booked = 1 AND allowed_or_not = 1";
         } else {
             $conditions[] = "already_booked = 1 AND allowed_or_not = 0";
         }
-    
+
         // Add optional department condition
         if ($department) {
             $conditions[] = "s.department = ?";
             $params[] = $department;
             $types .= "s"; // 's' for string
         }
-    
+
         // Add optional year condition
         if ($year) {
             $conditions[] = "s.year_of_study = ?";
             $params[] = $year;
             $types .= "i"; // 'i' for integer (if year is an integer)
         }
-    
+
         // Combine conditions into the SQL query
         if (!empty($conditions)) {
             $sql .= " AND " . implode(" AND ", $conditions);
         }
-    
+
         // Prepare the statement
         $stmt = $sqlConn->prepare($sql);
         if ($stmt === false) {
             return ['error' => 'Failed to prepare statement'];
         }
-    
+
         // Bind parameters
         if (!empty($params)) {
             $stmt->bind_param($types, ...$params);
         }
-    
+
         // Execute the statement
         $stmt->execute();
-    
+
         // Get the result
         $result = $stmt->get_result();
         $data = $result ? $result->fetch_all(MYSQLI_ASSOC) : [];
-    
+
         $stmt->close();
         return $data;
     }
+
+
+
+    public function acceptThePass($rollNo, $type, $whois)
+    {
+        $conn = new Connection();
+        $sqlConn = $conn->returnConn();
+        date_default_timezone_set("Asia/Kolkata");
+        $time = date('Y-m-d H:i:s', time());
+
+        // Define table mapping based on pass type
+        $tableMap = [
+            '1' => 'gate_pass',
+            '2' => 'general_home_pass',
+            '3' => 'working_days_pass'
+        ];
+
+        // Check if the pass type is valid
+        if (!isset($tableMap[$type])) {
+            return false;
+        }
+
+        // Get the corresponding table
+        $table = $tableMap[$type];
+
+        try {
+            // Update query using prepared statements to prevent SQL injection
+            $stmt = $sqlConn->prepare("UPDATE `$table` SET allowed_or_not = 1, accepted_by = ?, time_of_approval = ? WHERE roll_no = ?");
+            $stmt->bind_param('ssi', $whois, $time, $rollNo);
+            $updateResult = $stmt->execute();
+
+            if ($updateResult) {
+                
+                $stmt = $sqlConn->prepare("SELECT allowed_or_not FROM `$table` WHERE roll_no = ?");
+                $stmt->bind_param('i', $rollNo);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
+
+                if (isset($row['allowed_or_not']) && $row['allowed_or_not'] == 1) {
+                    return true;
+                }
+            }
+            return false;
+
+        } catch (Exception $e) {
+            // Log the error message (this could be replaced with actual logging)
+            error_log("Error in acceptThePass: " . $e->getMessage());
+            return false;
+        }
+    }
+
 
 }

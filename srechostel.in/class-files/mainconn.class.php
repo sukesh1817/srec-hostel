@@ -1,5 +1,6 @@
 <?php
 //this file help to get a connection from database
+
 class MainConnection {
     public $conn;
     public function __construct() {

@@ -8,6 +8,8 @@ class accommodation
     {
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
+
+
         $name = $details["name"];
         $staffId = $details["staffId"];
         $check_in_date = $details["checkInDate"];
@@ -20,6 +22,7 @@ class accommodation
         $maleStudent = $details["maleStudentCount"];
         $femaleStaff = $details["femaleStaffCount"];
         $maleStaff = $details["maleStaffCount"];
+
 
         $currentDate= "";
         $sqlQuery = "SELECT CURRENT_DATE;";
