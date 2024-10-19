@@ -376,7 +376,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             </div>
         </div>
     </div>
-
+<button class="mark-it">sample</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -495,6 +495,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             var pas_type = "";
             var r = "";
             var a = "";
+
             $(".mark-it").on("click", function () {
                 console.log("smpoe");
                 $('#exampleModal').modal('show');
