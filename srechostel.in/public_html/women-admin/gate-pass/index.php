@@ -429,8 +429,8 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                                         <td>${item.stud_name}</td>
                                         <td>${item.department}</td>
                                         <td>${item.year_of_study}</td>
-                                        <td><button class="btn btn-success btn-sm mark-it">Accept</button></td>
-                                        <td><button class="btn btn-danger btn-sm mark-it">Decline</button></td>
+                                        <td><button id="${item.roll_no}-1" class="btn btn-success btn-sm mark-it">Accept</button></td>
+                                        <td><button id="${item.roll_no}-0" class="btn btn-danger btn-sm mark-it">Decline</button></td>
                                     </tr>`;
                                     });
                                 } else {
