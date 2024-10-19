@@ -510,6 +510,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             $(document).on("click", ".warden", function () {
                 var who_is_this = $(this).attr('id');
                 const domain = "<?php echo $domain ?>";
+                var pas_type = $('#pass-type').val();
                 $.ajax({
                     type: "POST",
                     url: domain + '/api/admin/manage_pass_request/accept_pass/',
