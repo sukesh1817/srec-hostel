@@ -385,182 +385,167 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
 
-</body>
 
 
+    <?php
+    require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
+    ?>
 
+    <script>
+        $(document).ready(function () {
+            function fetchPassData() {
+                const passType = $('#passType').val();
+                const passStatus = $('#passStatus').val();
+                const department = $('#departmentSelect').val();
+                const year = $('#yearSelect').val();
+                const domain = "<?php echo $domain ?>";
 
-<?php
-require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
-?>
+                // Only send the request if all fields have been selected
+                if (passType && passStatus) {
+                    $('#loader').removeClass('d-none'); // Show loader before sending request
 
+                    $.ajax({
+                        url: domain + '/api/admin/manage_pass_request/get_student_pass/',
+                        type: 'GET',
+                        data: {
+                            pass_type: passType,
+                            pass_status: passStatus,
+                            department: department,
+                            year: year
+                        },
+                        dataType: 'json',
+                        success: function (data) {
+                            let output = '';
 
-
-<script>
-    $(document).ready(function () {
-        function fetchPassData() {
-            const passType = $('#passType').val();
-            const passStatus = $('#passStatus').val();
-            const department = $('#departmentSelect').val();
-            const year = $('#yearSelect').val();
-            const domain = "<?php echo $domain ?>";
-
-            // Only send the request if all fields have been selected
-            if (passType && passStatus) {
-                $('#loader').removeClass('d-none'); // Show loader before sending request
-
-                $.ajax({
-                    url: domain + '/api/admin/manage_pass_request/get_student_pass/',
-                    type: 'GET',
-                    data: {
-                        pass_type: passType,
-                        pass_status: passStatus,
-                        department: department,
-                        year: year
-                    },
-                    dataType: 'json',
-                    success: function (data) {
-                        let output = '';
-
-                        if (data.error) {
-                            output += `<tr><td colspan="5" class="text-danger text-center">Error: ${data.error}</td></tr>`;
-                        } else if (data.length > 0) {
-                            $('#dynamicHeaderRow').find('.dynamic-header').remove();
-                            if (passStatus == 0) {
-                                $('#dynamicHeaderRow').append(`<th class="dynamic-header">Accept</th><th class="dynamic-header">Decline</th>`);
-                                data.forEach(item => {
-                                    output += `<tr>
+                            if (data.error) {
+                                output += `<tr><td colspan="5" class="text-danger text-center">Error: ${data.error}</td></tr>`;
+                            } else if (data.length > 0) {
+                                $('#dynamicHeaderRow').find('.dynamic-header').remove();
+                                if (passStatus == 0) {
+                                    $('#dynamicHeaderRow').append(`<th class="dynamic-header">Accept</th><th class="dynamic-header">Decline</th>`);
+                                    data.forEach(item => {
+                                        output += `<tr>
                                         <td>${item.roll_no}</td>
                                         <td>${item.stud_name}</td>
                                         <td>${item.department}</td>
                                         <td>${item.year_of_study}</td>
-                                        <td><button class="btn btn-success btn-sm">Accept</button></td>
-                                        <td><button class="btn btn-danger btn-sm">Decline</button></td>
+                                        <td><button class="btn btn-success btn-sm mark-it">Accept</button></td>
+                                        <td><button class="btn btn-danger btn-sm mark-it">Decline</button></td>
                                     </tr>`;
-                                });
-                            } else {
-                                $('#dynamicHeaderRow').append(`<th class="dynamic-header">Status</th>`);
-                                data.forEach(item => {
-                                    output += `<tr>
+                                    });
+                                } else {
+                                    $('#dynamicHeaderRow').append(`<th class="dynamic-header">Status</th>`);
+                                    data.forEach(item => {
+                                        output += `<tr>
                                         <td>${item.roll_no}</td>
                                         <td>${item.stud_name}</td>
                                         <td>${item.department}</td>
                                         <td>${item.year_of_study}</td>
                                         <td><button class="btn btn-success btn-sm">${item.accepted_by}</button></td>
                                     </tr>`;
-                                });
+                                    });
+                                }
+                            } else {
+                                output += `<tr><td colspan="5" class="text-center text-danger">No records found.</td></tr>`;
                             }
-                        } else {
-                            output += `<tr><td colspan="5" class="text-center text-danger">No records found.</td></tr>`;
-                        }
 
-                        // Animate table updates
-                        $('#myTable tbody').fadeOut(200, function () {
-                            $(this).html(output).fadeIn(200); // Fade in after updating content
-                        });
+                            // Animate table updates
+                            $('#myTable tbody').fadeOut(200, function () {
+                                $(this).html(output).fadeIn(200); // Fade in after updating content
+                            });
 
-                        $('#myTable').toggle(output.length > 0); // Show or hide the table based on output
-                    },
-                    error: function (jqXHR, textStatus, errorThrown) {
-                        let errorMessage;
-                        if (jqXHR.status === 0) {
-                            errorMessage = 'Network error: Please check your internet connection.';
-                        } else if (jqXHR.status === 404) {
-                            errorMessage = 'Error: Requested page not found.';
-                        } else if (jqXHR.status === 500) {
-                            errorMessage = 'Error: Internal Server Error.';
-                        } else {
-                            errorMessage = `Error: ${textStatus} - ${errorThrown}`;
+                            $('#myTable').toggle(output.length > 0); // Show or hide the table based on output
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            let errorMessage;
+                            if (jqXHR.status === 0) {
+                                errorMessage = 'Network error: Please check your internet connection.';
+                            } else if (jqXHR.status === 404) {
+                                errorMessage = 'Error: Requested page not found.';
+                            } else if (jqXHR.status === 500) {
+                                errorMessage = 'Error: Internal Server Error.';
+                            } else {
+                                errorMessage = `Error: ${textStatus} - ${errorThrown}`;
+                            }
+                            $('#myTable tbody').html(`<tr><td colspan="5" class="text-danger text-center">${errorMessage}</td></tr>`);
+                            $('#myTable').show();
+                        },
+                        complete: function () {
+                            $('#loader').addClass('d-none'); // Hide loader after request completes
                         }
-                        $('#myTable tbody').html(`<tr><td colspan="5" class="text-danger text-center">${errorMessage}</td></tr>`);
-                        $('#myTable').show();
-                    },
-                    complete: function () {
-                        $('#loader').addClass('d-none'); // Hide loader after request completes
-                    }
-                });
-            } else {
-                // Clear table if any field is not selected
-                $('#myTable tbody').fadeOut(300, function () {
-                    $(this).html('').fadeIn(300); // Fade out before clearing and fade back in
-                });
-                $('#myTable').hide();
+                    });
+                } else {
+                    // Clear table if any field is not selected
+                    $('#myTable tbody').fadeOut(300, function () {
+                        $(this).html('').fadeIn(300); // Fade out before clearing and fade back in
+                    });
+                    $('#myTable').hide();
+                }
             }
-        }
 
-        // Event listeners for dropdown changes
-        $('#yearSelect, #departmentSelect, #passStatus, #passType').on('change', function () {
-            fetchPassData();
+            // Event listeners for dropdown changes
+            $('#yearSelect, #departmentSelect, #passStatus, #passType').on('change', function () {
+                fetchPassData();
+            });
         });
-    });
-</script>
+    </script>
+
+    <script>
+        $(document).ready(function (event) {
+            var warden = "";
+            var id = "";
+            var pas_type = "";
+            var r = "";
+            var a = "";
+            $(".mark-it").on("click", function () {
+                $('#exampleModal').modal('show');
+                id = $(this).attr('id');
+                pas_type = $('#pass-type').val();
+                ar = id.split("-")
+                r = ar[0];
+                a = ar[1];
 
 
+            });
 
-<script>
-    $(document).ready(function (event) {
-        var warden = "";
-        var id = "";
-        var pas_type = "";
-        var r = "";
-        var a = "";
-        $(".mark-it").on("click", function () {
-            $('#exampleModal').modal('show');
-            id = $(this).attr('id');
-            pas_type = $('#pass-type').val();
-            ar = id.split("-")
-            r = ar[0];
-            a = ar[1];
+            $(".warden").click(
+                function () {
+                    var who_is_this = $(this).attr('id');
+                    $.ajax({
+                        type: "POST",
+                        url: domain + '/api/admin/manage_pass_request/accept_pass/',
+                        data: {
+                            "roll-no": r,
+                            "action": a,
+                            "type": pas_type,
+                            "who_is": who_is_this
+                        },
+                        dataType: "json",
+                        success: function (data) {
 
+                            if (data['Message'] == "Pass successfully accepted") {
+                                var elem1 = document.getElementById(r + "-0");
+                                elem1.remove();
+                                var elem1 = document.getElementById(r + "-1");
+                                elem1.innerHTML = "accepted";
+                            } else {
+                                var elem1 = document.getElementById(r + "-1");
+                                elem1.remove();
+                                var elem1 = document.getElementById(r + "-0");
+                                elem1.innerHTML = "declined";
+                            }
+                        },
+
+                    });
+                }
+            )
 
         });
 
-        $(".warden").click(
-            function () {
-                var who_is_this = $(this).attr('id');
-                $.ajax({
-                    type: "POST",
-                    url: domain + '/api/admin/manage_pass_request/accept_pass/',
-                    data: {
-                        "roll-no": r,
-                        "action": a,
-                        "type": pas_type,
-                        "who_is": who_is_this
-                    },
-                    dataType: "json",
-                    success: function (data) {
 
-                        if (data['Message'] == "Pass successfully accepted") {
-                            var elem1 = document.getElementById(r + "-0");
-                            elem1.remove();
-                            var elem1 = document.getElementById(r + "-1");
-                            elem1.innerHTML = "accepted";
-                        } else {
-                            var elem1 = document.getElementById(r + "-1");
-                            elem1.remove();
-                            var elem1 = document.getElementById(r + "-0");
-                            elem1.innerHTML = "declined";
-                        }
-                    },
-
-                });
-            }
-        )
-
-    });
+    </script>
 
 
-</script>
-
-
-
-
-
-
-
-
-
-
-
+</body>
 
 </html>
