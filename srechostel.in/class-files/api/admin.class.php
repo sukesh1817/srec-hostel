@@ -322,14 +322,14 @@ class Admin
         $table = $tableMap[$type];
 
         try {
-            print_r("sa");
+            
             // Update query using prepared statements to prevent SQL injection
             $stmt = $sqlConn->prepare("UPDATE `$table` SET allowed_or_not = 1, accepted_by = ?, time_of_approval = ? WHERE roll_no = ?");
             $stmt->bind_param('ssi', $whois, $time, $rollNo);
             $updateResult = $stmt->execute();
 
             if ($updateResult) {
-
+                print_r("sa");
                 $stmt = $sqlConn->prepare("SELECT allowed_or_not FROM `$table` WHERE roll_no = ?");
                 $stmt->bind_param('i', $rollNo);
                 $stmt->execute();
