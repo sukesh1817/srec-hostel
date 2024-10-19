@@ -274,7 +274,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                 </tr>
             </thead>
             <tbody>
-                <!-- Example of dynamically populated rows -->
+                
                 <tr>
                     <td>1234567</td>
                     <td>John Doe</td>

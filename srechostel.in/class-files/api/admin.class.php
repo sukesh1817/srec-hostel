@@ -336,7 +336,36 @@ class Admin
                 $row = $result->fetch_assoc();
 
                 if (isset($row['allowed_or_not']) && $row['allowed_or_not'] == 1) {
-                    return true;
+                    # TODO : SEPRATE CODE WRITING FOR EACH ADMIN.
+                    $stud_details = $this->search_students_individual($rollNo);
+                    $stmt = $sqlConn->prepare("INSERT INTO student_pass_records (
+                        roll_no, name, department, approved_warden, approved_watch_man, 
+                        time_of_approval_by_warden, time_of_entry_by_watch_man, status
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+                    $approvedWatchman = "-";
+                    $timeOfApprovalByWatchman=null;
+                    $status=0;
+                    $stmt->bind_param(
+                        "issssssis",
+                        $rollNo,
+                        $stud_details['name'],
+                        $stud_details['department'],
+                        $whois,
+                        $approvedWatchman,
+                        $time,
+                        $timeOfApprovalByWatchman,
+                        $status,
+                    );
+
+                    $stmt->bind_param('ssi', $whois, $time, $rollNo);
+                    $updateResult = $stmt->execute();
+                    if($updateResult) {
+                        return true;
+                    } else {
+
+                    }
+                    
                 }
             }
             return false;
