@@ -487,11 +487,9 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             $('#yearSelect, #departmentSelect, #passStatus, #passType').on('change', function () {
                 fetchPassData();
             });
-        });
-    </script>
 
-    <script>
-        $(document).ready(function (event) {
+
+
             var warden = "";
             var id = "";
             var pas_type = "";
@@ -542,8 +540,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             )
 
         });
-
-
     </script>
 
 
