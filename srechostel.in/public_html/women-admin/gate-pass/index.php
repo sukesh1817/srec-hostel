@@ -429,7 +429,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                                 if (passStatus == 0) {
                                     $('#dynamicHeaderRow').append(`<th class="dynamic-header">Accept</th><th class="dynamic-header">Decline</th>`);
                                     data.forEach(item => {
-                                        output += `<tr>
+                                        output += `<tr id="${item.roll_no}">
                                         <td>${item.roll_no}</td>
                                         <td>${item.stud_name}</td>
                                         <td>${item.department}</td>
@@ -439,14 +439,14 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                                     </tr>`;
                                     });
                                 } else {
-                                    $('#dynamicHeaderRow').append(`<th class="dynamic-header">Status</th>`);
+                                    $('#dynamicHeaderRow').append(`<th class="dynamic-header">Accepted by</th>`);
                                     data.forEach(item => {
-                                        output += `<tr>
+                                        output += `<tr id="${item.roll_no}">
                                         <td>${item.roll_no}</td>
                                         <td>${item.stud_name}</td>
                                         <td>${item.department}</td>
                                         <td>${item.year_of_study}</td>
-                                        <td><button class="btn btn-success btn-sm">${item.accepted_by}</button></td>
+                                        <td><p class="text-dark fs-5">${item.accepted_by}</p></td>
                                     </tr>`;
                                     });
                                 }
@@ -522,23 +522,13 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     },
                     dataType: "json",
                     success: function (data) {
-                        var acceptButton = document.getElementById(r + "-1");
-                        var declineButton = document.getElementById(r + "-0");
+                        var block = $("#"+r).val();
+
 
                         if (data['Message'] == "Pass successfully accepted") {
-                            if (declineButton) {
-                                declineButton.remove();
-                            }
-                            if (acceptButton) {
-                                acceptButton.innerHTML = "Accepted";
-                            }
+                           block.remove();
                         } else {
-                            if (acceptButton) {
-                                acceptButton.remove();
-                            }
-                            if (declineButton) {
-                                declineButton.innerHTML = "Declined";
-                            }
+                            block.remove();
                         }
                     },
                     error: function (error) {
