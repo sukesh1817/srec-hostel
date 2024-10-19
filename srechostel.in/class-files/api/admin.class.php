@@ -363,7 +363,7 @@ class Admin
                     if($updateResult) {
                         return true;
                     } else {
-
+                        return false;
                     }
                     
                 }
