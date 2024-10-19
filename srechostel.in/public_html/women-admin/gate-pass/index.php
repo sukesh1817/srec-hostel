@@ -451,7 +451,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                                     });
                                 }
                             } else {
-                                output += `<tr><td colspan="5" class="text-center text-danger">No records found.</td></tr>`;
+                                output += `<tr><td colspan="7" class="text-center text-danger">No records found.</td></tr>`;
                             }
 
                             // Animate table updates
