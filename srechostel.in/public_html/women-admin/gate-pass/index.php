@@ -498,6 +498,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             var r = "";
             var a = "";
             $(".mark-it").on("click", function () {
+                console.log("smpoe");
                 $('#exampleModal').modal('show');
                 id = $(this).attr('id');
                 pas_type = $('#pass-type').val();
