@@ -322,7 +322,7 @@ class Admin
         $table = $tableMap[$type];
 
         try {
-            
+
             // Update query using prepared statements to prevent SQL injection
             $stmt = $sqlConn->prepare("UPDATE `$table` SET allowed_or_not = 1, accepted_by = ?, time_of_approval = ? WHERE roll_no = ?");
             $stmt->bind_param('ssi', $whois, $time, $rollNo);
@@ -343,8 +343,55 @@ class Admin
 
         } catch (Exception $e) {
             // Log the error message (this could be replaced with actual logging)
-            
+
             error_log("Error in acceptThePass: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    public function declineThePass($rollNo, $type)
+    {
+        $conn = new MainConnection();
+        $sqlConn = $conn->returnConn();
+
+        // Define table mapping based on pass type
+        $tableMap = [
+            '1' => 'gate_pass',
+            '2' => 'general_home_pass',
+            '3' => 'working_days_pass'
+        ];
+
+        // Check if the pass type is valid
+        if (!isset($tableMap[$type])) {
+            return false;
+        }
+
+        // Get the corresponding table
+        $table = $tableMap[$type];
+
+        try {
+            // Update query using prepared statements
+            $stmt = $sqlConn->prepare("UPDATE `$table` SET allowed_or_not = 0, already_booked = 0 WHERE roll_no = ?");
+            $stmt->bind_param('i', $rollNo);
+            $updateResult = $stmt->execute();
+
+            if ($updateResult) {
+                // Query to verify if the pass was successfully updated
+                $stmt = $sqlConn->prepare("SELECT allowed_or_not FROM `$table` WHERE roll_no = ?");
+                $stmt->bind_param('i', $rollNo);
+                $stmt->execute();
+                $result = $stmt->get_result();
+                $row = $result->fetch_assoc();
+
+                if (isset($row['allowed_or_not']) && $row['allowed_or_not'] == 0) {
+                    return true; // Pass successfully declined
+                }
+            }
+            return false; // Pass not declined
+
+        } catch (Exception $e) {
+            // Log the error message (replace this with actual logging)
+            error_log("Error in declineThePass: " . $e->getMessage());
             return false;
         }
     }
