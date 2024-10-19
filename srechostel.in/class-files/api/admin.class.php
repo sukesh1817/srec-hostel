@@ -327,11 +327,8 @@ class Admin
             $stmt = $sqlConn->prepare("UPDATE `$table` SET allowed_or_not = 1, accepted_by = ?, time_of_approval = ? WHERE roll_no = ?");
             $stmt->bind_param('ssi', $whois, $time, $rollNo);
             $updateResult = $stmt->execute();
-            print($whois);
-            print($time);
-            print($rollNo);
+
             if ($updateResult) {
-                print($table);
                 $stmt = $sqlConn->prepare("SELECT allowed_or_not FROM `$table` WHERE roll_no = ?");
                 $stmt->bind_param('i', $rollNo);
                 $stmt->execute();
