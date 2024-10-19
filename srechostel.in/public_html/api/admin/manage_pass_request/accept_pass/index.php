@@ -1,5 +1,10 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
+header("Access-Control-Allow-Origin: *");  // Allow all origins
+header("Access-Control-Allow-Methods: GET, POST, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+header('Content-Type: application/json');
+
+
 include_once ($_SERVER["DOCUMENT_ROOT"] . "/../class-files/pass.class.php");
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {

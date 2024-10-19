@@ -353,14 +353,40 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
         </div>
     </div>
 
+
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="false">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Who is this ?</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Please tell who is this to authorize the student ?
+                </div>
+                <div class="modal-footer">
+                    <button id="Suresh" type="button" class="btn btn-dark rounded-1 warden"
+                        data-bs-dismiss="modal">Suresh</button>
+                    <button id="Manivel" type="button" class="btn btn-dark rounded-1 warden"
+                        data-bs-dismiss="modal">Manivel</button>
+                    <button id="Navaneethan" type="button" class="btn btn-dark rounded-1 warden"
+                        data-bs-dismiss="modal">Navaneethan</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+
 </body>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
-    integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
-    crossorigin="anonymous"></script>
 
 
 
@@ -384,7 +410,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
                 $('#loader').removeClass('d-none'); // Show loader before sending request
 
                 $.ajax({
-                    url: domain + '/api/admin/manage_pass_request/get_student_pass/index.php',
+                    url: domain + '/api/admin/manage_pass_request/get_student_pass/',
                     type: 'GET',
                     data: {
                         pass_type: passType,
@@ -467,6 +493,63 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
             fetchPassData();
         });
     });
+</script>
+
+
+
+<script>
+    $(document).ready(function (event) {
+        var warden = "";
+        var id = "";
+        var pas_type = "";
+        var r = "";
+        var a = "";
+        $(".mark-it").on("click", function () {
+            $('#exampleModal').modal('show');
+            id = $(this).attr('id');
+            pas_type = $('#pass-type').val();
+            ar = id.split("-")
+            r = ar[0];
+            a = ar[1];
+
+
+        });
+
+        $(".warden").click(
+            function () {
+                var who_is_this = $(this).attr('id');
+                $.ajax({
+                    type: "POST",
+                    url: domain + '/api/admin/manage_pass_request/accept_pass/',
+                    data: {
+                        "roll-no": r,
+                        "action": a,
+                        "type": pas_type,
+                        "who_is": who_is_this
+                    },
+                    dataType: "json",
+                    success: function (data) {
+
+                        if (data['Message'] == "Pass successfully accepted") {
+                            var elem1 = document.getElementById(r + "-0");
+                            elem1.remove();
+                            var elem1 = document.getElementById(r + "-1");
+                            elem1.innerHTML = "accepted";
+                        } else {
+                            var elem1 = document.getElementById(r + "-1");
+                            elem1.remove();
+                            var elem1 = document.getElementById(r + "-0");
+                            elem1.innerHTML = "declined";
+                        }
+                    },
+
+                });
+            }
+        )
+
+    });
+
+
 </script>
 
 
