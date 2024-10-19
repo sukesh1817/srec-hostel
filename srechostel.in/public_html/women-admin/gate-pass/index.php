@@ -507,36 +507,46 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             });
 
 
-            $(document).on("click",".warden", function () {
-                    var who_is_this = $(this).attr('id');
-                    $.ajax({
-                        type: "POST",
-                        url: domain + '/api/admin/manage_pass_request/accept_pass/',
-                        data: {
-                            "roll-no": r,
-                            "action": a,
-                            "type": pas_type,
-                            "who_is": who_is_this
-                        },
-                        dataType: "json",
-                        success: function (data) {
+            $(document).on("click", ".warden", function () {
+                var who_is_this = $(this).attr('id');
+                console.log(who_is_this); // Test if the event is firing correctly
 
-                            if (data['Message'] == "Pass successfully accepted") {
-                                var elem1 = document.getElementById(r + "-0");
-                                elem1.remove();
-                                var elem1 = document.getElementById(r + "-1");
-                                elem1.innerHTML = "accepted";
-                            } else {
-                                var elem1 = document.getElementById(r + "-1");
-                                elem1.remove();
-                                var elem1 = document.getElementById(r + "-0");
-                                elem1.innerHTML = "declined";
+                $.ajax({
+                    type: "POST",
+                    url: domain + '/api/admin/manage_pass_request/accept_pass/',
+                    data: {
+                        "roll-no": r,  // Ensure 'r', 'a', and 'pas_type' are initialized
+                        "action": a,
+                        "type": pas_type,
+                        "who_is": who_is_this
+                    },
+                    dataType: "json",
+                    success: function (data) {
+                        var acceptButton = document.getElementById(r + "-1");
+                        var declineButton = document.getElementById(r + "-0");
+
+                        if (data['Message'] == "Pass successfully accepted") {
+                            if (declineButton) {
+                                declineButton.remove();
                             }
-                        },
+                            if (acceptButton) {
+                                acceptButton.innerHTML = "Accepted";
+                            }
+                        } else {
+                            if (acceptButton) {
+                                acceptButton.remove();
+                            }
+                            if (declineButton) {
+                                declineButton.innerHTML = "Declined";
+                            }
+                        }
+                    },
+                    error: function (error) {
+                        console.log("Error in AJAX request:", error);
+                    }
+                });
+            });
 
-                    });
-                }
-            )
 
         });
     </script>
