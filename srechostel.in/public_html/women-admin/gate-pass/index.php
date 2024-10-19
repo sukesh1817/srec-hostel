@@ -507,7 +507,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             });
 
 
-            $(".warden").on("click", function () {
+            $(document).on("click",".warden", function () {
                     var who_is_this = $(this).attr('id');
                     $.ajax({
                         type: "POST",
