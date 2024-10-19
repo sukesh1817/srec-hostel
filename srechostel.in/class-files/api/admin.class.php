@@ -300,8 +300,9 @@ class Admin
 
     public function acceptThePass($rollNo, $type, $whois)
     {
-        $conn = new Connection();
+        $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
+
         date_default_timezone_set("Asia/Kolkata");
         $time = date('Y-m-d H:i:s', time());
 
@@ -327,7 +328,7 @@ class Admin
             $updateResult = $stmt->execute();
 
             if ($updateResult) {
-                
+
                 $stmt = $sqlConn->prepare("SELECT allowed_or_not FROM `$table` WHERE roll_no = ?");
                 $stmt->bind_param('i', $rollNo);
                 $stmt->execute();
