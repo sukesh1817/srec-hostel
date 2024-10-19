@@ -259,7 +259,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
     <h2 class="mb-4">Entry logs</h2>
     <hr>
     <div class="table-responsive">
-        <table class="table table-striped table-bordered">
+        <table class="table table-striped table-bordered rounded">
             <thead class="table-dark">
                 <tr>
                     <th>Roll No</th>
