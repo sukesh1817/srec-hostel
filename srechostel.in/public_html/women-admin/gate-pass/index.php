@@ -376,7 +376,6 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
             </div>
         </div>
     </div>
-<button class="mark-it">sample</button>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
@@ -393,6 +392,12 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
     <script>
         $(document).ready(function () {
+            var warden = "";
+            var id = "";
+            var pas_type = "";
+            var r = "";
+            var a = "";
+
             function fetchPassData() {
                 const passType = $('#passType').val();
                 const passStatus = $('#passStatus').val();
@@ -490,22 +495,15 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
 
 
-            var warden = "";
-            var id = "";
-            var pas_type = "";
-            var r = "";
-            var a = "";
 
-            $(".mark-it").on("click", function () {
-                console.log("smpoe");
+            $(document).on("click", ".mark-it", function () {
+                console.log("Button clicked");
                 $('#exampleModal').modal('show');
                 id = $(this).attr('id');
                 pas_type = $('#pass-type').val();
-                ar = id.split("-")
+                ar = id.split("-");
                 r = ar[0];
                 a = ar[1];
-
-
             });
 
             $(".warden").click(
