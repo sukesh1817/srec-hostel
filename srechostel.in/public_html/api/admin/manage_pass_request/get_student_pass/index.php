@@ -13,13 +13,13 @@ if (isset($_GET['pass_type']) && isset($_GET['pass_status'])) {
     $pass_status = $_GET['pass_status'];
     $year = null;
     $department = null;
-    if (isset($_POST['year'])) {
-        if ($_POST['year'] != 'NULL') {
+    if (isset($_GET['year'])) {
+        if ($_GET['year'] != 'NULL') {
             $year = $_GET['year'];
         } 
     }
-    if (isset($_POST['department'])) {
-        if ($_POST['department'] != 'NULL') {
+    if (isset($_GET['department'])) {
+        if ($_GET['department'] != 'NULL') {
             $department = $_GET['department'] ;
         } 
     }

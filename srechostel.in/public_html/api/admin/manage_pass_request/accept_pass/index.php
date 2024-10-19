@@ -14,6 +14,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $action = filter_input(INPUT_POST, 'action', FILTER_VALIDATE_BOOLEAN, FILTER_NULL_ON_FAILURE);
     $whoIs = filter_input(INPUT_POST, 'who_is', FILTER_SANITIZE_STRING);
 
+
     if ($rollNo && $type && $action !== null && $whoIs) {
         $admin = new Admin();
 

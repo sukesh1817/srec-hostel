@@ -446,7 +446,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                                         <td>${item.stud_name}</td>
                                         <td>${item.department}</td>
                                         <td>${item.year_of_study}</td>
-                                        <td><p class="text-dark fs-5">${item.accepted_by}</p></td>
+                                        <td><p class="text-dark">${item.accepted_by}</p></td>
                                     </tr>`;
                                     });
                                 }
