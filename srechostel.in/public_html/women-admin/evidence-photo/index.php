@@ -1,6 +1,5 @@
 <?php
-include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
-
+include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-women-admin.php";
 
 function seePdf($imageName) {
     $path="";
@@ -12,7 +11,7 @@ function seePdf($imageName) {
     }
     // echo $path;
     $extension =  strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
-    chdir($_SERVER['DOCUMENT_ROOT']."/../files/complaints/$path");
+    chdir($_SERVER['DOCUMENT_ROOT']."/../../files/complaints/$path");
     if(file_exists($imageName)){
         ob_start();
         header("Content-Type:image/$extension");
@@ -115,7 +114,7 @@ a {
 
 }
 if (isset($_GET['roll-no']) and isset($_GET['w'])) {
-    include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../class-files/connection.class.php";
+    include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../class-files/connection.class.php";
     $conn = new Connection();
     $sqlConn = $conn->returnConn();
     $rollNo = $_GET['roll-no'];

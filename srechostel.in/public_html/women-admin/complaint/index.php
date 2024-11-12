@@ -16,6 +16,78 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-women-admin.php";
     // included the poppins font.
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
+    <style>
+        /* Style the Image Used to Trigger the Modal */
+        img {
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        img:hover {
+            opacity: 0.7;
+        }
+
+        /* The Modal (background) */
+        #image-viewer {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            padding-top: 100px;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.9);
+        }
+
+        .modal-content {
+            margin: auto;
+            display: block;
+            width: 80%;
+            max-width: 700px;
+        }
+
+        .modal-content {
+            animation-name: zoom;
+            animation-duration: 0.6s;
+        }
+
+        @keyframes zoom {
+            from {
+                transform: scale(0)
+            }
+
+            to {
+                transform: scale(1)
+            }
+        }
+
+        #image-viewer .close {
+            position: absolute;
+            top: 15px;
+            right: 35px;
+            color: #f1f1f1;
+            font-size: 40px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        #image-viewer .close:hover,
+        #image-viewer .close:focus {
+            color: #bbb;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        @media only screen and (max-width: 700px) {
+            .modal-content {
+                width: 100%;
+            }
+        }
+    </style>
 </head>
 
 <?php
@@ -99,10 +171,8 @@ function get_all_comaplaint($type)
                                 </ul>
                                 <div class="d-flex justify-content-between align-items-center mt-auto">
                                     <div class="btn-group">
-                                        <a href="/evidence-photo/?roll-no=<?php echo $row[$temp]["roll_no"] ?>&w=i"
-                                            class="btn btn-sm btn-outline-secondary photo me-2">
-                                            Evidence Photo
-                                        </a>
+                                        <button src="/evidence-photo/?roll-no=<?php echo $row['roll_no'] ?>&w=c"
+                                            class="btn btn-sm btn-outline-secondary photo">Evidence Photo</button>
                                         <?php if ($row[$temp]["complaint_satisfied"] == 0) { ?>
                                             <a href="/address-complaint/?roll-no=<?php echo $row[$temp]["roll_no"] ?>&w=i"
                                                 class="btn btn-sm btn-outline-secondary me-2">
@@ -142,11 +212,11 @@ function get_all_comaplaint($type)
 
         // Check which type of complaint
         if ($_GET['c_type'] == "common_c") {
-            bread_crumb_complaint("common");
+            bread_crumb_complaint("common complaint");
             echo_logs("common");
             get_all_comaplaint(1);
         } else if ($_GET['c_type'] == "individual_c") {
-            bread_crumb_complaint("individual");
+            bread_crumb_complaint("individual complaint");
             echo_logs("individual");
             get_all_comaplaint(2);
         } else {
@@ -161,6 +231,23 @@ function get_all_comaplaint($type)
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
         integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
         crossorigin="anonymous"></script>
+
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"
+        integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script>
+    <script>
+        $(".images .photo").click(function () {
+            $("#full-image").attr("src", $(this).attr("src"));
+            $('#image-viewer').show();
+            $(".navbar").hide()
+        });
+
+        $("#image-viewer .close").click(function () {
+            $('#image-viewer').hide();
+            $(".show").hide()
+            $(".navbar").show()
+
+        });
+    </script>
 </body>
 
 </html>
