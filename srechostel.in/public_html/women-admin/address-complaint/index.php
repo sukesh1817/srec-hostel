@@ -18,7 +18,7 @@ if(isset($_GET['roll-no']) && isset($_GET['w'])) {
         $header = "?c_type=common_c";
     }
     if($result){
-        header("Location: /complaint/");
+        header("Location: /complaint/$header");
     } else {
         
         echo "something went wrong";
