@@ -329,15 +329,13 @@ class Admin
             $updateResult = $stmt->execute();
 
             if ($updateResult) {
-                $stmt = $sqlConn->prepare("SELECT allowed_or_not FROM `$table` WHERE roll_no = ?");
+                $stmt = $sqlConn->prepare("SELECT * FROM `$table` WHERE roll_no = ?");
                 $stmt->bind_param('i', $rollNo);
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $row = $result->fetch_assoc();
                 if (isset($row['allowed_or_not']) && $row['allowed_or_not'] == 1) {
-                    echo "done";
                     # TODO : SEPRATE CODE WRITING FOR EACH ADMIN.
-                    $stud_details = $this->search_students_individual($rollNo);
                     // print_r($stud_details);
                     $stmt = $sqlConn->prepare("INSERT INTO women_hostel_entry_log (
                         roll_no, name, department, approved_warden, approved_watch_man, 
@@ -350,8 +348,8 @@ class Admin
                     $stmt->bind_param(
                         "issssssi",
                         $rollNo,
-                        $stud_details['name'],
-                        $stud_details['department'],
+                        $row['stud_name'],
+                        $row['department'],
                         $whois,
                         $approvedWatchman,
                         $time,
@@ -363,8 +361,6 @@ class Admin
                     if($updateResult) {
                         return true;
                     } else {
-
-
                         return false;
                     }
                     
@@ -374,7 +370,7 @@ class Admin
 
         } catch (Exception $e) {
             // Log the error message (this could be replaced with actual logging)
-            print_r($e);
+            // print_r($e);
             error_log("Error in acceptThePass: " . $e->getMessage());
             return false;
         }
