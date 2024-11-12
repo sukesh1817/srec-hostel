@@ -196,6 +196,16 @@ function get_all_comaplaint($type)
     </div>
     <?php
 }
+
+function echo_image_show_template()
+{
+    ?>
+    <div id="image-viewer">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="full-image">
+    </div>
+    <?php
+}
 ?>
 
 <body>
@@ -222,10 +232,12 @@ function get_all_comaplaint($type)
         } else {
             echo_main_template();
         }
+        echo_image_show_template();
     } else {
         echo_main_template();
     }
     ?>
+
 
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
