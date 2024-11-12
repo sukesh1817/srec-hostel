@@ -30,8 +30,8 @@ function echo_main_template()
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">You can explore the common and individual complaint.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <a class="btn btn-primary btn-lg px-4 gap-3">Common</a>
-                <a class="btn btn-outline-secondary btn-lg px-4">Individual</a>
+                <a href="?c_type=common_c" class="btn btn-primary btn-lg px-4 gap-3">Common</a>
+                <a href="?c_type=individual_c" class="btn btn-outline-secondary btn-lg px-4">Individual</a>
             </div>
         </div>
     </div>
