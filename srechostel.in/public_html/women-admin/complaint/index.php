@@ -102,8 +102,8 @@ function echo_main_template()
         <div class="col-lg-6 mx-auto">
             <p class="lead mb-4">You can explore the common and individual complaint.</p>
             <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                <a href="?c_type=common_c" class="btn btn-primary btn-lg px-4 gap-3">Common</a>
-                <a href="?c_type=individual_c" class="btn btn-outline-secondary btn-lg px-4">Individual</a>
+                <a href="?c_type=common_c" class="btn btn-dark btn-lg px-4 gap-3 rounded-1">Common</a>
+                <a href="?c_type=individual_c" class="btn btn-outline-secondary btn-lg px-4 rounded-1">Individual</a>
             </div>
         </div>
     </div>
@@ -172,7 +172,7 @@ function get_all_comaplaint($type)
                                 <div class="d-flex justify-content-between align-items-center mt-auto">
                                     <div class="btn-group">
                                         <button src="/evidence-photo/?roll-no=<?php echo $row['roll_no'] ?>&w=c"
-                                            class="btn btn-sm btn-outline-secondary photo">Evidence Photo</button>
+                                            class="btn btn-sm  btn-outline-secondary photo">Evidence Photo</button>
                                         <?php if ($row[$temp]["complaint_satisfied"] == 0) { ?>
                                             <a href="/address-complaint/?roll-no=<?php echo $row[$temp]["roll_no"] ?>&w=i"
                                                 class="btn btn-sm btn-outline-secondary me-2">
