@@ -292,7 +292,6 @@ function get_student_entry_logs($which_hostel="women_hostel_entry_log",$count=20
                         $logs = get_student_entry_logs();
                     }
 
-                    print_r($logs);
 
                     while($logs[$temp]['roll_no']) {
                     ?>
@@ -307,6 +306,7 @@ function get_student_entry_logs($which_hostel="women_hostel_entry_log",$count=20
                         <td><?php $logs[$temp]['status'] ?></td>
                     </tr>
                     <?php
+                    break;
                     }
                     ?>
 
