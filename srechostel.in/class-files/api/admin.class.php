@@ -359,7 +359,7 @@ class Admin
                         $status,
                     );
 
-                    // $stmt->bind_param('ssi', $whois, $time, $rollNo);
+                    $stmt->bind_param('ssi', $whois, $time, $rollNo);
                     $updateResult = $stmt->execute();
                     if($updateResult) {
                         return true;
