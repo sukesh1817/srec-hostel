@@ -79,17 +79,16 @@ function get_all_comaplaint($type)
                 while (isset($row[$temp])) {
                     ?>
                     <div class="col images">
-                        <div style="height: 100px;" class="card shadow-sm">
-                            <div class="card-body">
+                        <div class="card shadow-sm" style="height: 100%; min-height: 350px;">
+                            <!-- Adjust min-height as needed -->
+                            <div class="card-body" style="height: 300px; overflow-y: auto;"> <!-- Fixed height for card body -->
                                 <ul class="list-group list-group-flush">
-                                    <?php if ($type != 1) {
-                                        ?>
-                                        <li class="list-group-item"><strong>Name:</strong>
-                                            <?php echo $row[$temp]["stud_name"] ?></li>
-                                        <li class="list-group-item"><strong>Room No:</strong>
-                                            <?php echo $row[$temp]["room_no"] ?></li>
-                                        <?php
-                                    } ?>
+                                    <?php if ($type != 1) { ?>
+                                        <li class="list-group-item"><strong>Name:</strong> <?php echo $row[$temp]["stud_name"] ?>
+                                        </li>
+                                        <li class="list-group-item"><strong>Room No:</strong> <?php echo $row[$temp]["room_no"] ?>
+                                        </li>
+                                    <?php } ?>
                                     <li class="list-group-item"><strong>Department:</strong>
                                         <?php echo $row[$temp]["department"] ?></li>
                                     <li class="list-group-item"><strong>Complaint Date:</strong>
@@ -97,7 +96,7 @@ function get_all_comaplaint($type)
                                     <li class="list-group-item"><strong>Complaint Summary:</strong>
                                         <?php echo $row[$temp]["complaint_summary"] ?></li>
                                 </ul>
-                                <div class="d-flex justify-content-between align-items-center">
+                                <div class="d-flex justify-content-between align-items-center mt-3">
                                     <div class="btn-group">
                                         <a href="/evidence-photo/?roll-no=<?php echo $row[$temp]["roll_no"] ?>&w=i"
                                             class="btn btn-sm btn-outline-secondary photo me-2">
@@ -109,16 +108,14 @@ function get_all_comaplaint($type)
                                                 Address It
                                             </a>
                                         <?php } else { ?>
-                                            <button class="btn btn-sm btn-success" disabled>
-                                                Complaint Addressed
-                                            </button>
+                                            <button class="btn btn-sm btn-success" disabled>Complaint Addressed</button>
                                         <?php } ?>
                                     </div>
                                 </div>
-
                             </div>
                         </div>
                     </div>
+
                     <?php
                     $temp++;
                 }
