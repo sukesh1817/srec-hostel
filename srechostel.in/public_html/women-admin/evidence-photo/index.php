@@ -11,7 +11,7 @@ function seePdf($imageName) {
     }
     // echo $path;
     $extension =  strtolower(pathinfo($imageName, PATHINFO_EXTENSION));
-    chdir($_SERVER['DOCUMENT_ROOT']."/../../files/complaints/$path");
+    chdir($_SERVER['DOCUMENT_ROOT']."/../../files/student-files/complaints/$path");
     if(file_exists($imageName)){
         ob_start();
         header("Content-Type:image/$extension");
