@@ -262,6 +262,10 @@ function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count
     <?php
     // included the navbar.
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
+  
+    // included the Breadcrumbs.
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/breadcrumbs/gatepass.php";
+    bread_crumb_gatepass("logs");
     ?>
 
     <div class="container mt-5">
