@@ -515,7 +515,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
                     type: "POST",
                     url: domain + '/api/admin/manage_pass_request/accept_pass/',
                     data: {
-                        "roll-no": r,  // Ensure 'r', 'a', and 'pas_type' are initialized
+                        "roll-no": r, 
                         "action": a,
                         "type": pas_type,
                         "who_is": who_is_this

@@ -338,8 +338,8 @@ class Admin
                 if (isset($row['allowed_or_not']) && $row['allowed_or_not'] == 1) {
                     # TODO : SEPRATE CODE WRITING FOR EACH ADMIN.
                     $stud_details = $this->search_students_individual($rollNo);
-                    print_r($stud_details);
-                    $stmt = $sqlConn->prepare("INSERT INTO student_pass_records (
+                    // print_r($stud_details);
+                    $stmt = $sqlConn->prepare("INSERT INTO women_hostel_entry_log (
                         roll_no, name, department, approved_warden, approved_watch_man, 
                         time_of_approval_by_warden, time_of_entry_by_watch_man, status
                     ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
