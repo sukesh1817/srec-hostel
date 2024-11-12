@@ -79,42 +79,34 @@ function get_all_comaplaint($type)
                 while (isset($row[$temp])) {
                     ?>
                     <div class="col images">
-                        <div class="card shadow-sm" style="height: 100%; min-height: 350px;">
-                            <!-- Adjust min-height as needed -->
-                            <div class="card-body" style="height: 300px; overflow-y: auto;"> <!-- Fixed height for card body -->
-                                <ul class="list-group list-group-flush">
-                                    <?php if ($type != 1) { ?>
-                                        <li class="list-group-item"><strong>Name:</strong> <?php echo $row[$temp]["stud_name"] ?>
-                                        </li>
-                                        <li class="list-group-item"><strong>Room No:</strong> <?php echo $row[$temp]["room_no"] ?>
-                                        </li>
-                                    <?php } ?>
-                                    <li class="list-group-item"><strong>Department:</strong>
-                                        <?php echo $row[$temp]["department"] ?></li>
-                                    <li class="list-group-item"><strong>Complaint Date:</strong>
-                                        <?php echo $row[$temp]["date_of_complaint"] ?></li>
-                                    <li class="list-group-item"><strong>Complaint Summary:</strong>
-                                        <?php echo $row[$temp]["complaint_summary"] ?></li>
-                                </ul>
-                                <div class="d-flex justify-content-between align-items-center mt-3">
-                                    <div class="btn-group">
-                                        <a href="/evidence-photo/?roll-no=<?php echo $row[$temp]["roll_no"] ?>&w=i"
-                                            class="btn btn-sm btn-outline-secondary photo me-2">
-                                            Evidence Photo
-                                        </a>
-                                        <?php if ($row[$temp]["complaint_satisfied"] == 0) { ?>
-                                            <a href="/address-complaint/?roll-no=<?php echo $row[$temp]["roll_no"] ?>&w=i"
-                                                class="btn btn-sm btn-outline-secondary me-2">
-                                                Address It
-                                            </a>
-                                        <?php } else { ?>
-                                            <button class="btn btn-sm btn-success" disabled>Complaint Addressed</button>
-                                        <?php } ?>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+    <div class="card shadow-sm" style="height: 100%; min-height: 350px;"> <!-- Adjust min-height as needed -->
+        <div class="card-body d-flex flex-column" style="height: 200px;"> <!-- Fixed height for card body with flex column -->
+            <ul class="list-group list-group-flush mb-3 flex-grow-1">
+                <?php if ($type != 1) { ?>
+                    <li class="list-group-item"><strong>Name:</strong> <?php echo $row[$temp]["stud_name"] ?></li>
+                    <li class="list-group-item"><strong>Room No:</strong> <?php echo $row[$temp]["room_no"] ?></li>
+                <?php } ?>
+                <li class="list-group-item"><strong>Department:</strong> <?php echo $row[$temp]["department"] ?></li>
+                <li class="list-group-item"><strong>Complaint Date:</strong> <?php echo $row[$temp]["date_of_complaint"] ?></li>
+                <li class="list-group-item"><strong>Complaint Summary:</strong> <?php echo $row[$temp]["complaint_summary"] ?></li>
+            </ul>
+            <div class="d-flex justify-content-between align-items-center mt-auto">
+                <div class="btn-group">
+                    <a href="/evidence-photo/?roll-no=<?php echo $row[$temp]["roll_no"] ?>&w=i" class="btn btn-sm btn-outline-secondary photo me-2">
+                        Evidence Photo
+                    </a>
+                    <?php if ($row[$temp]["complaint_satisfied"] == 0) { ?>
+                        <a href="/address-complaint/?roll-no=<?php echo $row[$temp]["roll_no"] ?>&w=i" class="btn btn-sm btn-outline-secondary me-2">
+                            Address It
+                        </a>
+                    <?php } else { ?>
+                        <button class="btn btn-sm btn-success" disabled>Complaint Addressed</button>
+                    <?php } ?>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 
                     <?php
                     $temp++;
