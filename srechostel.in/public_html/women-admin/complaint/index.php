@@ -4,7 +4,7 @@ this code checks wheather the person is admin or not,
 if admin allow them ,
 else do not allow them
 */
-include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
+include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-women-admin.php";
 ?>
 
 <!DOCTYPE html>
@@ -21,7 +21,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
 
     <?php
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/poppins.php";
+    // included the navbar.
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
     ?>
 
     <style>
@@ -104,7 +105,8 @@ include_once $_SERVER["DOCUMENT_ROOT"] . "/" . "is-admin.php";
 
 
     <?php
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/navbar.php";
+    // included the navbar.
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
     ?>
 
     <main>
@@ -117,7 +119,7 @@ this code retrives the all the type complaint data from the database
             <div class="container">
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     <?php
-                    include_once ($_SERVER["DOCUMENT_ROOT"] . "/../class-files/common.class.php");
+                    include_once($_SERVER["DOCUMENT_ROOT"] . "/../../class-files/common.class.php");
                     $complaint = new commonClass();
                     $row = $complaint->retriveComplaint("individual_complaint");
                     $row1 = $complaint->retriveComplaint("common_complaint");
@@ -146,22 +148,22 @@ this code retrives the all the type complaint data from the database
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
                                             <button
-                                                src="/admin-panel/evidence-photo/?roll-no=<?php echo $row[$i]["roll_no"] ?>&w=i"
+                                                src="/evidence-photo/?roll-no=<?php echo $row[$i]["roll_no"] ?>&w=i"
                                                 class="btn btn-sm btn-outline-secondary photo">Evidence Photo</button>
-                                                <?php
-                                                if ($row[$i]["complaint_satisfied"] == 0) {
+                                            <?php
+                                            if ($row[$i]["complaint_satisfied"] == 0) {
 
 
-                                                    ?>
-                                                    <a href="/admin-panel/address-complaint/?roll-no=<?php echo $row[$i]["roll_no"] ?>&w=i"
-                                                        class="btn btn-sm btn-outline-secondary">Address It</a>
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                    <button class="btn btn-sm btn-success">Complaint Addressed</button>
-                                                    <?php
-                                                }
                                                 ?>
+                                                <a href="/address-complaint/?roll-no=<?php echo $row[$i]["roll_no"] ?>&w=i"
+                                                    class="btn btn-sm btn-outline-secondary">Address It</a>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <button class="btn btn-sm btn-success">Complaint Addressed</button>
+                                                <?php
+                                            }
+                                            ?>
 
                                         </div>
                                     </div>
@@ -193,19 +195,19 @@ this code retrives the all the type complaint data from the database
 
                                     <div class="d-flex justify-content-between align-items-center">
                                         <div class="btn-group">
-                                            <button src="/admin-panel/evidence-photo/?roll-no=<?php echo $rollNo ?>&w=c"
+                                            <button src="/evidence-photo/?roll-no=<?php echo $rollNo ?>&w=c"
                                                 class="btn btn-sm btn-outline-secondary photo">Evidence Photo</button>
-                                                <?php if ($row1[$i]["complaint_satisfied"] == 0) {
-                                                    ?>
-                                                    <a href="/admin-panel/address-complaint/?roll-no=<?php echo $rollNo ?>&w=c"
-                                                        class="btn btn-sm btn-outline-secondary">Address It</a>
-                                                    <?php
-                                                } else {
-                                                    ?>
-                                                    <button class="btn btn-sm btn-success">Complaint Addressed</button>
-                                                    <?php
-                                                }
+                                            <?php if ($row1[$i]["complaint_satisfied"] == 0) {
                                                 ?>
+                                                <a href="/address-complaint/?roll-no=<?php echo $rollNo ?>&w=c"
+                                                    class="btn btn-sm btn-outline-secondary">Address It</a>
+                                                <?php
+                                            } else {
+                                                ?>
+                                                <button class="btn btn-sm btn-success">Complaint Addressed</button>
+                                                <?php
+                                            }
+                                            ?>
                                         </div>
                                     </div>
                                 </div>
