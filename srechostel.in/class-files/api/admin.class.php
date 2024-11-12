@@ -375,7 +375,7 @@ class Admin
 
         } catch (Exception $e) {
             // Log the error message (this could be replaced with actual logging)
-
+            print_r($e);
             error_log("Error in acceptThePass: " . $e->getMessage());
             return false;
         }
