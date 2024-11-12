@@ -171,7 +171,7 @@ function get_all_comaplaint($type)
                                 </ul>
                                 <div class="d-flex justify-content-between align-items-center mt-auto">
                                     <div class="btn-group">
-                                        <button src="/evidence-photo/?roll-no=<?php echo $row['roll_no'] ?>&w=c"
+                                        <button src="/evidence-photo/?roll-no=<?php echo $row[$temp]['roll_no'] ?>&w=c"
                                             class="btn btn-sm  btn-outline-secondary photo">Evidence Photo</button>
                                         <?php if ($row[$temp]["complaint_satisfied"] == 0) { ?>
                                             <a href="/address-complaint/?roll-no=<?php echo $row[$temp]["roll_no"] ?>&w=i"
