@@ -82,10 +82,14 @@ function get_all_comaplaint($type)
                         <div class="card shadow-sm">
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
-                                    <li class="list-group-item"><strong>Name:</strong>
-                                        <?php echo $row[$temp]["stud_name"] ?></li>
-                                    <li class="list-group-item"><strong>Room No:</strong>
-                                        <?php echo $row[$temp]["room_no"] ?></li>
+                                    <?php if ($type != 1) {
+                                        ?>
+                                        <li class="list-group-item"><strong>Name:</strong>
+                                            <?php echo $row[$temp]["stud_name"] ?></li>
+                                        <li class="list-group-item"><strong>Room No:</strong>
+                                            <?php echo $row[$temp]["room_no"] ?></li>
+                                        <?php
+                                    } ?>
                                     <li class="list-group-item"><strong>Department:</strong>
                                         <?php echo $row[$temp]["department"] ?></li>
                                     <li class="list-group-item"><strong>Complaint Date:</strong>
