@@ -291,19 +291,19 @@ function get_student_entry_logs($which_hostel="women_hostel_entry_log",$count=20
                     } else {
                         $logs = get_student_entry_logs();
                     }
-                    print_r($logs);
 
                     while($logs[$temp]['roll_no']) {
+                        
                     ?>
                     <tr>
-                        <td><?php $logs[$temp]['roll_no'] ?></td>
-                        <td><?php $logs[$temp]['name'] ?></td>
-                        <td><?php $logs[$temp]['department'] ?></td>
-                        <td><?php $logs[$temp]['approved_warden'] ?></td>
-                        <td><?php $logs[$temp]['approved_watch_man'] ?></td>
-                        <td><?php $logs[$temp]['time_of_approval_by_warden'] ?></td>
-                        <td><?php $logs[$temp]['time_of_entry_by_watch_man'] ?></td>
-                        <td><?php $logs[$temp]['status'] ?></td>
+                        <td><?php echo $logs[$temp]['roll_no'] ?></td>
+                        <td><?php echo $logs[$temp]['name'] ?></td>
+                        <td><?php echo $logs[$temp]['department'] ?></td>
+                        <td><?php echo $logs[$temp]['approved_warden'] ?></td>
+                        <td><?php echo $logs[$temp]['approved_watch_man'] ?></td>
+                        <td><?php echo $logs[$temp]['time_of_approval_by_warden'] ?></td>
+                        <td><?php echo $logs[$temp]['time_of_entry_by_watch_man'] ?></td>
+                        <td><?php echo $logs[$temp]['status'] ?></td>
                     </tr>
                     <?php
                     break;
