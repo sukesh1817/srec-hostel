@@ -291,7 +291,7 @@ function get_student_entry_logs($which_hostel="women_hostel_entry_log",$count=20
                     } else {
                         $logs = get_student_entry_logs();
                     }
-
+                    print_r($logs);
 
                     while($logs[$temp]['roll_no']) {
                     ?>
