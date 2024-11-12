@@ -248,7 +248,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 </head>
 
 <?php
-function get_student_entry_logs($which_hostel="women_hostel_entry_log",$count=20)
+function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count = 20)
 {
     include_once $_SERVER['DOCUMENT_ROOT'] . "/../../class-files/pass.class.php";
     $pass = new Pass_class();
@@ -284,29 +284,36 @@ function get_student_entry_logs($which_hostel="women_hostel_entry_log",$count=20
                 <tbody>
                     <?php
                     $logs = "";
-                    $temp =0;
-                    if(isset($_GET['c'])) {
+                    $temp = 0;
+                    if (isset($_GET['c'])) {
                         $c = $_GET['c'];
-                        $logs = get_student_entry_logs(which_hostel:$count=$c);
+                        $logs = get_student_entry_logs(which_hostel: $count = $c);
                     } else {
                         $logs = get_student_entry_logs();
                     }
 
-                    while($logs[$temp]['roll_no']) {
-                        
-                    ?>
-                    <tr>
-                        <td><?php echo $logs[$temp]['roll_no'] ?></td>
-                        <td><?php echo $logs[$temp]['name'] ?></td>
-                        <td><?php echo $logs[$temp]['department'] ?></td>
-                        <td><?php echo $logs[$temp]['approved_warden'] ?></td>
-                        <td><?php echo $logs[$temp]['approved_watch_man'] ?></td>
-                        <td><?php echo $logs[$temp]['time_of_approval_by_warden'] ?></td>
-                        <td><?php echo $logs[$temp]['time_of_entry_by_watch_man'] ?></td>
-                        <td><?php echo $logs[$temp]['status'] ?></td>
-                    </tr>
-                    <?php
-                    break;
+                    while ($logs[$temp]['roll_no']) {
+
+                        ?>
+                        <tr>
+                            <td><?php echo $logs[$temp]['roll_no'] ?></td>
+                            <td><?php echo $logs[$temp]['name'] ?></td>
+                            <td><?php echo $logs[$temp]['department'] ?></td>
+                            <td><?php echo $logs[$temp]['approved_warden'] ?></td>
+                            <td><?php echo $logs[$temp]['approved_watch_man'] ?></td>
+                            <td><?php echo $logs[$temp]['time_of_approval_by_warden'] ?></td>
+                            <td><?php echo $logs[$temp]['time_of_entry_by_watch_man'] ?></td>
+                            <td>
+                                <?php if ($logs[$temp]['status'] == 0) {
+                                    echo "Inside the campus";
+                                } else if($logs[$temp]['status'] == 1) {
+                                    echo "Outside the camppus";
+                                } 
+                               ?>
+                            </td>
+                        </tr>
+                        <?php
+                        break;
                     }
                     ?>
 
