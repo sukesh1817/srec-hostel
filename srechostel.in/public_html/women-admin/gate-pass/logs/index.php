@@ -308,6 +308,14 @@ function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count
                             <td><?php echo $logs[$temp]['time_of_approval_by_warden'] ?></td>
                             <td><?php echo $logs[$temp]['time_of_entry_by_watch_man'] ?></td>
                             <td>
+                                <?php if ($logs[$temp]['time_of_entry_by_watch_man'] == null) {
+                                    echo "-";
+                                } else  {
+                                    echo $logs[$temp]['time_of_entry_by_watch_man'];
+                                } 
+                               ?>
+                            </td>
+                            <td>
                                 <?php if ($logs[$temp]['status'] == 0) {
                                     echo "Inside the campus";
                                 } else if($logs[$temp]['status'] == 1) {
