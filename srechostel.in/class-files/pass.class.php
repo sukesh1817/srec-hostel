@@ -127,7 +127,7 @@ class Pass_class
             }
         }
 
-    }  
+    }
 
     public function setGeneralDayPass($array)  //this helps to set general_holiday_pass record in database
     {
@@ -919,5 +919,33 @@ class Pass_class
         }
     }
 
+
+    public function get_student_entry_logs($which_hostel, $count)
+    {
+        $conn = new Connection();
+        $sqlConn = $conn->returnConn();
+        $sqlQuery = "SELECT 
+            roll_no, 
+            name, 
+            department, 
+            approved_warden, 
+            approved_watch_man, 
+            time_of_approval_by_warden, 
+            time_of_entry_by_watch_man, 
+            status,
+            $count AS row_count
+        FROM 
+            `$which_hostel`
+        ORDER BY 
+            time_of_approval_by_warden DESC
+        LIMIT $count;
+        ";
+           $result = $sqlConn->query($sqlQuery);
+   
+           if ($result) {
+               $row = $result->fetch_assoc();
+               return $row;
+           }
+    }
 
 }

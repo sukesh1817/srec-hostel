@@ -247,68 +247,78 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 
 </head>
 
-<body>
+<?php
+function get_student_entry_logs($which_hostel="women_hostel_entry_log",$count=20)
+{
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/../../class-files/pass.class.php";
+    $pass = new Pass_class();
+    $logs = $pass->get_student_entry_logs($which_hostel, $count);
+    return $logs;
+}
+?>
 
+<body>
 
     <?php
     // included the navbar.
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
     ?>
- 
- <div class="container mt-5">
-    <h2 class="mb-4">Entry logs</h2>
-    <hr>
-    <div class="table-responsive rounded">
-        <table class="table table-striped table-bordered rounded">
-            <thead class="table-dark">
-                <tr>
-                    <th>Roll No</th>
-                    <th>Name</th>
-                    <th>Department</th>
-                    <th>Approved by Warden</th>
-                    <th>Approved by Watchman</th>
-                    <th>Approval Time (Warden)</th>
-                    <th>Entry Time (Watchman)</th>
-                    <th>Status</th>
-                    <th>Year of Study</th>
-                </tr>
-            </thead>
-            <tbody>
-                
-                <tr>
-                    <td>1234567</td>
-                    <td>John Doe</td>
-                    <td>Computer Science</td>
-                    <td>Yes</td>
-                    <td>No</td>
-                    <td>2024-10-18 10:30:00</td>
-                    <td>2024-10-18 12:00:00</td>
-                    <td>Approved</td>
-                    <td>3</td>
-                </tr>
-                <tr>
-                    <td>7654321</td>
-                    <td>Jane Smith</td>
-                    <td>Electrical Engineering</td>
-                    <td>No</td>
-                    <td>No</td>
-                    <td>--</td>
-                    <td>--</td>
-                    <td>Pending</td>
-                    <td>2</td>
-                </tr>
-                <!-- More rows can be added dynamically here -->
-            </tbody>
-        </table>
+
+    <div class="container mt-5">
+        <h2 class="mb-4">Entry logs</h2>
+        <hr>
+        <div class="table-responsive rounded">
+            <table class="table table-striped table-bordered rounded">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Roll No</th>
+                        <th>Name</th>
+                        <th>Department</th>
+                        <th>Approved Warden</th>
+                        <th>Approved Watchman</th>
+                        <th>Approval Time (Warden)</th>
+                        <th>Entry Time (Watchman)</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php
+                    $logs = "";
+                    $temp =0;
+                    if(isset($_GET['c'])) {
+                        $c = $_GET['c'];
+                        $logs = get_student_entry_logs(which_hostel:$count=$c);
+                    } else {
+                        $logs = get_student_entry_logs();
+                    }
+
+                    while($logs[$temp]['roll_no']) {
+                    ?>
+                    <tr>
+                        <td><?php $logs[$temp]['roll_no'] ?></td>
+                        <td><?php $logs[$temp]['name'] ?></td>
+                        <td><?php $logs[$temp]['department'] ?></td>
+                        <td><?php $logs[$temp]['approved_warden'] ?></td>
+                        <td><?php $logs[$temp]['approved_watch_man'] ?></td>
+                        <td><?php $logs[$temp]['time_of_approval_by_warden'] ?></td>
+                        <td><?php $logs[$temp]['time_of_entry_by_watch_man'] ?></td>
+                        <td><?php $logs[$temp]['status'] ?></td>
+                    </tr>
+                    <?php
+                    }
+                    ?>
+
+                </tbody>
+            </table>
+        </div>
     </div>
-</div>
 
 
 
-    
 
 
-   
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
