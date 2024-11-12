@@ -334,7 +334,7 @@ class Admin
                 $stmt->execute();
                 $result = $stmt->get_result();
                 $row = $result->fetch_assoc();
-
+                echo "done";
                 if (isset($row['allowed_or_not']) && $row['allowed_or_not'] == 1) {
                     # TODO : SEPRATE CODE WRITING FOR EACH ADMIN.
                     $stud_details = $this->search_students_individual($rollNo);
