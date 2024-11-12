@@ -342,13 +342,13 @@ class Admin
                     $stmt = $sqlConn->prepare("INSERT INTO women_hostel_entry_log (
                         roll_no, name, department, approved_warden, approved_watch_man, 
                         time_of_approval_by_warden, time_of_entry_by_watch_man, status
-                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)");
+                    ) VALUES (?, ?, ?, ?, ?, ?, ?, ?)");
 
                     $approvedWatchman = "-";
                     $timeOfApprovalByWatchman=null;
                     $status=0;
                     $stmt->bind_param(
-                        "issssssis",
+                        "issssssi",
                         $rollNo,
                         $stud_details['name'],
                         $stud_details['department'],
@@ -359,7 +359,6 @@ class Admin
                         $status,
                     );
 
-                    $stmt->bind_param('ssi', $whois, $time, $rollNo);
                     $updateResult = $stmt->execute();
                     if($updateResult) {
                         return true;
