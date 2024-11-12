@@ -921,22 +921,26 @@ class Pass_class
 
 
     public function get_student_entry_logs($which_hostel, $count)
-    {
-        $conn = new Connection();
-        $sqlConn = $conn->returnConn();
-        $sqlQuery = "SELECT *, (SELECT COUNT(*) FROM `$which_hostel`) AS total_count
-FROM `$which_hostel`
-ORDER BY time_of_approval_by_warden DESC
-LIMIT $count;
-;
-        ";
-        $result = $sqlConn->query($sqlQuery);
+{
+    $conn = new Connection();
+    $sqlConn = $conn->returnConn();
+    $sqlQuery = "SELECT *, (SELECT COUNT(*) FROM `$which_hostel`) AS total_count
+                 FROM `$which_hostel`
+                 ORDER BY time_of_approval_by_warden DESC
+                 LIMIT $count;";
 
-        if ($result) {
-            $row = $result->fetch_assoc();
-            // print_r(value: $row);
-            return $row;
+    $result = $sqlConn->query($sqlQuery);
+    $data = [];  // Array to hold all rows
+
+    if ($result) {
+        while ($row = $result->fetch_assoc()) {
+            $data[] = $row;  // Add each row to the array
         }
+        return $data;  // Return all rows as an array
     }
+
+    return null;  // Return null if the query fails
+}
+
 
 }
