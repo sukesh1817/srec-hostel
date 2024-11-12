@@ -79,7 +79,7 @@ function get_all_comaplaint($type)
                 while (isset($row[$temp])) {
                     ?>
                     <div class="col images">
-                        <div class="card shadow-sm">
+                        <div style="height: 100px;" class="card shadow-sm">
                             <div class="card-body">
                                 <ul class="list-group list-group-flush">
                                     <?php if ($type != 1) {
