@@ -33,12 +33,12 @@
           <li class="nav-item"><a class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "gate-pass")) {
             echo "active";
           } ?>" href="/gate-pass/">Gate pass</a></li>
-          
+
           <?php
           require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
           ?>
           <li class="nav-item"><a class="btn btn-outline-light rounded-1"
-              href="<?php echo $domain; ?>/api/auth/logout/">Logout</a></li>
+              href="<?php echo $domain; ?>api/auth/logout/">Logout</a></li>
 
         </ul>
       </div>
