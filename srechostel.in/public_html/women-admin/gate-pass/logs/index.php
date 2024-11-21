@@ -262,18 +262,21 @@ function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count
     <?php
     // included the navbar.
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/navbar.php";
-  
+
     // included the Breadcrumbs.
     include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/__breadcrumbs/gatepass.php";
     bread_crumb_gatepass("logs");
     ?>
 
     <div class="container mt-5">
-        <h2 class="mb-4">Student Entry logs</h2>
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h2 class="mb-0">Student Entry Logs</h2>
+            <button class="btn btn-primary btn-sm">Export Logs</button>
+        </div>
         <hr>
-        <div class="table-responsive rounded">
-            <table class="table table-striped table-bordered rounded">
-                <thead class="table-dark">
+        <div class="table-responsive rounded shadow">
+            <table class="table table-hover table-bordered">
+                <thead class="bg-primary text-white">
                     <tr>
                         <th>Roll No</th>
                         <th>Name</th>
@@ -297,41 +300,36 @@ function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count
                     }
 
                     while ($logs[$temp]['roll_no']) {
-
                         ?>
                         <tr>
-                            <td><?php echo $logs[$temp]['roll_no'] ?></td>
-                            <td><?php echo $logs[$temp]['name'] ?></td>
-                            <td><?php echo $logs[$temp]['department'] ?></td>
-                            <td><?php echo $logs[$temp]['approved_warden'] ?></td>
-                            <td><?php echo $logs[$temp]['approved_watch_man'] ?></td>
-                            <td><?php echo $logs[$temp]['time_of_approval_by_warden'] ?></td>
+                            <td><?php echo htmlspecialchars($logs[$temp]['roll_no']) ?></td>
+                            <td><?php echo htmlspecialchars($logs[$temp]['name']) ?></td>
+                            <td><?php echo htmlspecialchars($logs[$temp]['department']) ?></td>
+                            <td><?php echo htmlspecialchars($logs[$temp]['approved_warden']) ?></td>
+                            <td><?php echo htmlspecialchars($logs[$temp]['approved_watch_man']) ?></td>
+                            <td><?php echo htmlspecialchars($logs[$temp]['time_of_approval_by_warden']) ?></td>
                             <td>
-                                <?php if ($logs[$temp]['time_of_entry_by_watch_man'] == null) {
-                                    echo "-";
-                                } else  {
-                                    echo $logs[$temp]['time_of_entry_by_watch_man'];
-                                } 
-                               ?>
+                                <?php echo $logs[$temp]['time_of_entry_by_watch_man'] ?? "<span class='text-muted'>-</span>"; ?>
                             </td>
                             <td>
-                                <?php if ($logs[$temp]['status'] == 0) {
-                                    echo "Inside the campus";
-                                } else if($logs[$temp]['status'] == 1) {
-                                    echo "Outside the camppus";
-                                } 
-                               ?>
+                                <?php
+                                if ($logs[$temp]['status'] == 0) {
+                                    echo "<span class='badge bg-success'>Inside the campus</span>";
+                                } else if ($logs[$temp]['status'] == 1) {
+                                    echo "<span class='badge bg-danger'>Outside the campus</span>";
+                                }
+                                ?>
                             </td>
                         </tr>
                         <?php
-                        break;
+                        $temp++;
                     }
                     ?>
-
                 </tbody>
             </table>
         </div>
     </div>
+
 
 
 

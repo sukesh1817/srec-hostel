@@ -726,7 +726,7 @@ class Pass_class
                     $sqlQuery = "UPDATE `$which` SET allowed_or_not=2 WHERE roll_no=$rollNo;";
                     if ($sqlConn->query($sqlQuery)) {
                         if($hostel == "Mens 1") {
-                            // $sqlQuery = " "
+                            // $sqlQuery = "" ;
                         } else if($hostel == "Mens 2") {
 
                         } else if($hostel == "Women") {
