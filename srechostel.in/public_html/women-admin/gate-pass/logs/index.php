@@ -248,7 +248,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/is-women-admin.php';
 </head>
 
 <?php
-function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count = 20)
+function get_student_entry_logs($which_hostel , $count )
 {
     include_once $_SERVER['DOCUMENT_ROOT'] . "/../../class-files/pass.class.php";
     $pass = new Pass_class();
@@ -294,9 +294,9 @@ function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count
                     $temp = 0;
                     if (isset($_GET['c'])) {
                         $c = $_GET['c'];
-                        $logs = get_student_entry_logs( $count = $c);
+                        $logs = get_student_entry_logs( "women_hostel_entry_log",$c);
                     } else {
-                        $logs = get_student_entry_logs();
+                        $logs = get_student_entry_logs("women_hostel_entry_log",20);
                     }
 
                     while (isset($logs[$temp]['roll_no'])) {
