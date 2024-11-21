@@ -294,7 +294,7 @@ function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count
                     $temp = 0;
                     if (isset($_GET['c'])) {
                         $c = $_GET['c'];
-                        $logs = get_student_entry_logs(which_hostel: $count = $c);
+                        $logs = get_student_entry_logs( $count = $c);
                     } else {
                         $logs = get_student_entry_logs();
                     }
