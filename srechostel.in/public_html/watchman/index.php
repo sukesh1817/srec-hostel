@@ -1,6 +1,6 @@
 <?php
 // Check the login person is authenticated.
-// include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
 
 // Include the main domain.
 require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
