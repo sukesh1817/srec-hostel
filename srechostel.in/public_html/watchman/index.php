@@ -1,7 +1,11 @@
 <?php
 // Check the login person is authenticated.
- include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
+// include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
+
+// Include the main domain.
+require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +34,7 @@
 			<div class="section">
 				<div id="my-qr-reader">
 				</div>
-				<button class="html5-qrcode-element" onclick="window.location.href='/logout'">Logout</button>
+				<button class="html5-qrcode-element" onclick="window.location.href='<?php echo $domain; ?>/api/auth/logout'">Logout</button>
 			</div>
 		</div>
 	</div>
@@ -49,10 +53,7 @@
 			</div>
 		</div>
 	</div>
-	<?php
-	// Include the main domain.
-	require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
-	?>
+
 	<script src="https://unpkg.com/html5-qrcode"></script>
 	<script src="<?php echo $domain; ?>/js-files/api/watch-man/scan.js"></script>
 </body>
