@@ -59,10 +59,21 @@ if (isset($_REQUEST["username"]) and isset($_REQUEST["password"])) {
       */
       $result = $session->createSession($userName, $passWord);
     }
-  } else if ($status_value[1] == 'watch-man' and $status_value[0] == "success") {
+  } else if ($status_value[1] == 'Watchman' and $status_value[0] == "success") {
     $_SESSION["yourToken"] = $userName;
-    $sessionId = md5(md5("watch-the-man"));
-    setcookie("auth_watch_man", $sessionId, time() + 2630000, "/");
+    $session = new session($userName, $status_value[1]);
+    if ($session->isSessionExist) {
+  
+      /* 
+      if the session is already present then just update the session 
+      */
+      $result = $session->updateSession($userName, $passWord);
+    } else {
+      /* 
+      else create new session for the user 
+      */
+      $result = $session->createSession($userName, $passWord);
+    }
   } else {
     // http_response_code(401);
   }

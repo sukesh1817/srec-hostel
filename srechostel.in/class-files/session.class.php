@@ -179,7 +179,7 @@ class session
         } else if ($this->whoIs == "Watchman") {
             $sqlQuery = "INSERT INTO `watchman_session` 
             VALUES('$id','$sessionId','$ip','$currentTime', 'WATCH_MAN' )";
-
+            exit;
             if ($sqlConn->query($sqlQuery)) {
                 $subdomain = strtolower($this->whoIs);
                 setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "srechostel.in", true, true);
