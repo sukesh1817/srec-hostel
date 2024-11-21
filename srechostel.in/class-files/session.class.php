@@ -52,8 +52,19 @@ class session
             } else {
                 // if query is not executed then some went wrong in server side 
             }
-        } else if ($this->whoIs == "Watch-man-1") {
-            # TODO : Implement for watchman also
+        } else if ($this->whoIs == "Watchman") {
+            $sqlQuery = "SELECT watchman_number	 FROM `watchman_session` WHERE watchman_number='$id';";
+            $result = $sqlConn->query($sqlQuery);
+            if ($result) {
+                $row = $result->fetch_assoc();
+                if (isset($row["watchman_number"])) {
+                    $this->isSessionExist = true;
+                } else {
+                    $this->isSessionExist = false;
+                }
+            } else {
+                // if query is not executed then some went wrong in server side 
+            }
         } else {
 
         }
@@ -105,8 +116,15 @@ class session
                 setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "srechostel.in", true, true);
                 return true;
             }
-        } else if ($this->whoIs == "Watch-man-1") {
-            # TODO : Implement update session for watch man.
+        } else if ($this->whoIs == "Watchman") {
+            $sqlQuery = "UPDATE `watchman_session` SET session_id='$sessionId',login_ip='$ip',
+            last_login_time='$currentTime'  WHERE session_id='$id' ";
+
+            if ($sqlConn->query($sqlQuery)) {
+                $subdomain = strtolower($this->whoIs);
+                setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "srechostel.in", true, true);
+                return true;
+            }
         }
 
     }
@@ -158,8 +176,17 @@ class session
             } else {
                 return false;
             }
-        } else if ($this->whoIs == "Watch-man-1") {
-            # TODO : Need to implement for the watch man session.
+        } else if ($this->whoIs == "Watchman") {
+            $sqlQuery = "INSERT INTO `watchman_session` 
+            VALUES('$id','$sessionId','$ip','$currentTime')";
+
+            if ($sqlConn->query($sqlQuery)) {
+                $subdomain = strtolower($this->whoIs);
+                setcookie("auth_session_id", $sessionId, time() + 2630000, "/", "srechostel.in", true, true);
+                return true;
+            } else {
+                return false;
+            }
         }
 
     }
@@ -200,7 +227,6 @@ class session
 
 
         } else if ($whose == "Admin") {
-
             $sqlQuery = "SELECT admin_session_id,admin_id FROM `admin_session` WHERE admin_session_id='$cookie';";
             if ($sqlConn->query($sqlQuery)) {
                 $result = $sqlConn->query($sqlQuery);
@@ -223,8 +249,29 @@ class session
             } else {
                 return false;
             }
-        } else if ($whose == "Watch-man-1") {
-            # TODO : Implement fot watchman. 
+        } else if ($whose == "Watchman") {
+            $sqlQuery = "SELECT session_id,watchman_number FROM `watchman_session` WHERE session_id='$cookie';";
+            if ($sqlConn->query($sqlQuery)) {
+                $result = $sqlConn->query($sqlQuery);
+                $row = $result->fetch_assoc();
+                if (isset($row["session_id"])) {
+                    $userId = $row['watchman_number'];
+                    $_SESSION["yourToken"] = $row["watchman_number"];
+                    $sqlQuery2 = "SELECT who_is FROM `login_auth` WHERE user_id='$userId';";
+                    $result = $sqlConn->query($sqlQuery2);
+                    $row = $result->fetch_assoc();
+                    if (isset($row['who_is'])) {
+                        return $row['who_is'];
+                    } else {
+                        return false;
+                    }
+
+                } else {
+                    return false;
+                }
+            } else {
+                return false;
+            }
         } else {
 
             return false;
