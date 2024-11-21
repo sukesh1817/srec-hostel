@@ -38,6 +38,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 			</div>
 		</div>
 	</div>
+	
 	<div id="entry-container" class="container">
 		<input id="qr-url" type="hidden" value="">
 		<div class="px-4 py-5 my-5 text-center">
