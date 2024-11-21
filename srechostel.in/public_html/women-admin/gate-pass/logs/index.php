@@ -268,67 +268,68 @@ function get_student_entry_logs($which_hostel , $count )
     bread_crumb_gatepass("logs");
     ?>
 
-    <div class="container mt-5">
-        <div class="d-flex justify-content-between align-items-center mb-4">
-            <h2 class="mb-0">Student Entry Logs</h2>
-            <button class="btn btn-outline-dark btn-sm">Export Logs</button>
-        </div>
-        <hr>
-        <div class="table-responsive rounded shadow">
-            <table class="table table-hover table-bordered">
-                <thead class="bg-primary text-white">
-                    <tr>
-                        <th>Roll No</th>
-                        <th>Name</th>
-                        <th>Department</th>
-                        <th>Approved Warden</th>
-                        <th>Approved Watchman</th>
-                        <th>Approval Time (Warden)</th>
-                        <th>Entry Time (Watchman)</th>
-                        <th>Status</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <?php
-                    $logs = "";
-                    $temp = 0;
-                    if (isset($_GET['c'])) {
-                        $c = $_GET['c'];
-                        $logs = get_student_entry_logs( "women_hostel_entry_log",$c);
-                    } else {
-                        $logs = get_student_entry_logs("women_hostel_entry_log",20);
-                    }
-
-                    while (isset($logs[$temp]['roll_no'])) {
-                        ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($logs[$temp]['roll_no']) ?></td>
-                            <td><?php echo htmlspecialchars($logs[$temp]['name']) ?></td>
-                            <td><?php echo htmlspecialchars($logs[$temp]['department']) ?></td>
-                            <td><?php echo htmlspecialchars($logs[$temp]['approved_warden']) ?></td>
-                            <td><?php echo htmlspecialchars($logs[$temp]['approved_watch_man']) ?></td>
-                            <td><?php echo htmlspecialchars($logs[$temp]['time_of_approval_by_warden']) ?></td>
-                            <td>
-                                <?php echo $logs[$temp]['time_of_entry_by_watch_man'] ?? "<span class='text-muted'>-</span>"; ?>
-                            </td>
-                            <td>
-                                <?php
-                                if ($logs[$temp]['status'] == 0) {
-                                    echo "<span class='badge bg-success'>Inside the campus</span>";
-                                } else if ($logs[$temp]['status'] == 1) {
-                                    echo "<span class='badge bg-danger'>Outside the campus</span>";
-                                }
-                                ?>
-                            </td>
-                        </tr>
-                        <?php
-                        $temp++;
-                    }
-                    ?>
-                </tbody>
-            </table>
-        </div>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="mb-0">Student Entry Logs</h2>
+        <button class="btn btn-outline-dark btn-sm"><i class="bi bi-download"></i> Export Logs</button>
     </div>
+    <hr>
+    <div class="table-responsive rounded shadow-sm">
+        <table class="table table-hover table-bordered text-center align-middle">
+            <thead class="bg-primary text-white sticky-top" style="z-index: 1;">
+                <tr>
+                    <th scope="col">Roll No</th>
+                    <th scope="col">Name</th>
+                    <th scope="col">Department</th>
+                    <th scope="col">Approved Warden</th>
+                    <th scope="col">Approved Watchman</th>
+                    <th scope="col">Approval Time (Warden)</th>
+                    <th scope="col">Entry Time (Watchman)</th>
+                    <th scope="col">Status</th>
+                </tr>
+            </thead>
+            <tbody class="bg-light">
+                <?php
+                $logs = "";
+                $temp = 0;
+                if (isset($_GET['c'])) {
+                    $c = $_GET['c'];
+                    $logs = get_student_entry_logs("women_hostel_entry_log", $c);
+                } else {
+                    $logs = get_student_entry_logs("women_hostel_entry_log", 20);
+                }
+
+                while (isset($logs[$temp]['roll_no'])) {
+                ?>
+                    <tr>
+                        <td><strong><?php echo htmlspecialchars($logs[$temp]['roll_no']); ?></strong></td>
+                        <td><?php echo htmlspecialchars($logs[$temp]['name']); ?></td>
+                        <td><?php echo htmlspecialchars($logs[$temp]['department']); ?></td>
+                        <td><?php echo htmlspecialchars($logs[$temp]['approved_warden']); ?></td>
+                        <td><?php echo htmlspecialchars($logs[$temp]['approved_watch_man']); ?></td>
+                        <td><?php echo htmlspecialchars($logs[$temp]['time_of_approval_by_warden']); ?></td>
+                        <td>
+                            <?php echo $logs[$temp]['time_of_entry_by_watch_man'] ?? "<span class='text-muted'>-</span>"; ?>
+                        </td>
+                        <td>
+                            <?php
+                            if ($logs[$temp]['status'] == 0) {
+                                echo "<span class='badge rounded-pill bg-success px-3 py-2'>Inside the campus</span>";
+                            } else if ($logs[$temp]['status'] == 1) {
+                                echo "<span class='badge rounded-pill bg-danger px-3 py-2'>Outside the campus</span>";
+                            }
+                            ?>
+                        </td>
+                    </tr>
+                <?php
+                    $temp++;
+                }
+                ?>
+            </tbody>
+        </table>
+    </div>
+</div>
+
 
 
 
