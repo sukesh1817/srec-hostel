@@ -714,7 +714,11 @@ class Pass_class
     }
 
     private function getWatchmanName(){
-        
+        if(isset($_SESSION['name'])) {
+            return $_SESSION['name'];
+        } else {
+            return "NAME_NOT_FOUND";
+        }
     }
 
     public function entryThePass($rollNo, $which,$hostel, $token)
@@ -730,24 +734,82 @@ class Pass_class
                     $sqlQuery = "UPDATE `$which` SET allowed_or_not=2 WHERE roll_no=$rollNo;";
                     if ($sqlConn->query($sqlQuery)) {
                         if($hostel == "Mens 1") {
-
-                            $stmt = $sqlConn->prepare("UPDATE `student_entry_log_mens_1` SET allowed_or_not = 1, accepted_by = ?, time_of_approval = ?, recent_pass_id = ? WHERE roll_no = ?");
-                            $stmt->bind_param('sssi', $whois, $time, $token,$rollNo);
+                            $watchman_name = $this->getWatchmanName();
+                            $time = date('Y-m-d H:i:s', time());
+                            $stmt = $sqlConn->prepare("UPDATE `student_entry_log_mens_1` SET status = 1, approved_watch_man = ?, time_of_entry_by_watch_man = ?  WHERE pass_id = ?");
+                            $stmt->bind_param('sss', $watchman_name, $time, $token);
                             $updateResult = $stmt->execute();
+                            if($updateResult) {
+                                return '{"Message":"Successfully Checkout","action":"success"}';
+                            } else {
+                                return '{"Message":"Successfully Checkout","action":"success"}';
+                            }
                         } else if($hostel == "Mens 2") {
-
+                            $watchman_name = $this->getWatchmanName();
+                            $time = date('Y-m-d H:i:s', time());
+                            $stmt = $sqlConn->prepare("UPDATE `student_entry_log_mens_2` SET status = 1, approved_watch_man = ?, time_of_entry_by_watch_man = ?  WHERE pass_id = ?");
+                            $stmt->bind_param('sss', $watchman_name, $time, $token);
+                            $updateResult = $stmt->execute();
+                            if($updateResult) {
+                                return '{"Message":"Successfully Checkout","action":"success"}';
+                            } else {
+                                return '{"Message":"Successfully Checkout","action":"success"}';
+                            }
                         } else if($hostel == "Women") {
-
+                            $watchman_name = $this->getWatchmanName();
+                            $time = date('Y-m-d H:i:s', time());
+                            $stmt = $sqlConn->prepare("UPDATE `women_hostel_entry_log` SET status = 1, approved_watch_man = ?, time_of_entry_by_watch_man = ?  WHERE pass_id = ?");
+                            $stmt->bind_param('sss', $watchman_name, $time, $token);
+                            $updateResult = $stmt->execute();
+                            if($updateResult) {
+                                return '{"Message":"Successfully Checkout","action":"success"}';
+                            } else {
+                                return '{"Message":"Successfully Checkout","action":"success"}';
+                            }
                         }
-                        return '{"Message":"Successfully Checkout","action":"success"}';
+                        
                     } else {
                         return '{"Message":"Admin accepted but Checkout failed","action":"success"}';
 
                     }
                 } else if ($row['allowed_or_not'] == 2 and $row['already_booked'] == 1) {
-                    $sqlQuery = "UPDATE `$which` SET already_booked=0,allowed_or_not=0 WHERE roll_no=$rollNo;";
+                    $sqlQuery = "UPDATE `$which` SET already_booked=0,allowed_or_not=0,recent_pass_id='NONE' WHERE roll_no=$rollNo;";
                     if ($sqlConn->query($sqlQuery)) {
-                        return '{"Message":"Successfully Checkin","action":"success"}';
+                        if($hostel == "Mens 1") {
+                            $watchman_name = $this->getWatchmanName();
+                            $time = date('Y-m-d H:i:s', time());
+                            $stmt = $sqlConn->prepare("UPDATE `student_entry_log_mens_1` SET status = 2, approved_watch_man = ?, time_of_entry_by_watch_man = ?  WHERE pass_id = ?");
+                            $stmt->bind_param('sss', $watchman_name, $time, $token);
+                            $updateResult = $stmt->execute();
+                            if($updateResult) {
+                                return '{"Message":"Successfully Checkin","action":"success"}';
+                            } else {
+                                return '{"Message":"Successfully Checkin","action":"success"}';
+                            }
+                        } else if($hostel == "Mens 2") {
+                            $watchman_name = $this->getWatchmanName();
+                            $time = date('Y-m-d H:i:s', time());
+                            $stmt = $sqlConn->prepare("UPDATE `student_entry_log_mens_2` SET status = 2, approved_watch_man = ?, time_of_entry_by_watch_man = ?  WHERE pass_id = ?");
+                            $stmt->bind_param('sss', $watchman_name, $time, $token);
+                            $updateResult = $stmt->execute();
+                            if($updateResult) {
+                                return '{"Message":"Successfully Checkin","action":"success"}';
+                            } else {
+                                return '{"Message":"Successfully Checkin","action":"success"}';
+                            }
+                        } else if($hostel == "Women") {
+                            $watchman_name = $this->getWatchmanName();
+                            $time = date('Y-m-d H:i:s', time());
+                            $stmt = $sqlConn->prepare("UPDATE `women_hostel_entry_log` SET status = 2, approved_watch_man = ?, time_of_entry_by_watch_man = ?  WHERE pass_id = ?");
+                            $stmt->bind_param('sss', $watchman_name, $time, $token);
+                            $updateResult = $stmt->execute();
+                            if($updateResult) {
+                                return '{"Message":"Successfully Checkin","action":"success"}';
+                            } else {
+                                return '{"Message":"Successfully Checkin","action":"success"}';
+                            }
+                        }
+                        
                     } else {
                         return '{"Message":"Admin accepted but Checkin failed","action":"success"}';
                     }
