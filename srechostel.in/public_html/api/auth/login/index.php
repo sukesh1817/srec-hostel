@@ -60,6 +60,7 @@ if (isset($_REQUEST["username"]) and isset($_REQUEST["password"])) {
       $result = $session->createSession($userName, $passWord);
     }
   } else if ($status_value[1] == 'Watchman' and $status_value[0] == "success") {
+    print_r($status_value);
     $_SESSION["yourToken"] = $userName;
     $session = new session($userName, $status_value[1]);
     if ($session->isSessionExist) {
