@@ -269,7 +269,7 @@ function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count
     ?>
 
     <div class="container mt-5">
-        <h2 class="mb-4">Entry logs</h2>
+        <h2 class="mb-4">Student Entry logs</h2>
         <hr>
         <div class="table-responsive rounded">
             <table class="table table-striped table-bordered rounded">

@@ -3,7 +3,7 @@
   <div class="container" bis_skin_checked="1">
     <div class="d-flex justify-content-start me-5">
       <a class="navbar-brand justify-content-start fs-4 text-white fw-medium" href="/">
-      Women
+        Women
       </a>
     </div>
     <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvas"
@@ -18,32 +18,27 @@
       </div>
       <div class="offcanvas-body" bis_skin_checked="1">
         <ul class="navbar-nav flex-grow-1 justify-content-between">
-          <li class="nav-item"><a
-              class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "student-details")) {
-                echo "active";
-              } ?>"
-              href="/student-details/">Student records</a></li>
-          <li class="nav-item"><a
-              class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "token-records")) {
-                echo "active";
-              } ?>"
-              href="/token-records/">Token records</a></li>
-          <li class="nav-item"><a
-              class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "accommodation")) {
-                echo "active";
-              } ?>"
-              href="/accommodation/">Accommodation</a></li>
-          <li class="nav-item"><a
-              class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "complaint")) {
-                echo "active";
-              } ?>"
-              href="/complaint/">Complaints</a></li>
-          <li class="nav-item"><a
-              class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "gate-pass")) {
-                echo "active";
-              } ?>"
-              href="/gate-pass/">Gate pass</a></li>
-          <li class="nav-item"><a class="btn btn-outline-light rounded-1" href="/logout">Logout</a></li>
+          <li class="nav-item"><a class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "student-details")) {
+            echo "active";
+          } ?>" href="/student-details/">Student records</a></li>
+          <li class="nav-item"><a class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "token-records")) {
+            echo "active";
+          } ?>" href="/token-records/">Token records</a></li>
+          <li class="nav-item"><a class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "accommodation")) {
+            echo "active";
+          } ?>" href="/accommodation/">Accommodation</a></li>
+          <li class="nav-item"><a class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "complaint")) {
+            echo "active";
+          } ?>" href="/complaint/">Complaints</a></li>
+          <li class="nav-item"><a class="nav-link <?php if (str_contains($_SERVER['REQUEST_URI'], "gate-pass")) {
+            echo "active";
+          } ?>" href="/gate-pass/">Gate pass</a></li>
+          
+          <?php
+          require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
+          ?>
+          <li class="nav-item"><a class="btn btn-outline-light rounded-1"
+              href="<?php echo $domain; ?>/api/auth/logout/">Logout</a></li>
 
         </ul>
       </div>
