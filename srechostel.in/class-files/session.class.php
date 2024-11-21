@@ -178,7 +178,7 @@ class session
             }
         } else if ($this->whoIs == "Watchman") {
             $sqlQuery = "INSERT INTO `watchman_session` 
-            VALUES('$id','$sessionId','$ip','$currentTime')";
+            VALUES('$id','$sessionId','$ip','$currentTime', 'WATCH_MAN' )";
 
             if ($sqlConn->query($sqlQuery)) {
                 $subdomain = strtolower($this->whoIs);
