@@ -299,7 +299,7 @@ function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count
                         $logs = get_student_entry_logs();
                     }
 
-                    while ($logs[$temp]['roll_no']) {
+                    while (isset($logs[$temp]['roll_no'])) {
                         ?>
                         <tr>
                             <td><?php echo htmlspecialchars($logs[$temp]['roll_no']) ?></td>
