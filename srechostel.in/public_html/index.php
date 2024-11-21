@@ -140,7 +140,7 @@ if (isset($_COOKIE['SessId'])) {
                                                     require_once $_SERVER['DOCUMENT_ROOT'] . "/../config/domain.php";
                                                     $end_point = "api/auth/oauth/";
                                                     ?>
-                                                    <a href="<?php echo $domain . $end_point; ?>"
+                                                    <a id="oauth" href="<?php echo $domain . $end_point; ?>"
                                                         class="btn btn-lg btn-fill-dark rounded-1">
                                                         <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
                                                             fill="currentColor" class="bi bi-google"

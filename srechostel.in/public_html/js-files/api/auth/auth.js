@@ -1,6 +1,13 @@
 $(document).ready(function () {
   $("#log-in-form").submit(function (event) {
     event.preventDefault();
+      // Disable the Google OAuth link
+      document.getElementById('oauth').classList.add('disabled');
+      document.getElementById('oauth').style.pointerEvents = 'none';
+
+      // Disable form fields
+      document.getElementById('username').disabled = true;
+      document.getElementById('password').disabled = true;
     const spinner = document.getElementById("loader");
     spinner.style.removeProperty("display");
     $.ajax({
@@ -29,6 +36,10 @@ $(document).ready(function () {
             toastList.forEach((toast) => toast.show());
             var rmattr = () => {
               $("#btn-log").removeAttr("disabled");
+              document.getElementById('username').disabled = false;
+              document.getElementById('password').disabled = false;
+              oauthButton.classList.remove('disabled');
+              oauthButton.style.pointerEvents = 'auto';
             };
             setTimeout(rmattr, 1000);
           };
