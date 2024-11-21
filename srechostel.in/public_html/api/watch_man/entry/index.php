@@ -49,7 +49,8 @@ if (isset($_SESSION['yourToken']) && isset($_GET['auth_token_id'])) {
         }
 
         if ($isValid) {
-            $orginal_json = $pass->entryThePass($rollNo, $passType);
+            $hostel = $pass->getRoomAndHostel($rollNo)[1];
+            $orginal_json = $pass->entryThePass($rollNo, $passType,$hostel);
             $entry = json_decode($orginal_json, true);
 
             if ($entry && $entry['action'] == 'success') {
@@ -65,7 +66,6 @@ if (isset($_SESSION['yourToken']) && isset($_GET['auth_token_id'])) {
                 $address = $row['address_name'];
                 $acceptedBy = $row['accepted_by'];
                 $room = $pass->getRoomAndHostel($rollNo)[0];
-                $hostel = $pass->getRoomAndHostel($rollNo)[1];
                 $passType = "Out pass";
 
                 $response = [

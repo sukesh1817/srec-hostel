@@ -465,6 +465,8 @@ class Pass_class
     {
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
+
+        
         date_default_timezone_set("Asia/Kolkata");
         $time = date('Y-m-d h:i:s', time());
         if ($type == "gate-pass") {
@@ -711,7 +713,7 @@ class Pass_class
         }
     }
 
-    public function entryThePass($rollNo, $which)
+    public function entryThePass($rollNo, $which,$hostel)
     {
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
@@ -723,6 +725,13 @@ class Pass_class
                 if ($row['allowed_or_not'] == 1 and $row['already_booked'] == 1) {
                     $sqlQuery = "UPDATE `$which` SET allowed_or_not=2 WHERE roll_no=$rollNo;";
                     if ($sqlConn->query($sqlQuery)) {
+                        if($hostel == "Mens 1") {
+                            // $sqlQuery = " "
+                        } else if($hostel == "Mens 2") {
+
+                        } else if($hostel == "Women") {
+
+                        }
                         return '{"Message":"Successfully Checkout","action":"success"}';
                     } else {
                         return '{"Message":"Admin accepted but Checkout failed","action":"success"}';
