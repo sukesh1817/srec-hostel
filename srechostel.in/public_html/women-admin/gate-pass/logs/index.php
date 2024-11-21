@@ -271,7 +271,7 @@ function get_student_entry_logs($which_hostel = "women_hostel_entry_log", $count
     <div class="container mt-5">
         <div class="d-flex justify-content-between align-items-center mb-4">
             <h2 class="mb-0">Student Entry Logs</h2>
-            <button class="btn btn-primary btn-sm">Export Logs</button>
+            <button class="btn btn-outline-dark btn-sm">Export Logs</button>
         </div>
         <hr>
         <div class="table-responsive rounded shadow">
