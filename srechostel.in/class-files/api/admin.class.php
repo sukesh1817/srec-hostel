@@ -323,12 +323,12 @@ class Admin
 
         // Get the corresponding table
         $table = $tableMap[$type];
-
+        $token = $this->generateToken();
         try {
 
             // Update query using prepared statements to prevent SQL injection
-            $stmt = $sqlConn->prepare("UPDATE `$table` SET allowed_or_not = 1, accepted_by = ?, time_of_approval = ? WHERE roll_no = ?");
-            $stmt->bind_param('ssi', $whois, $time, $rollNo);
+            $stmt = $sqlConn->prepare("UPDATE `$table` SET allowed_or_not = 1, accepted_by = ?, time_of_approval = ?, recent_pass_id = ? WHERE roll_no = ?");
+            $stmt->bind_param('sssi', $whois, $time, $token,$rollNo);
             $updateResult = $stmt->execute();
 
             if ($updateResult) {
@@ -340,7 +340,6 @@ class Admin
                 if (isset($row['allowed_or_not']) && $row['allowed_or_not'] == 1) {
                     # TODO : SEPRATE CODE WRITING FOR EACH ADMIN.
                     // print_r($stud_details);
-                    $token = $this->generateToken();
                     $stmt = $sqlConn->prepare("INSERT INTO women_hostel_entry_log (
                         roll_no, name, department, approved_warden, approved_watch_man, 
                         time_of_approval_by_warden, time_of_entry_by_watch_man, status, pass_id

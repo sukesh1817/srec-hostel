@@ -185,6 +185,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 
                 $domainName = "srechostel.in";
                 $data = $_SESSION['yourToken'];
+                $pass_id = $row['recent_pass_id'];
 
                 // Define the secret key
                 $key = "secret";
@@ -208,7 +209,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     
                 // Decode the encrypted data
     
-                $qrcode = (new QRCode($options))->render("https://$domainName/api/entry/?auth_token_id=$encrypted");
+                $qrcode = (new QRCode($options))->render("https://$domainName/api/entry/?auth_token_id=$encrypted&pass_id=$pass_id");
                 ?>
                 <style>
                     /* styles.css */
