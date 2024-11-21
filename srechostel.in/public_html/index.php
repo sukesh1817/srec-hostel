@@ -154,7 +154,7 @@ if (isset($_COOKIE['SessId'])) {
                                                 <p class="text-center mt-4 mb-5">or sign in with</p>
                                             </div>
                                         </div>
-                                        <form id="log-in-form" method="post">
+                                        <form id="log-in-form" method="post" aria-disabled="true">
                                             <div class="row gy-3 overflow-hidden">
                                                 <div class="col-12">
                                                     <div class="form-floating mb-3">
