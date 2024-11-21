@@ -1,6 +1,6 @@
 <?php
 // Check the login person is authenticated.
-include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
+ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
 ?>
 
 <!DOCTYPE html>
@@ -17,7 +17,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
 
 	<title>QR Entry</title>
 	<?php
-	include_once $_SERVER['DOCUMENT_ROOT'] . "/../template/admin-template/common-template/poppins.php";
+	include_once $_SERVER['DOCUMENT_ROOT'] . "/__common/poppins.php";
 	?>
 </head>
 
@@ -37,7 +37,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
 	<div id="entry-container" class="container">
 		<input id="qr-url" type="hidden" value="">
 		<div class="px-4 py-5 my-5 text-center">
-			<img class="d-block mx-auto mb-4" src="<?php echo $domain; ?>/images/layout-image/security-guard.png" alt="" width="72"
+			<img class="d-block mx-auto mb-4" src="images/layout-image/security-guard.png" alt="" width="72"
 				height="65">
 			<h1 class="display-5 fw-bold text-body-emphasis">Entry the student</h1>
 			<div class="col-lg-6 mx-auto">
