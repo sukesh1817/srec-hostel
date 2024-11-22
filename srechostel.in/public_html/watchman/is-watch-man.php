@@ -20,6 +20,7 @@ if (isset($_COOKIE["auth_session_id"])) {
             }
 
         } else {
+            print_r($row);
             echo "1";
             // do_redirection();
         }
