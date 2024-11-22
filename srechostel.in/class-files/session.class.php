@@ -117,9 +117,9 @@ class session
                 return true;
             }
         } else if ($this->whoIs == "Watchman") {
-            echo "Hey session is updating...";
-            echo "Old id : ".$id."\n";
-            echo "new id : ".$sessionId."\n";
+            // echo "Hey session is updating...";
+            // echo "Old id : ".$id."\n";
+            // echo "new id : ".$sessionId."\n";
             $sqlQuery = "UPDATE `watchman_session` SET session_id='$sessionId',login_ip='$ip',
             last_login_time='$currentTime'  WHERE watchman_number='$id';";
 
