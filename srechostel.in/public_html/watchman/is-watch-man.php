@@ -31,5 +31,5 @@ if (isset($_COOKIE["auth_session_id"])) {
 function do_redirection()
 {
     require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../config/domain.php";
-    header("Location:  $domain");
+    // header("Location:  $domain");
 }

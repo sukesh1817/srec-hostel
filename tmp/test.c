@@ -12,6 +12,8 @@ struct user_details_t {
     struct user_details_t * nxt;
    
 };
+
+// struct deleted_node
 void show_seats_avaliability(struct user_details_t *temp) {
     
     printf("SEATS AVALIABILITY : ");
