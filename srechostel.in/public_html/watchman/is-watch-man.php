@@ -6,7 +6,7 @@ if (isset($_COOKIE["auth_session_id"])) {
     $cookie = $_COOKIE["auth_session_id"];
     $conn = new Connection();
     $sqlConn = $conn->returnConn();
-    $sqlQuery = "SELECT session_id,watchman_number,name FROM `watchman_session` WHERE session_id='$cookie'";
+    $sqlQuery = "SELECT session_id,watchman_number,name FROM `watchman_session` WHERE session_id='$cookie';";
     if ($sqlConn->query($sqlQuery)) {
         $result = $sqlConn->query($sqlQuery);
         $row = $result->fetch_assoc();
@@ -20,7 +20,6 @@ if (isset($_COOKIE["auth_session_id"])) {
             }
 
         } else {
-            print_r($row);
             echo "1";
             // do_redirection();
         }
