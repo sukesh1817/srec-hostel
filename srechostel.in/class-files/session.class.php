@@ -121,7 +121,7 @@ class session
             echo "Old id : ".$id."\n";
             echo "new id : ".$sessionId."\n";
             $sqlQuery = "UPDATE `watchman_session` SET session_id='$sessionId',login_ip='$ip',
-            last_login_time='$currentTime'  WHERE session_id='$id';";
+            last_login_time='$currentTime'  WHERE watchman_number='$id';";
 
             if ($sqlConn->query($sqlQuery)) {
                 $subdomain = strtolower($this->whoIs);
