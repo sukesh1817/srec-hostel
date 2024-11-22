@@ -20,13 +20,18 @@ if (isset($_COOKIE["auth_session_id"])) {
             }
 
         } else {
-            do_redirection();
+            echo "1";
+            // do_redirection();
         }
     } else {
-        do_redirection();
+        echo "2";
+
+        // do_redirection();
     }
 } else {
-    do_redirection();
+    echo "3";
+
+    // do_redirection();
 }
 
 function do_redirection()
