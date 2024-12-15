@@ -721,7 +721,7 @@ class Pass_class
         }
     }
 
-    public function entryThePass($rollNo, $which,$hostel, $token)
+    public function entryThePass($rollNo, $which, $hostel, $token)
     {
         $conn = new MainConnection();
         $sqlConn = $conn->returnConn();
