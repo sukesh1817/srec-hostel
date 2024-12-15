@@ -11,8 +11,8 @@ header("Access-Control-Allow-Headers: Content-Type, Authorization");
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
 
 if (isset($_SESSION['yourToken']) && isset($_GET['auth_token_id']) && isset($_GET['pass_id'])) {
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/../class-files/common.class.php";
-    include_once $_SERVER['DOCUMENT_ROOT'] . "/../class-files/pass.class.php";
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/../class-files/api/common.class.php";
+    include_once $_SERVER['DOCUMENT_ROOT'] . "/../class-files/api/pass.class.php";
 
     $common = new commonClass();
 
