@@ -1,22 +1,41 @@
 <?php
-/*
-This file helps to check wheather the person is watch man
-if the person is watch man allow them
-else do not allow 
-*/
-if(isset($_COOKIE["auth_watch_man"])) {
-    if($_COOKIE["auth_watch_man"]==md5(md5("watch-the-man"))) {
-        if(isset($_SESSION["yourToken"])) {
-            
+// Check the watchman is login or not.
+if (isset($_COOKIE["auth_session_id"])) {
+    // echo "hello";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../class-files/connection.class.php";
+    $cookie = $_COOKIE["auth_session_id"];
+    $conn = new Connection();
+    $sqlConn = $conn->returnConn();
+    $sqlQuery = "SELECT session_id,watchman_number,name FROM `watchman_session` WHERE session_id='$cookie';";
+    if ($sqlConn->query($sqlQuery)) {
+        $result = $sqlConn->query($sqlQuery);
+        $row = $result->fetch_assoc();
+        if (isset($row["session_id"])) {
+            if (isset($_SESSION["yourToken"]) and isset($_SESSION['name'])) {
+                //do nothing
+            } else {
+                session_start();
+                $_SESSION["yourToken"] = $row["watchman_number"];
+                $_SESSION["name"] = $row["name"];
+            }
+
         } else {
-            session_start();
-            $_SESSION["yourToken"]=md5(md5("watch-the-man")) ;
+            //echo "1";
+             do_redirection();
         }
     } else {
-        header("Location: /");
-}
+        //echo "2";
 
+         do_redirection();
+    }
 } else {
-    header("Location: /");
+    // echo "3";
+
+     do_redirection();
 }
 
+function do_redirection()
+{
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../config/domain.php";
+     header("Location:  $domain");
+}
