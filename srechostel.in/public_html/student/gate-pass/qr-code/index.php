@@ -183,7 +183,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                     ]
                 );
 
-                $domainName = "srechostel.in";
+                $domainName = "testing.srechostel.in";
                 $data = $_SESSION['yourToken'];
                 $pass_id = $row['recent_pass_id'];
 

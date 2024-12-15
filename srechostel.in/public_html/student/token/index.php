@@ -1,4 +1,4 @@
-<?php
+<b?php
 // check the login user is student
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
 ?>
@@ -55,7 +55,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
                 $result = $token->isTokenBooked($_SESSION["yourToken"]);
                 if (!(date("l") == "Tuesday" or date("l") == "Wednesday" or date("l") == "Thursday" or date("l") == "Friday" or date("l") == "Saturday")) {
                     ?>
-                    <a class="align-items-center btn btn-danger rounded-1 mt-2" href="/token/">Booking not opened</a>
+                    <button class="align-items-center btn btn-danger rounded-1 mt-2" type="button">Booking not opened</button>
                     <?php
                 } else if ($result) {
                     ?>
