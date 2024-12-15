@@ -6,9 +6,9 @@
 header("Access-Control-Allow-Origin: *");
 header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type, Authorization");
-echo $_SERVER['DOCUMENT_ROOT'];
+// echo $_SERVER['DOCUMENT_ROOT'];
 
-// include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
+include_once $_SERVER['DOCUMENT_ROOT'] . "/watchman/is-watch-man.php";
 
 if (isset($_SESSION['yourToken']) && isset($_GET['auth_token_id']) && isset($_GET['pass_id'])) {
     include_once $_SERVER['DOCUMENT_ROOT'] . "/../class-files/common.class.php";
