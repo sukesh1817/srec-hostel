@@ -1,4 +1,12 @@
 <?php
+// Allow CORS for all origins
+// Allow specific HTTP methods
+// Allow specific headers
+
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+
 
 include_once $_SERVER['DOCUMENT_ROOT'] . "/is-watch-man.php";
 
