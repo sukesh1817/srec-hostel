@@ -209,7 +209,7 @@ include_once $_SERVER['DOCUMENT_ROOT'] . "/is-student.php";
     
                 // Decode the encrypted data
     
-                $qrcode = (new QRCode($options))->render("https://$domainName/api/entry/?auth_token_id=$encrypted&pass_id=$pass_id");
+                $qrcode = (new QRCode($options))->render("https://$domainName/api/watch_man/entry/?auth_token_id=$encrypted&pass_id=$pass_id");
                 ?>
                 <style>
                     /* styles.css */
