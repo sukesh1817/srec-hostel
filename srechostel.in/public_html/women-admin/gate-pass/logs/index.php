@@ -314,9 +314,11 @@ function get_student_entry_logs($which_hostel , $count )
                         <td>
                             <?php
                             if ($logs[$temp]['status'] == 0) {
-                                echo "<span class='badge rounded-pill bg-success px-3 py-2'>Inside the campus</span>";
+                                echo "<span class='badge rounded-pill bg-dark px-3 py-2'>Inside the campus</span>";
                             } else if ($logs[$temp]['status'] == 1) {
-                                echo "<span class='badge rounded-pill bg-danger px-3 py-2'>Outside the campus</span>";
+                                echo "<span class='badge rounded-pill bg-info px-3 py-2'>Successfully checked out</span>";
+                            } else if($logs[$temp]['status'] == 2) {
+                                echo "<span class='badge rounded-pill bg-success px-3 py-2'>Succesfully checked in</span>";
                             }
                             ?>
                         </td>
