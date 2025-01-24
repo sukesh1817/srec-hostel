@@ -29,8 +29,8 @@ if (isset($_GET["auth_session_id"])) {
     }
 } else {
     // echo "3";
-    echo "hello world";
-    exit;
+    // echo "hello world";
+    // exit;
      do_redirection();
 }
 
