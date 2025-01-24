@@ -2,7 +2,7 @@
 // Check the watchman is login or not.
 if (isset($_GET["auth_session_id"])) {
     require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../class-files/connection.class.php";
-    $cookie = $_COOKIE["auth_session_id"];
+    $cookie = $_GET["auth_session_id"];
     $conn = new Connection();
     $sqlConn = $conn->returnConn();
     $sqlQuery = "SELECT session_id,watchman_number,name FROM `watchman_session` WHERE session_id='$cookie';";
