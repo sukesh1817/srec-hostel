@@ -1,4 +1,16 @@
 $(document).ready(function () {
+    function getCookie(name) {
+        const cookieString = document.cookie; 
+        const cookies = cookieString.split('; '); 
+    
+        for (let cookie of cookies) {
+            const [key, value] = cookie.split('='); 
+            if (key === name) {
+                return decodeURIComponent(value); 
+            }
+        }
+        return null; 
+    }
     $("#entry-container").hide();
 
     const config = {
@@ -20,7 +32,8 @@ $(document).ready(function () {
 
 
     $("#entry-btn").click(function () {
-        var url = $("#qr-url").val()
+        let url = $("#qr-url").val()
+        url = url + "&auth_session_id=" +getCookie("auth_session_id");
         $.ajax({
             type: "GET",
             url: url,

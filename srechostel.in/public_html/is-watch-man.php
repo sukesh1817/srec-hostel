@@ -1,6 +1,6 @@
 <?php
 // Check the watchman is login or not.
-if (isset($_COOKIE["auth_session_id"])) {
+if (isset($_GET["auth_session_id"])) {
     echo "hello";
     exit;
     require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../class-files/connection.class.php";
