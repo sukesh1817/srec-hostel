@@ -773,7 +773,7 @@ class Pass_class
 
                     }
                 } else if ($row['allowed_or_not'] == 2 and $row['already_booked'] == 1) {
-                    $sqlQuery = "UPDATE `$which` SET already_booked=0,allowed_or_not=0,recent_pass_id='NONE' WHERE roll_no=$rollNo;";
+                    $sqlQuery = "UPDATE `$which` SET already_booked=0,allowed_or_not=0 WHERE roll_no=$rollNo;";
                     if ($sqlConn->query($sqlQuery)) {
                         if($hostel == "Mens 1") {
                             $watchman_name = $this->getWatchmanName();
