@@ -2,9 +2,9 @@
 // Check the watchman is login or not.
 if (isset($_COOKIE["auth_session_id"])) {
     // echo "hello";
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../class-files/mainconn.class.php";
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../class-files/connection.class.php";
     $cookie = $_COOKIE["auth_session_id"];
-    $conn = new MainConnection();
+    $conn = new Connection();
     $sqlConn = $conn->returnConn();
     $sqlQuery = "SELECT session_id,watchman_number,name FROM `watchman_session` WHERE session_id='$cookie';";
     if ($sqlConn->query($sqlQuery)) {
@@ -36,6 +36,6 @@ if (isset($_COOKIE["auth_session_id"])) {
 
 function do_redirection()
 {
-    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../../config/domain.php";
-     header("Location:  $domain");
+    require_once $_SERVER["DOCUMENT_ROOT"] . "/" . "../config/domain.php";
+    header("Location:  $domain");
 }
