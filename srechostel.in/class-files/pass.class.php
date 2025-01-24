@@ -292,7 +292,7 @@ class Pass_class
         $row = [];
         $conn = new Connection();
         $sqlConn = $conn->returnConn();
-        $sqlQuery = "";
+        $sqlQuery = "3";
         $row_1 = [];
 
         // if($day=="today"){
