@@ -57,7 +57,7 @@ require_once $_SERVER['DOCUMENT_ROOT'] . '/../../config/' . "domain.php";
 
 	<script src="https://unpkg.com/html5-qrcode"></script>
 	<script>
-		var auth_session_id = <?php echo $_COOKIE['auth_session_id'] ?>
+		var auth_session_id = "<?php echo $_COOKIE['auth_session_id'] ?>"
 	</script>
 	<script src="<?php echo $domain; ?>/js-files/api/watch-man/scan.js"></script>
 </body>
